@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.util.TypedValue
-import android.view.MotionEvent
 import com.example.myview.MyView
 
 class SummaryBarView : MyView {
@@ -28,10 +27,8 @@ class SummaryBarView : MyView {
     var space = 0.0f
     //每个Bar的宽度
     var barWidth = 0.0f
-    //bar的数值映射为bar的高度的比例
-    var ratio = 0
-    //bar的最大高度
-    var max = 0f
+    //数值高度映射的象素点数
+    var ratio = 0.0f
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -80,43 +77,33 @@ class SummaryBarView : MyView {
      * 不带动画绘制
      */
     private fun drawWithAnimation(canvas: Canvas) {
-        //todo
+        //todo now
+
     }
 
     /*
      * 在末尾添加一个bar
      */
-    fun addBar(data: Float) {
+    fun addBar(data: Float, text: String) {
         //todo
     }
 
-    fun addBars(list: List<Float>) {
-        //todo now
-        if (list.isEmpty()) {
+    /*
+     * 一次性添加多个Bar
+     */
+    fun addBars(newDataList: List<Float>, newTextList: List<String>) {
+        if (newDataList.isEmpty()) {
             return
         }
-//        post {
-//            if (dataList.isEmpty()) {
-//                val start = paddingLeft + barWidth / 2
-//                xCoordinate.add(start)
-//                max = Math.max(max, list.max()!!)
-//                if (max > viewHeight) {
-//                    yCoordinate.add(viewHeight.toFloat())
-//                } else {
-//                }
-//                //val rect = Rect(start, list[0] * ratio, start + barWidth, list[0] * ratio)
-//            }
-//            for () {
-//
-//            }
-//            invalidate()
-//        }
+        dataList.addAll(newDataList)
+        textList.addAll(newTextList)
+        coordinateAdjust()
     }
 
     /*
      * 插入一个bar
      */
-    fun insertBar(data: Float) {
+    fun insertBar(data: Float, text: String) {
         //todo
     }
 
@@ -134,9 +121,34 @@ class SummaryBarView : MyView {
         //todo
     }
 
-    private fun coordinateAdajust() {
-        post {
+    /*
+     * 按照数值高度重新调整坐标
+     * 所有外界的改动都是改动在dataList上面的，所以在调整的时候按照dataList为标准修改
+     */
+    private fun coordinateAdjust() {
+        xCoordinate.clear()
+        yCoordinate.clear()
+        barRectList.clear()
 
+        //post保证一定是在测量完成后执行
+        post {
+            val start = paddingLeft + space / 2
+
+            val max = dataList.max()!!
+            ratio = (viewHeight / max) * 0.75f
+            for (i in dataList.indices) {
+                //确定当前bar的起始横纵坐标，也就是位于左下角的坐标
+                xCoordinate.add(start + i * (space + barWidth))
+                yCoordinate.add(viewHeight - 25f - paddingBottom)
+
+                //计算bar的矩形框
+                val left = xCoordinate[i]
+                val top = yCoordinate[i] - dataList[i] * ratio
+                val right = xCoordinate[i] + barWidth
+                val bottom = yCoordinate[i]
+                val rectF = RectF(left, top, right, bottom)
+                barRectList.add(rectF)
+            }
         }
     }
 }
