@@ -9,18 +9,16 @@ abstract class MyView : View {
     var viewWidth = 0
     var viewHeight = 0
 
-    constructor(context: Context?) : super(context) {
-        this.init()
-    }
+    constructor(context: Context?) : super(context)
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        this.init()
+        this.init(context!!, attrs!!)
     }
 
     /*
      * 初始化操作
      */
-    abstract fun init()
+    abstract fun init(context: Context, attrs: AttributeSet)
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
