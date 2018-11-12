@@ -13,4 +13,12 @@ class SummaryBarView : MyView {
     override fun init() {
 
     }
+
+    override fun widthWrapContent(widthSize: Int, heightSize: Int) {
+
+    }
+
+    override fun heightWrapContent(heightSize: Int, heightSize1: Int) {
+
+    }
 }
