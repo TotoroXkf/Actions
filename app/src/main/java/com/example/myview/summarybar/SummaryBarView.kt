@@ -13,6 +13,8 @@ class SummaryBarView : MyView {
     private lateinit var barPaint: Paint
     //Bar的矩形框列表
     private val barRectList = ArrayList<RectF>()
+    //bar的末尾圆形列表
+    private val barOvalList = ArrayList<RectF>()
     //柱状图高度列表
     private val dataList = ArrayList<Float>()
     //底下文字列表
@@ -21,14 +23,16 @@ class SummaryBarView : MyView {
     private val xCoordinate = ArrayList<Float>()
     //柱状图的纵坐标
     private val yCoordinate = ArrayList<Float>()
-    //绘制时显示动画，默认为true
-    var animationEnable = true
+    //绘制时显示动画，默认为false
+    var animationEnable = false
     //每个Bar之间的间隔
     var space = 0.0f
     //每个Bar的宽度
-    var barWidth = 0.0f
+    private var barWidth = 0.0f
     //数值高度映射的象素点数
-    var ratio = 0.0f
+    private var ratio = 0.0f
+    //柱状图的颜色
+    private var barColor = Color.GREEN
 
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -41,12 +45,11 @@ class SummaryBarView : MyView {
 
         barPaint = Paint()
         barPaint.isAntiAlias = true
-        barPaint.color = Color.BLUE
 
-        //间隔默认为8dp
-        space = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, resources.displayMetrics)
-        //bar的宽度默认为8dp
-        barWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, resources.displayMetrics)
+        //间隔默认为20dp
+        space = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20f, resources.displayMetrics)
+        //bar的宽度默认为10dp
+        barWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10f, resources.displayMetrics)
     }
 
     override fun widthWrapContent(widthSize: Int, heightSize: Int) {
@@ -70,14 +73,20 @@ class SummaryBarView : MyView {
      * 带动画绘制
      */
     private fun drawWithoutAnimation(canvas: Canvas) {
-        //todo
+        //todo now
+        barPaint.color = barColor
+
+        for (i in dataList.indices) {
+            canvas.drawRect(barRectList[i], barPaint)
+            canvas.drawOval(barOvalList[i], barPaint)
+        }
     }
 
     /*
      * 不带动画绘制
      */
     private fun drawWithAnimation(canvas: Canvas) {
-        //todo now
+        //todo
 
     }
 
@@ -143,11 +152,17 @@ class SummaryBarView : MyView {
 
                 //计算bar的矩形框
                 val left = xCoordinate[i]
-                val top = yCoordinate[i] - dataList[i] * ratio
+                var top = yCoordinate[i] - dataList[i] * ratio
                 val right = xCoordinate[i] + barWidth
-                val bottom = yCoordinate[i]
-                val rectF = RectF(left, top, right, bottom)
+                var bottom = yCoordinate[i]
+                var rectF = RectF(left, top, right, bottom)
                 barRectList.add(rectF)
+
+                //计算bar末尾的半圆形框
+                top -= barWidth / 2
+                bottom = top + barWidth
+                rectF = RectF(left, top, right, bottom)
+                barOvalList.add(rectF)
             }
         }
     }

@@ -7,7 +7,7 @@
     tools:context=".summarybar.SummaryBarActivity">
 
     <com.example.myview.summarybar.SummaryBarView
+        android:id="@+id/summaryBarView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 </FrameLayout>
