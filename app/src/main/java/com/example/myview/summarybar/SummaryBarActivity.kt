@@ -11,6 +11,6 @@ class SummaryBarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_summary_bar)
 
-        summaryBarView.addBars(arrayListOf(100f, 250f, 333f), arrayListOf())
+        summaryBarView.addBars(arrayListOf(100f, 250f, 333f, 122.5f, 111.1f), arrayListOf())
     }
 }
