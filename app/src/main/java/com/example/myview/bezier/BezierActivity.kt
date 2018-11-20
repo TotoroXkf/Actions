@@ -1,15 +1,15 @@
-package com.example.myview.summarybar
+package com.example.myview.bezier
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myview.R
-import kotlinx.android.synthetic.main.activity_summary_bar.*
 
-class SummaryBarActivity : AppCompatActivity() {
+class BezierActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_summary_bar)
+        setContentView(R.layout.activity_bezier)
+
 
     }
 }
