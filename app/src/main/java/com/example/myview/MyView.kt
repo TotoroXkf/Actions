@@ -1,6 +1,7 @@
 package com.example.myview
 
 import android.content.Context
+import android.graphics.Canvas
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -52,4 +53,14 @@ abstract class MyView : View {
      * 当height为wrap_content的时候回调处理高度
      */
     abstract fun heightWrapContent(heightSize: Int, heightSize1: Int)
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+        if (canvas == null) {
+            return
+        }
+        drawContent(canvas)
+    }
+
+    protected abstract fun drawContent(canvas: Canvas)
 }

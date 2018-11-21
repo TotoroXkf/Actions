@@ -7,6 +7,7 @@ import android.util.TypedValue
 import com.example.myview.MyView
 
 class SummaryBarView : MyView {
+
     //每个bar的横纵坐标
     val positionX = ArrayList<Float>()
     val positionY = 0f
@@ -35,11 +36,7 @@ class SummaryBarView : MyView {
 
     }
 
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-
+    override fun drawContent(canvas: Canvas) {
 
     }
-
-
 }
