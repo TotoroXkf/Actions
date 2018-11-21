@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.example.myview.bezier.BezierActivity
 import com.example.myview.summarybar.SummaryBarActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -16,10 +17,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val viewList = arrayListOf(
-                "柱状统计图"
+            "柱状统计图",
+            "塞尔曲线控制"
         )
         val activityList = arrayListOf(
-                SummaryBarActivity::class.java
+            SummaryBarActivity::class.java,
+            BezierActivity::class.java
         )
 
         listView.adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, viewList)

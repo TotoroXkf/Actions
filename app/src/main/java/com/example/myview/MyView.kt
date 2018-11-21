@@ -2,6 +2,7 @@ package com.example.myview
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +11,12 @@ abstract class MyView : View {
     var viewWidth = 0
     var viewHeight = 0
 
+    val paint = Paint()
+
     constructor(context: Context?) : super(context)
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+        paint.isAntiAlias = true
         this.init(context!!, attrs!!)
     }
 
