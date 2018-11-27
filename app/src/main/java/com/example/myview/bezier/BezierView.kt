@@ -23,11 +23,11 @@ class BezierView : MyView {
 
     private val path = Path()
 
-    private val START_SELECTED = 1
-    private val CONTROL_SELECTED = 2
-    private val END_SELECTED = 3
-    private val NONE = 0
-    private var state = NONE
+    private val startSelected = 1
+    private val controlSelected = 2
+    private val endSelected = 3
+    private val none = 0
+    private var state = none
 
 
     constructor(context: Context?) : super(context)
@@ -62,7 +62,6 @@ class BezierView : MyView {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        //todo 完成触摸反馈
         val result = super.onTouchEvent(event)
         if (event == null) {
             return result
@@ -72,43 +71,55 @@ class BezierView : MyView {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 state = when {
-                    startRect.contains(curX, curY) -> START_SELECTED
-                    controlRect.contains(curX, curY) -> CONTROL_SELECTED
-                    endRect.contains(curX, curY) -> END_SELECTED
-                    else -> NONE
+                    startRect.contains(curX, curY) -> startSelected
+                    controlRect.contains(curX, curY) -> controlSelected
+                    endRect.contains(curX, curY) -> endSelected
+                    else -> none
                 }
             }
 
             MotionEvent.ACTION_MOVE -> {
                 when (state) {
-                    START_SELECTED -> {
+                    startSelected -> {
                         startX = curX
                         startY = curY
                         rectMove(startRect, curX, curY)
                         invalidate()
                     }
+                    controlSelected -> {
+                        controlX = curX
+                        controlY = curY
+                        rectMove(controlRect, curX, curY)
+                        invalidate()
+                    }
+                    endSelected -> {
+                        endX = curX
+                        endY = curY
+                        rectMove(endRect, curX, curY)
+                        invalidate()
+                    }
+                    none -> {
 
+                    }
                 }
             }
 
             MotionEvent.ACTION_UP -> {
-                when (state) {
-                    START_SELECTED -> {
-
-                    }
-                    CONTROL_SELECTED -> {
-
-                    }
-                    END_SELECTED -> {
-
-                    }
+                if (state != none) {
+                    Log.e("xkf123456789", "当前点信息 ---------------------------------------------------")
+                    Log.e("xkf123456789", "起始点 => ($startX,$startY)")
+                    Log.e("xkf123456789", "控制点 => ($controlX,$controlY)")
+                    Log.e("xkf123456789", "结束点 => ($endX,$endY)")
+                    Log.e("xkf123456789", "--------------------------------------------------------------")
                 }
             }
-
         }
         return true
     }
 
+    /*
+     * 根据中心点重置矩阵的位置
+     */
     private fun rectMove(rect: RectF, centerX: Float, centerY: Float) {
         val rectWidth = rect.width()
         val rectHeight = rect.height()
@@ -121,9 +132,9 @@ class BezierView : MyView {
 
     override fun drawContent(canvas: Canvas) {
         paint.style = Paint.Style.FILL
-        canvas.drawRect(startRect, paint)
-        canvas.drawRect(controlRect, paint)
-        canvas.drawRect(endRect, paint)
+        canvas.drawOval(startRect, paint)
+        canvas.drawOval(controlRect, paint)
+        canvas.drawOval(endRect, paint)
 
         path.reset()
         paint.style = Paint.Style.STROKE
