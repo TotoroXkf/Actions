@@ -16,9 +16,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /*
+         * 尝试完成
+         * 1. 柱状统计图
+         * 2. 贝塞尔曲线控制
+         * 3. 流式布局
+         */
+
         val viewList = arrayListOf(
             "柱状统计图",
-            "塞尔曲线控制"
+            "贝塞尔曲线控制"
         )
         val activityList = arrayListOf(
             SummaryBarActivity::class.java,

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import com.example.myview.MyView
 
@@ -22,11 +23,19 @@ class BezierView : MyView {
 
     private val path = Path()
 
+    private val START_SELECTED = 1
+    private val CONTROL_SELECTED = 2
+    private val END_SELECTED = 3
+    private val NONE = 0
+    private var state = NONE
+
+
     constructor(context: Context?) : super(context)
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
 
     override fun init(context: Context, attrs: AttributeSet) {
         setLayerType(LAYER_TYPE_SOFTWARE, null)
+        isClickable = true
 
         startRect = RectF(200f, 500f, 250f, 550f)
         startX = (startRect.left + startRect.right) / 2
@@ -53,22 +62,61 @@ class BezierView : MyView {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        super.onTouchEvent(event)
-        when (event!!.action) {
+        //todo 完成触摸反馈
+        val result = super.onTouchEvent(event)
+        if (event == null) {
+            return result
+        }
+        val curX = event.x
+        val curY = event.y
+        when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                state = when {
+                    startRect.contains(curX, curY) -> START_SELECTED
+                    controlRect.contains(curX, curY) -> CONTROL_SELECTED
+                    endRect.contains(curX, curY) -> END_SELECTED
+                    else -> NONE
+                }
             }
 
             MotionEvent.ACTION_MOVE -> {
+                when (state) {
+                    START_SELECTED -> {
+                        startX = curX
+                        startY = curY
+                        rectMove(startRect, curX, curY)
+                        invalidate()
+                    }
 
+                }
             }
 
             MotionEvent.ACTION_UP -> {
+                when (state) {
+                    START_SELECTED -> {
 
+                    }
+                    CONTROL_SELECTED -> {
+
+                    }
+                    END_SELECTED -> {
+
+                    }
+                }
             }
 
         }
         return true
+    }
+
+    private fun rectMove(rect: RectF, centerX: Float, centerY: Float) {
+        val rectWidth = rect.width()
+        val rectHeight = rect.height()
+        val l = centerX - rectWidth / 2
+        val t = centerY - rectHeight / 2
+        val r = centerX + rectWidth / 2
+        val b = centerY + rectHeight / 2
+        rect.set(l, t, r, b)
     }
 
     override fun drawContent(canvas: Canvas) {
