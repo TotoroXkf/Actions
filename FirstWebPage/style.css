@@ -1,0 +1,9 @@
+.title {
+    position: absolute;
+    top: 10px;
+    margin-left: 10px;
+}
+
+.jumbotron, .jumbotron-fluid {
+    padding-bottom: auto;
+}
