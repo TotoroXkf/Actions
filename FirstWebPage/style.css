@@ -22,6 +22,16 @@
 
 .appMenu {
     position: absolute;
-    top: 15px;
+    top: 18px;
     left: 5%;
+}
+
+.floatBtn {
+    position: fixed;
+    right: 3%;
+    bottom: 5%;
+    background-color: orange;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
 }
