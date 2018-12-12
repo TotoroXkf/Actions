@@ -1,4 +1,4 @@
-.appHeader{
+.appHeader {
     position: fixed;
     top: 0;
     left: 0;
@@ -6,16 +6,22 @@
     z-index: 8;
     width: 100%;
     height: 60px;
-    box-shadow: 0 2px 4px rgba( 0, 0, 0, 0.25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
     transition: top .4s ease, background-color .5s;
     display: block;
 }
 
-.appTitle{
+.appTitle {
     margin: 0 auto;
     font-size: 22px;
     color: #fff;
     letter-spacing: 1px;
     line-height: 60px;
     text-align: center;
+}
+
+.appMenu {
+    position: absolute;
+    top: 15px;
+    left: 5%;
 }
