@@ -54,21 +54,28 @@
 }
 
 .menuList {
+    padding-left: 0;
     width: 100%;
     margin-top: 80px;
     list-style-type: none;
 }
 
 .menuItem {
-    background-color: orange;
     height: 60px;
 }
 
 .menuIcon {
-
+    position: relative;
+    top: 18px;
+    left: 25px;
 }
 
 .menuText {
-    margin-left: 15px;
-    font-size: 20px;
+    position: relative;
+    top: 12px;
+    left: 25px;
+    margin-left: 20px;
+    font-size: 17px;
+    color: #757575;;
+    text-align: center;
 }
