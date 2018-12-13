@@ -36,3 +36,39 @@
     height: 60px;
     box-shadow: 5px 5px 6px #888888;
 }
+
+.menuContent {
+    position: fixed;
+    background-color: white;
+    left: 0px;
+    top: 0;
+    z-index: 3;
+    width: 250px;
+    height: 100%;
+    box-shadow: 5px 0 4px #888888;
+    /*transition: .3s ease;*/
+    /*transition-property: all;*/
+    /*transition-duration: 0.3s;*/
+    /*transition-timing-function: ease;*/
+    /*transition-delay: 0s;*/
+}
+
+.menuList {
+    width: 100%;
+    margin-top: 80px;
+    list-style-type: none;
+}
+
+.menuItem {
+    background-color: orange;
+    height: 60px;
+}
+
+.menuIcon {
+
+}
+
+.menuText {
+    margin-left: 15px;
+    font-size: 20px;
+}
