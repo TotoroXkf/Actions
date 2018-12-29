@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F44336</color>
+    <color name="colorPrimaryDark">#F44336</color>
+    <color name="colorAccent">#F44336</color>
+
+    <color name="red">#F44336</color>
+    <color name="divider">@android:color/darker_gray</color>
+    <color name="white">#FFFFFF</color>
+    <color name="playBarBackground">#FFFFFF</color>
+    <color name="background">#FFFFFF</color>
+    <color name="textColor">#000000</color>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/menu_group">
+        <item
+            android:id="@+id/menu_setting"
+            android:icon="@mipmap/ic_menu_settings"
+            android:title="@string/setting" />
+
+        <item
+            android:id="@+id/menu_night_mode"
+            android:icon="@mipmap/ic_menu_night"
+            android:title="@string/nightMode" />
+
+        <item
+            android:id="@+id/menu_share"
+            android:icon="@mipmap/ic_menu_share"
+            android:title="@string/shareApp" />
+    </group>
+    <item
+        android:id="@+id/menu_exit"
+        android:icon="@mipmap/ic_menu_exit"
+        android:title="@string/exit" />
+</menu>
