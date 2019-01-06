@@ -1,18 +1,14 @@
 package com.example.myclock
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
 import java.util.*
-import kotlin.math.min
 
 class ClockView : View {
-	private var viewWidth = 0
-	private var viewHeight = 0
+	private var viewWidth = 0f
+	private var viewHeight = 0f
 	private var paint = Paint()
 	
 	private val HMS = 0
@@ -41,8 +37,8 @@ class ClockView : View {
 	
 	override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
 		super.onSizeChanged(w, h, oldw, oldh)
-		viewWidth = w
-		viewHeight = h
+		viewWidth = w.toFloat()
+		viewHeight = h.toFloat()
 	}
 	
 	fun setTypre(type: Int) {
@@ -66,22 +62,37 @@ class ClockView : View {
 		val hour = getHour()
 		val minute = getMinute()
 		
+		val radius = 50f
+		val left = viewWidth / 2 - radius / 2
+		val top = viewHeight / 2 - radius / 2
+		val right = left + radius
+		val bottom = top + radius
+		val rect = RectF(left, top - radius, right, bottom - radius)
+		canvas.drawOval(rect, paint)
+		rect.set(left, top + radius, right, bottom + radius)
+		canvas.drawOval(rect, paint)
+		
 		val hourWidth = paint.measureText(hour)
 		val minuteWidth = paint.measureText(hour)
-		val offsetY = computeOffsetY()
-		canvas.drawText(hour, viewWidth / 2 - hourWidth, viewHeight / 2 + offsetY, paint)
-		canvas.drawText(minute, viewWidth / 2 + 15f, viewHeight / 2 + offsetY, paint)
+		val baseY = getBaseY()
+		val space = 15f
+		canvas.drawText(hour, viewWidth / 2 - hourWidth - radius / 2 - space, baseY, paint)
+		canvas.drawText(minute, viewWidth / 2 + radius / 2 + space, baseY, paint)
 	}
 	
 	private fun drawHMS(canvas: Canvas) {
 	
 	}
 	
-	private fun computeOffsetY(): Float {
-		val baseY = viewHeight / 2
+	private fun getBaseY(): Float {
+		var baseY = viewHeight / 2
 		val metrics = paint.fontMetrics
-		val ascent = baseY + metrics.ascent
-		return (baseY - ascent) / 2 - 25f
+		val top = baseY + metrics.top
+		val bottom = +baseY + metrics.bottom
+		
+		baseY -= (bottom - baseY)
+		baseY += ((bottom - top)) / 2
+		return baseY
 	}
 	
 	private fun getHour(): String {
