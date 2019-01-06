@@ -7,5 +7,9 @@
     android:background="@android:color/black"
     tools:context=".MainActivity">
 
-
+    <fragment
+        android:id="@+id/fragmentContent"
+        android:name="com.example.myclock.ClockFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>
