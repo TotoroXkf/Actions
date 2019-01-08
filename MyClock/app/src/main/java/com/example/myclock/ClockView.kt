@@ -55,7 +55,7 @@ class ClockView : View {
 			}
 		}
 		val colorAnimation = ValueAnimator.ofArgb(
-			Color.RED, Color.GREEN, Color.BLUE
+			Color.BLACK, Color.RED, Color.GREEN, Color.BLUE
 		)
 		colorAnimation.apply {
 			duration = 20000
@@ -101,6 +101,9 @@ class ClockView : View {
 		if (canvas == null) {
 			return
 		}
+		paint.alpha = 255
+		canvas.drawColor(color)
+		
 		if (currentType == HMS) {
 			drawHMS(canvas)
 		} else if (currentType == HM) {
@@ -109,9 +112,6 @@ class ClockView : View {
 	}
 	
 	private fun drawHM(canvas: Canvas) {
-		paint.alpha = 255
-		canvas.drawColor(color)
-		
 		val hour = getHour()
 		val minute = getMinute()
 		
@@ -136,6 +136,9 @@ class ClockView : View {
 	
 	private fun drawHMS(canvas: Canvas) {
 		//todo 画时分秒
+		val hour = getHour()
+		val minute = getMinute()
+		val second = getSecond()
 	}
 	
 	private fun getBaseY(): Float {
