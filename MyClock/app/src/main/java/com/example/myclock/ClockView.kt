@@ -4,10 +4,15 @@ import android.animation.Animator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
+import android.os.Build
+import android.support.annotation.RequiresApi
 import android.util.AttributeSet
 import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.Animation
+import android.widget.ExpandableListView
 import java.util.*
 
 class ClockView : View {
@@ -21,6 +26,8 @@ class ClockView : View {
 	
 	private var alphaValue = 255
 	
+	private lateinit var gestureDetector: GestureDetector
+	
 	constructor(context: Context?) : super(context)
 	constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
 		init()
@@ -32,15 +39,13 @@ class ClockView : View {
 		defStyleAttr
 	)
 	
-	
 	private fun init() {
 		paint.color = Color.WHITE
 		paint.textSize = 350f
 		paint.isAntiAlias = true
-	}
-	
-	override fun onFinishInflate() {
-		super.onFinishInflate()
+		
+		gestureDetector = GestureDetector(context, onGestureListener)
+		
 		val animation = ValueAnimator.ofInt(255, 1, 255)
 		animation.apply {
 			duration = 3000
@@ -54,15 +59,30 @@ class ClockView : View {
 		animation.start()
 	}
 	
+	private var onGestureListener = object : GestureDetector.SimpleOnGestureListener() {
+		override fun onDown(e: MotionEvent?): Boolean {
+			return true
+		}
+		
+		override fun onDoubleTap(e: MotionEvent?): Boolean {
+			currentType = if (currentType == HM) {
+				HMS
+			} else {
+				HM
+			}
+			invalidate()
+			return true
+		}
+	}
+	
+	override fun onTouchEvent(event: MotionEvent?): Boolean {
+		return gestureDetector.onTouchEvent(event)
+	}
+	
 	override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
 		super.onSizeChanged(w, h, oldw, oldh)
 		viewWidth = w.toFloat()
 		viewHeight = h.toFloat()
-	}
-	
-	fun setTypre(type: Int) {
-		currentType = type
-		invalidate()
 	}
 	
 	override fun onDraw(canvas: Canvas?) {
@@ -101,7 +121,7 @@ class ClockView : View {
 	}
 	
 	private fun drawHMS(canvas: Canvas) {
-	
+		//todo
 	}
 	
 	private fun getBaseY(): Float {
