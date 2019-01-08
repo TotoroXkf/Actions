@@ -1,9 +1,13 @@
 package com.example.myclock
 
+import android.animation.Animator
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
+import android.view.animation.Animation
 import java.util.*
 
 class ClockView : View {
@@ -15,24 +19,39 @@ class ClockView : View {
 	private val HM = 1
 	private var currentType = 1
 	
-	private var alphaValue = 1.0f
-	
-	private lateinit var calendar: Calendar
+	private var alphaValue = 255
 	
 	constructor(context: Context?) : super(context)
 	constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
 		init()
 	}
 	
-	constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+	constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+		context,
+		attrs,
+		defStyleAttr
+	)
 	
 	
 	private fun init() {
-		calendar = Calendar.getInstance()
-		
 		paint.color = Color.WHITE
 		paint.textSize = 350f
 		paint.isAntiAlias = true
+	}
+	
+	override fun onFinishInflate() {
+		super.onFinishInflate()
+		val animation = ValueAnimator.ofInt(255, 1, 255)
+		animation.apply {
+			duration = 3000
+			repeatCount = Animation.INFINITE
+			repeatMode = ValueAnimator.RESTART
+			addUpdateListener {
+				alphaValue = it.animatedValue as Int
+				invalidate()
+			}
+		}
+		animation.start()
 	}
 	
 	override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -68,12 +87,13 @@ class ClockView : View {
 		val right = left + radius
 		val bottom = top + radius
 		val rect = RectF(left, top - radius, right, bottom - radius)
+		paint.alpha = alphaValue
 		canvas.drawOval(rect, paint)
 		rect.set(left, top + radius, right, bottom + radius)
 		canvas.drawOval(rect, paint)
 		
+		paint.alpha = 255
 		val hourWidth = paint.measureText(hour)
-		val minuteWidth = paint.measureText(hour)
 		val baseY = getBaseY()
 		val space = 15f
 		canvas.drawText(hour, viewWidth / 2 - hourWidth - radius / 2 - space, baseY, paint)
@@ -96,17 +116,22 @@ class ClockView : View {
 	}
 	
 	private fun getHour(): String {
+		val calendar = Calendar.getInstance()
 		val hour = calendar.get(Calendar.HOUR_OF_DAY)
 		return if (hour < 10) "0$hour" else hour.toString()
 	}
 	
 	private fun getMinute(): String {
+		val calendar = Calendar.getInstance()
 		val minute = calendar.get(Calendar.MINUTE)
 		return if (minute < 10) "0$minute" else minute.toString()
 	}
 	
 	private fun getSecond(): String {
+		val calendar = Calendar.getInstance()
 		val second = calendar.get(Calendar.SECOND)
 		return if (second < 10) "0$second" else second.toString()
 	}
+	
+	
 }
