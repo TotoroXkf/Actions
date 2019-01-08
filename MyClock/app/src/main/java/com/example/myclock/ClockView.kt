@@ -1,18 +1,15 @@
 package com.example.myclock
 
-import android.animation.Animator
+import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
-import android.os.Build
-import android.support.annotation.RequiresApi
 import android.util.AttributeSet
-import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
 import android.view.animation.Animation
-import android.widget.ExpandableListView
+import android.view.animation.AnimationSet
 import java.util.*
 
 class ClockView : View {
@@ -25,6 +22,7 @@ class ClockView : View {
 	private var currentType = 1
 	
 	private var alphaValue = 255
+	private var color = Color.BLACK
 	
 	private lateinit var gestureDetector: GestureDetector
 	
@@ -46,8 +44,8 @@ class ClockView : View {
 		
 		gestureDetector = GestureDetector(context, onGestureListener)
 		
-		val animation = ValueAnimator.ofInt(255, 1, 255)
-		animation.apply {
+		val symbolAnimation = ValueAnimator.ofInt(255, 1, 255)
+		symbolAnimation.apply {
 			duration = 3000
 			repeatCount = Animation.INFINITE
 			repeatMode = ValueAnimator.RESTART
@@ -56,7 +54,20 @@ class ClockView : View {
 				invalidate()
 			}
 		}
-		animation.start()
+		val colorAnimation = ValueAnimator.ofArgb(
+			Color.RED, Color.GREEN, Color.BLUE
+		)
+		colorAnimation.apply {
+			duration = 20000
+			repeatCount = Animation.INFINITE
+			repeatMode = ValueAnimator.REVERSE
+			addUpdateListener {
+				color = it.animatedValue as Int
+			}
+		}
+		val animationSet = AnimatorSet()
+		animationSet.playTogether(symbolAnimation, colorAnimation)
+		animationSet.start()
 	}
 	
 	private var onGestureListener = object : GestureDetector.SimpleOnGestureListener() {
@@ -98,6 +109,9 @@ class ClockView : View {
 	}
 	
 	private fun drawHM(canvas: Canvas) {
+		paint.alpha = 255
+		canvas.drawColor(color)
+		
 		val hour = getHour()
 		val minute = getMinute()
 		
@@ -121,7 +135,7 @@ class ClockView : View {
 	}
 	
 	private fun drawHMS(canvas: Canvas) {
-		//todo
+		//todo 画时分秒
 	}
 	
 	private fun getBaseY(): Float {
