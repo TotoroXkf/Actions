@@ -23,6 +23,8 @@ class ClockView : View {
 
     private var alphaValue = 255
     private var color = Color.BLACK
+    private val radius = 50f
+    private val space = 15f
 
     private lateinit var gestureDetector: GestureDetector
 
@@ -115,7 +117,6 @@ class ClockView : View {
         val hour = getHour()
         val minute = getMinute()
 
-        val radius = 50f
         val left = viewWidth / 2 - radius / 2
         val top = viewHeight / 2 - radius / 2
         val right = left + radius
@@ -129,7 +130,6 @@ class ClockView : View {
         paint.alpha = 255
         val hourWidth = paint.measureText(hour)
         val baseY = getBaseY()
-        val space = 15f
         canvas.drawText(hour, viewWidth / 2 - hourWidth - radius / 2 - space, baseY, paint)
         canvas.drawText(minute, viewWidth / 2 + radius / 2 + space, baseY, paint)
     }
@@ -142,36 +142,37 @@ class ClockView : View {
         val minuteWidth = paint.measureText(minute)
 
         paint.alpha = alphaValue
-        val radius = 50f
-        val space = 15f
         val left = viewWidth / 2 - radius / 2
         val top = viewHeight / 2 - radius / 2
         val right = left + radius
         val bottom = top + radius
         val rect = RectF(
-            left + minuteWidth / 2 + space, top - radius,
-            right + minuteWidth / 2 + space, bottom - radius
+            left + minuteWidth / 2 + space + radius / 2, top - radius,
+            right + minuteWidth / 2 + space + radius / 2, bottom - radius
         )
         canvas.drawOval(rect, paint)
         rect.set(
-            left + minuteWidth / 2 + space, top + radius,
-            right + minuteWidth / 2 + space, bottom + radius
+            left + minuteWidth / 2 + space + radius / 2, top + radius,
+            right + minuteWidth / 2 + space + radius / 2, bottom + radius
         )
         canvas.drawOval(rect, paint)
 
         paint.alpha = 255
         rect.set(
-            left - minuteWidth / 2 - space, top - radius,
-            right - minuteWidth / 2 - space, bottom - radius
+            left - minuteWidth / 2 - space - radius / 2, top - radius,
+            right - minuteWidth / 2 - space - radius / 2, bottom - radius
         )
         canvas.drawOval(rect, paint)
         rect.set(
-            left - minuteWidth / 2 - space, top + radius,
-            right - minuteWidth / 2 - space, bottom + radius
+            left - minuteWidth / 2 - space - radius / 2, top + radius,
+            right - minuteWidth / 2 - space - radius / 2, bottom + radius
         )
         canvas.drawOval(rect, paint)
 
-
+        val baseY = getBaseY()
+        canvas.drawText(hour, viewWidth / 2 - 2 * space - radius - hourWidth - minuteWidth / 2, baseY, paint)
+        canvas.drawText(minute, viewWidth / 2 - minuteWidth / 2, baseY, paint)
+        canvas.drawText(second, viewWidth / 2 + 2 * space + radius + minuteWidth / 2, baseY, paint)
     }
 
     private fun getBaseY(): Float {
@@ -202,6 +203,4 @@ class ClockView : View {
         val second = calendar.get(Calendar.SECOND)
         return if (second < 10) "0$second" else second.toString()
     }
-
-
 }
