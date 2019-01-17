@@ -15,22 +15,5 @@ class MainActivity : AppCompatActivity() {
 		setContentView(R.layout.activity_main)
 		
 		window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN) //隐藏状态栏
-		
-		//todo 解决socket通信的问题
-	}
-	
-	override fun onResume() {
-		super.onResume()
-		cameraView.start()
-	}
-	
-	override fun onPause() {
-		super.onPause()
-		cameraView.stop()
-	}
-	
-	override fun onDestroy() {
-		super.onDestroy()
-		cameraView.destroy()
 	}
 }
