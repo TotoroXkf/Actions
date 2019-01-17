@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile "cn.leancloud:java-sdk:0.1.6"
 }
 
 compileKotlin {
