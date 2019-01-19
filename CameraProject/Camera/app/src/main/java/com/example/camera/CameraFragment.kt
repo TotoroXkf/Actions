@@ -35,4 +35,8 @@ class CameraFragment : Fragment() {
 		super.onDestroyView()
 		mCameraView.destroy()
 	}
+	
+	fun takePicture() {
+	
+	}
 }

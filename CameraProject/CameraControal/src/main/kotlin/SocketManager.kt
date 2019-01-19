@@ -1,6 +1,7 @@
 import java.io.*
 import java.net.ServerSocket
 import java.net.Socket
+import java.util.*
 import java.util.concurrent.Executors
 
 private val cachedThreadPool = Executors.newCachedThreadPool()
@@ -10,6 +11,7 @@ private var deviceNum = 0
 private val deviceIpMap = HashMap<Int, String>()
 
 private const val ipCollectPort = 12306
+private const val commandPort = 12307
 
 fun getSocketWriter(socket: Socket): PrintWriter {
     val outputStream = socket.getOutputStream()
@@ -55,6 +57,64 @@ class IpCollector(private val socket: Socket) : Runnable {
 
         reader.close()
         writer.close()
+        socket.close()
+    }
+}
+
+fun dispatchCommand() {
+    val scanner = Scanner(System.`in`)
+    while (true) {
+        // 格式
+        // number/all-parameter-xxxxxx
+        // number/all-action-xxxxxx
+        val input = scanner.next()
+        val number = input.split("-")[0]
+
+        if (number == "all") {
+            for (value in deviceIpMap.values) {
+                cachedThreadPool.execute(CommandExecutor(value, input))
+            }
+        } else {
+            val key = number.toInt()
+            if (key in deviceIpMap) {
+                cachedThreadPool.execute(CommandExecutor(deviceIpMap[key]!!, input))
+            }
+        }
+    }
+}
+
+class CommandExecutor(private val deviceIp: String, private val command: String) :
+    Runnable {
+    override fun run() {
+        val data = command.split("-")
+        val deviceNumber = data[0]
+        val type = data[1]
+        val info = data[2]
+
+        val socket = Socket(deviceIp, commandPort)
+
+        val writer = getSocketWriter(socket)
+        writer.write(command)
+        writer.flush()
+        socket.shutdownOutput()
+
+        val inputStream = socket.getInputStream()
+        val bytes = inputStream.readBytes()
+        when (info) {
+            "capture" -> {
+
+            }
+            else -> {
+                val message = String(bytes)
+                if (message == "OK") {
+                    println("第 $deviceNumber 台设备执行完毕")
+                }
+            }
+        }
+        socket.shutdownInput()
+
+        writer.close()
+        inputStream.close()
         socket.close()
     }
 }

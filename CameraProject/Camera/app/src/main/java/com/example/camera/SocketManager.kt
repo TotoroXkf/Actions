@@ -5,9 +5,11 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.io.PrintWriter
+import java.net.ServerSocket
 import java.net.Socket
 
 private const val mIpCollectPort = 12306
+private const val mCommandPort = 12307
 
 fun getSocketWriter(socket: Socket): PrintWriter {
 	val outputStream = socket.getOutputStream()
@@ -38,4 +40,25 @@ fun sendIpAndGetDeviceNumber(severIp: String, deviceIp: String): Int {
 	socket.close()
 	
 	return deviceNumber.toInt()
+}
+
+fun runCommandSocket(handler: (String, PrintWriter, () -> Unit) -> Unit) {
+	Thread {
+		val severSocket = ServerSocket(mCommandPort)
+		while (true) {
+			val socket = severSocket.accept()
+			
+			val reader = getSocketReader(socket)
+			val command = reader.readLine()
+			socket.shutdownInput()
+			val writer = getSocketWriter(socket)
+			val closeSocket = {
+				socket.shutdownOutput()
+				reader.close()
+				writer.close()
+				socket.close()
+			}
+			handler(command, writer, closeSocket)
+		}
+	}.start()
 }
