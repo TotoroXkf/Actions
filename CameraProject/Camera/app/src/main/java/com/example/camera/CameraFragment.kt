@@ -1,12 +1,17 @@
 package com.example.camera
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.otaliastudios.cameraview.CameraListener
 import com.otaliastudios.cameraview.CameraView
-import kotlinx.android.synthetic.main.activity_main.*
+import java.io.ByteArrayOutputStream
+
 
 class CameraFragment : Fragment() {
 	lateinit var mCameraView: CameraView
@@ -36,7 +41,28 @@ class CameraFragment : Fragment() {
 		mCameraView.destroy()
 	}
 	
-	fun takePicture() {
-	
+	fun takePicture(callback: (ByteArray) -> Unit) {
+		mCameraView.clearCameraListeners()
+		mCameraView.addCameraListener(object : CameraListener() {
+			override fun onPictureTaken(bytes: ByteArray?) {
+				if (bytes == null) {
+					return
+				}
+				mCameraView.post {
+					val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+					val matrix = Matrix()
+					matrix.postRotate(90f)
+					val rotateBitmap =
+						Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+					val outputStream = ByteArrayOutputStream()
+					rotateBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+					val picture = outputStream.toByteArray()
+					callback(picture)
+				}
+				
+			}
+		})
+		
+		mCameraView.capturePicture()
 	}
 }

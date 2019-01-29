@@ -16,6 +16,7 @@ fun main(args: Array<String>) {
     println("等待所有设备连接，收集IP")
     runIpCollectTask()
     dispatchCommand()
+    //todo 修复all的设置
 }
 
 

@@ -87,7 +87,7 @@ class CommandExecutor(private val deviceIp: String, private val command: String)
     Runnable {
     override fun run() {
         val data = command.split("-")
-        val deviceNumber = data[0]
+        val deviceNumber = data[0].toInt()
         val type = data[1]
         val info = data[2]
 
@@ -102,7 +102,7 @@ class CommandExecutor(private val deviceIp: String, private val command: String)
         val bytes = inputStream.readBytes()
         when (info) {
             "capture" -> {
-
+                writeToLocal(bytes, deviceNumber)
             }
             else -> {
                 val message = String(bytes)

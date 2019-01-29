@@ -1,10 +1,7 @@
 package com.example.camera
 
 import android.util.Log
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.io.PrintWriter
+import java.io.*
 import java.net.ServerSocket
 import java.net.Socket
 
@@ -42,7 +39,7 @@ fun sendIpAndGetDeviceNumber(severIp: String, deviceIp: String): Int {
 	return deviceNumber.toInt()
 }
 
-fun runCommandSocket(handler: (String, PrintWriter, () -> Unit) -> Unit) {
+fun runCommandSocket(handler: (String, OutputStream, () -> Unit) -> Unit) {
 	Thread {
 		val severSocket = ServerSocket(mCommandPort)
 		while (true) {
@@ -51,7 +48,7 @@ fun runCommandSocket(handler: (String, PrintWriter, () -> Unit) -> Unit) {
 			val reader = getSocketReader(socket)
 			val command = reader.readLine()
 			socket.shutdownInput()
-			val writer = getSocketWriter(socket)
+			val writer = socket.getOutputStream()
 			val closeSocket = {
 				socket.shutdownOutput()
 				reader.close()
