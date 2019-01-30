@@ -2,19 +2,30 @@ from base import TreeNode, ListNode
 
 
 class Solution:
-    def pathSum(self, root: TreeNode, target: int):
-        result = []
-        dfs(root, target, [], result)
-        return result
+    def flatten(self, root: TreeNode):
+        rebuild(root)
 
 
-def dfs(root: TreeNode, target: int, nums: list, result: list):
+def rebuild(root: TreeNode):
     if root is None:
-        return
-    target -= root.val
-    nums.append(root.val)
-    if root.left is None and root.right is None and target == 0:
-        result.append(nums)
-        return
-    dfs(root.left, target, nums[:], result)
-    dfs(root.right, target, nums[:], result)
+        return None
+    if root.left is None and root.right is None:
+        return root
+    tail = root
+    left_node, right_node = root.left, root.right
+    root.left = None
+    root.right = rebuild(left_node)
+    while tail.right is not None:
+        tail = tail.right
+    tail.right = rebuild(right_node)
+    return root
+
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.left.left = TreeNode(3)
+root.left.right = TreeNode(4)
+root.right = TreeNode(5)
+root.right.right = TreeNode(6)
+root = rebuild(root)
+print("xxx")
