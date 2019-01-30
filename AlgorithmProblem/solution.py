@@ -2,16 +2,16 @@ from base import TreeNode, ListNode
 
 
 class Solution:
-    def generate(self, rows: int):
-        result = []
-        for i in range(0, rows):
-            new_answer = []
-            for j in range(0, i + 1):
-                if j == 0:
-                    new_answer.append(1)
-                elif j == i:
-                    new_answer.append(1)
-                else:
-                    new_answer.append(result[i - 1][j] + result[i - 1][j - 1])
-            result.append(new_answer)
+    def getRow(self, row: int):
+        result = [1 for i in range(0, row + 1)]
+        for i in range(2, row + 1):
+            pre = 1
+            for j in range(1, i):
+                value = pre + result[j]
+                pre = result[j]
+                result[j] = value
         return result
+
+
+test = Solution().getRow(3)
+print(test)
