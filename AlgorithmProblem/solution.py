@@ -2,31 +2,24 @@ from base import TreeNode, ListNode
 
 
 class Solution:
-    def minimumTotal(self, triangle: list):
-        length = len(triangle)
-        dp = [0 for i in range(0, length)]
-        dp[0] = triangle[0][0]
-        min_value = dp[0]
-        for i in range(1, length):
-            min_value = 2147483647
-            new_list = []
-            for j in range(0, i + 1):
-                if j == 0:
-                    value = dp[j] + triangle[i][j]
-                elif j == i:
-                    value = dp[j - 1] + triangle[i][j]
-                else:
-                    value = min(dp[j - 1] + triangle[i][j], dp[j] + triangle[i][j])
-                new_list.append(value)
-                min_value = min(value, min_value)
-            dp = new_list
-        return min_value
+    def maxProfit(self, prices: list):
+        if not prices:
+            return 0
+        values = []
+        pre_index, index = 0, 1
+        while index < len(prices):
+            if prices[index] < prices[index - 1]:
+                value = prices[index - 1] - prices[pre_index]
+                values.append(value)
+                pre_index = index
+            index += 1
+        value = prices[index - 1] - prices[pre_index]
+        values.append(value)
+        values.sort()
+        if len(values) == 1:
+            return values[0]
+        return values[-1] + values[-2]
 
 
-test = [
-    [2],
-    [3, 4],
-    [6, 5, 7],
-    [4, 1, 8, 3]
-]
-print(Solution().minimumTotal(test))
+test = [3, 3, 5, 0, 0, 3, 1, 4]
+print(Solution().maxProfit(test))
