@@ -1,9 +1,10 @@
-from rest_framework import status
+from django.contrib.auth.models import User
+from rest_framework import status, generics
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from .serializers import UserSerializer
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
 
@@ -50,3 +51,17 @@ class SnippetDetail(APIView):
         snippet = self.get_object(pk)
         snippet.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class UserList(APIView):
+    def get(self, request):
+        queryset = User.objects.all()
+        serialize = UserSerializer(queryset, many=True)
+        return Response(serialize.data)
+
+
+class UserDetail(APIView):
+    def get(self, request, pk):
+        user = User.objects.get(pk=pk)
+        serialize = UserSerializer(user)
+        return Response(serialize.data)
