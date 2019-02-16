@@ -92,14 +92,14 @@ class KissCalendar : View {
 		for (i in 0 until steps) {
 			moveRectOneStep()
 		}
-		val loveShape = LoveShape(rect)
-		loveShape.drawLove(canvas)
-//		val month = calendar.get(Calendar.MONTH)
-//		while (month == calendar.get(Calendar.MONTH)) {
-//			drawTextInRect("" + calendar.get(Calendar.DAY_OF_MONTH), canvas)
-//			moveRectOneStep()
-//			calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1)
-//		}
+		val month = calendar.get(Calendar.MONTH)
+		while (month == calendar.get(Calendar.MONTH)) {
+			val loveShape = LoveShape(rect)
+			loveShape.drawLove(canvas)
+			drawTextInRect("" + calendar.get(Calendar.DAY_OF_MONTH), canvas)
+			moveRectOneStep()
+			calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1)
+		}
 	}
 	
 	private fun drawTextInRect(text: String, canvas: Canvas) {
