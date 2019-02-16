@@ -1,7 +1,7 @@
 package com.example.formylove.kisssignin
 
-import android.graphics.Canvas
-import android.graphics.RectF
+import android.graphics.*
+import android.util.Log
 import kotlin.math.sqrt
 
 class LoveShape(private val rect: RectF) {
@@ -10,6 +10,8 @@ class LoveShape(private val rect: RectF) {
 	
 	private val points = ArrayList<Float>()
 	private val controlPoints = ArrayList<Float>()
+	private val path = Path()
+	private val paint = Paint()
 	
 	private var topPointX = 0f
 	private var topPointY = 0f
@@ -37,6 +39,8 @@ class LoveShape(private val rect: RectF) {
 	private var leftBottomPointY2 = 0f
 	
 	init {
+		paint.isAntiAlias = true
+		paint.color = Color.RED
 		setUpPoints()
 	}
 	
@@ -54,14 +58,14 @@ class LoveShape(private val rect: RectF) {
 		bottomPointX = (rect.left + rect.right) / 2
 		bottomPointY = rect.bottom
 		points.run {
-			add(leftPointX)
-			add(leftPointY)
 			add(topPointX)
 			add(topPointY)
 			add(rightPointX)
 			add(rightPointY)
 			add(bottomPointX)
 			add(bottomPointY)
+			add(leftPointX)
+			add(leftPointY)
 		}
 		
 		//左上的第一个控制点
@@ -90,20 +94,20 @@ class LoveShape(private val rect: RectF) {
 		leftBottomPointY2 = leftPointY + radius * rate
 		controlPoints.run {
 			add(leftTopPointX1)
-			add(leftTopPointX2)
 			add(leftTopPointY1)
+			add(leftTopPointX2)
 			add(leftTopPointY2)
 			add(rightTopPointX1)
-			add(rightTopPointX2)
 			add(rightTopPointY1)
+			add(rightTopPointX2)
 			add(rightTopPointY2)
 			add(rightBottomPointX1)
-			add(rightBottomPointX2)
 			add(rightBottomPointY1)
+			add(rightBottomPointX2)
 			add(rightBottomPointY2)
 			add(leftBottomPointX1)
-			add(leftBottomPointX2)
 			add(leftBottomPointY1)
+			add(leftBottomPointX2)
 			add(leftBottomPointY2)
 		}
 	}
@@ -113,6 +117,15 @@ class LoveShape(private val rect: RectF) {
 	}
 	
 	fun drawLove(canvas: Canvas) {
-	
+		path.reset()
+		path.moveTo(leftPointX, leftPointY)
+		var i = 0
+		var j = 0
+		for (k in 0..3) {
+			path.cubicTo(controlPoints[j], controlPoints[j + 1], controlPoints[j + 2], controlPoints[j + 3], points[i], points[i + 1])
+			i += 2
+			j += 4
+		}
+		canvas.drawPath(path, paint)
 	}
 }
