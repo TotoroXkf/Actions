@@ -2,7 +2,6 @@ package com.example.formylove.kisssignin
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
@@ -10,15 +9,12 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import java.util.*
-import kotlin.collections.HashMap
 import kotlin.collections.HashSet
 import kotlin.collections.LinkedHashMap
-
-//todo 动画会遮住字
-//todo 连续点击动画暂停
 
 class KissCalendar : View {
 	private var viewWidth = 0f
@@ -33,7 +29,6 @@ class KissCalendar : View {
 	
 	private val daySet = HashSet<Int>()
 	private val clickDays = LinkedHashMap<Int, RectF>()
-	private val animatorMap = HashMap<ValueAnimator, Long>()
 	
 	constructor(context: Context?) : super(context)
 	constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -70,8 +65,6 @@ class KissCalendar : View {
 		}
 	}
 	
-	private fun getStartBlock() = 6 + startDayOfWeek
-	
 	override fun onTouchEvent(event: MotionEvent?): Boolean {
 		val result = super.onTouchEvent(event)
 		if (event == null) {
@@ -91,13 +84,11 @@ class KissCalendar : View {
 					return result
 				}
 				val block = row * 7 + col
-				val startBlock = getStartBlock()
+				val startBlock = 6 + startDayOfWeek
 				val day = block - startBlock + 1
 				if (day > today || day in daySet || day in clickDays) {
 					return result
 				}
-				//daySet.add(day)
-				//todo 直接添加到DaySet和动画产生违和
 				val centerX = col.toFloat() * rectLength + rectLength / 2
 				val centerY = row.toFloat() * rectLength + rectLength / 2
 				clickDays[day] = RectF()
@@ -112,19 +103,14 @@ class KissCalendar : View {
 							centerY + rectLength * value)
 					invalidate()
 				}
-//				valueAnimator.addListener(object : AnimatorListenerAdapter() {
-//					override fun onAnimationEnd(animation: Animator?) {
-//						animatorList.remove(valueAnimator)
-//						if (animatorList.isNotEmpty()) {
-//							animatorList.first().start()
-//						}
-//					}
-//				})
-//				valueAnimator.currentPlayTime = 500
-//				if (animatorList.size == 1) {
-//					valueAnimator.start()
-//				}
-//				valueAnimator.start()
+				valueAnimator.addListener(object : AnimatorListenerAdapter() {
+					override fun onAnimationEnd(animation: Animator?) {
+						super.onAnimationEnd(animation)
+						daySet.add(day)
+						//todo 添加监听
+					}
+				})
+				valueAnimator.start()
 			}
 			else -> {
 			
@@ -147,7 +133,7 @@ class KissCalendar : View {
 		val week = arrayOf("一", "二", "三", "四", "五", "六", "天")
 		paint.color = Color.BLACK
 		for (text in week) {
-			drawTextInRect(text, canvas)
+			drawTextInRect(text, rect, canvas)
 			moveRectOneStep()
 		}
 	}
@@ -185,7 +171,7 @@ class KissCalendar : View {
 				loveShape.drawLoveHollow(canvas)
 			}
 			
-			drawTextInRect("" + calendar.get(Calendar.DAY_OF_MONTH), canvas)
+			drawTextInRect("" + calendar.get(Calendar.DAY_OF_MONTH), rect, canvas)
 			moveRectOneStep()
 			calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1)
 		}
@@ -195,12 +181,14 @@ class KissCalendar : View {
 		for ((day, animatorRect) in clickDays) {
 			val animatorLoveShape = LoveShape(animatorRect)
 			animatorLoveShape.drawLoveSolid(canvas)
+			paint.color = Color.WHITE
+			drawTextInRect("" + day, animatorRect, canvas)
 		}
 	}
 	
-	private fun drawTextInRect(text: String, canvas: Canvas) {
-		val rectCenterX = (rect.right - rect.left) / 2 + rect.left
-		val rectCenterY = (rect.bottom - rect.top) / 2 + rect.top
+	private fun drawTextInRect(text: String, textRect: RectF, canvas: Canvas) {
+		val rectCenterX = (textRect.right - textRect.left) / 2 + textRect.left
+		val rectCenterY = (textRect.bottom - textRect.top) / 2 + textRect.top
 		val textWidth = paint.measureText(text)
 		val textHeight = getTextHeight()
 		canvas.drawText(text, rectCenterX - textWidth / 2, rectCenterY + textHeight / 2 - 5f, paint)
