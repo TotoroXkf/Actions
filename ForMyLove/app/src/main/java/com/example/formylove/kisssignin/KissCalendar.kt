@@ -6,6 +6,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import java.util.*
 import kotlin.collections.HashSet
@@ -16,7 +18,13 @@ class KissCalendar : View {
 	private val paint = Paint()
 	private val rect = RectF(0f, 0f, 0f, 0f)
 	private var rectLength = 0f
+	
+	private var startDayOfWeek = 1
+	private var today = 1
+	private val loveShape = LoveShape(RectF())
+	
 	private val daySet = HashSet<Int>()
+	private val clickDays = HashSet<Int>()
 	
 	constructor(context: Context?) : super(context)
 	constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -52,9 +60,50 @@ class KissCalendar : View {
 		}
 	}
 	
-	private fun moveRectToPosition(start: Int, dayOfMonth: Int, dayOfWeek: Int) {
-		val row = (start + dayOfMonth + 7) / 7
+	private fun moveRectToPosition(day: Int) {
 		//todo
+	}
+	
+	override fun onTouchEvent(event: MotionEvent?): Boolean {
+		val result = super.onTouchEvent(event)
+		if (event == null) {
+			return result
+		}
+		when (event.action) {
+			MotionEvent.ACTION_DOWN -> {
+				return true
+			}
+			MotionEvent.ACTION_UP -> {
+				val x = event.x
+				val y = event.y
+				//取值从0到6
+				val row = (y / rectLength).toInt()
+				val col = (x / rectLength).toInt()
+				Log.e("xkf123456789", "row:$row")
+				Log.e("xkf123456789", "col:$col")
+				if (row == 0) {
+					return result
+				}
+				val startRow = 1
+				val startCol = startDayOfWeek - 1
+				var day = Math.abs(row - startRow - 1) * 7
+				day += if (col > startCol) {
+					(7 + col - startCol)
+				} else {
+					(7 - startCol + col)
+				}
+				day += 1
+				if (day > today || day in daySet) {
+					return result
+				}
+				Log.e("xkf123456789", "day:$day")
+				clickDays.add(day)
+			}
+			else -> {
+			
+			}
+		}
+		return true
 	}
 	
 	override fun onDraw(canvas: Canvas?) {
@@ -64,6 +113,7 @@ class KissCalendar : View {
 		rect.set(0f, 0f, rectLength, rectLength)
 		drawWeek(canvas)
 		drawDay(canvas)
+		drawDayAnimation(canvas)
 	}
 	
 	private fun drawWeek(canvas: Canvas) {
@@ -77,7 +127,7 @@ class KissCalendar : View {
 	
 	private fun drawDay(canvas: Canvas) {
 		val calendar = Calendar.getInstance()
-		val today = calendar.get(Calendar.DAY_OF_MONTH)
+		today = calendar.get(Calendar.DAY_OF_MONTH)
 		while (calendar.get(Calendar.DAY_OF_MONTH) != 1) {
 			calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) - 1)
 		}
@@ -90,29 +140,32 @@ class KissCalendar : View {
 				Calendar.SATURDAY to 5,
 				Calendar.SUNDAY to 6
 		)
+		startDayOfWeek = weekMap[calendar.get(Calendar.DAY_OF_WEEK)]!! + 1
 		val steps = weekMap[calendar.get(Calendar.DAY_OF_WEEK)]!!
 		for (i in 0 until steps) {
 			moveRectOneStep()
 		}
 		val month = calendar.get(Calendar.MONTH)
 		while (month == calendar.get(Calendar.MONTH)) {
+			loveShape.setRect(rect)
 			paint.color = Color.BLACK
+			
 			val day = calendar.get(Calendar.DAY_OF_MONTH)
-			if (day == today) {
-				paint.color = Color.RED
-				canvas.drawCircle((rect.right + rect.left) / 2, (rect.top + rect.bottom) / 2 + 5f,
-						rectLength * 3 / 8, paint)
-				paint.color = Color.WHITE
-			}
 			if (day in daySet) {
-				val loveShape = LoveShape(rect)
-				loveShape.drawLove(canvas)
+				loveShape.drawLoveSolid(canvas)
 				paint.color = Color.WHITE
+			} else if (day <= today) {
+				loveShape.drawLoveHollow(canvas)
 			}
+			
 			drawTextInRect("" + calendar.get(Calendar.DAY_OF_MONTH), canvas)
 			moveRectOneStep()
 			calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1)
 		}
+	}
+	
+	private fun drawDayAnimation(canvas: Canvas) {
+	
 	}
 	
 	private fun drawTextInRect(text: String, canvas: Canvas) {
@@ -123,7 +176,7 @@ class KissCalendar : View {
 		canvas.drawText(text, rectCenterX - textWidth / 2, rectCenterY + textHeight / 2 - 5f, paint)
 	}
 	
-	public fun setDays(days: List<Int>) {
+	fun setDays(days: List<Int>) {
 		daySet.clear()
 		daySet.addAll(days)
 		invalidate()

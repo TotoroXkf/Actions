@@ -19,11 +19,16 @@ class LoveShape(private val rect: RectF) {
 	}
 	
 	fun drawLoveSolid(canvas: Canvas) {
-	
+		paint.style = Paint.Style.FILL
+		drawLove(canvas)
 	}
 	
+	fun drawLoveHollow(canvas: Canvas) {
+		paint.style = Paint.Style.STROKE
+		drawLove(canvas)
+	}
 	
-	fun drawLove(canvas: Canvas) {
+	private fun drawLove(canvas: Canvas) {
 		path.reset()
 		val width = rect.right - rect.left
 		val height = rect.bottom - rect.top
