@@ -1,5 +1,7 @@
 package com.example.formylove.kisssignin
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.content.Context
@@ -8,17 +10,15 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import java.util.*
+import kotlin.collections.HashMap
 import kotlin.collections.HashSet
 import kotlin.collections.LinkedHashMap
-import kotlin.collections.LinkedHashSet
 
 //todo 动画会遮住字
 //todo 连续点击动画暂停
-//todo 直接添加到DaySet和动画产生违和
 
 class KissCalendar : View {
 	private var viewWidth = 0f
@@ -32,7 +32,8 @@ class KissCalendar : View {
 	private val loveShape = LoveShape(RectF())
 	
 	private val daySet = HashSet<Int>()
-	private val clickDays = LinkedHashSet<RectF>()
+	private val clickDays = LinkedHashMap<Int, RectF>()
+	private val animatorMap = HashMap<ValueAnimator, Long>()
 	
 	constructor(context: Context?) : super(context)
 	constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -92,25 +93,38 @@ class KissCalendar : View {
 				val block = row * 7 + col
 				val startBlock = getStartBlock()
 				val day = block - startBlock + 1
-				if (day > today || day in daySet) {
+				if (day > today || day in daySet || day in clickDays) {
 					return result
 				}
 				//daySet.add(day)
+				//todo 直接添加到DaySet和动画产生违和
 				val centerX = col.toFloat() * rectLength + rectLength / 2
 				val centerY = row.toFloat() * rectLength + rectLength / 2
-				clickDays.add(RectF())
+				clickDays[day] = RectF()
 				val valueAnimator = ValueAnimator.ofFloat(0f, 0.5f)
 				valueAnimator.duration = 1000
 				valueAnimator.addUpdateListener {
 					val value = (it.animatedValue) as Float
-					val r = clickDays.last()
-					r.set(centerX - rectLength * value,
+					val animatorRect = clickDays[day]!!
+					animatorRect.set(centerX - rectLength * value,
 							centerY - rectLength * value,
 							centerX + rectLength * value,
 							centerY + rectLength * value)
 					invalidate()
 				}
-				valueAnimator.start()
+//				valueAnimator.addListener(object : AnimatorListenerAdapter() {
+//					override fun onAnimationEnd(animation: Animator?) {
+//						animatorList.remove(valueAnimator)
+//						if (animatorList.isNotEmpty()) {
+//							animatorList.first().start()
+//						}
+//					}
+//				})
+//				valueAnimator.currentPlayTime = 500
+//				if (animatorList.size == 1) {
+//					valueAnimator.start()
+//				}
+//				valueAnimator.start()
 			}
 			else -> {
 			
@@ -178,9 +192,9 @@ class KissCalendar : View {
 	}
 	
 	private fun drawDayAnimation(canvas: Canvas) {
-		for (value in clickDays) {
-			val loveShape = LoveShape(value)
-			loveShape.drawLoveSolid(canvas)
+		for ((day, animatorRect) in clickDays) {
+			val animatorLoveShape = LoveShape(animatorRect)
+			animatorLoveShape.drawLoveSolid(canvas)
 		}
 	}
 	
