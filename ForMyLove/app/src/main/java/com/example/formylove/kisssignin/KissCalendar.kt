@@ -1,5 +1,6 @@
 package com.example.formylove.kisssignin
 
+import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
@@ -14,6 +15,10 @@ import java.util.*
 import kotlin.collections.HashSet
 import kotlin.collections.LinkedHashMap
 import kotlin.collections.LinkedHashSet
+
+//todo 动画会遮住字
+//todo 连续点击动画暂停
+//todo 直接添加到DaySet和动画产生违和
 
 class KissCalendar : View {
 	private var viewWidth = 0f
@@ -48,6 +53,7 @@ class KissCalendar : View {
 		while (paint.measureText("10") < (rectLength / 3)) {
 			paint.textSize += 1
 		}
+		paint.textSize -= 1
 	}
 	
 	private fun moveRectOneStep() {
@@ -61,10 +67,6 @@ class KissCalendar : View {
 		} else {
 			rect.set(0f, bottom, rectLength, bottom + rectLength)
 		}
-	}
-	
-	private fun moveRectToPosition(day: Int) {
-		//todo
 	}
 	
 	private fun getStartBlock() = 6 + startDayOfWeek
@@ -93,22 +95,22 @@ class KissCalendar : View {
 				if (day > today || day in daySet) {
 					return result
 				}
-				daySet.add(day)
-//				val centerX = col.toFloat() * rectLength + rectLength / 2
-//				val centerY = row.toFloat() * rectLength + rectLength / 2
-//				clickDays.add(RectF())
-//				val valueAnimator = ValueAnimator.ofFloat(0f, 0.5f)
-//				valueAnimator.duration = 1000
-//				valueAnimator.addUpdateListener {
-//					val value = (it.animatedValue) as Float
-//					val r = clickDays.last()
-//					r.set(centerX - rectLength * value,
-//							centerY - rectLength * value,
-//							centerX + rectLength * value,
-//							centerY + rectLength * value)
-//					invalidate()
-//				}
-//				valueAnimator.start()
+				//daySet.add(day)
+				val centerX = col.toFloat() * rectLength + rectLength / 2
+				val centerY = row.toFloat() * rectLength + rectLength / 2
+				clickDays.add(RectF())
+				val valueAnimator = ValueAnimator.ofFloat(0f, 0.5f)
+				valueAnimator.duration = 1000
+				valueAnimator.addUpdateListener {
+					val value = (it.animatedValue) as Float
+					val r = clickDays.last()
+					r.set(centerX - rectLength * value,
+							centerY - rectLength * value,
+							centerX + rectLength * value,
+							centerY + rectLength * value)
+					invalidate()
+				}
+				valueAnimator.start()
 			}
 			else -> {
 			
@@ -124,12 +126,11 @@ class KissCalendar : View {
 		rect.set(0f, 0f, rectLength, rectLength)
 		drawWeek(canvas)
 		drawDay(canvas)
-		//drawDayAnimation(canvas)
+		drawDayAnimation(canvas)
 	}
 	
 	private fun drawWeek(canvas: Canvas) {
 		val week = arrayOf("一", "二", "三", "四", "五", "六", "天")
-		paint.textSize -= 1
 		paint.color = Color.BLACK
 		for (text in week) {
 			drawTextInRect(text, canvas)
