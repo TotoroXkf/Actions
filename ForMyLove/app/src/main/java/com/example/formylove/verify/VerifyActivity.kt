@@ -10,22 +10,23 @@ import com.example.formylove.MainActivity
 import kotlinx.android.synthetic.main.activity_verify.*
 
 class VerifyActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_verify)
-
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-
-        btn.setOnClickListener {
-            val text = til_password.editText?.text?.toString()
-            if (text != null) {
-                if (text == "1120" || text == "0627") {
-                    startActivity(Intent(this@VerifyActivity, MainActivity::class.java))
-                } else {
-                    Toast.makeText(this@VerifyActivity, "你好像走错地方了！", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
-    }
+	
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		setContentView(R.layout.activity_verify)
+		
+		window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+		
+		btn.setOnClickListener {
+			val text = til_password.editText?.text?.toString()
+			if (text != null) {
+				if (text == "1120" || text == "0627") {
+					startActivity(Intent(this@VerifyActivity, MainActivity::class.java))
+					finish()
+				} else {
+					Toast.makeText(this@VerifyActivity, "你好像走错地方了！", Toast.LENGTH_SHORT).show()
+				}
+			}
+		}
+	}
 }

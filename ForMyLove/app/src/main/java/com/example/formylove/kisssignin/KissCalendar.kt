@@ -8,14 +8,15 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import java.util.*
+import kotlin.collections.HashSet
 
 class KissCalendar : View {
 	private var viewWidth = 0f
 	private var viewHeight = 0f
 	private val paint = Paint()
-	
 	private val rect = RectF(0f, 0f, 0f, 0f)
 	private var rectLength = 0f
+	private val daySet = HashSet<Int>()
 	
 	constructor(context: Context?) : super(context)
 	constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
@@ -76,6 +77,7 @@ class KissCalendar : View {
 	
 	private fun drawDay(canvas: Canvas) {
 		val calendar = Calendar.getInstance()
+		val today = calendar.get(Calendar.DAY_OF_MONTH)
 		while (calendar.get(Calendar.DAY_OF_MONTH) != 1) {
 			calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) - 1)
 		}
@@ -94,8 +96,19 @@ class KissCalendar : View {
 		}
 		val month = calendar.get(Calendar.MONTH)
 		while (month == calendar.get(Calendar.MONTH)) {
-			val loveShape = LoveShape(rect)
-			loveShape.drawLove(canvas)
+			paint.color = Color.BLACK
+			val day = calendar.get(Calendar.DAY_OF_MONTH)
+			if (day == today) {
+				paint.color = Color.RED
+				canvas.drawCircle((rect.right + rect.left) / 2, (rect.top + rect.bottom) / 2 + 5f,
+						rectLength * 3 / 8, paint)
+				paint.color = Color.WHITE
+			}
+			if (day in daySet) {
+				val loveShape = LoveShape(rect)
+				loveShape.drawLove(canvas)
+				paint.color = Color.WHITE
+			}
 			drawTextInRect("" + calendar.get(Calendar.DAY_OF_MONTH), canvas)
 			moveRectOneStep()
 			calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1)
@@ -108,6 +121,12 @@ class KissCalendar : View {
 		val textWidth = paint.measureText(text)
 		val textHeight = getTextHeight()
 		canvas.drawText(text, rectCenterX - textWidth / 2, rectCenterY + textHeight / 2 - 5f, paint)
+	}
+	
+	public fun setDays(days: List<Int>) {
+		daySet.clear()
+		daySet.addAll(days)
+		invalidate()
 	}
 	
 	private fun getTextHeight(): Float {

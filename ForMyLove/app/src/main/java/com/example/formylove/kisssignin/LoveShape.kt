@@ -11,12 +11,17 @@ class LoveShape(private val rect: RectF) {
 	
 	init {
 		paint.isAntiAlias = true
-		paint.color = Color.rgb(240, 155, 164)
+		paint.color = Color.rgb(254, 57, 63)
 	}
 	
 	fun setRect(rectF: RectF) {
 		rect.set(rectF)
 	}
+	
+	fun drawLoveSolid(canvas: Canvas) {
+	
+	}
+	
 	
 	fun drawLove(canvas: Canvas) {
 		path.reset()
