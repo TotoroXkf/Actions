@@ -64,6 +64,8 @@ class KissCalendar : View {
 		//todo
 	}
 	
+	private fun getStartBlock() = 6 + startDayOfWeek
+	
 	override fun onTouchEvent(event: MotionEvent?): Boolean {
 		val result = super.onTouchEvent(event)
 		if (event == null) {
@@ -79,25 +81,15 @@ class KissCalendar : View {
 				//取值从0到6
 				val row = (y / rectLength).toInt()
 				val col = (x / rectLength).toInt()
-				Log.e("xkf123456789", "row:$row")
-				Log.e("xkf123456789", "col:$col")
 				if (row == 0) {
 					return result
 				}
-				val startRow = 1
-				val startCol = startDayOfWeek - 1
-				var day = Math.abs(row - startRow - 1) * 7
-				day += if (col > startCol) {
-					(7 + col - startCol)
-				} else {
-					(7 - startCol + col)
+				val block = row * 7 + col
+				val startBlock = getStartBlock()
+				val day = block - startBlock + 1
+				if (!(day > today || day in daySet)) {
+					clickDays.add(day)
 				}
-				day += 1
-				if (day > today || day in daySet) {
-					return result
-				}
-				Log.e("xkf123456789", "day:$day")
-				clickDays.add(day)
 			}
 			else -> {
 			
