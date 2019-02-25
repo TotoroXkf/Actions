@@ -11,6 +11,8 @@ import android.widget.LinearLayout;
 public class MyConstraintLayout extends ConstraintLayout {
     private ConstraintLayout tagContainer;
     private LinearLayout linearLayout;
+    private Button hasButton;
+    private Button confirmButton;
 
     public MyConstraintLayout(Context context) {
         super(context);
@@ -38,16 +40,21 @@ public class MyConstraintLayout extends ConstraintLayout {
         tagContainer.setVisibility(View.GONE);
 
         linearLayout = findViewById(R.id.linearLayout);
-        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
-        Button button1 = new Button(getContext());
-        Button button2 = new Button(getContext());
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
-        params.weight = 1;
-        linearLayout.addView(button1,params);
-        linearLayout.addView(button2,params);
+        hasButton = findViewById(R.id.has_button);
+        confirmButton = findViewById(R.id.confirm_button);
+
+//        linearLayout = findViewById(R.id.linearLayout);
+//        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+//        Button button1 = new Button(getContext());
+//        Button button2 = new Button(getContext());
+//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
+//        params.weight = 1;
+//        linearLayout.addView(button1,params);
+//        linearLayout.addView(button2,params);
     }
 
     public void show() {
         tagContainer.setVisibility(View.VISIBLE);
+        linearLayout.removeView(hasButton);
     }
 }

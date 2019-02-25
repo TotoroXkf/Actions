@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.xiakaifa.app.prepare.MyConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/myConstraintLayout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -36,16 +36,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <Button
+            android:id="@+id/has_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/confirm_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
     </LinearLayout>
 
     <com.xiakaifa.app.prepare.TagContainerView
-        android:backgroundTint="@android:color/white"
-        android:background="@android:color/white"
-        android:visibility="gone"
         android:id="@+id/tag_container"
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_marginBottom="8dp"
+        android:background="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent">
 
