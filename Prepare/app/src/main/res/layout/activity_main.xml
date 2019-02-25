@@ -21,7 +21,8 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="146dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -29,7 +30,7 @@
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="0dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,15 +38,17 @@
 
     </LinearLayout>
 
-    <android.support.constraint.ConstraintLayout
+    <com.xiakaifa.app.prepare.TagContainerView
+        android:backgroundTint="@android:color/white"
+        android:background="@android:color/white"
         android:visibility="gone"
         android:id="@+id/tag_container"
         android:layout_width="match_parent"
-        android:layout_height="171dp"
+        android:layout_height="170dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent">
 
-    </android.support.constraint.ConstraintLayout>
+    </com.xiakaifa.app.prepare.TagContainerView>
 
 </com.xiakaifa.app.prepare.MyConstraintLayout>
