@@ -6,14 +6,11 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
 import cn.bmob.v3.Bmob
-import com.example.formylove.kisssignin.KissFragment
+import com.example.formylove.kiss.KissFragment
 import com.example.formylove.picturewall.PictureWallFragment
 import com.example.formylove.things.ThingsFragment
 import com.example.formylove.timeline.TimeLineFragment
 import kotlinx.android.synthetic.main.activity_main.*
-import android.opengl.ETC1.getHeight
-import android.opengl.ETC1.getWidth
-import android.view.WindowManager
 
 
 class MainActivity : AppCompatActivity() {

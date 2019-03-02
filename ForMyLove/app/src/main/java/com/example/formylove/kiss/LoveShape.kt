@@ -1,8 +1,6 @@
-package com.example.formylove.kisssignin
+package com.example.formylove.kiss
 
 import android.graphics.*
-import kotlin.math.sqrt
-import android.R.attr.path
 
 
 class LoveShape(private val rect: RectF) {

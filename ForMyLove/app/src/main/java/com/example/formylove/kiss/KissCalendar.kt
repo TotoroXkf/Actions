@@ -1,4 +1,4 @@
-package com.example.formylove.kisssignin
+package com.example.formylove.kiss
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -9,9 +9,9 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import org.greenrobot.eventbus.EventBus
 import java.util.*
 import kotlin.collections.HashSet
 import kotlin.collections.LinkedHashMap
@@ -107,7 +107,7 @@ class KissCalendar : View {
 					override fun onAnimationEnd(animation: Animator?) {
 						super.onAnimationEnd(animation)
 						daySet.add(day)
-						//todo 添加监听
+						EventBus.getDefault().post(DayMessageEvent(day))
 					}
 				})
 				valueAnimator.start()
