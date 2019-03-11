@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_first/RandomWordsWidget.dart';
+import 'package:flutter_first/first_flutter_app/RandomWordsWidget.dart';
 
 class MyHomePage extends StatefulWidget {
   String title;

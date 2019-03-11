@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'package:flutter_first/MyHomePage.dart';
-import 'package:flutter_first/NewRouter.dart';
+import 'package:flutter_first/base_widget/Echo.dart';
+import 'package:flutter_first/first_flutter_app/MyHomePage.dart';
+import 'package:flutter_first/first_flutter_app/NewRouter.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,8 +13,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Flutter",
       theme: new ThemeData(primarySwatch: Colors.blue),
-      home: new MyHomePage(title: "Flutter Demo Home Page"),
-      routes: {"new_page": (context) => NewRouter()},
+      home: new Scaffold(
+        appBar: AppBar(title:Text("Flutter")),
+        body: Echo(text:"BigTotoro"),
+      )
     );
   }
 }
