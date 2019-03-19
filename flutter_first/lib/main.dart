@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first/base_widget/ButtonTest.dart';
+import 'package:flutter_first/base_widget/ImageTest.dart';
 import 'package:flutter_first/base_widget/TextTest.dart';
 
 void main() => runApp(MyApp());
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
         theme: new ThemeData(primarySwatch: Colors.blue),
         home: new Scaffold(
           appBar: AppBar(title: Text("Flutter")),
-          body: ButtonTest(),
+          body: ImageTest(),
         ));
   }
 }
