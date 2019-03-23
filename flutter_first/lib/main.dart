@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_first/base_widget/ButtonTest.dart';
-import 'package:flutter_first/base_widget/ImageTest.dart';
-import 'package:flutter_first/base_widget/TextTest.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,8 +10,47 @@ class MyApp extends StatelessWidget {
         title: "Flutter",
         theme: new ThemeData(primarySwatch: Colors.blue),
         home: new Scaffold(
+          backgroundColor: Colors.grey[100],
           appBar: AppBar(title: Text("Flutter")),
-          body: ImageTest(),
+          body: MyWidget(),
         ));
+  }
+}
+
+class MyWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return MyWidgetState();
+  }
+}
+
+class MyWidgetState extends State<MyWidget> {
+  bool switchSelected = true;
+  bool checkboxSelected = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Switch(
+            value: switchSelected,
+            onChanged: (value) {
+              setState(() {
+                switchSelected = value;
+              });
+            },
+          ),
+          Checkbox(
+            value: checkboxSelected,
+            onChanged: (value) {
+              setState(() {
+                checkboxSelected = value;
+              });
+            },
+          )
+        ],
+      ),
+    );
   }
 }
