@@ -12,45 +12,63 @@ class MyApp extends StatelessWidget {
         home: new Scaffold(
           backgroundColor: Colors.grey[100],
           appBar: AppBar(title: Text("Flutter")),
-          body: MyWidget(),
+          body: FocusTestRoute(),
         ));
   }
 }
 
-class MyWidget extends StatefulWidget {
+class FocusTestRoute extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    return MyWidgetState();
-  }
+  _FocusTestRouteState createState() => new _FocusTestRouteState();
 }
 
-class MyWidgetState extends State<MyWidget> {
-  bool switchSelected = true;
-  bool checkboxSelected = true;
+class _FocusTestRouteState extends State<FocusTestRoute> {
+  FocusNode focusNode1 = new FocusNode();
+  FocusNode focusNode2 = new FocusNode();
+  FocusScopeNode focusScopeNode;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Padding(
+      padding: EdgeInsets.all(16.0),
       child: Column(
         children: <Widget>[
-          Switch(
-            value: switchSelected,
-            onChanged: (value) {
-              setState(() {
-                switchSelected = value;
-              });
+          TextField(
+            autofocus: true,
+            focusNode: focusNode1,//关联focusNode1
+            decoration: InputDecoration(
+                labelText: "input1"
+            ),
+          ),
+          TextField(
+            focusNode: focusNode2,//关联focusNode2
+            decoration: InputDecoration(
+                labelText: "input2"
+            ),
+          ),
+          RaisedButton(
+            child: Text("移动焦点"),
+            onPressed: () {
+              //将焦点从第一个TextField移到第二个TextField
+              // 这是一种写法 FocusScope.of(context).requestFocus(focusNode2);
+              // 这是第二种写法
+              if(null == focusScopeNode){
+                focusScopeNode = FocusScope.of(context);
+              }
+              focusScopeNode.requestFocus(focusNode2);
             },
           ),
-          Checkbox(
-            value: checkboxSelected,
-            onChanged: (value) {
-              setState(() {
-                checkboxSelected = value;
-              });
+          RaisedButton(
+            child: Text("隐藏键盘"),
+            onPressed: () {
+              // 当所有编辑框都失去焦点时键盘就会收起
+              focusNode1.unfocus();
+              focusNode2.unfocus();
             },
-          )
+          ),
         ],
       ),
     );
   }
+
 }
