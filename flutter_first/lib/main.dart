@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,8 +9,19 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Flutter",
-      home: new MyHomePage(
-        title: "主题测试",
+      home: new Scaffold(
+        appBar: AppBar(
+          title: new Text("第三方包的使用"),
+        ),
+        body: new Center(
+          child: new RaisedButton(
+            onPressed: () {
+              const url = "https://www.baidu.com";
+              launch(url);
+            },
+            child: new Text("打开百度"),
+          ),
+        ),
       ),
       theme: new ThemeData(
         primaryColor: Colors.lightBlue[800],
