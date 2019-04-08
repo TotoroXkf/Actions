@@ -1,101 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4086065-1987-4bc2-88f7-c83d06997d52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/gson-2.8.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/okhttp-3.14.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/okio-2.2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HttpComponent.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/proguard-rules.pro" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/androidTest/java/com/example/camera/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/java/com/example/camera/CameraFragment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/java/com/example/camera/LeanCloudUtil.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/java/com/example/camera/MainActivity.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/java/com/example/camera/NetUtil.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/java/com/example/camera/SocketManager.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/layout/fragment_camera.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/values/colors.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/main/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/app/src/test/java/com/example/camera/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Camera/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/4.10/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/4.10/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/gradle.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/CommandExecutor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/FileUtilKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/IpCollector.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/LeanCloudUtilKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/META-INF/CameraControal.CameraControal.main.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/MainKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/NetUtilKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/SocketManagerKt$runIpCollectTask$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/SocketManagerKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/out/production/classes/TestKt.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/picture.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/src/main/kotlin/FileUtil.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/src/main/kotlin/LeanCloudUtil.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/src/main/kotlin/Main.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/src/main/kotlin/NetUtil.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/src/main/kotlin/SocketManager.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraControal/src/main/kotlin/test.kt" beforeDir="false" />
-    </list>
+    <list default="true" id="c4086065-1987-4bc2-88f7-c83d06997d52" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -108,20 +14,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+            <state relative-caret-position="21">
+              <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HttpComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+            <state relative-caret-position="903">
+              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
               <folding>
                 <element signature="e#0#112#0" expanded="true" />
               </folding>
@@ -261,18 +167,32 @@
       <option name="presentableId" value="Default" />
       <updated>1554695947978</updated>
       <workItem from="1554695949432" duration="1555000" />
-      <workItem from="1554700295587" duration="5212000" />
+      <workItem from="1554700295587" duration="5379000" />
     </task>
+    <task id="LOCAL-00001" summary="Coding">
+      <created>1554706019963</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1554706019963</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Coding">
+      <created>1554706052097</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1554706052097</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6767000" />
+    <option name="totallyTimeSpent" value="6934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -306,6 +226,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Coding" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coding" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/HHa.kt" />
     <entry file="file://$PROJECT_DIR$/src/Main.java" />
@@ -322,20 +246,20 @@
     <entry file="file://$PROJECT_DIR$/out/production/server/MainKt.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="1" lean-forward="true" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HttpComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+        <state relative-caret-position="903">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="e#0#112#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="13" lean-forward="true" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
         </state>
       </provider>
     </entry>
