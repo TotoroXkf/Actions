@@ -14,20 +14,38 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Flutter"),
         ),
-        drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              UserAccountsDrawerHeader(
-                accountName: Text('大龙猫'),
-                accountEmail: Text('xkf123456789@gmail.com'),
-              ),
-              ListTile(title: Text('item1')),
-              ListTile(title: Text('item2')),
-              ListTile(title: Text('item3')),
-            ],
+        body: Center(
+          child: FlatButton(
+            onPressed: null,
+            child: PopupMenuButton(
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<Code>>[
+                    PopupMenuItem<Code>(
+                      value: Code.Java,
+                      child: Text('Java'),
+                    ),
+                    PopupMenuItem<Code>(
+                      value: Code.C,
+                      child: Text('C'),
+                    ),
+                    PopupMenuItem<Code>(
+                      value: Code.Python,
+                      child: Text('Python'),
+                    ),
+                    PopupMenuItem<Code>(
+                      value: Code.Dart,
+                      child: Text('Dart'),
+                    ),
+                    PopupMenuItem<Code>(
+                      value: Code.Go,
+                      child: Text('Go'),
+                    ),
+                  ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+
+enum Code { Java, C, Python, Dart, Go }
