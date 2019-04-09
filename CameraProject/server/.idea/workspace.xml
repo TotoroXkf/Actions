@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4086065-1987-4bc2-88f7-c83d06997d52" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/util/ipUtil.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SocketComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainViewState.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/HttpComponentKt$setupIp$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/HttpComponentKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/HttpComponentKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/META-INF/server.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/META-INF/server.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/server/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/MainKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HttpComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/HttpComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/util/SocketManager.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
@@ -38,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocketComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
+            <state relative-caret-position="-428">
+              <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
               <folding>
                 <element signature="e#0#151#0" expanded="true" />
               </folding>
@@ -191,7 +178,7 @@
       <updated>1554695947978</updated>
       <workItem from="1554695949432" duration="1555000" />
       <workItem from="1554700295587" duration="5379000" />
-      <workItem from="1554797632163" duration="1517000" />
+      <workItem from="1554797632163" duration="2211000" />
     </task>
     <task id="LOCAL-00001" summary="Coding">
       <created>1554706019963</created>
@@ -211,7 +198,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8451000" />
+    <option name="totallyTimeSpent" value="9145000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -272,20 +259,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocketComponent.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-428">
+          <caret line="11" column="39" lean-forward="true" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#151#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocketComponent.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#151#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

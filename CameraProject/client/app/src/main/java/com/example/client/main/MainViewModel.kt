@@ -12,6 +12,7 @@ class MainViewModel : ViewModel() {
 	val handler = Handler(Looper.getMainLooper())
 	val viewStateLiveData = MutableLiveData<MainViewState>()
 	val serverIpLiveData = MutableLiveData<String>()
+	val deviceNumberLiveData = MutableLiveData<Int>()
 	
 	fun getServerIp() {
 		val client = OkHttpClient()
