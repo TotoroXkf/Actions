@@ -1,9 +1,8 @@
 package com.example.client.main
 
-class MainModel {
+class MainViewState {
 	var isLoading = true
 	var showNumber = false
 	var showCamera = false
-	var number = -1
-//	var cameraStatus = 1
+	var number = ""
 }

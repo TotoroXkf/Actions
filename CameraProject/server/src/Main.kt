@@ -1,3 +1,4 @@
 fun main() {
     setupIp()
+    runIpCollectTask()
 }

@@ -8,7 +8,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.client.R
 import com.otaliastudios.cameraview.CameraView
-import kotlinx.android.synthetic.main.activity_main.view.*
 
 class MainView : FrameLayout {
 	var cameraView: CameraView? = null
@@ -30,11 +29,11 @@ class MainView : FrameLayout {
 		progressBar = findViewById(R.id.progress_bar)
 	}
 	
-	fun update(model: MainModel) {
-		progressBar?.visibility = getShowState(model.isLoading)
-		textNumber?.visibility = getShowState(model.showNumber)
-		cameraView?.visibility = getShowState(model.showCamera)
-		
+	fun update(viewState: MainViewState) {
+		progressBar?.visibility = getShowState(viewState.isLoading)
+		textNumber?.visibility = getShowState(viewState.showNumber)
+		textNumber?.text = viewState.number
+		cameraView?.visibility = getShowState(viewState.showCamera)
 	}
 	
 	private fun getShowState(need: Boolean): Int {
