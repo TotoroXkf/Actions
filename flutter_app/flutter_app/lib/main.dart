@@ -4,10 +4,6 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
-    controller.addListener(() {
-      print("control " + controller.text);
-    });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter',
@@ -16,34 +12,32 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Flutter"),
+          title: Text('Flutter'),
         ),
         body: Center(
           child: Padding(
             padding: EdgeInsets.all(20),
-            child: TextField(
-              controller: controller,
-              maxLength: 30,
-              maxLines: 1,
-              autocorrect: true,
-              autofocus: true,
-              obscureText: false,
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                fontSize: 26,
-                color: Colors.green,
-              ),
-              onChanged: (String text) {
-                print("onChang " + text);
-              },
-              onSubmitted: (String text) {},
-              enabled: true,
-              decoration: InputDecoration(
-                fillColor: Colors.green.shade200,
-                filled: true,
-                helperText: "用户名",
-                prefixIcon: Icon(Icons.person),
-                suffixText: '用户名',
+            child: Card(
+              child: Column(
+                children: <Widget>[
+                  ListTile(
+                    title: Text("Item1"),
+                    subtitle: Text("SubItem1"),
+                    leading: Icon(
+                      Icons.home,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  Divider(),
+                  ListTile(
+                    title: Text("Item2"),
+                    subtitle: Text("SubItem2"),
+                    leading: Icon(
+                      Icons.school,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
