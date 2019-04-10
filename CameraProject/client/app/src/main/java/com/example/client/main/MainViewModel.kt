@@ -19,7 +19,6 @@ class MainViewModel : ViewModel() {
 	
 	var commandSocket: Socket? = null
 	var commandReader: Reader? = null
-	var commandWriter: Writer? = null
 	
 	fun getServerIp() {
 		val client = OkHttpClient()

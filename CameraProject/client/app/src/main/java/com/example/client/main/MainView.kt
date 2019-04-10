@@ -7,7 +7,9 @@ import android.widget.FrameLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.client.R
+import com.otaliastudios.cameraview.CameraListener
 import com.otaliastudios.cameraview.CameraView
+import org.greenrobot.eventbus.EventBus
 
 class MainView : FrameLayout {
 	var cameraView: CameraView? = null
@@ -27,6 +29,14 @@ class MainView : FrameLayout {
 		cameraView = findViewById(R.id.camera_view)
 		textNumber = findViewById(R.id.text_number)
 		progressBar = findViewById(R.id.progress_bar)
+		cameraView?.addCameraListener(object : CameraListener() {
+			override fun onPictureTaken(jpeg: ByteArray?) {
+				if(jpeg==null){
+					return
+				}
+				EventBus.getDefault().post(jpeg)
+			}
+		})
 	}
 	
 	fun update(viewState: MainViewState) {

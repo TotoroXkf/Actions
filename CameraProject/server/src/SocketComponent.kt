@@ -15,12 +15,12 @@ private val deviceIpMap = HashMap<Int, String>()
 
 private val cachedThreadPool = Executors.newCachedThreadPool()
 
-private fun getSocketWriter(socket: Socket): PrintWriter {
+fun getSocketWriter(socket: Socket): PrintWriter {
     val outputStream = socket.getOutputStream()
     return PrintWriter(OutputStreamWriter(outputStream))
 }
 
-private fun getSocketReader(socket: Socket): BufferedReader {
+fun getSocketReader(socket: Socket): BufferedReader {
     val inputStream = socket.getInputStream()
     return BufferedReader(InputStreamReader(inputStream))
 }
@@ -77,13 +77,15 @@ fun dispatchCommand() {
             val command = str.split("-")
             val partner = command[0]
             val action = command[1]
-            if ("all".equals(partner)) {
+            if ("all" == partner) {
                 for (i in 1..deviceIpMap.size) {
                     if (i !in deviceIpMap) {
                         throw Exception()
                     }
                     val deviceIp = deviceIpMap[i]!!
-                    execute(deviceIp, action)
+                    cachedThreadPool.execute {
+                        execute(i, deviceIp, action)
+                    }
                 }
             } else {
                 val key = partner.toInt()
@@ -91,10 +93,13 @@ fun dispatchCommand() {
                     throw Exception()
                 }
                 val deviceIp = deviceIpMap[key]!!
-                execute(deviceIp, action)
+                cachedThreadPool.execute {
+                    execute(key, deviceIp, action)
+                }
             }
         } catch (e: Exception) {
             println("无效输入")
+            println(e.message)
         }
     }
 }

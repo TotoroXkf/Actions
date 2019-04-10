@@ -1,6 +1,9 @@
 package com.example.client.main
 
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Matrix
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -13,13 +16,11 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.client.R
-import com.example.client.util.getDeviceIp
-import com.example.client.util.getSocketReader
-import com.example.client.util.runCommandSocket
-import com.example.client.util.sendIpAndGetDeviceNumber
+import com.example.client.util.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
+import java.io.ByteArrayOutputStream
 import java.net.Socket
 
 class MainActivity : AppCompatActivity() {
@@ -127,9 +128,42 @@ class MainActivity : AppCompatActivity() {
 	private fun executeCommand(action: String) {
 		when (action) {
 			ACTION_CAPTURE -> {
-				Log.e("xkf123456789", "capture!")
+				view?.cameraView?.capturePicture()
+			}
+			else -> {
+			
 			}
 		}
+		
+	}
+	
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	fun takePicture(bytes: ByteArray) {
+		val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+		val matrix = Matrix()
+		matrix.postRotate(90f)
+		val rotateBitmap =
+			Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
+		val outputStream = ByteArrayOutputStream()
+		rotateBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+		val picture = outputStream.toByteArray()
+		
+		Thread {
+			val socket = viewModel?.commandSocket
+			val reader = viewModel?.commandReader
+			val writer = viewModel?.commandSocket?.getOutputStream()
+			writer?.write(picture)
+			writer?.flush()
+			socket?.shutdownOutput()
+			
+			reader?.close()
+			writer?.close()
+			socket?.close()
+			
+			viewModel?.commandSocket = null
+			viewModel?.commandReader = null
+		}.start()
+		
 	}
 	
 	override fun onDestroy() {
