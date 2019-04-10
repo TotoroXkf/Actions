@@ -1,12 +1,14 @@
 package com.example.client.util
 
 import android.util.Log
+import com.example.client.main.COMMAND_PORT
+import com.example.client.main.IP_COLLECTOR_PORT
+import org.greenrobot.eventbus.EventBus
 import java.io.*
 import java.net.ServerSocket
 import java.net.Socket
 
-private const val mIpCollectPort = 12306
-private const val mCommandPort = 12307
+
 
 fun getSocketWriter(socket: Socket): PrintWriter {
 	val outputStream = socket.getOutputStream()
@@ -20,7 +22,7 @@ fun getSocketReader(socket: Socket): BufferedReader {
 
 fun sendIpAndGetDeviceNumber(severIp: String, deviceIp: String): Int {
 	
-	val socket = Socket(severIp, mIpCollectPort)
+	val socket = Socket(severIp, IP_COLLECTOR_PORT)
 	
 	val reader = getSocketReader(socket)
 	val deviceNumber = reader.readLine()
@@ -38,4 +40,15 @@ fun sendIpAndGetDeviceNumber(severIp: String, deviceIp: String): Int {
 	socket.close()
 	
 	return deviceNumber.toInt()
+}
+
+fun runCommandSocket() {
+	Thread {
+		val severSocket = ServerSocket(COMMAND_PORT)
+		while (true) {
+			Log.e("xkf123456789", "等待新的命令")
+			val socket = severSocket.accept()
+			EventBus.getDefault().post(socket)
+		}
+	}.start()
 }

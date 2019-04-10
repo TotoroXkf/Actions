@@ -2,15 +2,16 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.io.OutputStreamWriter
 import java.io.PrintWriter
+import java.lang.Exception
 import java.net.ServerSocket
 import java.net.Socket
+import java.util.*
 import java.util.concurrent.Executors
 
 @Volatile
 private var deviceNum = 0
 private val deviceIpMap = HashMap<Int, String>()
-private const val ipCollectPort = 12306
-private const val commandPort = 12307
+
 
 private val cachedThreadPool = Executors.newCachedThreadPool()
 
@@ -53,7 +54,7 @@ class IpCollector(private val socket: Socket) : Runnable {
 fun runIpCollectTask() {
     print("开启线程池等待设备接入")
     Thread {
-        val serverSocket = ServerSocket(ipCollectPort)
+        val serverSocket = ServerSocket(IP_COLLECTOR_PORT)
         while (true) {
             val socket = serverSocket.accept()
             synchronized(serverSocket) {
@@ -61,4 +62,39 @@ fun runIpCollectTask() {
             }
         }
     }.start()
+}
+
+fun dispatchCommand() {
+    val scanner = Scanner(System.`in`)
+    while (true) {
+        try {
+            //格式
+            //设备的number或者是all - 动作
+            val str = scanner.next()
+            if (str == "") {
+                throw Exception()
+            }
+            val command = str.split("-")
+            val partner = command[0]
+            val action = command[1]
+            if ("all".equals(partner)) {
+                for (i in 1..deviceIpMap.size) {
+                    if (i !in deviceIpMap) {
+                        throw Exception()
+                    }
+                    val deviceIp = deviceIpMap[i]!!
+                    execute(deviceIp, action)
+                }
+            } else {
+                val key = partner.toInt()
+                if (key !in deviceIpMap) {
+                    throw Exception()
+                }
+                val deviceIp = deviceIpMap[key]!!
+                execute(deviceIp, action)
+            }
+        } catch (e: Exception) {
+            println("无效输入")
+        }
+    }
 }

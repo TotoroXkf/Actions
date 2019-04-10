@@ -7,12 +7,19 @@ import androidx.lifecycle.ViewModel
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
+import java.io.Reader
+import java.io.Writer
+import java.net.Socket
 
 class MainViewModel : ViewModel() {
 	val handler = Handler(Looper.getMainLooper())
 	val viewStateLiveData = MutableLiveData<MainViewState>()
 	val serverIpLiveData = MutableLiveData<String>()
 	val deviceNumberLiveData = MutableLiveData<Int>()
+	
+	var commandSocket: Socket? = null
+	var commandReader: Reader? = null
+	var commandWriter: Writer? = null
 	
 	fun getServerIp() {
 		val client = OkHttpClient()
