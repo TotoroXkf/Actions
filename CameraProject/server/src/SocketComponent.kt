@@ -84,20 +84,26 @@ fun dispatchCommand() {
             val command = str.split("-")
             val partner = command[0]
             val action = command[1]
-            if ("all" == partner) {
-                for ((key, value) in deviceIpMap.entries) {
-                    cachedThreadPool.execute {
-                        execute(key, value, action)
+            when (partner) {
+                PARTNER_ALL -> {
+                    for ((key, value) in deviceIpMap.entries) {
+                        cachedThreadPool.execute {
+                            execute(key, value, action)
+                        }
                     }
                 }
-            } else {
-                val key = partner.toInt()
-                if (key !in deviceIpMap) {
-                    throw Exception()
+                PARTNER_SELF -> {
+                    executeBySelf(action)
                 }
-                val deviceIp = deviceIpMap[key]!!
-                cachedThreadPool.execute {
-                    execute(key, deviceIp, action)
+                else -> {
+                    val key = partner.toInt()
+                    if (key !in deviceIpMap) {
+                        throw Exception()
+                    }
+                    val deviceIp = deviceIpMap[key]!!
+                    cachedThreadPool.execute {
+                        execute(key, deviceIp, action)
+                    }
                 }
             }
         } catch (e: Exception) {
@@ -112,6 +118,7 @@ fun execute(number: Int, deviceIp: String, action: String) {
     writer.write(action)
     writer.flush()
     socket.shutdownOutput()
+    writer.close()
 
     when (action) {
         ACTION_CAPTURE -> {
@@ -131,8 +138,21 @@ fun execute(number: Int, deviceIp: String, action: String) {
             readAndPrint(socket, number)
         }
     }
-    writer.close()
     socket.close()
+}
+
+fun executeBySelf(action: String) {
+    when (action) {
+        ACTION_DEVICE_COUNT -> {
+            println("目前连接的设备有:")
+            for ((key, value) in deviceIpMap.entries) {
+                println("设备号:$key---->ip:$value")
+            }
+        }
+        else -> {
+
+        }
+    }
 }
 
 private fun readAndPrint(socket: Socket, number: Int) {
