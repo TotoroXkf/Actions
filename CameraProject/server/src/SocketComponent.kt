@@ -12,7 +12,6 @@ import java.util.concurrent.Executors
 private var deviceNum = 0
 private val deviceIpMap = HashMap<Int, String>()
 
-
 private val cachedThreadPool = Executors.newCachedThreadPool()
 
 fun getSocketWriter(socket: Socket): PrintWriter {
@@ -25,7 +24,7 @@ fun getSocketReader(socket: Socket): BufferedReader {
     return BufferedReader(InputStreamReader(inputStream))
 }
 
-fun readMessage(socket: Socket):String{
+fun readMessage(socket: Socket): String {
     val reader = getSocketReader(socket)
     val message = reader.readText()
     socket.shutdownInput()
@@ -60,7 +59,7 @@ class IpCollector(private val socket: Socket) : Runnable {
 }
 
 fun runIpCollectTask() {
-    print("开启线程池等待设备接入")
+    println("开启线程池等待设备接入")
     Thread {
         val serverSocket = ServerSocket(IP_COLLECTOR_PORT)
         while (true) {
@@ -86,13 +85,9 @@ fun dispatchCommand() {
             val partner = command[0]
             val action = command[1]
             if ("all" == partner) {
-                for (i in 1..deviceIpMap.size) {
-                    if (i !in deviceIpMap) {
-                        throw Exception()
-                    }
-                    val deviceIp = deviceIpMap[i]!!
+                for ((key, value) in deviceIpMap.entries) {
                     cachedThreadPool.execute {
-                        execute(i, deviceIp, action)
+                        execute(key, value, action)
                     }
                 }
             } else {
@@ -109,4 +104,38 @@ fun dispatchCommand() {
             println("无效输入")
         }
     }
+}
+
+fun execute(number: Int, deviceIp: String, action: String) {
+    val socket = Socket(deviceIp, COMMAND_PORT)
+    val writer = getSocketWriter(socket)
+    writer.write(action)
+    writer.flush()
+    socket.shutdownOutput()
+
+    when (action) {
+        ACTION_CAPTURE -> {
+            val reader = socket.getInputStream()
+            val bytes = reader.readBytes()
+            writeToLocal(bytes, number)
+            socket.shutdownInput()
+            reader.close()
+        }
+        ACTION_FINISH -> {
+            deviceIpMap.remove(number)
+        }
+        ACTION_ECHO -> {
+            readAndPrint(socket, number)
+        }
+        else -> {
+            readAndPrint(socket, number)
+        }
+    }
+    writer.close()
+    socket.close()
+}
+
+private fun readAndPrint(socket: Socket, number: Int) {
+    val message = readMessage(socket)
+    println("第 $number 台设备: $message")
 }

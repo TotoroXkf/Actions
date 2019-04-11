@@ -5,6 +5,8 @@ import com.example.client.main.COMMAND_PORT
 import com.example.client.main.IP_COLLECTOR_PORT
 import org.greenrobot.eventbus.EventBus
 import java.io.*
+import java.lang.Exception
+import java.net.InetSocketAddress
 import java.net.ServerSocket
 import java.net.Socket
 
@@ -82,11 +84,18 @@ fun sendIpAndGetDeviceNumber(severIp: String, deviceIp: String): Int {
 
 fun runCommandSocket() {
 	Thread {
-		val severSocket = ServerSocket(COMMAND_PORT)
+		var severSocket: ServerSocket? = null
+		try {
+			severSocket = ServerSocket(COMMAND_PORT)
+			severSocket.reuseAddress = true
+			severSocket.bind(InetSocketAddress(COMMAND_PORT))
+		} catch (e: Exception) {
+		}
 		while (true) {
-			Log.e("xkf123456789", "等待新的命令")
-			val socket = severSocket.accept()
-			EventBus.getDefault().post(socket)
+			val socket = severSocket?.accept()
+			if (socket != null) {
+				EventBus.getDefault().post(socket)
+			}
 		}
 	}.start()
 }
