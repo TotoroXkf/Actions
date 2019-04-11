@@ -1,8 +1,6 @@
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.io.OutputStreamWriter
-import java.io.PrintWriter
+import java.io.*
 import java.lang.Exception
+import java.lang.StringBuilder
 import java.net.ServerSocket
 import java.net.Socket
 import java.util.*
@@ -28,8 +26,20 @@ fun readMessage(socket: Socket): String {
     val reader = getSocketReader(socket)
     val message = reader.readText()
     socket.shutdownInput()
-    reader.close()
     return message
+}
+
+private fun readAndPrint(socket: Socket, number: Int) {
+    val message = readMessage(socket)
+    println("第 $number 台设备: $message")
+}
+
+private fun sendMessage(socket: Socket, message: String): Writer {
+    val writer = getSocketWriter(socket)
+    writer.write(message)
+    writer.flush()
+    socket.shutdownOutput()
+    return writer
 }
 
 class IpCollector(private val socket: Socket) : Runnable {
@@ -112,36 +122,39 @@ fun dispatchCommand() {
     }
 }
 
-fun execute(number: Int, deviceIp: String, action: String) {
+private fun execute(number: Int, deviceIp: String, action: String) {
     val socket = Socket(deviceIp, COMMAND_PORT)
-    val writer = getSocketWriter(socket)
-    writer.write(action)
-    writer.flush()
-    socket.shutdownOutput()
-    writer.close()
 
     when (action) {
         ACTION_CAPTURE -> {
+            sendMessage(socket, action)
             val reader = socket.getInputStream()
             val bytes = reader.readBytes()
             writeToLocal(bytes, number)
             socket.shutdownInput()
-            reader.close()
         }
         ACTION_FINISH -> {
+            sendMessage(socket, action)
             deviceIpMap.remove(number)
         }
+        ACTION_TIME_TEST -> {
+            sendMessage(socket, action + "?time=" + System.currentTimeMillis().toString())
+            val time = readMessage(socket)
+            println("设备 $number 接收延迟: $time ms")
+        }
         ACTION_ECHO -> {
+            sendMessage(socket, action)
             readAndPrint(socket, number)
         }
         else -> {
+            sendMessage(socket, action)
             readAndPrint(socket, number)
         }
     }
     socket.close()
 }
 
-fun executeBySelf(action: String) {
+private fun executeBySelf(action: String) {
     when (action) {
         ACTION_DEVICE_COUNT -> {
             println("目前连接的设备有:")
@@ -153,9 +166,4 @@ fun executeBySelf(action: String) {
 
         }
     }
-}
-
-private fun readAndPrint(socket: Socket, number: Int) {
-    val message = readMessage(socket)
-    println("第 $number 台设备: $message")
 }

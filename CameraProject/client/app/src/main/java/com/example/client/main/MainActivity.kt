@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -113,37 +112,61 @@ class MainActivity : AppCompatActivity() {
 	fun dispatchCommon(socket: Socket) {
 		val reader = getSocketReader(socket)
 		saveSocketAndReader(socket, reader)
-		val action: String? = reader.readLine() ?: ""
+		val message: String? = reader.readLine() ?: ""
 		socket.shutdownInput()
-		Log.e("xkf123456789", "接受到新的命令: $action")
+		val paramMap = HashMap<String, String>()
+		val action = parseCommand(message, paramMap)
 		handler.post {
-			executeCommand(action!!)
+			executeCommand(action, paramMap)
+		}
+	}
+	
+	private fun parseCommand(command: String?, paramMap: HashMap<String, String>): String {
+		if (TextUtils.isEmpty(command)) {
+			return ""
+		}
+		val data = command!!.split("?")
+		return if (data.size > 1) {
+			val action = data[0]
+			val param = data[1]
+			param.split("#").map { s ->
+				val index = s.indexOf('=')
+				val key = s.substring(0, index)
+				val value = s.substring(index + 1)
+				paramMap[key] = value
+			}
+			action
+		} else {
+			command
 		}
 	}
 	
 	/**
 	 * 在主线程中
 	 */
-	private fun executeCommand(action: String) {
+	private fun executeCommand(action: String, paramMap: Map<String, String>) {
 		when (action) {
 			ACTION_CAPTURE -> {
 				view?.cameraView?.capturePicture()
 			}
 			ACTION_FINISH -> {
-				abortSocketAndReader()
+				abortSavedSocket()
 				finish()
-			}
-			ACTION_DEVICE_COUNT -> {
-				writeString("")
 			}
 			ACTION_ECHO -> {
 				writeString(action)
+			}
+			ACTION_TIME_TEST -> {
+				if ("time" in paramMap) {
+					val startTime = paramMap.getValue("time").toLong()
+					val endTime = System.currentTimeMillis()
+					writeString((endTime - startTime).toString())
+				}
 			}
 			else -> {
 				writeString("没有相关的命令")
 			}
 		}
-		
 	}
 	
 	@Subscribe(threadMode = ThreadMode.MAIN)
@@ -161,7 +184,7 @@ class MainActivity : AppCompatActivity() {
 	
 	override fun onDestroy() {
 		EventBus.getDefault().unregister(this)
-		abortSocketAndReader()
+		abortSavedSocket()
 		super.onDestroy()
 	}
 }
