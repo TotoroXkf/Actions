@@ -38,9 +38,8 @@ fun writeString(message: String) {
 		writer.write(message)
 		writer.flush()
 		savedSocket!!.shutdownOutput()
-		writer.close()
 		Log.e("xkf123456789", "写入完毕")
-		abortSocketAndReader()
+		abortSavedSocket()
 	}.start()
 }
 
@@ -54,9 +53,8 @@ fun writeBytes(bytes: ByteArray) {
 		writer.write(bytes)
 		writer.flush()
 		savedSocket!!.shutdownOutput()
-		writer.close()
 		Log.e("xkf123456789", "写入完毕")
-		abortSocketAndReader()
+		abortSavedSocket()
 	}.start()
 }
 
@@ -75,10 +73,7 @@ fun sendIpAndGetDeviceNumber(severIp: String, deviceIp: String): Int {
 	Log.e("xkf123456789", "发送本机IP$deviceIp")
 	socket.shutdownOutput()
 	
-	writer.close()
-	reader.close()
 	socket.close()
-	
 	return deviceNumber.toInt()
 }
 
@@ -100,15 +95,13 @@ fun runCommandSocket() {
 	}.start()
 }
 
-fun abortSocketAndReader() {
+fun abortSavedSocket() {
 	if (savedSocket == null) {
 		return
 	}
 	savedSocket!!.close()
 	savedSocket = null
-	if (savedReader == null) {
-		return
+	if (savedReader != null) {
+		savedReader = null
 	}
-	savedReader!!.close()
-	savedReader = null
 }
