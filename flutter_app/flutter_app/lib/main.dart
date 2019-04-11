@@ -16,23 +16,10 @@ class MyApp extends StatelessWidget {
           title: Text('Flutter'),
         ),
         body: Center(
-          child: CupertinoAlertDialog(
-            title: Text('提示'),
-            content: SingleChildScrollView(
-              child: ListBody(
-                children: <Widget>[Text('是否删除'), Text('删除不可找回')],
-              ),
-            ),
-            actions: <Widget>[
-              CupertinoDialogAction(
-                child: Text('取消'),
-                onPressed: () {},
-              ),
-              CupertinoDialogAction(
-                child: Text('确定'),
-                onPressed: () {},
-              ),
-            ],
+          child: CupertinoButton(
+            child: Text('确定'),
+            color: Colors.blue,
+            onPressed: () {},
           ),
         ),
       ),

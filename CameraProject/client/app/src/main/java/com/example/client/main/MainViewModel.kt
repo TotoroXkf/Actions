@@ -17,9 +17,6 @@ class MainViewModel : ViewModel() {
 	val serverIpLiveData = MutableLiveData<String>()
 	val deviceNumberLiveData = MutableLiveData<Int>()
 	
-	var commandSocket: Socket? = null
-	var commandReader: Reader? = null
-	
 	fun getServerIp() {
 		val client = OkHttpClient()
 		val request = Request.Builder()

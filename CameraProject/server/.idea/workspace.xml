@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4086065-1987-4bc2-88f7-c83d06997d52" name="Default Changelist" comment="" />
+    <list default="true" id="c4086065-1987-4bc2-88f7-c83d06997d52" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../client/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/util/SocketManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/util/SocketManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ConstantKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ConstantKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/ExecutorComponentKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/ExecutorComponentKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/IpCollector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/IpCollector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/MainKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/SocketComponentKt$dispatchCommand$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/SocketComponentKt$dispatchCommand$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/SocketComponentKt$dispatchCommand$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/SocketComponentKt$dispatchCommand$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/SocketComponentKt$runIpCollectTask$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/SocketComponentKt$runIpCollectTask$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/SocketComponentKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/SocketComponentKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pictures/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/pictures/1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pictures/2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/pictures/2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Constant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Constant.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ExecutorComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ExecutorComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SocketComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/SocketComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../flutter_app/flutter_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../../flutter_app/flutter_app/lib/main.dart" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+            <state relative-caret-position="126">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -26,17 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SocketComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Constant.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
+            <state relative-caret-position="268">
+              <caret line="101" column="17" lean-forward="true" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -44,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ExecutorComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="22" selection-start-column="22" selection-end-column="22" />
+            <state relative-caret-position="205">
+              <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -53,8 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FileComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+            <state relative-caret-position="63">
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -95,12 +108,12 @@
         <option value="$PROJECT_DIR$/src/HHa.kt" />
         <option value="$PROJECT_DIR$/src/Test.java" />
         <option value="$PROJECT_DIR$/src/HttpComponent.kt" />
-        <option value="$PROJECT_DIR$/src/Main.kt" />
-        <option value="$PROJECT_DIR$/src/Constant.kt" />
         <option value="$PROJECT_DIR$/src/FileComponent.kt" />
-        <option value="$PROJECT_DIR$/src/ExecutorComponent.kt" />
         <option value="$PROJECT_DIR$/src/IpCollector.kt" />
+        <option value="$PROJECT_DIR$/src/Constant.kt" />
         <option value="$PROJECT_DIR$/src/SocketComponent.kt" />
+        <option value="$PROJECT_DIR$/src/Main.kt" />
+        <option value="$PROJECT_DIR$/src/ExecutorComponent.kt" />
       </list>
     </option>
   </component>
@@ -116,6 +129,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,7 +152,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -215,6 +228,7 @@
       <workItem from="1554700295587" duration="5379000" />
       <workItem from="1554797632163" duration="2527000" />
       <workItem from="1554866358679" duration="8438000" />
+      <workItem from="1554960390731" duration="2502000" />
     </task>
     <task id="LOCAL-00001" summary="Coding">
       <created>1554706019963</created>
@@ -241,10 +255,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17899000" />
+    <option name="totallyTimeSpent" value="20401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25377643" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -255,7 +270,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3297546" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.9539877" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -291,6 +306,10 @@
     <entry file="file://$PROJECT_DIR$/out/production/server/MainKt.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IpCollector.kt" />
     <entry file="file://$PROJECT_DIR$/src/HttpComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -301,47 +320,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Constant.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pictures/1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/FileComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
+        <state relative-caret-position="63">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ExecutorComponent.kt">
+    <entry file="file://$PROJECT_DIR$/src/Constant.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
+        <state relative-caret-position="126">
+          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/IpCollector.kt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ExecutorComponent.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocketComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        <state relative-caret-position="268">
+          <caret line="101" column="17" lean-forward="true" selection-start-line="101" selection-start-column="17" selection-end-line="101" selection-end-column="17" />
         </state>
       </provider>
     </entry>

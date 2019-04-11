@@ -111,14 +111,13 @@ class MainActivity : AppCompatActivity() {
 	
 	@Subscribe(threadMode = ThreadMode.BACKGROUND)
 	fun dispatchCommon(socket: Socket) {
-		viewModel?.commandSocket = socket
 		val reader = getSocketReader(socket)
-		viewModel?.commandReader = reader
-		val action = reader.readLine()
+		saveSocketAndReader(socket, reader)
+		val action: String? = reader.readLine() ?: ""
 		socket.shutdownInput()
 		Log.e("xkf123456789", "接受到新的命令: $action")
 		handler.post {
-			executeCommand(action)
+			executeCommand(action!!)
 		}
 	}
 	
@@ -130,15 +129,25 @@ class MainActivity : AppCompatActivity() {
 			ACTION_CAPTURE -> {
 				view?.cameraView?.capturePicture()
 			}
+			ACTION_FINISH -> {
+				abortSocketAndReader()
+				finish()
+			}
+			ACTION_DEVICE_COUNT -> {
+				writeString("")
+			}
+			ACTION_ECHO -> {
+				writeString(action)
+			}
 			else -> {
-			
+				writeString("没有相关的命令")
 			}
 		}
 		
 	}
 	
 	@Subscribe(threadMode = ThreadMode.MAIN)
-	fun takePicture(bytes: ByteArray) {
+	fun onTakePicture(bytes: ByteArray) {
 		val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
 		val matrix = Matrix()
 		matrix.postRotate(90f)
@@ -147,27 +156,12 @@ class MainActivity : AppCompatActivity() {
 		val outputStream = ByteArrayOutputStream()
 		rotateBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
 		val picture = outputStream.toByteArray()
-		
-		Thread {
-			val socket = viewModel?.commandSocket
-			val reader = viewModel?.commandReader
-			val writer = viewModel?.commandSocket?.getOutputStream()
-			writer?.write(picture)
-			writer?.flush()
-			socket?.shutdownOutput()
-			
-			reader?.close()
-			writer?.close()
-			socket?.close()
-			
-			viewModel?.commandSocket = null
-			viewModel?.commandReader = null
-		}.start()
-		
+		writeBytes(picture)
 	}
 	
 	override fun onDestroy() {
 		EventBus.getDefault().unregister(this)
+		abortSocketAndReader()
 		super.onDestroy()
 	}
 }

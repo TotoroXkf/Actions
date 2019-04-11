@@ -25,6 +25,14 @@ fun getSocketReader(socket: Socket): BufferedReader {
     return BufferedReader(InputStreamReader(inputStream))
 }
 
+fun readMessage(socket: Socket):String{
+    val reader = getSocketReader(socket)
+    val message = reader.readText()
+    socket.shutdownInput()
+    reader.close()
+    return message
+}
+
 class IpCollector(private val socket: Socket) : Runnable {
     override fun run() {
         deviceNum++
@@ -99,7 +107,6 @@ fun dispatchCommand() {
             }
         } catch (e: Exception) {
             println("无效输入")
-            println(e.message)
         }
     }
 }
