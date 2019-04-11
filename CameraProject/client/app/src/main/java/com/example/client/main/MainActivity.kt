@@ -150,13 +150,13 @@ class MainActivity : AppCompatActivity() {
 				view?.cameraView?.capturePicture()
 			}
 			ACTION_FINISH -> {
-				abortSavedSocket()
+				closeSocket()
 				finish()
 			}
 			ACTION_ECHO -> {
 				writeString(action)
 			}
-			ACTION_TIME_TEST -> {
+			ACTION_DELAY_TEST -> {
 				if ("time" in paramMap) {
 					val startTime = paramMap.getValue("time").toLong()
 					val endTime = System.currentTimeMillis()
@@ -184,7 +184,7 @@ class MainActivity : AppCompatActivity() {
 	
 	override fun onDestroy() {
 		EventBus.getDefault().unregister(this)
-		abortSavedSocket()
+		closeSocket()
 		super.onDestroy()
 	}
 }

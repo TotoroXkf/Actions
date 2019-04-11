@@ -1,6 +1,5 @@
 import java.io.*
 import java.lang.Exception
-import java.lang.StringBuilder
 import java.net.ServerSocket
 import java.net.Socket
 import java.util.*
@@ -137,7 +136,7 @@ private fun execute(number: Int, deviceIp: String, action: String) {
             sendMessage(socket, action)
             deviceIpMap.remove(number)
         }
-        ACTION_TIME_TEST -> {
+        ACTION_DELAY_TEST -> {
             sendMessage(socket, action + "?time=" + System.currentTimeMillis().toString())
             val time = readMessage(socket)
             println("设备 $number 接收延迟: $time ms")

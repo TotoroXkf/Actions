@@ -32,14 +32,14 @@ fun writeString(message: String) {
 	if (savedSocket == null || savedReader == null) {
 		return
 	}
+	Log.e("xkf123456789", "开始写入")
 	Thread {
-		Log.e("xkf123456789", "开始写入")
 		val writer = getSocketWriter(savedSocket!!)
 		writer.write(message)
 		writer.flush()
 		savedSocket!!.shutdownOutput()
 		Log.e("xkf123456789", "写入完毕")
-		abortSavedSocket()
+		closeSocket()
 	}.start()
 }
 
@@ -54,12 +54,11 @@ fun writeBytes(bytes: ByteArray) {
 		writer.flush()
 		savedSocket!!.shutdownOutput()
 		Log.e("xkf123456789", "写入完毕")
-		abortSavedSocket()
+		closeSocket()
 	}.start()
 }
 
 fun sendIpAndGetDeviceNumber(severIp: String, deviceIp: String): Int {
-	
 	val socket = Socket(severIp, IP_COLLECTOR_PORT)
 	
 	val reader = getSocketReader(socket)
@@ -95,7 +94,7 @@ fun runCommandSocket() {
 	}.start()
 }
 
-fun abortSavedSocket() {
+fun closeSocket() {
 	if (savedSocket == null) {
 		return
 	}
