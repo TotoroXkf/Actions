@@ -39,7 +39,7 @@ class MainView : FrameLayout {
 		})
 	}
 	
-	fun update(viewState: MainViewState) {
+	fun setState(viewState: MainViewState) {
 		progressBar?.visibility = getShowState(viewState.isLoading)
 		textNumber?.visibility = getShowState(viewState.showNumber)
 		textNumber?.text = viewState.number

@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 		viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 		
 		viewModel?.viewStateLiveData?.observe(this, Observer<MainViewState> { viewState ->
-			view?.update(viewState)
+			view?.setState(viewState)
 		})
 		
 		viewModel?.serverIpLiveData?.observe(this, Observer<String> { ip ->
