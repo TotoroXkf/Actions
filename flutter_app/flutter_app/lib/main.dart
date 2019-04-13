@@ -15,57 +15,45 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Flutter'),
         ),
-        body: Container(
-          decoration: BoxDecoration(color: Colors.grey),
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 10, color: Colors.blueGrey),
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
-                  margin: EdgeInsets.all(4),
-                  child: FlatButton(
-                    onPressed: null,
-                    child: Text('Button1'),
-                  ),
-                ),
+        body: Stack(
+          children: <Widget>[
+            Align(
+              alignment: FractionalOffset.topLeft,
+              child: FlatButton(
+                onPressed: null,
+                child: Text('Button'),
               ),
-              Expanded(
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 10, color: Colors.blueGrey),
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
-                  margin: EdgeInsets.all(4),
-                  child: FlatButton(
-                    onPressed: null,
-                    child: Text('Button2'),
-                  ),
-                ),
+            ),
+            Align(
+              alignment: FractionalOffset.topRight,
+              child: FlatButton(
+                color: Colors.blue,
+                onPressed: null,
+                child: Text('Button'),
               ),
-              Expanded(
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 10, color: Colors.blueGrey),
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
-                  margin: EdgeInsets.all(4),
-                  child: FlatButton(
-                    onPressed: null,
-                    child: Text('Button3'),
-                  ),
-                ),
+            ),
+            Align(
+              alignment: FractionalOffset.center,
+              child: FlatButton(
+                onPressed: null,
+                child: Text('Button'),
               ),
-            ],
-          ),
+            ),
+            Align(
+              alignment: FractionalOffset.bottomLeft,
+              child: FlatButton(
+                onPressed: null,
+                child: Text('Button'),
+              ),
+            ),
+            Align(
+              alignment: FractionalOffset.bottomRight,
+              child: FlatButton(
+                onPressed: null,
+                child: Text('Button'),
+              ),
+            ),
+          ],
         ),
       ),
     );
