@@ -8,86 +8,64 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter',
-      theme: ThemeData.light(),
-      home: MyPage(),
-    );
-  }
-}
-
-class MyPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return MyPageState();
-  }
-}
-
-class MyPageState extends State<MyPage> {
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        backgroundColor: CupertinoColors.lightBackgroundGray,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home),
-            title: Text('主页'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.conversation_bubble),
-            title: Text('聊天'),
-          ),
-        ],
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      tabBuilder: (context, index) {
-        return CupertinoTabView(
-          builder: (context) {
-            switch (index) {
-              case 0:
-                return HomePage();
-                break;
-              case 1:
-                return ChatPage();
-                break;
-              default:
-                return Container();
-            }
-          },
-        );
-      },
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text('主页'),
-      ),
-      child: Center(
-        child: Text(
-          '主页',
-          style: Theme.of(context).textTheme.button,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter'),
         ),
-      ),
-    );
-  }
-}
-
-class ChatPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text('聊天面板'),
-        trailing: Icon(CupertinoIcons.add),
-        leading: Icon(CupertinoIcons.back),
-      ),
-      child: Center(
-        child: Text(
-          '聊天面板',
-          style: Theme.of(context).textTheme.button,
+        body: Container(
+          decoration: BoxDecoration(color: Colors.grey),
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 10, color: Colors.blueGrey),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  margin: EdgeInsets.all(4),
+                  child: FlatButton(
+                    onPressed: null,
+                    child: Text('Button1'),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 10, color: Colors.blueGrey),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  margin: EdgeInsets.all(4),
+                  child: FlatButton(
+                    onPressed: null,
+                    child: Text('Button2'),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 10, color: Colors.blueGrey),
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  margin: EdgeInsets.all(4),
+                  child: FlatButton(
+                    onPressed: null,
+                    child: Text('Button3'),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
