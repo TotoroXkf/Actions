@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -171,15 +172,8 @@ class MainActivity : AppCompatActivity() {
 	
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	fun onTakePicture(bytes: ByteArray) {
-		val bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
-		val matrix = Matrix()
-		matrix.postRotate(90f)
-		val rotateBitmap =
-			Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-		val outputStream = ByteArrayOutputStream()
-		rotateBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-		val picture = outputStream.toByteArray()
-		writeBytes(picture)
+		Log.e("xkf123456789","拍摄完毕，开始写入")
+		writeBytes(bytes)
 	}
 	
 	override fun onDestroy() {
