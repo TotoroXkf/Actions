@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		view = LayoutInflater.from(this).inflate(R.layout.activity_main, null, false) as MainView?
 		setContentView(view)
+		runCommandSocket()
 		init()
 	}
 	
@@ -67,7 +68,6 @@ class MainActivity : AppCompatActivity() {
 				it.showNumber = true
 			}
 			viewModel?.viewStateLiveData?.value = viewState
-			runCommandSocket()
 		})
 	}
 	

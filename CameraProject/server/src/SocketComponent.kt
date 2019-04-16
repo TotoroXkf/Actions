@@ -122,35 +122,41 @@ fun dispatchCommand() {
 }
 
 private fun execute(number: Int, deviceIp: String, action: String) {
-    val socket = Socket(deviceIp, COMMAND_PORT)
+    var socket:Socket? = null
+    try {
+        socket = Socket(deviceIp, COMMAND_PORT)
 
-    when (action) {
-        ACTION_CAPTURE -> {
-            sendMessage(socket, action)
-            val reader = socket.getInputStream()
-            val bytes = reader.readBytes()
-            writeToLocal(bytes, number)
-            socket.shutdownInput()
+        when (action) {
+            ACTION_CAPTURE -> {
+                sendMessage(socket, action)
+                val reader = socket.getInputStream()
+                val bytes = reader.readBytes()
+                writeToLocal(bytes, number)
+                socket.shutdownInput()
+            }
+            ACTION_FINISH -> {
+                sendMessage(socket, action)
+                deviceIpMap.remove(number)
+            }
+            ACTION_DELAY_TEST -> {
+                sendMessage(socket, action + "?time=" + System.currentTimeMillis().toString())
+                val time = readMessage(socket)
+                println("设备 $number 接收延迟: $time ms")
+            }
+            ACTION_ECHO -> {
+                sendMessage(socket, action)
+                readAndPrint(socket, number)
+            }
+            else -> {
+                sendMessage(socket, action)
+                readAndPrint(socket, number)
+            }
         }
-        ACTION_FINISH -> {
-            sendMessage(socket, action)
-            deviceIpMap.remove(number)
-        }
-        ACTION_DELAY_TEST -> {
-            sendMessage(socket, action + "?time=" + System.currentTimeMillis().toString())
-            val time = readMessage(socket)
-            println("设备 $number 接收延迟: $time ms")
-        }
-        ACTION_ECHO -> {
-            sendMessage(socket, action)
-            readAndPrint(socket, number)
-        }
-        else -> {
-            sendMessage(socket, action)
-            readAndPrint(socket, number)
-        }
+    }catch (e:Exception){
+        println("第 $number 个设备接收失败!")
+    }finally {
+        socket?.close()
     }
-    socket.close()
 }
 
 private fun executeBySelf(action: String) {
