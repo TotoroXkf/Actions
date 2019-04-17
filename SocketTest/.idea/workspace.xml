@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="816b9fef-e3c3-42ca-9ee6-258b47ecb423" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SocketTest.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Client1.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Client2.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Client3.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraProject/client/app/src/main/java/com/example/client/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../CameraProject/client/app/src/main/java/com/example/client/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraProject/server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CameraProject/server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraProject/server/out/production/server/FileComponentKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CameraProject/server/out/production/server/FileComponentKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraProject/server/out/production/server/IpCollector.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CameraProject/server/out/production/server/IpCollector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraProject/server/out/production/server/SocketComponentKt$runIpCollectTask$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CameraProject/server/out/production/server/SocketComponentKt$runIpCollectTask$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraProject/server/out/production/server/SocketComponentKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/../CameraProject/server/out/production/server/SocketComponentKt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CameraProject/server/src/SocketComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../CameraProject/server/src/SocketComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,10 +20,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Server.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="14" column="38" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="21" selection-end-column="30" />
+            <state relative-caret-position="210">
+              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
               <folding>
-                <element signature="e#0#83#0" expanded="true" />
+                <element signature="e#0#108#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client1.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+            <state relative-caret-position="168">
+              <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -60,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client3.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+            <state relative-caret-position="168">
+              <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -69,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Client2.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+            <state relative-caret-position="147">
+              <caret line="7" column="55" lean-forward="true" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -90,10 +71,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Server.kt" />
         <option value="$PROJECT_DIR$/src/Client1.kt" />
         <option value="$PROJECT_DIR$/src/Client3.kt" />
         <option value="$PROJECT_DIR$/src/Client2.kt" />
+        <option value="$PROJECT_DIR$/src/Server.kt" />
       </list>
     </option>
   </component>
@@ -223,12 +204,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1555404388346</updated>
-      <workItem from="1555404390275" duration="1821000" />
+      <workItem from="1555404390275" duration="2020000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1821000" />
+    <option name="totallyTimeSpent" value="2020000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -245,7 +226,7 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Terminal" weight="0.3297546" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -269,20 +250,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Client1.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Client3.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://H:/Java/jdk-10.0.1/lib/src.zip!/java.base/java/net/Socket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -290,19 +257,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client1.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Client3.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Client2.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        <state relative-caret-position="147">
+          <caret line="7" column="55" lean-forward="true" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Server.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="14" column="38" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="21" selection-end-column="30" />
+        <state relative-caret-position="210">
+          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
           <folding>
-            <element signature="e#0#83#0" expanded="true" />
+            <element signature="e#0#108#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,9 +1,6 @@
 package com.example.client.main
 
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -20,19 +17,19 @@ import com.example.client.util.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.io.ByteArrayOutputStream
 import java.net.Socket
+import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
 	private val handler = Handler(Looper.getMainLooper())
 	private var viewModel: MainViewModel? = null
 	private var view: MainView? = null
+	private var singleThread = Executors.newSingleThreadExecutor()
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		view = LayoutInflater.from(this).inflate(R.layout.activity_main, null, false) as MainView?
 		setContentView(view)
-		runCommandSocket()
 		init()
 	}
 	
@@ -56,7 +53,10 @@ class MainActivity : AppCompatActivity() {
 			if (TextUtils.isEmpty(ip)) {
 				return@Observer
 			}
-			sendIpToServer(ip)
+			Log.e("xkf123456789","获取到服务端的IP:$ip")
+			singleThread.execute {
+				connectToServer(ip, viewModel!!.deviceNumberLiveData)
+			}
 		})
 		
 		viewModel?.deviceNumberLiveData?.observe(this, Observer<Int> { number ->
@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 				it.showNumber = true
 			}
 			viewModel?.viewStateLiveData?.value = viewState
+			waitCommand()
 		})
 	}
 	
@@ -96,30 +97,17 @@ class MainActivity : AppCompatActivity() {
 		return true
 	}
 	
-	private fun sendIpToServer(serverIp: String) {
-		Thread {
-			val deviceIp = getDeviceIp(this@MainActivity)
-			if (TextUtils.isEmpty(deviceIp)) {
-				return@Thread
-			}
-			val number = sendIpAndGetDeviceNumber(serverIp, deviceIp)
-			handler.post {
-				viewModel?.deviceNumberLiveData?.value = number
-			}
-		}.start()
+	private fun waitCommand() {
+		singleThread.execute {
+			val message = readMessage()
+			dispatchCommand(message)
+		}
 	}
 	
-	@Subscribe(threadMode = ThreadMode.BACKGROUND)
-	fun dispatchCommon(socket: Socket) {
-		val reader = getSocketReader(socket)
-		saveSocketAndReader(socket, reader)
-		val message: String? = reader.readLine() ?: ""
-		socket.shutdownInput()
+	private fun dispatchCommand(command: String) {
 		val paramMap = HashMap<String, String>()
-		val action = parseCommand(message, paramMap)
-		handler.post {
-			executeCommand(action, paramMap)
-		}
+		val action = parseCommand(command, paramMap)
+		executeCommand(action, paramMap)
 	}
 	
 	private fun parseCommand(command: String?, paramMap: HashMap<String, String>): String {
@@ -143,42 +131,47 @@ class MainActivity : AppCompatActivity() {
 	}
 	
 	/**
-	 * 在主线程中
+	 * 在后台线程当中
 	 */
 	private fun executeCommand(action: String, paramMap: Map<String, String>) {
 		when (action) {
 			ACTION_CAPTURE -> {
-				view?.cameraView?.capturePicture()
+				handler.post {
+					view?.cameraView?.capturePicture()
+				}
 			}
 			ACTION_FINISH -> {
-				closeSocket()
 				finish()
 			}
 			ACTION_ECHO -> {
-				writeString(action)
+				sendMessage(action)
+				waitCommand()
 			}
 			ACTION_DELAY_TEST -> {
 				if ("time" in paramMap) {
 					val startTime = paramMap.getValue("time").toLong()
 					val endTime = System.currentTimeMillis()
-					writeString((endTime - startTime).toString())
+					sendMessage((endTime - startTime).toString())
+					waitCommand()
 				}
 			}
 			else -> {
-				writeString("没有相关的命令")
+				sendMessage("没有相关的命令")
+				waitCommand()
 			}
 		}
 	}
 	
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	fun onTakePicture(bytes: ByteArray) {
-		Log.e("xkf123456789","拍摄完毕，开始写入")
-		writeBytes(bytes)
+//		singleThread.execute {
+//			sendPicture()
+//		}
 	}
 	
 	override fun onDestroy() {
 		EventBus.getDefault().unregister(this)
-		closeSocket()
+		disConnect()
 		super.onDestroy()
 	}
 }

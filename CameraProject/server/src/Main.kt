@@ -1,5 +1,5 @@
 fun main() {
     setupIp()
-    runIpCollectTask()
+    runSocketCollectTask()
     dispatchCommand()
 }
