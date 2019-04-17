@@ -17,7 +17,6 @@ import com.example.client.util.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
-import java.net.Socket
 import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
@@ -164,9 +163,10 @@ class MainActivity : AppCompatActivity() {
 	
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	fun onTakePicture(bytes: ByteArray) {
-//		singleThread.execute {
-//			sendPicture()
-//		}
+		singleThread.execute {
+			sendPicture(bytes)
+			waitCommand()
+		}
 	}
 	
 	override fun onDestroy() {

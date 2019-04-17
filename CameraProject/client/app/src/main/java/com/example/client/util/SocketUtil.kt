@@ -3,6 +3,7 @@ package com.example.client.util
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.client.main.IP_COLLECTOR_PORT
+import okio.Okio
 import java.io.*
 import java.net.Socket
 
@@ -12,42 +13,34 @@ fun connectToServer(ip: String, liveData: MutableLiveData<Int>) {
 	savedSocket = Socket(ip, IP_COLLECTOR_PORT)
 	Log.e("xkf123456789", "连接到服务端")
 	savedSocket.keepAlive = true
-	Log.e("xkf123456789", "等待接收编号")
-	val message = readMessage(savedSocket)
-	Log.e("xkf123456789", "收到编号")
+	val message = readMessage()
 	liveData.postValue(message.toInt())
 }
 
 fun sendMessage(message: String) {
-	sendMessage(savedSocket, message)
-}
-
-fun sendMessage(socket: Socket, message: String) {
-	val outputStream = socket.getOutputStream()
-	val writer = PrintWriter(OutputStreamWriter(outputStream))
+	val outputStream = savedSocket.getOutputStream()
+	val writer = BufferedWriter(OutputStreamWriter(outputStream))
 	writer.write(message)
+	writer.newLine()
 	writer.flush()
 }
 
-fun sendPicture(socket: Socket, bytes: ByteArray) {
-	val outputStream = socket.getOutputStream()
+fun sendPicture(bytes: ByteArray) {
+	val outputStream = savedSocket.getOutputStream()
+	
+	val writer = BufferedWriter(OutputStreamWriter(outputStream))
+	writer.write("${bytes.size}")
+	writer.newLine()
+	writer.flush()
+	
 	outputStream.write(bytes)
 	outputStream.flush()
 }
 
 fun readMessage(): String {
-	return readMessage(savedSocket)
-}
-
-fun readMessage(socket: Socket): String {
-	val inputStream = socket.getInputStream()
+	val inputStream = savedSocket.getInputStream()
 	val reader = BufferedReader(InputStreamReader(inputStream))
 	return reader.readLine()
-}
-
-fun readBytes(socket: Socket): ByteArray {
-	val inputStream = socket.getInputStream()
-	return inputStream.readBytes()
 }
 
 fun disConnect() {
