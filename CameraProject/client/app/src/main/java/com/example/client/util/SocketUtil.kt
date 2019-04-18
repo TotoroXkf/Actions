@@ -36,9 +36,8 @@ fun sendMessage(message: String) {
 	writer.flush()
 }
 
-fun sendPicture(bytes: ByteArray) {
+fun sendBytes(bytes: ByteArray) {
 	val size = bytes.size
-	Log.e("xkf123456789", "$size")
 	sendMessage("${bytes.size}")
 
 	var len = 1024
@@ -55,8 +54,6 @@ fun sendPicture(bytes: ByteArray) {
 			throw Exception()
 		}
 	}
-	writeBuffer.write(bytes)
-	writeBuffer.flush()
 }
 
 fun readMessage(): String {

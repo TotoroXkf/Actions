@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity() {
 	@Subscribe(threadMode = ThreadMode.MAIN)
 	fun onTakePicture(bytes: ByteArray) {
 		singleThread.execute {
-			sendPicture(bytes)
+			sendBytes(bytes)
 			waitCommand()
 		}
 	}
