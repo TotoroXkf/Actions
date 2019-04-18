@@ -1,7 +1,3 @@
-import okio.Okio
-import okio.buffer
-import okio.sink
-import okio.source
 import java.io.*
 import java.net.ServerSocket
 import java.net.Socket
@@ -11,7 +7,12 @@ import kotlin.collections.HashMap
 
 @Volatile
 private var deviceNum = 0
+
 private val socketMap = HashMap<Int, Socket>()
+private val readBufferMap = HashMap<Socket, BufferedInputStream>()
+private val readerMap = HashMap<Socket, BufferedReader>()
+private val writeBufferMap = HashMap<Socket, BufferedOutputStream>()
+private val writerMap = HashMap<Socket, BufferedWriter>()
 
 private val cachedThreadPool = Executors.newCachedThreadPool()
 
@@ -26,6 +27,19 @@ fun runSocketCollectTask() {
                 println("接收到新的设备:$deviceNum")
                 socket.keepAlive = true
                 socketMap[deviceNum] = socket
+
+                val inputStream = socket.getInputStream()
+                val reader = BufferedReader(InputStreamReader(inputStream))
+                readerMap[socket] = reader
+                val readBuffer = BufferedInputStream(inputStream)
+                readBufferMap[socket] = readBuffer
+
+                val outPutStream = socket.getOutputStream()
+                val writer = BufferedWriter(OutputStreamWriter(outPutStream))
+                writerMap[socket] = writer
+                val writeBuffer = BufferedOutputStream(outPutStream)
+                writeBufferMap[socket] = writeBuffer
+
                 sendMessage(socket, "$deviceNum")
             }
         }
@@ -81,6 +95,7 @@ private fun execute(number: Int, action: String) {
         when (action) {
             ACTION_CAPTURE -> {
                 sendMessage(socket, action)
+                println("正在接受第 $number 台设备发来的数据......")
                 val bytes = readBytes(socket)
                 writeToLocal(bytes, number)
             }
@@ -88,6 +103,10 @@ private fun execute(number: Int, action: String) {
                 sendMessage(socket, action)
                 socket.close()
                 socketMap.remove(number)
+                readBufferMap.remove(socket)
+                readerMap.remove(socket)
+                writeBufferMap.remove(socket)
+                writerMap.remove(socket)
             }
             ACTION_DELAY_TEST -> {
                 sendMessage(socket, action + "?time=" + System.currentTimeMillis().toString())
@@ -121,29 +140,30 @@ private fun executeBySelf(action: String) {
 }
 
 fun sendMessage(socket: Socket, message: String) {
-    val outputStream = socket.getOutputStream()
-    val writer = BufferedWriter(OutputStreamWriter(outputStream))
+    val writer = writerMap[socket]!!
     writer.write(message)
     writer.newLine()
     writer.flush()
 }
 
 fun readMessage(socket: Socket): String {
-    val inputStream = socket.getInputStream()
-    val reader = BufferedReader(InputStreamReader(inputStream))
+    val reader = readerMap[socket]!!
     return reader.readLine()
 }
 
 fun readBytes(socket: Socket): ByteArray {
-    val inputStream = socket.getInputStream()
-    val reader = BufferedReader(InputStreamReader(inputStream))
-    val size = reader.readLine()
-    println(size)
-    val bytes = ByteArray(size.toInt())
-    val temp = ByteArray(1024)
-    var num = inputStream.read(temp)
-//    while (size>num){
-//        inputStream.readBytes()
-//    }
+    val readBuffer = readBufferMap[socket]!!
+    val size = readMessage(socket).toInt()
+    var len = 1024
+    var count = 0
+    val bytes = ByteArray(size)
+    while (count < size) {
+        val num = readBuffer.read(bytes, count, len)
+        count += num
+        if (size - count < len) {
+            len = size - count
+        }
+        sendMessage(socket, "OK")
+    }
     return bytes
 }
