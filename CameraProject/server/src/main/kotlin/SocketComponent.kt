@@ -25,6 +25,7 @@ fun runSocketCollectTask() {
             synchronized(serverSocket) {
                 deviceNum++
                 println("接收到新的设备:$deviceNum")
+
                 socket.keepAlive = true
                 socketMap[deviceNum] = socket
 
@@ -87,45 +88,45 @@ fun dispatchCommand() {
 }
 
 private fun execute(number: Int, action: String) {
-    try {
-        if (number !in socketMap) {
-            return
-        }
-        val socket = socketMap[number]!!
-        when (action) {
-            ACTION_CAPTURE -> {
-                sendMessage(socket, action)
-                println("正在接受第 $number 台设备发来的数据......")
-                val bytes = readBytes(socket)
-                writeToLocal(bytes, number)
-            }
-            ACTION_FINISH -> {
-                sendMessage(socket, action)
-                socket.close()
-                socketMap.remove(number)
-                readBufferMap.remove(socket)
-                readerMap.remove(socket)
-                writeBufferMap.remove(socket)
-                writerMap.remove(socket)
-            }
-            ACTION_DELAY_TEST -> {
-                sendMessage(socket, action + "?time=" + System.currentTimeMillis().toString())
-                val time = readMessage(socket)
-                println("设备 $number 接收延迟: $time ms")
-            }
-            ACTION_ECHO -> {
-                sendMessage(socket, action)
-                println("第 $number 台设备: ${readMessage(socket)}")
-            }
-            else -> {
-                sendMessage(socket, action)
-                println("第 $number 台设备: ${readMessage(socket)}")
-            }
-        }
-    } catch (e: Exception) {
-        println("ERROR!!!")
-        println(e.message)
+//    try {
+    if (number !in socketMap) {
+        return
     }
+    val socket = socketMap[number]!!
+    when (action) {
+        ACTION_CAPTURE -> {
+            sendMessage(socket, action)
+            println("正在接受第 $number 台设备发来的数据......")
+            val bytes = readBytes(socket)
+            writeToLocal(bytes, number)
+        }
+        ACTION_FINISH -> {
+            sendMessage(socket, action)
+            socket.close()
+            socketMap.remove(number)
+            readBufferMap.remove(socket)
+            readerMap.remove(socket)
+            writeBufferMap.remove(socket)
+            writerMap.remove(socket)
+        }
+        ACTION_DELAY_TEST -> {
+            sendMessage(socket, action + "?time=" + System.currentTimeMillis().toString())
+            val time = readMessage(socket)
+            println("设备 $number 接收延迟: $time ms")
+        }
+        ACTION_ECHO -> {
+            sendMessage(socket, action)
+            println("第 $number 台设备: ${readMessage(socket)}")
+        }
+        else -> {
+            sendMessage(socket, action)
+            println("第 $number 台设备: ${readMessage(socket)}")
+        }
+    }
+//    } catch (e: Exception) {
+//        println("ERROR!!!")
+//        println(e.message)
+//    }
 }
 
 private fun executeBySelf(action: String) {
