@@ -4,8 +4,8 @@ import android.Manifest
 
 val PERMISSIONS = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
 
-const val IP_COLLECTOR_PORT = 12306
-const val COMMAND_PORT = 12307
+const val SOCKET_PORT = 12306
+const val OK = "ok"
 
 /**
  * 查看当前连接的设备
@@ -26,4 +26,4 @@ const val ACTION_ECHO = "echo"
 /**
  * 测量命令从发出到接收的延迟
  */
-const val ACTION_DELAY_TEST = "delay"
+const val ACTION_DELAY_TEST = "rtt"

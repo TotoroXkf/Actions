@@ -4,6 +4,7 @@ import java.net.Socket
 import java.util.*
 import java.util.concurrent.Executors
 import kotlin.collections.HashMap
+import kotlin.math.abs
 
 @Volatile
 private var deviceNum = 0
@@ -19,7 +20,7 @@ private val cachedThreadPool = Executors.newCachedThreadPool()
 fun runSocketCollectTask() {
     println("开启线程池等待设备接入")
     Thread {
-        val serverSocket = ServerSocket(IP_COLLECTOR_PORT)
+        val serverSocket = ServerSocket(SOCKET_PORT)
         while (true) {
             val socket = serverSocket.accept()
             synchronized(serverSocket) {
@@ -88,45 +89,45 @@ fun dispatchCommand() {
 }
 
 private fun execute(number: Int, action: String) {
-//    try {
-    if (number !in socketMap) {
-        return
+    try {
+        if (number !in socketMap) {
+            return
+        }
+        val socket = socketMap[number]!!
+        when (action) {
+            ACTION_CAPTURE -> {
+                sendMessage(socket, action)
+                println("正在接受第 $number 台设备发来的数据......")
+                val bytes = readBytes(socket)
+                writeToLocal(bytes, number)
+            }
+            ACTION_FINISH -> {
+                sendMessage(socket, action)
+                closeSocket(number)
+            }
+            ACTION_DELAY_TEST -> {
+                val startTime = System.currentTimeMillis()
+                sendMessage(socket, action)
+                val message = readMessage(socket)
+                if (message == OK) {
+                    val endTime = System.currentTimeMillis()
+                    println("第 $number 台设备: ${abs(endTime - startTime)} ms")
+                }
+            }
+            ACTION_ECHO -> {
+                sendMessage(socket, action)
+                println("第 $number 台设备: ${readMessage(socket)}")
+            }
+            else -> {
+                sendMessage(socket, action)
+                println("第 $number 台设备: ${readMessage(socket)}")
+            }
+        }
+    } catch (e: Exception) {
+        println("ERROR!!!")
+        println(e.message)
+        println(e.stackTrace)
     }
-    val socket = socketMap[number]!!
-    when (action) {
-        ACTION_CAPTURE -> {
-            sendMessage(socket, action)
-            println("正在接受第 $number 台设备发来的数据......")
-            val bytes = readBytes(socket)
-            writeToLocal(bytes, number)
-        }
-        ACTION_FINISH -> {
-            sendMessage(socket, action)
-            socket.close()
-            socketMap.remove(number)
-            readBufferMap.remove(socket)
-            readerMap.remove(socket)
-            writeBufferMap.remove(socket)
-            writerMap.remove(socket)
-        }
-        ACTION_DELAY_TEST -> {
-            sendMessage(socket, action + "?time=" + System.currentTimeMillis().toString())
-            val time = readMessage(socket)
-            println("设备 $number 接收延迟: $time ms")
-        }
-        ACTION_ECHO -> {
-            sendMessage(socket, action)
-            println("第 $number 台设备: ${readMessage(socket)}")
-        }
-        else -> {
-            sendMessage(socket, action)
-            println("第 $number 台设备: ${readMessage(socket)}")
-        }
-    }
-//    } catch (e: Exception) {
-//        println("ERROR!!!")
-//        println(e.message)
-//    }
 }
 
 private fun executeBySelf(action: String) {
@@ -134,6 +135,11 @@ private fun executeBySelf(action: String) {
         ACTION_DEVICE_COUNT -> {
             println("目前连接的设备有: ${socketMap.size} 个")
         }
+//        ACTION_REMOVE -> {
+//            val index = action.indexOf("_")
+//            val number = action.substring(index + 1).toInt()
+//            closeSocket(number)
+//        }
         else -> {
 
         }
@@ -164,7 +170,21 @@ fun readBytes(socket: Socket): ByteArray {
         if (size - count < len) {
             len = size - count
         }
-        sendMessage(socket, "OK")
+        sendMessage(socket, OK)
     }
     return bytes
+}
+
+fun closeSocket(number: Int) {
+    if (number !in socketMap) {
+        return
+    }
+    val socket = socketMap[number]!!
+    socket.close()
+    socketMap.remove(number)
+    readBufferMap.remove(socket)
+    readerMap.remove(socket)
+    writeBufferMap.remove(socket)
+    writerMap.remove(socket)
+    println("第 $number 台设备被移除")
 }

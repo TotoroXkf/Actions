@@ -2,7 +2,8 @@ package com.example.client.util
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.example.client.main.IP_COLLECTOR_PORT
+import com.example.client.main.SOCKET_PORT
+import com.example.client.main.OK
 import java.io.*
 import java.lang.Exception
 import java.net.Socket
@@ -14,7 +15,7 @@ lateinit var reader: BufferedReader
 lateinit var writer: BufferedWriter
 
 fun connectToServer(ip: String, liveData: MutableLiveData<Int>) {
-	savedSocket = Socket(ip, IP_COLLECTOR_PORT)
+	savedSocket = Socket(ip, SOCKET_PORT)
 	Log.e("xkf123456789", "连接到服务端")
 	savedSocket.keepAlive = true
 	
@@ -39,7 +40,7 @@ fun sendMessage(message: String) {
 fun sendBytes(bytes: ByteArray) {
 	val size = bytes.size
 	sendMessage("${bytes.size}")
-
+	
 	var len = 1024
 	var count = 0
 	while (count < size) {
@@ -50,7 +51,7 @@ fun sendBytes(bytes: ByteArray) {
 			len = size - count
 		}
 		val result = readMessage()
-		if (result != "OK") {
+		if (result != OK) {
 			throw Exception()
 		}
 	}

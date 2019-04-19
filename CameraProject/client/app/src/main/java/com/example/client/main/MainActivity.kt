@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 			if (TextUtils.isEmpty(ip)) {
 				return@Observer
 			}
-			Log.e("xkf123456789","获取到服务端的IP:$ip")
+			Log.e("xkf123456789", "获取到服务端的IP:$ip")
 			singleThread.execute {
 				connectToServer(ip, viewModel!!.deviceNumberLiveData)
 			}
@@ -147,12 +147,8 @@ class MainActivity : AppCompatActivity() {
 				waitCommand()
 			}
 			ACTION_DELAY_TEST -> {
-				if ("time" in paramMap) {
-					val startTime = paramMap.getValue("time").toLong()
-					val endTime = System.currentTimeMillis()
-					sendMessage((endTime - startTime).toString())
-					waitCommand()
-				}
+				sendMessage(OK)
+				waitCommand()
 			}
 			else -> {
 				sendMessage("没有相关的命令")
