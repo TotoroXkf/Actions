@@ -1,5 +1,6 @@
 package com.example.client.main
 
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
@@ -20,7 +21,7 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
-	private val handler = Handler(Looper.getMainLooper())
+//	private val handler = Handler(Looper.getMainLooper())
 	private var viewModel: MainViewModel? = null
 	private var view: MainView? = null
 	private var singleThread = Executors.newSingleThreadExecutor()
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity() {
 		view?.cameraView?.setLifecycleOwner(this)
 		initViewModel()
 		viewModel?.viewStateLiveData?.value = viewModel?.createInitViewState()
-		handler.post(checkPermissionRunnable)
+		//handler.post(checkPermissionRunnable)
+		viewModel?.getServerIp()
 	}
 	
 	private fun initViewModel() {
@@ -71,16 +73,16 @@ class MainActivity : AppCompatActivity() {
 		})
 	}
 	
-	private val checkPermissionRunnable = object : Runnable {
-		override fun run() {
-			if (checkPermissions()) {
-				handler.removeCallbacks(this)
-				viewModel?.getServerIp()
-			} else {
-				handler.postDelayed(this, 1000)
-			}
-		}
-	}
+//	private val checkPermissionRunnable = object : Runnable {
+//		override fun run() {
+//			if (checkPermissions()) {
+//				handler.removeCallbacks(this)
+//				viewModel?.getServerIp()
+//			} else {
+//				handler.postDelayed(this, 1000)
+//			}
+//		}
+//	}
 	
 	private fun checkPermissions(): Boolean {
 		if (viewModel == null) {
@@ -135,9 +137,14 @@ class MainActivity : AppCompatActivity() {
 	private fun executeCommand(action: String, paramMap: Map<String, String>) {
 		when (action) {
 			ACTION_CAPTURE -> {
-				handler.post {
-					view?.cameraView?.capturePicture()
-				}
+				view?.cameraView?.capturePicture()
+			}
+			ACTION_GET -> {
+				val inputStream = openFileInput(FILE_NAME)
+				val bytes = inputStream.readBytes()
+				sendBytes(bytes)
+				inputStream.close()
+				waitCommand()
 			}
 			ACTION_FINISH -> {
 				finish()
@@ -157,12 +164,13 @@ class MainActivity : AppCompatActivity() {
 		}
 	}
 	
-	@Subscribe(threadMode = ThreadMode.MAIN)
+	@Subscribe(threadMode = ThreadMode.BACKGROUND)
 	fun onTakePicture(bytes: ByteArray) {
-		singleThread.execute {
-			sendBytes(bytes)
-			waitCommand()
-		}
+		val outputStream = openFileOutput(FILE_NAME, Context.MODE_PRIVATE)
+		outputStream.write(bytes)
+		outputStream.close()
+		sendMessage(OK)
+		waitCommand()
 	}
 	
 	override fun onDestroy() {

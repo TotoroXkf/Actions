@@ -34,3 +34,8 @@ const val ACTION_DELAY_TEST = "rtt"
  * 服务端删除指定的注册的手机
  */
 const val ACTION_REMOVE = "remove"
+
+/**
+ * 传输拍摄的照片到服务端
+ */
+const val ACTION_GET = "get"

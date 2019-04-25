@@ -97,6 +97,13 @@ private fun execute(number: Int, action: String) {
         when (action) {
             ACTION_CAPTURE -> {
                 sendMessage(socket, action)
+                val message = readMessage(socket)
+                if (message == OK) {
+                    println("第 $number 台设备拍摄完毕")
+                }
+            }
+            ACTION_GET -> {
+                sendMessage(socket, action)
                 println("正在接受第 $number 台设备发来的数据......")
                 val bytes = readBytes(socket)
                 writeToLocal(bytes, number)
