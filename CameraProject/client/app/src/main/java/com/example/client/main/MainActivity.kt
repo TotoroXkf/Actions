@@ -3,8 +3,6 @@ package com.example.client.main
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,10 +19,10 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.concurrent.Executors
 
 class MainActivity : AppCompatActivity() {
-//	private val handler = Handler(Looper.getMainLooper())
 	private var viewModel: MainViewModel? = null
 	private var view: MainView? = null
 	private var singleThread = Executors.newSingleThreadExecutor()
+	private val cameraParameter = CameraParameter()
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -36,10 +34,11 @@ class MainActivity : AppCompatActivity() {
 	private fun init() {
 		EventBus.getDefault().register(this)
 		window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN) //隐藏状态栏
-		view?.cameraView?.setLifecycleOwner(this)
+		
 		initViewModel()
+		initCameraParameter()
+		
 		viewModel?.viewStateLiveData?.value = viewModel?.createInitViewState()
-		//handler.post(checkPermissionRunnable)
 		viewModel?.getServerIp()
 	}
 	
@@ -73,16 +72,20 @@ class MainActivity : AppCompatActivity() {
 		})
 	}
 	
-//	private val checkPermissionRunnable = object : Runnable {
-//		override fun run() {
-//			if (checkPermissions()) {
-//				handler.removeCallbacks(this)
-//				viewModel?.getServerIp()
-//			} else {
-//				handler.postDelayed(this, 1000)
-//			}
-//		}
-//	}
+	private fun initCameraParameter() {
+		val sharePreferences = getSharedPreferences(CAMERA_PARAMETER, Context.MODE_PRIVATE)
+//		val editor = sharePreferences.edit()
+		val parameter = sharePreferences.all
+		
+		if (parameter == null || parameter.isEmpty()) {
+			Log.e("xkf123456789", "没有保存的参数，设置默认的参数")
+			view?.setCameraViewParameter(cameraParameter)
+			
+			return
+		}
+		
+	}
+	
 	
 	private fun checkPermissions(): Boolean {
 		if (viewModel == null) {
@@ -171,6 +174,13 @@ class MainActivity : AppCompatActivity() {
 		outputStream.close()
 		sendMessage(OK)
 		waitCommand()
+	}
+	
+	private fun saveParameter(): Boolean {
+		val sharePreferences = getSharedPreferences(CAMERA_PARAMETER, Context.MODE_PRIVATE)
+		val editor = sharePreferences.edit()
+		
+		return editor.commit()
 	}
 	
 	override fun onDestroy() {

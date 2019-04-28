@@ -29,14 +29,18 @@ class MainView : FrameLayout {
 		cameraView = findViewById(R.id.camera_view)
 		textNumber = findViewById(R.id.text_number)
 		progressBar = findViewById(R.id.progress_bar)
-		cameraView?.addCameraListener(object : CameraListener() {
-			override fun onPictureTaken(jpeg: ByteArray?) {
-				if(jpeg==null){
-					return
+		
+		cameraView?.run {
+			setLifecycleOwner(context as MainActivity)
+			addCameraListener(object : CameraListener() {
+				override fun onPictureTaken(jpeg: ByteArray?) {
+					if (jpeg == null) {
+						return
+					}
+					EventBus.getDefault().post(jpeg)
 				}
-				EventBus.getDefault().post(jpeg)
-			}
-		})
+			})
+		}
 	}
 	
 	fun setState(viewState: MainViewState) {
@@ -51,6 +55,22 @@ class MainView : FrameLayout {
 			View.VISIBLE
 		} else {
 			View.GONE
+		}
+	}
+	
+	fun setCameraViewParameter(parameter: CameraParameter) {
+		cameraView?.run {
+			flash = parameter.flash
+			whiteBalance = parameter.whiteBalance
+			hdr = parameter.hdr
+			audio = parameter.audio
+			for ((key, value) in parameter.gestures.entries) {
+				mapGesture(key, value)
+			}
+			playSounds = parameter.playSound
+			grid = parameter.gridLine
+//			setGridColor(parameter.gridLineColor)
+//			setCameraAutoFocusResetDelay(1000)
 		}
 	}
 }

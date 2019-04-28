@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a79a7eb-5d0f-4080-88b0-b36bb380cb3d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/CameraParameter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Constant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Constant.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -46,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Constant.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
+            <state relative-caret-position="714">
               <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
             </state>
           </provider>
@@ -55,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+            <state relative-caret-position="1428">
+              <caret line="191" column="32" lean-forward="true" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="32" />
               <folding>
                 <element signature="e#0#182#0" expanded="true" />
               </folding>
@@ -67,7 +66,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/FileComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
+            <state relative-caret-position="42">
               <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
@@ -201,7 +200,8 @@
       <workItem from="1555503847481" duration="2404000" />
       <workItem from="1555555066947" duration="16789000" />
       <workItem from="1555645725544" duration="2843000" />
-      <workItem from="1556159499703" duration="2282000" />
+      <workItem from="1556159499703" duration="4840000" />
+      <workItem from="1556417059778" duration="2228000" />
     </task>
     <task id="LOCAL-00001" summary="Coding">
       <created>1555506235700</created>
@@ -228,7 +228,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24318000" />
+    <option name="totallyTimeSpent" value="29104000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -243,7 +243,7 @@
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -312,9 +312,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pictures/1.png" />
-    <entry file="file://$PROJECT_DIR$/pictures/2.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/2.jpg" />
     <entry file="file://$PROJECT_DIR$/pictures/5.jpg" />
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -326,6 +324,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pictures/1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -335,14 +336,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Constant.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
+        <state relative-caret-position="714">
           <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/FileComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
+        <state relative-caret-position="42">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
@@ -350,13 +351,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pictures/1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
+        <state relative-caret-position="1428">
+          <caret line="191" column="32" lean-forward="true" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="32" />
           <folding>
             <element signature="e#0#182#0" expanded="true" />
           </folding>
