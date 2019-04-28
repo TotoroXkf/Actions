@@ -1,8 +1,8 @@
 package com.example.client.main
 
+import android.content.SharedPreferences
 import android.graphics.Color
 import com.otaliastudios.cameraview.*
-import java.io.Serializable
 
 class CameraParameter {
 	var flash = Flash.OFF
@@ -19,5 +19,23 @@ class CameraParameter {
 	var gridLineColor = Color.WHITE
 	var autoFocusResetDelay = 1500
 	
+	fun parse(parameter: Map<String, *>) {
+		for ((key, value) in parameter) {
+			when (key) {
+				FLASH -> {
+				
+				}
+				HDR -> {
+					hdr = HDR_PARSE_MAP[value as String]!!
+				}
+				WHITE_BALANCE -> {
+				
+				}
+			}
+		}
+	}
 	
+	fun writeParameter(editor: SharedPreferences.Editor) {
+	
+	}
 }

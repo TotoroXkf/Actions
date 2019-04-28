@@ -51,89 +51,83 @@ fun runSocketCollectTask() {
 fun dispatchCommand() {
     val scanner = Scanner(System.`in`)
     while (true) {
-        try {
-            //格式
-            //设备的number或者是all - 动作
-            val str = scanner.next()
-            if (str == "") {
-                throw Exception()
-            }
-            val command = str.split("-")
-            val partner = command[0]
-            val action = command[1]
-            when (partner) {
-                PARTNER_ALL -> {
-                    for (number in socketMap.keys) {
-                        cachedThreadPool.execute {
-                            execute(number, action)
-                        }
-                    }
-                }
-                PARTNER_SELF -> {
-                    executeBySelf(action)
-                }
-                else -> {
-                    val number = partner.toInt()
-                    if (number !in socketMap) {
-                        throw Exception()
-                    }
+        //格式
+        //设备的number或者是all - 动作
+        val str = scanner.next()
+        if (str == "") {
+            throw Exception()
+        }
+        val command = str.split("-")
+        val partner = command[0]
+        val action = command[1]
+        when (partner) {
+            PARTNER_ALL -> {
+                for (number in socketMap.keys) {
                     cachedThreadPool.execute {
                         execute(number, action)
                     }
                 }
             }
-        } catch (e: Exception) {
-            println("无效输入")
+            PARTNER_SELF -> {
+                executeBySelf(action)
+            }
+            else -> {
+                val number = partner.toInt()
+                if (number !in socketMap) {
+                    println("无效输入")
+                }
+                cachedThreadPool.execute {
+                    execute(number, action)
+                }
+            }
         }
     }
 }
 
 private fun execute(number: Int, action: String) {
-    try {
-        if (number !in socketMap) {
-            return
-        }
-        val socket = socketMap[number]!!
-        when (action) {
-            ACTION_CAPTURE -> {
-                sendMessage(socket, action)
-                val message = readMessage(socket)
-                if (message == OK) {
-                    println("第 $number 台设备拍摄完毕")
-                }
-            }
-            ACTION_GET -> {
-                sendMessage(socket, action)
-                println("正在接受第 $number 台设备发来的数据......")
-                val bytes = readBytes(socket)
-                writeToLocal(bytes, number)
-            }
-            ACTION_FINISH -> {
-                sendMessage(socket, action)
-                closeSocket(number)
-            }
-            ACTION_DELAY_TEST -> {
-                val startTime = System.currentTimeMillis()
-                sendMessage(socket, action)
-                val message = readMessage(socket)
-                if (message == OK) {
-                    val endTime = System.currentTimeMillis()
-                    println("第 $number 台设备: ${abs(endTime - startTime)} ms")
-                }
-            }
-            ACTION_ECHO -> {
-                sendMessage(socket, action)
-                println("第 $number 台设备: ${readMessage(socket)}")
-            }
-            else -> {
-                sendMessage(socket, action)
-                println("第 $number 台设备: ${readMessage(socket)}")
+    if (number !in socketMap) {
+        return
+    }
+    val socket = socketMap[number]!!
+    if (socket.isClosed) {
+        println("第 $number 台设备已经关闭")
+        return
+    }
+    when (action) {
+        ACTION_CAPTURE -> {
+            sendMessage(socket, action)
+            val message = readMessage(socket)
+            if (message == OK) {
+                println("第 $number 台设备拍摄完毕")
             }
         }
-    } catch (e: Exception) {
-        println("ERROR!!!")
-        println(e.message)
-        println(e.stackTrace)
+        ACTION_GET -> {
+            sendMessage(socket, action)
+            println("正在接受第 $number 台设备发来的数据......")
+            val bytes = readBytes(socket)
+            writeToLocal(bytes, number)
+        }
+        ACTION_FINISH -> {
+            sendMessage(socket, action)
+            closeSocket(number)
+        }
+        ACTION_DELAY_TEST -> {
+            val startTime = System.currentTimeMillis()
+            sendMessage(socket, action)
+            val message = readMessage(socket)
+            if (message == OK) {
+                val endTime = System.currentTimeMillis()
+                println("第 $number 台设备: ${abs(endTime - startTime)} ms")
+            }
+        }
+        ACTION_ECHO -> {
+            sendMessage(socket, action)
+            println("第 $number 台设备: ${readMessage(socket)}")
+        }
+        else -> {
+            sendMessage(socket, action)
+            println("第 $number 台设备: ${readMessage(socket)}")
+        }
     }
 }
 

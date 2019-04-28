@@ -9,18 +9,19 @@ import java.net.NetworkInterface
 fun setupIp() {
     val client = OkHttpClient()
     val request = Request.Builder()
-            .url("https://api2.bmob.cn/1/classes/IP/PeCc888I")
-            .addHeader("Content-Type", "application/json")
-            .addHeader("X-Bmob-Application-Id", "2c3e4ae2e6b8e0abd27b500c95876716")
-            .addHeader("X-Bmob-REST-API-Key", "8325c5621516619486f70c835a1e3347")
-            .put(getBody())
-            .build()
+        .url("https://api2.bmob.cn/1/classes/IP/PeCc888I")
+        .addHeader("Content-Type", "application/json")
+        .addHeader("X-Bmob-Application-Id", "2c3e4ae2e6b8e0abd27b500c95876716")
+        .addHeader("X-Bmob-REST-API-Key", "8325c5621516619486f70c835a1e3347")
+        .put(getBody())
+        .build()
     val response = client.newCall(request).execute()
     if (response.isSuccessful) {
         response.body()?.let {
             println("成功上传IP。\n本机ip为${getIp()}")
         }
     }
+    response.close()
 }
 
 fun getIp(): String {

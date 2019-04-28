@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a79a7eb-5d0f-4080-88b0-b36bb380cb3d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/CameraParameter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/CameraParameter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/CameraParameter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -45,7 +42,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Constant.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
+            <state relative-caret-position="352">
               <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
             </state>
           </provider>
@@ -54,10 +51,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="191" column="32" lean-forward="true" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="32" />
+            <state relative-caret-position="1675">
+              <caret line="149" column="49" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
               <folding>
                 <element signature="e#0#182#0" expanded="true" />
+                <element signature="n#!!block;n#sendMessage#0" />
+                <element signature="n#!!block;n#readMessage#0" />
+                <element signature="n#!!block;n#readBytes#0" />
+                <element signature="n#!!block;n#closeSocket#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="466">
+              <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#198#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,9 +97,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/FileComponent.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/Constant.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" />
       </list>
     </option>
@@ -103,6 +116,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -138,7 +152,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -201,7 +214,7 @@
       <workItem from="1555555066947" duration="16789000" />
       <workItem from="1555645725544" duration="2843000" />
       <workItem from="1556159499703" duration="4840000" />
-      <workItem from="1556417059778" duration="2228000" />
+      <workItem from="1556417059778" duration="6901000" />
     </task>
     <task id="LOCAL-00001" summary="Coding">
       <created>1555506235700</created>
@@ -228,7 +241,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29104000" />
+    <option name="totallyTimeSpent" value="33777000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -314,32 +327,8 @@
     <entry file="file://$PROJECT_DIR$/pictures/1.png" />
     <entry file="file://$PROJECT_DIR$/pictures/2.jpg" />
     <entry file="file://$PROJECT_DIR$/pictures/5.jpg" />
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="40" column="1" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pictures/1.jpg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Constant.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/FileComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -351,12 +340,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Constant.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="191" column="32" lean-forward="true" selection-start-line="191" selection-start-column="32" selection-end-line="191" selection-end-column="32" />
+        <state relative-caret-position="1675">
+          <caret line="149" column="49" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
           <folding>
             <element signature="e#0#182#0" expanded="true" />
+            <element signature="n#!!block;n#sendMessage#0" />
+            <element signature="n#!!block;n#readMessage#0" />
+            <element signature="n#!!block;n#readBytes#0" />
+            <element signature="n#!!block;n#closeSocket#0" />
           </folding>
         </state>
       </provider>

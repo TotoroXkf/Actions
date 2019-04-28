@@ -1,6 +1,7 @@
 package com.example.client.main
 
 import android.Manifest
+import com.otaliastudios.cameraview.Hdr
 
 val PERMISSIONS = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
 
@@ -10,6 +11,7 @@ const val FILE_NAME = "picture.jpg"
 const val CAMERA_PARAMETER = "camera_parameter"
 
 //命令列表-------------------------------------------------------------------------------------------
+
 /**
  * 查看当前连接的设备
  */
@@ -46,3 +48,25 @@ const val ACTION_REMOVE = "remove"
 const val ACTION_GET = "get"
 
 //命令列表-------------------------------------------------------------------------------------------
+
+//参数列表-------------------------------------------------------------------------------------------
+
+const val FLASH = "flash"
+
+
+const val HDR = "hdr"
+const val HDR_OFF = "off"
+const val HDR_ON = "on"
+val HDR_MAP = hashMapOf(
+	Hdr.ON to HDR_ON,
+	Hdr.OFF to HDR_OFF
+)
+val HDR_PARSE_MAP = hashMapOf(
+	HDR_ON to Hdr.ON,
+	HDR_OFF to Hdr.OFF
+)
+
+const val WHITE_BALANCE = "white_balance"
+
+
+//参数列表-------------------------------------------------------------------------------------------
