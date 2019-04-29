@@ -74,7 +74,6 @@ class MainActivity : AppCompatActivity() {
 	
 	private fun initCameraParameter() {
 		val sharePreferences = getSharedPreferences(CAMERA_PARAMETER, Context.MODE_PRIVATE)
-//		val editor = sharePreferences.edit()
 		val parameter = sharePreferences.all
 		if (parameter == null || parameter.isEmpty()) {
 			Log.e("xkf123456789", "没有保存的参数，设置默认的参数")
@@ -84,7 +83,6 @@ class MainActivity : AppCompatActivity() {
 		}
 		cameraParameter.parse(parameter)
 	}
-	
 	
 	private fun checkPermissions(): Boolean {
 		if (viewModel == null) {
@@ -178,7 +176,7 @@ class MainActivity : AppCompatActivity() {
 	private fun saveParameter(): Boolean {
 		val sharePreferences = getSharedPreferences(CAMERA_PARAMETER, Context.MODE_PRIVATE)
 		val editor = sharePreferences.edit()
-		
+		cameraParameter.writeParameterToLocal(editor)
 		return editor.commit()
 	}
 	

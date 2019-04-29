@@ -1,7 +1,6 @@
 package com.example.client.main
 
 import android.Manifest
-import com.otaliastudios.cameraview.Hdr
 
 val PERMISSIONS = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
 
@@ -49,24 +48,17 @@ const val ACTION_GET = "get"
 
 //命令列表-------------------------------------------------------------------------------------------
 
+
 //参数列表-------------------------------------------------------------------------------------------
 
 const val FLASH = "flash"
-
+val FLASH_STRING = arrayOf("off","on","auto","torch")
 
 const val HDR = "hdr"
-const val HDR_OFF = "off"
-const val HDR_ON = "on"
-val HDR_MAP = hashMapOf(
-	Hdr.ON to HDR_ON,
-	Hdr.OFF to HDR_OFF
-)
-val HDR_PARSE_MAP = hashMapOf(
-	HDR_ON to Hdr.ON,
-	HDR_OFF to Hdr.OFF
-)
+val HDR_STRING = arrayOf("off","on")
+
 
 const val WHITE_BALANCE = "white_balance"
-
+val WHITE_BALANCE_STRING = arrayOf("auto","incandescent","fluorescent,","daylight","cloudy")
 
 //参数列表-------------------------------------------------------------------------------------------

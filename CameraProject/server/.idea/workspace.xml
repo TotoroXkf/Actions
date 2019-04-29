@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a79a7eb-5d0f-4080-88b0-b36bb380cb3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/CameraParameter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/CameraParameter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -51,8 +50,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1675">
-              <caret line="149" column="49" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
+            <state relative-caret-position="129">
+              <caret line="93" column="14" lean-forward="true" selection-start-line="93" selection-start-column="14" selection-end-line="93" selection-end-column="14" />
               <folding>
                 <element signature="e#0#182#0" expanded="true" />
                 <element signature="n#!!block;n#sendMessage#0" />
@@ -214,7 +213,7 @@
       <workItem from="1555555066947" duration="16789000" />
       <workItem from="1555645725544" duration="2843000" />
       <workItem from="1556159499703" duration="4840000" />
-      <workItem from="1556417059778" duration="6901000" />
+      <workItem from="1556417059778" duration="7252000" />
     </task>
     <task id="LOCAL-00001" summary="Coding">
       <created>1555506235700</created>
@@ -237,11 +236,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555578405089</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Coding">
+      <created>1556433177423</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556433177423</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33777000" />
+    <option name="totallyTimeSpent" value="34128000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -254,7 +260,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -271,7 +276,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3297546" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3297546" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3297546" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -366,8 +371,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1675">
-          <caret line="149" column="49" selection-start-line="149" selection-start-column="49" selection-end-line="149" selection-end-column="49" />
+        <state relative-caret-position="129">
+          <caret line="93" column="14" lean-forward="true" selection-start-line="93" selection-start-column="14" selection-end-line="93" selection-end-column="14" />
           <folding>
             <element signature="e#0#182#0" expanded="true" />
             <element signature="n#!!block;n#sendMessage#0" />
