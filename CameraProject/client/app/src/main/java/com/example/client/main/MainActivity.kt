@@ -84,19 +84,6 @@ class MainActivity : AppCompatActivity() {
 		cameraParameter.parse(parameter)
 	}
 	
-	private fun checkPermissions(): Boolean {
-		if (viewModel == null) {
-			return false
-		}
-		for (permission in PERMISSIONS) {
-			if (ContextCompat.checkSelfPermission(this, permission)
-				!= PackageManager.PERMISSION_GRANTED
-			) {
-				return false
-			}
-		}
-		return true
-	}
 	
 	private fun waitCommand() {
 		singleThread.execute {
@@ -169,15 +156,25 @@ class MainActivity : AppCompatActivity() {
 		val outputStream = openFileOutput(FILE_NAME, Context.MODE_PRIVATE)
 		outputStream.write(bytes)
 		outputStream.close()
+		
+		val zoomValue = view?.cameraView?.zoom
+		cameraParameter.zoomValue = zoomValue!!
+		saveParameter()
+		
 		sendMessage(OK)
 		waitCommand()
 	}
 	
-	private fun saveParameter(): Boolean {
+	private fun saveParameter() {
 		val sharePreferences = getSharedPreferences(CAMERA_PARAMETER, Context.MODE_PRIVATE)
 		val editor = sharePreferences.edit()
 		cameraParameter.writeParameterToLocal(editor)
-		return editor.commit()
+		val result = editor.commit()
+		if (result) {
+			Log.e("xkf123456789", "写入新的参数到本地")
+		} else {
+			Log.e("xkf123456789", "写入新的参数到本地失败")
+		}
 	}
 	
 	override fun onDestroy() {

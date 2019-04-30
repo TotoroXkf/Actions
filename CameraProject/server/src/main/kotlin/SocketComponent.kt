@@ -124,6 +124,9 @@ private fun execute(number: Int, action: String) {
             sendMessage(socket, action)
             println("第 $number 台设备: ${readMessage(socket)}")
         }
+        ACTION_REMOVE -> {
+            closeSocket(number)
+        }
         else -> {
             sendMessage(socket, action)
             println("第 $number 台设备: ${readMessage(socket)}")

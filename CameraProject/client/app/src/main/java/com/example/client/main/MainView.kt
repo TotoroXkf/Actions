@@ -1,7 +1,9 @@
 package com.example.client.main
 
 import android.content.Context
+import android.graphics.PointF
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ProgressBar
@@ -29,7 +31,6 @@ class MainView : FrameLayout {
 		cameraView = findViewById(R.id.camera_view)
 		textNumber = findViewById(R.id.text_number)
 		progressBar = findViewById(R.id.progress_bar)
-		
 		cameraView?.run {
 			setLifecycleOwner(context as MainActivity)
 			addCameraListener(object : CameraListener() {

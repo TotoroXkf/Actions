@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a79a7eb-5d0f-4080-88b0-b36bb380cb3d" name="Default Changelist" comment="">
+    <list default="true" id="7a79a7eb-5d0f-4080-88b0-b36bb380cb3d" name="Default Changelist" comment="Coding">
+      <change beforePath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/src/main/java/com/example/client/main/Constant.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -32,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+            <state relative-caret-position="63">
+              <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -41,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/Constant.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
+            <state relative-caret-position="840">
+              <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -50,14 +53,35 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="93" column="14" lean-forward="true" selection-start-line="93" selection-start-column="14" selection-end-line="93" selection-end-column="14" />
+            <state relative-caret-position="562">
+              <caret line="187" column="4" lean-forward="true" selection-start-line="187" selection-start-column="4" selection-end-line="187" selection-end-column="4" />
               <folding>
-                <element signature="e#0#182#0" expanded="true" />
+                <element signature="n#!!block;n#runSocketCollectTask#0" />
+                <element signature="e#652#1658#2" />
+                <element signature="e#728#1652#1" />
+                <element signature="e#816#1642#2" />
+                <element signature="n#!!block;n#dispatchCommand#0" />
+                <element signature="e#1750#2629#1" />
+                <element signature="e#1852#1893#1" />
+                <element signature="e#2048#2247#0" />
+                <element signature="e#2097#2233#1" />
+                <element signature="e#2144#2215#2" />
+                <element signature="e#2276#2329#0" />
+                <element signature="e#2350#2613#0" />
+                <element signature="e#2439#2494#1" />
+                <element signature="e#2536#2599#2" />
+                <element signature="e#2714#2736#1" />
+                <element signature="e#2799#2858#1" />
+                <element signature="e#2905#3094#0" />
+                <element signature="e#3024#3084#1" />
+                <element signature="e#3117#3302#0" />
+                <element signature="e#3441#3770#0" />
+                <element signature="e#3615#3760#1" />
+                <element signature="e#3794#3906#0" />
+                <element signature="n#!!block;n#executeBySelf#0" />
                 <element signature="n#!!block;n#sendMessage#0" />
                 <element signature="n#!!block;n#readMessage#0" />
                 <element signature="n#!!block;n#readBytes#0" />
-                <element signature="n#!!block;n#closeSocket#0" />
               </folding>
             </state>
           </provider>
@@ -66,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+            <state relative-caret-position="357">
+              <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
               <folding>
                 <element signature="e#0#198#0" expanded="true" />
               </folding>
@@ -97,8 +121,8 @@
       <list>
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/kotlin/FileComponent.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/Constant.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Constant.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt" />
       </list>
     </option>
@@ -115,7 +139,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -151,6 +174,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -214,6 +238,9 @@
       <workItem from="1555645725544" duration="2843000" />
       <workItem from="1556159499703" duration="4840000" />
       <workItem from="1556417059778" duration="7252000" />
+      <workItem from="1556505560055" duration="572000" />
+      <workItem from="1556506213614" duration="536000" />
+      <workItem from="1556591017127" duration="1508000" />
     </task>
     <task id="LOCAL-00001" summary="Coding">
       <created>1555506235700</created>
@@ -247,7 +274,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34128000" />
+    <option name="totallyTimeSpent" value="36744000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -276,7 +303,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3297546" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3297546" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3297546" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3297546" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -335,6 +362,23 @@
     <entry file="file://$PROJECT_DIR$/pictures/1.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Constant.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/FileComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -345,40 +389,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/Constant.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/HttpComponent.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="23" column="20" lean-forward="true" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#198#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="63">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/SocketComponent.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="93" column="14" lean-forward="true" selection-start-line="93" selection-start-column="14" selection-end-line="93" selection-end-column="14" />
+        <state relative-caret-position="562">
+          <caret line="187" column="4" lean-forward="true" selection-start-line="187" selection-start-column="4" selection-end-line="187" selection-end-column="4" />
           <folding>
-            <element signature="e#0#182#0" expanded="true" />
+            <element signature="n#!!block;n#runSocketCollectTask#0" />
+            <element signature="e#652#1658#2" />
+            <element signature="e#728#1652#1" />
+            <element signature="e#816#1642#2" />
+            <element signature="n#!!block;n#dispatchCommand#0" />
+            <element signature="e#1750#2629#1" />
+            <element signature="e#1852#1893#1" />
+            <element signature="e#2048#2247#0" />
+            <element signature="e#2097#2233#1" />
+            <element signature="e#2144#2215#2" />
+            <element signature="e#2276#2329#0" />
+            <element signature="e#2350#2613#0" />
+            <element signature="e#2439#2494#1" />
+            <element signature="e#2536#2599#2" />
+            <element signature="e#2714#2736#1" />
+            <element signature="e#2799#2858#1" />
+            <element signature="e#2905#3094#0" />
+            <element signature="e#3024#3084#1" />
+            <element signature="e#3117#3302#0" />
+            <element signature="e#3441#3770#0" />
+            <element signature="e#3615#3760#1" />
+            <element signature="e#3794#3906#0" />
+            <element signature="n#!!block;n#executeBySelf#0" />
             <element signature="n#!!block;n#sendMessage#0" />
             <element signature="n#!!block;n#readMessage#0" />
             <element signature="n#!!block;n#readBytes#0" />
-            <element signature="n#!!block;n#closeSocket#0" />
           </folding>
         </state>
       </provider>

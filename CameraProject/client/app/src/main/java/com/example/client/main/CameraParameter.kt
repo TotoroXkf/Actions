@@ -23,6 +23,7 @@ class CameraParameter {
 	)
 	var playSound = false
 	var gridLine = Grid.OFF
+	var zoomValue = 0.0f
 	var gridLineColor = Color.WHITE
 	var autoFocusResetDelay = 1500
 	
@@ -58,6 +59,9 @@ class CameraParameter {
 				WHITE_BALANCE -> {
 					whiteBalance = whiteBalanceParseMap[value]!!
 				}
+				ZOOM -> {
+					zoomValue = value as Float
+				}
 			}
 		}
 	}
@@ -66,5 +70,6 @@ class CameraParameter {
 		editor.putString(FLASH, flashMap[flash])
 		editor.putString(HDR, hdrMap[hdr])
 		editor.putString(WHITE_BALANCE, whiteBalanceMap[whiteBalance])
+		editor.putFloat(ZOOM, zoomValue)
 	}
 }

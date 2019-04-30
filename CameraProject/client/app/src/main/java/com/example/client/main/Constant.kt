@@ -52,13 +52,14 @@ const val ACTION_GET = "get"
 //参数列表-------------------------------------------------------------------------------------------
 
 const val FLASH = "flash"
-val FLASH_STRING = arrayOf("off","on","auto","torch")
+val FLASH_STRING = arrayOf("off", "on", "auto", "torch")
 
 const val HDR = "hdr"
-val HDR_STRING = arrayOf("off","on")
-
+val HDR_STRING = arrayOf("off", "on")
 
 const val WHITE_BALANCE = "white_balance"
-val WHITE_BALANCE_STRING = arrayOf("auto","incandescent","fluorescent,","daylight","cloudy")
+val WHITE_BALANCE_STRING = arrayOf("auto", "incandescent", "fluorescent,", "daylight", "cloudy")
+
+const val ZOOM = "zoom"
 
 //参数列表-------------------------------------------------------------------------------------------
