@@ -39,3 +39,8 @@ const val ACTION_REMOVE = "remove"
  * 传输拍摄的照片到服务端
  */
 const val ACTION_GET = "get"
+
+/**
+ * 参数设置，控制焦距
+ */
+const val ACTION_ZOOM = "zoom"

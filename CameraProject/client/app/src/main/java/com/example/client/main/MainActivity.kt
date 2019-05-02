@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 	private var view: MainView? = null
 	private var singleThread = Executors.newSingleThreadExecutor()
 	private val cameraParameter = CameraParameter()
+	private var currentTime = 0L
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -36,7 +37,6 @@ class MainActivity : AppCompatActivity() {
 		window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN) //隐藏状态栏
 		
 		initViewModel()
-		initCameraParameter()
 		
 		viewModel?.viewStateLiveData?.value = viewModel?.createInitViewState()
 		viewModel?.getServerIp()
@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 		
 		viewModel?.viewStateLiveData?.observe(this, Observer<MainViewState> { viewState ->
 			view?.setState(viewState)
+			initCameraParameter()
 		})
 		
 		viewModel?.serverIpLiveData?.observe(this, Observer<String> { ip ->
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
 			return
 		}
 		cameraParameter.parse(parameter)
+		view?.setCameraViewParameter(cameraParameter)
 	}
 	
 	
@@ -124,6 +126,7 @@ class MainActivity : AppCompatActivity() {
 	private fun executeCommand(action: String, paramMap: Map<String, String>) {
 		when (action) {
 			ACTION_CAPTURE -> {
+				currentTime = System.currentTimeMillis()
 				view?.cameraView?.capturePicture()
 			}
 			ACTION_GET -> {
@@ -141,6 +144,14 @@ class MainActivity : AppCompatActivity() {
 				waitCommand()
 			}
 			ACTION_DELAY_TEST -> {
+				sendMessage(OK)
+				waitCommand()
+			}
+			ACTION_ZOOM -> {
+				val zoomValue = paramMap["value"]?.toFloat()
+				view?.cameraView?.zoom = zoomValue!!
+				cameraParameter.zoomValue = zoomValue
+				saveParameter()
 				sendMessage(OK)
 				waitCommand()
 			}
@@ -162,6 +173,7 @@ class MainActivity : AppCompatActivity() {
 		saveParameter()
 		
 		sendMessage(OK)
+		sendMessage("" + currentTime)
 		waitCommand()
 	}
 	

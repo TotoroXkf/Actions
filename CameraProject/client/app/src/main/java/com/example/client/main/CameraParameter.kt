@@ -2,6 +2,7 @@ package com.example.client.main
 
 import android.content.SharedPreferences
 import android.graphics.Color
+import android.util.Log
 import com.otaliastudios.cameraview.*
 
 class CameraParameter {
@@ -24,8 +25,6 @@ class CameraParameter {
 	var playSound = false
 	var gridLine = Grid.OFF
 	var zoomValue = 0.0f
-	var gridLineColor = Color.WHITE
-	var autoFocusResetDelay = 1500
 	
 	init {
 		val flashEnum = Flash.values()

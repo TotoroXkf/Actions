@@ -84,7 +84,7 @@ fun dispatchCommand() {
     }
 }
 
-private fun execute(number: Int, action: String) {
+private fun execute(number: Int, command: String) {
     if (number !in socketMap) {
         return
     }
@@ -93,27 +93,39 @@ private fun execute(number: Int, action: String) {
         println("第 $number 台设备已经关闭")
         return
     }
+
+    var action = ""
+    val index = command.indexOf("?")
+    action = if (index > 0) {
+        command.substring(0, index)
+    } else {
+        command
+    }
+
     when (action) {
         ACTION_CAPTURE -> {
-            sendMessage(socket, action)
+            sendMessage(socket, command)
             val message = readMessage(socket)
             if (message == OK) {
                 println("第 $number 台设备拍摄完毕")
             }
+
+            val time = readMessage(socket).toLong()
+            timeAnalyze(time, socketMap.size)
         }
         ACTION_GET -> {
-            sendMessage(socket, action)
+            sendMessage(socket, command)
             println("正在接受第 $number 台设备发来的数据......")
             val bytes = readBytes(socket)
             writeToLocal(bytes, number)
         }
         ACTION_FINISH -> {
-            sendMessage(socket, action)
+            sendMessage(socket, command)
             closeSocket(number)
         }
         ACTION_DELAY_TEST -> {
             val startTime = System.currentTimeMillis()
-            sendMessage(socket, action)
+            sendMessage(socket, command)
             val message = readMessage(socket)
             if (message == OK) {
                 val endTime = System.currentTimeMillis()
@@ -121,15 +133,18 @@ private fun execute(number: Int, action: String) {
             }
         }
         ACTION_ECHO -> {
-            sendMessage(socket, action)
+            sendMessage(socket, command)
             println("第 $number 台设备: ${readMessage(socket)}")
         }
         ACTION_REMOVE -> {
             closeSocket(number)
         }
-        else -> {
-            sendMessage(socket, action)
+        ACTION_ZOOM -> {
+            sendMessage(socket, command)
             println("第 $number 台设备: ${readMessage(socket)}")
+        }
+        else -> {
+            println("没有相关的命令")
         }
     }
 }
@@ -139,11 +154,6 @@ private fun executeBySelf(action: String) {
         ACTION_DEVICE_COUNT -> {
             println("目前连接的设备有: ${socketMap.size} 个")
         }
-//        ACTION_REMOVE -> {
-//            val index = action.indexOf("_")
-//            val number = action.substring(index + 1).toInt()
-//            closeSocket(number)
-//        }
         else -> {
 
         }

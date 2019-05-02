@@ -46,6 +46,11 @@ const val ACTION_REMOVE = "remove"
  */
 const val ACTION_GET = "get"
 
+/**
+ * 参数设置，控制焦距
+ */
+const val ACTION_ZOOM = "zoom"
+
 //命令列表-------------------------------------------------------------------------------------------
 
 

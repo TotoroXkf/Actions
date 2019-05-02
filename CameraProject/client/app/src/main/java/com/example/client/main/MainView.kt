@@ -64,14 +64,13 @@ class MainView : FrameLayout {
 			flash = parameter.flash
 			whiteBalance = parameter.whiteBalance
 			hdr = parameter.hdr
+			zoom = parameter.zoomValue
 			audio = parameter.audio
 			for ((key, value) in parameter.gestures.entries) {
 				mapGesture(key, value)
 			}
 			playSounds = parameter.playSound
 			grid = parameter.gridLine
-//			setGridColor(parameter.gridLineColor)
-//			setCameraAutoFocusResetDelay(1000)
 		}
 	}
 }
