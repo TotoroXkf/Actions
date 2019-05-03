@@ -104,20 +104,21 @@ private fun execute(number: Int, command: String) {
 
     when (action) {
         ACTION_CAPTURE -> {
+            val starTime = System.currentTimeMillis()
             sendMessage(socket, command)
             val message = readMessage(socket)
             if (message == OK) {
                 println("第 $number 台设备拍摄完毕")
             }
 
-            val time = readMessage(socket).toLong()
-            timeAnalyze(time, socketMap.size)
+            val clientConsumeTime = readMessage(socket).toLong()
+            timeAnalyze(starTime,clientConsumeTime, socketMap.size)
         }
         ACTION_GET -> {
             sendMessage(socket, command)
             println("正在接受第 $number 台设备发来的数据......")
             val bytes = readBytes(socket)
-            writeToLocal(bytes, number)
+            writeBytesToLocal(bytes, number)
         }
         ACTION_FINISH -> {
             sendMessage(socket, command)

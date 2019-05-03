@@ -2,8 +2,11 @@ import kotlin.math.abs
 
 val timeList = ArrayList<Long>()
 
-fun timeAnalyze(time: Long, maxSize: Int) {
+fun timeAnalyze(startTime: Long, clientConsumeTime: Long, maxSize: Int) {
+    val currentTime = System.currentTimeMillis()
     synchronized(timeList) {
+        val rttConsumeTime = ((currentTime - startTime) - clientConsumeTime) / 2
+        val time = startTime + rttConsumeTime
         timeList.add(time)
         if (timeList.size != maxSize) {
             return
@@ -12,7 +15,8 @@ fun timeAnalyze(time: Long, maxSize: Int) {
         val maxValue = timeList.max()!!
         val minValue = timeList.min()!!
         val timeDifference = abs(maxValue - minValue)
-        println("本次拍摄最长的时间间隔为 $timeDifference ms")
+        println("本次间隔最大时延为：$timeDifference ms")
+        writeLog(timeList)
         timeList.clear()
     }
 }

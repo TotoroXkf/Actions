@@ -1,14 +1,12 @@
 package com.example.client.main
 
 import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.client.R
@@ -23,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 	private var view: MainView? = null
 	private var singleThread = Executors.newSingleThreadExecutor()
 	private val cameraParameter = CameraParameter()
-	private var currentTime = 0L
+	private var startTime = 0L
 	
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -126,7 +124,7 @@ class MainActivity : AppCompatActivity() {
 	private fun executeCommand(action: String, paramMap: Map<String, String>) {
 		when (action) {
 			ACTION_CAPTURE -> {
-				currentTime = System.currentTimeMillis()
+				startTime = System.currentTimeMillis()
 				view?.cameraView?.capturePicture()
 			}
 			ACTION_GET -> {
@@ -173,7 +171,8 @@ class MainActivity : AppCompatActivity() {
 		saveParameter()
 		
 		sendMessage(OK)
-		sendMessage("" + currentTime)
+		val consumeTime = System.currentTimeMillis() - startTime
+		sendMessage("" + consumeTime)
 		waitCommand()
 	}
 	
