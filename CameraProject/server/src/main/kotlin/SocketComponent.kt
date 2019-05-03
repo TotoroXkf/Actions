@@ -72,12 +72,17 @@ fun dispatchCommand() {
                 executeBySelf(action)
             }
             else -> {
-                val number = partner.toInt()
+                var number = -1
+                try {
+                    number = partner.toInt()
+                } catch (e: Exception) {
+                }
                 if (number !in socketMap) {
                     println("无效输入")
-                }
-                cachedThreadPool.execute {
-                    execute(number, action)
+                } else {
+                    cachedThreadPool.execute {
+                        execute(number, action)
+                    }
                 }
             }
         }
@@ -94,7 +99,7 @@ private fun execute(number: Int, command: String) {
         return
     }
 
-    var action = ""
+    val action: String
     val index = command.indexOf("?")
     action = if (index > 0) {
         command.substring(0, index)
@@ -112,7 +117,7 @@ private fun execute(number: Int, command: String) {
             }
 
             val clientConsumeTime = readMessage(socket).toLong()
-            timeAnalyze(starTime,clientConsumeTime, socketMap.size)
+            timeAnalyze(starTime, clientConsumeTime, socketMap.size)
         }
         ACTION_GET -> {
             sendMessage(socket, command)

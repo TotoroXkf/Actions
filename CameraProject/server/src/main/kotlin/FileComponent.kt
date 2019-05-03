@@ -1,5 +1,6 @@
-import java.io.*
-import kotlin.math.abs
+import java.io.File
+import java.io.FileOutputStream
+import java.io.FileWriter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -59,10 +60,8 @@ fun writeLog(timeList: ArrayList<Long>) {
 
         //记录最大间隔
         write("最大时间间隔： ")
-        val maxValue = timeList.max()!!
-        val minValue = timeList.min()!!
-        val timeDifference = abs(maxValue - minValue)
-        write(timeDifference.toString())
+        write(getMaxTimeDifference(timeList).toString())
+        write("ms")
         write("\n")
 
         close()

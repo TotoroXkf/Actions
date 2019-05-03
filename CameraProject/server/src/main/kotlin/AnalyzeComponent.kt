@@ -12,11 +12,15 @@ fun timeAnalyze(startTime: Long, clientConsumeTime: Long, maxSize: Int) {
             return
         }
         println("分析数据中.....")
-        val maxValue = timeList.max()!!
-        val minValue = timeList.min()!!
-        val timeDifference = abs(maxValue - minValue)
-        println("本次间隔最大时延为：$timeDifference ms")
+
+        println("本次间隔最大时延为：${getMaxTimeDifference(timeList)} ms")
         writeLog(timeList)
         timeList.clear()
     }
+}
+
+fun getMaxTimeDifference(timeList: ArrayList<Long>): Long {
+    val maxValue = timeList.max()!!
+    val minValue = timeList.min()!!
+    return abs(maxValue - minValue)
 }
