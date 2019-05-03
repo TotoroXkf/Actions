@@ -1,7 +1,6 @@
 package com.example.client.main
 
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.util.Log
 import com.otaliastudios.cameraview.*
 
@@ -63,6 +62,33 @@ class CameraParameter {
 				}
 			}
 		}
+	}
+	
+	fun parseHdr(hdrValue: String): Boolean {
+		if (hdrValue !in hdrParseMap) {
+			Log.e("xkf123456789", "设置参数失败")
+			return false
+		}
+		hdr = hdrParseMap[hdrValue]!!
+		return true
+	}
+	
+	fun parseFlash(flashValue: String): Boolean {
+		if (flashValue !in flashParseMap) {
+			Log.e("xkf123456789", "设置参数失败")
+			return false
+		}
+		flash = flashParseMap[flashValue]!!
+		return true
+	}
+	
+	fun parseWhiteBalance(whiteBalanceValue: String): Boolean {
+		if (whiteBalanceValue !in whiteBalanceParseMap) {
+			Log.e("xkf123456789", "设置参数失败")
+			return false
+		}
+		whiteBalance = whiteBalanceParseMap[whiteBalanceValue]!!
+		return true
 	}
 	
 	fun writeParameterToLocal(editor: SharedPreferences.Editor) {

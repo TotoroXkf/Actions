@@ -147,10 +147,42 @@ class MainActivity : AppCompatActivity() {
 			}
 			ACTION_ZOOM -> {
 				val zoomValue = paramMap["value"]?.toFloat()
-				view?.cameraView?.zoom = zoomValue!!
-				cameraParameter.zoomValue = zoomValue
+				cameraParameter.zoomValue = zoomValue!!
 				saveParameter()
 				sendMessage(OK)
+				waitCommand()
+			}
+			ACTION_FLASH -> {
+				val flashValue = paramMap["value"] ?: error("")
+				val result = cameraParameter.parseFlash(flashValue)
+				if (result) {
+					saveParameter()
+					sendMessage(OK)
+				} else {
+					sendMessage(ERROR)
+				}
+				waitCommand()
+			}
+			ACTION_HDR -> {
+				val hdrValue = paramMap["value"] ?: error("")
+				val result = cameraParameter.parseHdr(hdrValue)
+				if (result) {
+					saveParameter()
+					sendMessage(OK)
+				} else {
+					sendMessage(ERROR)
+				}
+				waitCommand()
+			}
+			ACTION_WHITE_BALANCE -> {
+				val whiteBalanceValue = paramMap["value"] ?: error("")
+				val result = cameraParameter.parseWhiteBalance(whiteBalanceValue)
+				if (result) {
+					saveParameter()
+					sendMessage(OK)
+				} else {
+					sendMessage(ERROR)
+				}
 				waitCommand()
 			}
 			else -> {
@@ -177,6 +209,7 @@ class MainActivity : AppCompatActivity() {
 	}
 	
 	private fun saveParameter() {
+		view?.setCameraViewParameter(cameraParameter)
 		val sharePreferences = getSharedPreferences(CAMERA_PARAMETER, Context.MODE_PRIVATE)
 		val editor = sharePreferences.edit()
 		cameraParameter.writeParameterToLocal(editor)

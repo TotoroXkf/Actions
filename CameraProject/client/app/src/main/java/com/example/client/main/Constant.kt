@@ -6,6 +6,7 @@ val PERMISSIONS = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD
 
 const val SOCKET_PORT = 12306
 const val OK = "ok"
+const val ERROR = "error"
 const val FILE_NAME = "picture.jpg"
 const val CAMERA_PARAMETER = "camera_parameter"
 
@@ -50,6 +51,21 @@ const val ACTION_GET = "get"
  * 参数设置，控制焦距
  */
 const val ACTION_ZOOM = "zoom"
+
+/**
+ * 参数设置，控制hdr
+ */
+const val ACTION_HDR = "hdr"
+
+/**
+ * 参数设置，控制flash
+ */
+const val ACTION_FLASH = "flash"
+
+/**
+ * 参数设置，控制白平衡
+ */
+const val ACTION_WHITE_BALANCE = "white_balance"
 
 //命令列表-------------------------------------------------------------------------------------------
 

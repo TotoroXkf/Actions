@@ -145,9 +145,12 @@ private fun execute(number: Int, command: String) {
         ACTION_REMOVE -> {
             closeSocket(number)
         }
-        ACTION_ZOOM -> {
+        ACTION_ZOOM, ACTION_FLASH, ACTION_HDR, ACTION_WHITE_BALANCE -> {
             sendMessage(socket, command)
-            println("第 $number 台设备: ${readMessage(socket)}")
+            val message = readMessage(socket)
+            if (message != OK) {
+                println("第 $number 台设备参数设置失败！")
+            }
         }
         else -> {
             println("没有相关的命令")

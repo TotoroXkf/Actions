@@ -44,3 +44,18 @@ const val ACTION_GET = "get"
  * 参数设置，控制焦距
  */
 const val ACTION_ZOOM = "zoom"
+
+/**
+ * 参数设置，控制hdr
+ */
+const val ACTION_HDR = "hdr"
+
+/**
+ * 参数设置，控制flash
+ */
+const val ACTION_FLASH = "flash"
+
+/**
+ * 参数设置，控制白平衡
+ */
+const val ACTION_WHITE_BALANCE = "white_balance"
