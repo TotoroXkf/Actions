@@ -150,6 +150,8 @@ private fun execute(number: Int, command: String) {
             val message = readMessage(socket)
             if (message != OK) {
                 println("第 $number 台设备参数设置失败！")
+            } else {
+                println("第 $number 台设备参数设置成功")
             }
         }
         else -> {

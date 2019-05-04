@@ -47,6 +47,7 @@ class CameraParameter {
 	
 	fun parse(parameter: Map<String, *>) {
 		for ((key, value) in parameter) {
+			Log.e("xkf123456789", "$key -- $value")
 			when (key) {
 				FLASH -> {
 					flash = flashParseMap[value]!!
