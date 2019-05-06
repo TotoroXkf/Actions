@@ -2,6 +2,7 @@ package com.example.client.main
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -224,6 +225,7 @@ class MainActivity : AppCompatActivity() {
 	override fun onDestroy() {
 		EventBus.getDefault().unregister(this)
 		disConnect()
+		Handler().sendEmptyMessage(1)
 		super.onDestroy()
 	}
 }
