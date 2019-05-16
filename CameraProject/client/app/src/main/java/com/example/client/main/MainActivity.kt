@@ -85,7 +85,6 @@ class MainActivity : AppCompatActivity() {
 		view?.setCameraViewParameter(cameraParameter)
 	}
 	
-	
 	private fun waitCommand() {
 		singleThread.execute {
 			val message = readMessage()
@@ -107,7 +106,7 @@ class MainActivity : AppCompatActivity() {
 		return if (data.size > 1) {
 			val action = data[0]
 			val param = data[1]
-			param.split("#").map { s ->
+			param.split(",").map { s ->
 				val index = s.indexOf('=')
 				val key = s.substring(0, index)
 				val value = s.substring(index + 1)
@@ -184,6 +183,22 @@ class MainActivity : AppCompatActivity() {
 				} else {
 					sendMessage(ERROR)
 				}
+				waitCommand()
+			}
+			ACTION_FOCUS_AREA -> {
+				val x = (paramMap["x"] ?: error("")).toFloat()
+				val y = (paramMap["y"] ?: error("")).toFloat()
+				cameraParameter.focusX = x
+				cameraParameter.focusY = y
+				saveParameter()
+				sendMessage(OK)
+				waitCommand()
+			}
+			ACTION_EXPOSURE_CORRECTION -> {
+				val correctionValue = (paramMap["value"] ?: error("")).toFloat()
+				cameraParameter.exposureCorrectionValue = correctionValue
+				saveParameter()
+				sendMessage(OK)
 				waitCommand()
 			}
 			else -> {

@@ -145,7 +145,12 @@ private fun execute(number: Int, command: String) {
         ACTION_REMOVE -> {
             closeSocket(number)
         }
-        ACTION_ZOOM, ACTION_FLASH, ACTION_HDR, ACTION_WHITE_BALANCE -> {
+        ACTION_ZOOM,
+        ACTION_FLASH,
+        ACTION_HDR,
+        ACTION_WHITE_BALANCE,
+        ACTION_FOCUS_AREA,
+        ACTION_EXPOSURE_CORRECTION -> {
             sendMessage(socket, command)
             val message = readMessage(socket)
             if (message != OK) {

@@ -1,7 +1,6 @@
 package com.example.client.main
 
 import android.content.Context
-import android.graphics.PointF
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -12,6 +11,7 @@ import com.example.client.R
 import com.otaliastudios.cameraview.CameraListener
 import com.otaliastudios.cameraview.CameraView
 import org.greenrobot.eventbus.EventBus
+import kotlin.random.Random
 
 class MainView : FrameLayout {
 	var cameraView: CameraView? = null
@@ -42,6 +42,7 @@ class MainView : FrameLayout {
 				}
 			})
 		}
+		
 	}
 	
 	fun setState(viewState: MainViewState) {
@@ -71,7 +72,18 @@ class MainView : FrameLayout {
 			}
 			playSounds = parameter.playSound
 			grid = parameter.gridLine
+			exposureCorrection = parameter.exposureCorrectionValue
 		}
+		val setFocusXY = object : Runnable {
+			override fun run() {
+				if (width > 0 && height > 0) {
+					cameraView?.startAutoFocus(parameter.focusX, parameter.focusY)
+				} else {
+					postDelayed(this, 200)
+				}
+			}
+		}
+		postDelayed(setFocusXY, 500)
 	}
 }
 

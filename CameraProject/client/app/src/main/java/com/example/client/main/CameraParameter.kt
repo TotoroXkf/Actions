@@ -24,6 +24,9 @@ class CameraParameter {
 	var playSound = false
 	var gridLine = Grid.OFF
 	var zoomValue = 0.0f
+	var focusX = 0f
+	var focusY = 0f
+	var exposureCorrectionValue = 0f
 	
 	init {
 		val flashEnum = Flash.values()
@@ -42,26 +45,6 @@ class CameraParameter {
 		for (i in WHITE_BALANCE_STRING.indices) {
 			whiteBalanceMap[whiteBalanceEnum[i]] = WHITE_BALANCE_STRING[i]
 			whiteBalanceParseMap[WHITE_BALANCE_STRING[i]] = whiteBalanceEnum[i]
-		}
-	}
-	
-	fun parse(parameter: Map<String, *>) {
-		for ((key, value) in parameter) {
-			Log.e("xkf123456789", "$key -- $value")
-			when (key) {
-				FLASH -> {
-					flash = flashParseMap[value]!!
-				}
-				HDR -> {
-					hdr = hdrParseMap[value]!!
-				}
-				WHITE_BALANCE -> {
-					whiteBalance = whiteBalanceParseMap[value]!!
-				}
-				ZOOM -> {
-					zoomValue = value as Float
-				}
-			}
 		}
 	}
 	
@@ -92,10 +75,41 @@ class CameraParameter {
 		return true
 	}
 	
+	fun parse(parameter: Map<String, *>) {
+		for ((key, value) in parameter) {
+			when (key) {
+				FLASH -> {
+					flash = flashParseMap[value]!!
+				}
+				HDR -> {
+					hdr = hdrParseMap[value]!!
+				}
+				WHITE_BALANCE -> {
+					whiteBalance = whiteBalanceParseMap[value]!!
+				}
+				ZOOM -> {
+					zoomValue = value as Float
+				}
+				FOCUS_Y -> {
+					focusY = value as Float
+				}
+				FOCUS_X -> {
+					focusX = value as Float
+				}
+				EXPOSURE_CORRECTION -> {
+					exposureCorrectionValue = value as Float
+				}
+			}
+		}
+	}
+	
 	fun writeParameterToLocal(editor: SharedPreferences.Editor) {
 		editor.putString(FLASH, flashMap[flash])
 		editor.putString(HDR, hdrMap[hdr])
 		editor.putString(WHITE_BALANCE, whiteBalanceMap[whiteBalance])
 		editor.putFloat(ZOOM, zoomValue)
+		editor.putFloat(EXPOSURE_CORRECTION, exposureCorrectionValue)
+		editor.putFloat(FOCUS_X, focusX)
+		editor.putFloat(FOCUS_Y, focusY)
 	}
 }

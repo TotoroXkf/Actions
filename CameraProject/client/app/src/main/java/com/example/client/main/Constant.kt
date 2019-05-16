@@ -67,6 +67,16 @@ const val ACTION_FLASH = "flash"
  */
 const val ACTION_WHITE_BALANCE = "white_balance"
 
+/**
+ * 参数设置，控制对焦区域
+ */
+const val ACTION_FOCUS_AREA = "focus"
+
+/**
+ * 参数设置，曝光补偿
+ */
+const val ACTION_EXPOSURE_CORRECTION = "exposure"
+
 //命令列表-------------------------------------------------------------------------------------------
 
 
@@ -82,5 +92,10 @@ const val WHITE_BALANCE = "white_balance"
 val WHITE_BALANCE_STRING = arrayOf("auto", "incandescent", "fluorescent,", "daylight", "cloudy")
 
 const val ZOOM = "zoom"
+
+const val FOCUS_X = "focus_x"
+const val FOCUS_Y = "focus_y"
+
+const val EXPOSURE_CORRECTION = "exposure_correction"
 
 //参数列表-------------------------------------------------------------------------------------------

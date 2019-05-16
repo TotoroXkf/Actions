@@ -59,3 +59,13 @@ const val ACTION_FLASH = "flash"
  * 参数设置，控制白平衡
  */
 const val ACTION_WHITE_BALANCE = "white_balance"
+
+/**
+ * 参数设置，控制对焦区域
+ */
+const val ACTION_FOCUS_AREA = "focus"
+
+/**
+ * 参数设置，曝光补偿
+ */
+const val ACTION_EXPOSURE_CORRECTION= "exposure"
