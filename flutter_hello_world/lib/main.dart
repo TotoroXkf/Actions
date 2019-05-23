@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,18 +16,17 @@ class MyApp extends StatelessWidget {
           title: Text('Flutter'),
         ),
         body: Center(
-          child: Opacity(
-            opacity: 0.3,
-            child: Container(
-              width: 250.0,
-              height: 100.0,
-              decoration: BoxDecoration(color: Colors.black),
-              child: Text(
-                '不透明度0.3',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 28.0,
-                ),
+          child: Container(
+            width: 300,
+            height: 300,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: const FractionalOffset(0.5, 0.0),
+                end: const FractionalOffset(1.0, 1.0),
+                colors: <Color>[
+                  Colors.red,
+                  Colors.blue,
+                ],
               ),
             ),
           ),
