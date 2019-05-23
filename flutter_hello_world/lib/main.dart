@@ -15,22 +15,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Flutter'),
         ),
-        body: Center(
-          child: Container(
-            width: 300,
-            height: 300,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: const FractionalOffset(0.5, 0.0),
-                end: const FractionalOffset(1.0, 1.0),
-                colors: <Color>[
-                  Colors.red,
-                  Colors.blue,
-                ],
-              ),
-            ),
-          ),
-        ),
+        body: null,
       ),
     );
   }
