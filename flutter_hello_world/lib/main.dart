@@ -14,27 +14,66 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Flutter'),
         ),
-        body: Container(
-          color: Colors.green,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
+        body: Column(
+          children: <Widget>[
+            //水平方向1:1:2平分区域
+            Flex(
+              direction: Axis.horizontal,
               children: <Widget>[
-                Container(
-                  color: Colors.red,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Text("hello world "),
-                      Text("I am Jack "),
-                    ],
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    height: 30,
+                    color: Colors.red,
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    height: 30,
+                    color: Colors.blue,
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(
+                    height: 30,
+                    color: Colors.black,
                   ),
                 ),
               ],
             ),
-          ),
+            Padding(
+              padding: EdgeInsets.only(top: 20.0),
+              child: SizedBox(
+                height: 100.0,
+                //竖直方向上均分100像素值
+                child: Flex(
+                  direction: Axis.vertical,
+                  children: <Widget>[
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        color: Colors.red,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        color: Colors.green,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
