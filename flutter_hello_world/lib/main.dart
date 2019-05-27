@@ -14,64 +14,30 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Flutter'),
         ),
-        body: Column(
+        body: Wrap(
+          spacing: 8.0,
+          runSpacing: 4.0,
+          alignment: WrapAlignment.end,
           children: <Widget>[
-            //水平方向1:1:2平分区域
-            Flex(
-              direction: Axis.horizontal,
-              children: <Widget>[
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    height: 30,
-                    color: Colors.red,
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    height: 30,
-                    color: Colors.blue,
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    height: 30,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
+            new Chip(
+              avatar: new CircleAvatar(
+                  backgroundColor: Colors.blue, child: Text('A')),
+              label: new Text('Hamilton'),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 20.0),
-              child: SizedBox(
-                height: 100.0,
-                //竖直方向上均分100像素值
-                child: Flex(
-                  direction: Axis.vertical,
-                  children: <Widget>[
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        color: Colors.red,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(
-                        color: Colors.green,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Container(
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            new Chip(
+              avatar: new CircleAvatar(
+                  backgroundColor: Colors.blue, child: Text('M')),
+              label: new Text('Lafayette'),
+            ),
+            new Chip(
+              avatar: new CircleAvatar(
+                  backgroundColor: Colors.blue, child: Text('H')),
+              label: new Text('Mulligan'),
+            ),
+            new Chip(
+              avatar: new CircleAvatar(
+                  backgroundColor: Colors.blue, child: Text('J')),
+              label: new Text('Laurens'),
             ),
           ],
         ),
