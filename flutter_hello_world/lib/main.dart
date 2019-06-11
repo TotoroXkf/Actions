@@ -20,22 +20,48 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyWidget extends StatelessWidget {
+class MyWidget extends StatefulWidget {
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  List<IconData> data = [];
+
+  @override
+  void initState() {
+    loadData();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GridView(
+    return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         childAspectRatio: 1.0,
       ),
-      children: <Widget>[
-        Icon(Icons.ac_unit),
-        Icon(Icons.airport_shuttle),
-        Icon(Icons.all_inclusive),
-        Icon(Icons.beach_access),
-        Icon(Icons.cake),
-        Icon(Icons.free_breakfast)
-      ],
+      itemCount: data.length,
+      itemBuilder: (BuildContext context, int index) {
+        if (index == data.length - 1) {
+          loadData();
+        }
+        return Icon(data[index]);
+      },
     );
+  }
+
+  void loadData() {
+    Future.delayed(Duration(milliseconds: 200)).then((e) {
+      setState(() {
+        data.addAll([
+          Icons.ac_unit,
+          Icons.airport_shuttle,
+          Icons.all_inclusive,
+          Icons.beach_access,
+          Icons.cake,
+          Icons.free_breakfast,
+        ]);
+      });
+    });
   }
 }
