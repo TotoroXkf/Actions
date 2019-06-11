@@ -10,60 +10,72 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter'),
-        ),
-        body: Material(
-          child: CustomScrollView(
-            slivers: <Widget>[
-              SliverAppBar(
-                pinned: true,
-                expandedHeight: 250,
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Text('Demo'),
-                  background: Image.asset(
-                    './images/image.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              SliverPadding(
-                padding: EdgeInsets.all(8.0),
-                sliver: SliverGrid(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      mainAxisSpacing: 10.0,
-                      crossAxisSpacing: 10.0,
-                      childAspectRatio: 4.0),
-                  delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      color: Colors.cyan[100 * (index % 9)],
-                      child: Text('grid item $index'),
-                    );
-                  }, childCount: 50),
-                ),
-              ),
-              SliverFixedExtentList(
-                itemExtent: 50.0,
-                delegate: new SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    //创建列表项
-                    return new Container(
-                      alignment: Alignment.center,
-                      color: Colors.lightBlue[100 * (index % 9)],
-                      child: new Text('list item $index'),
-                    );
-                  },
-                  childCount: 50, //50个列表项
-                ),
-              ),
-            ],
-          ),
+      home: MyWidget(),
+    );
+  }
+}
+
+class MyWidget extends StatefulWidget {
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  ScrollController controller = ScrollController();
+  bool showButton = false;
+
+  @override
+  void initState() {
+    controller.addListener(() {
+      if (controller.offset < 1000 && showButton) {
+        setState(() {
+          showButton = false;
+        });
+      } else if (controller.offset >= 1000 && !showButton) {
+        setState(() {
+          showButton = true;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter'),
+      ),
+      body: Scrollbar(
+        child: ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text('$index'),
+            );
+          },
+          itemCount: 100,
+          itemExtent: 50,
+          controller: controller,
         ),
       ),
+      floatingActionButton: !showButton
+          ? null
+          : FloatingActionButton(
+              child: Icon(Icons.arrow_upward),
+              onPressed: () {
+                //控制滑动到顶部
+                controller.animateTo(
+                  0,
+                  duration: Duration(milliseconds: 1000),
+                  curve: Curves.ease,
+                );
+              },
+            ),
     );
   }
 }
