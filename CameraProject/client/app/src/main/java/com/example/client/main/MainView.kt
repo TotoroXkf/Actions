@@ -74,17 +74,18 @@ class MainView : FrameLayout {
 			grid = parameter.gridLine
 			exposureCorrection = parameter.exposureCorrectionValue
 		}
-		val setFocusXY = object : Runnable {
-			override fun run() {
-				if (width > 0 && height > 0) {
-					cameraView?.startAutoFocus(parameter.focusX, parameter.focusY)
-				} else {
-					postDelayed(this, 200)
-				}
-			}
-		}
-		postDelayed(setFocusXY, 500)
+//		val setFocusXY = object : Runnable {
+//			override fun run() {
+//				if (parameter.focusX >= 0 && parameter.focusX <= width && parameter.focusY >= 0 && parameter.focusY <= height) {
+//					cameraView?.startAutoFocus(parameter.focusX, parameter.focusY)
+//				} else {
+//					postDelayed(this, 200)
+//				}
+//			}
+//		}
+//		postDelayed(setFocusXY, 500)
 	}
 }
+
 
 

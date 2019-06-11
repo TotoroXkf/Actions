@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
 			saveParameter()
 			return
 		}
+		Log.e("xkf123456789","读入本地保存的参数设置")
 		cameraParameter.parse(parameter)
 		view?.setCameraViewParameter(cameraParameter)
 	}
