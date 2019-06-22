@@ -1,73 +1,44 @@
 package com.example.gesture;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private TextView text;
     private View content;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return true;
+    }
 
-        text = findViewById(R.id.text);
-        content = findViewById(R.id.content);
-
-        GestureDetector.OnGestureListener listener = new GestureDetector.OnGestureListener() {
-
-            @Override
-            public boolean onDown(MotionEvent e) {
-                text.setText("单次点击");
-                return true;
-            }
-
-            @Override
-            public void onShowPress(MotionEvent e) {
-
-            }
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-                text.setText("抬起");
-                return true;
-            }
-
-            @Override
-            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                text.setText("滚动");
-                return true;
-            }
-
-            @Override
-            public void onLongPress(MotionEvent e) {
-                text.setText("长按");
-            }
-
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                text.setText("滑动");
-                return true;
-            }
-        };
-        final GestureDetector detector = new GestureDetector(this, listener);
-        View.OnTouchListener touchListener = new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return detector.onTouchEvent(event);
-            }
-        };
-
-        Log.e("xkf", "onCreate: ");
-        content.setOnTouchListener(touchListener);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //对菜单项点击内容进行设置
+        int id = item.getItemId();
+        if (id == R.id.openMenu) {
+            Toast.makeText(this,"打开文件",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this,"关闭文件",Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

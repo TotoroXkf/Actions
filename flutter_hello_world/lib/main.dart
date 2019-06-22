@@ -10,8 +10,58 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyWidget(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter'),
+        ),
+        body: MyWidget(),
+      ),
     );
+  }
+}
+
+//固定写法
+class ShareDataWidget extends InheritedWidget {
+  const ShareDataWidget({
+    //data是自定义的
+    @required this.data,
+    Key key,
+    @required Widget child,
+  })  : assert(child != null),
+        super(key: key, child: child);
+
+  final int data;
+
+  static ShareDataWidget of(BuildContext context) {
+    return context.inheritFromWidgetOfExactType(ShareDataWidget)
+        as ShareDataWidget;
+  }
+
+  @override
+  bool updateShouldNotify(ShareDataWidget old) {
+    return old.data != data;
+  }
+}
+
+class DataWidget extends StatefulWidget {
+  @override
+  _DataWidgetState createState() => _DataWidgetState();
+}
+
+class _DataWidgetState extends State<DataWidget> {
+  @override
+  Widget build(BuildContext context) {
+    //使用共享数据
+    return Center(
+      child: Text(ShareDataWidget.of(context).data.toString()),
+    );
+  }
+
+  //共享数据发生改变时调用
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print('change');
   }
 }
 
@@ -21,61 +71,32 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
-  ScrollController controller = ScrollController();
-  bool showButton = false;
-
-  @override
-  void initState() {
-    controller.addListener(() {
-      if (controller.offset < 1000 && showButton) {
-        setState(() {
-          showButton = false;
-        });
-      } else if (controller.offset >= 1000 && !showButton) {
-        setState(() {
-          showButton = true;
-        });
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter'),
-      ),
-      body: Scrollbar(
-        child: ListView.builder(
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              title: Text('$index'),
-            );
-          },
-          itemCount: 100,
-          itemExtent: 50,
-          controller: controller,
+    return Center(
+      //这个组件下的所有组件都可以享用公共数据
+      child: ShareDataWidget(
+        data: count,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: DataWidget(),
+            ),
+            RaisedButton(
+              onPressed: () {
+                setState(() {
+                  count++;
+                });
+              },
+              child: Text('增加'),
+            )
+          ],
         ),
       ),
-      floatingActionButton: !showButton
-          ? null
-          : FloatingActionButton(
-              child: Icon(Icons.arrow_upward),
-              onPressed: () {
-                //控制滑动到顶部
-                controller.animateTo(
-                  0,
-                  duration: Duration(milliseconds: 1000),
-                  curve: Curves.ease,
-                );
-              },
-            ),
     );
   }
 }
