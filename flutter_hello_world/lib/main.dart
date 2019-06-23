@@ -20,49 +20,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//固定写法
-class ShareDataWidget extends InheritedWidget {
-  const ShareDataWidget({
-    //data是自定义的
-    @required this.data,
-    Key key,
-    @required Widget child,
-  })  : assert(child != null),
-        super(key: key, child: child);
+class MyNotification extends Notification {
+  MyNotification(this.message);
 
-  final int data;
-
-  static ShareDataWidget of(BuildContext context) {
-    return context.inheritFromWidgetOfExactType(ShareDataWidget)
-        as ShareDataWidget;
-  }
-
-  @override
-  bool updateShouldNotify(ShareDataWidget old) {
-    return old.data != data;
-  }
-}
-
-class DataWidget extends StatefulWidget {
-  @override
-  _DataWidgetState createState() => _DataWidgetState();
-}
-
-class _DataWidgetState extends State<DataWidget> {
-  @override
-  Widget build(BuildContext context) {
-    //使用共享数据
-    return Center(
-      child: Text(ShareDataWidget.of(context).data.toString()),
-    );
-  }
-
-  //共享数据发生改变时调用
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    print('change');
-  }
+  String message;
 }
 
 class MyWidget extends StatefulWidget {
@@ -71,29 +32,31 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
-  int count = 0;
+  String message = "";
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      //这个组件下的所有组件都可以享用公共数据
-      child: ShareDataWidget(
-        data: count,
+    return NotificationListener<MyNotification>(
+      onNotification: (notification) {
+        setState(() {
+          message += notification.message;
+        });
+      },
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: DataWidget(),
-            ),
-            RaisedButton(
-              onPressed: () {
-                setState(() {
-                  count++;
-                });
+            Builder(
+              builder: (context) {
+                return RaisedButton(
+                  onPressed: () {
+                    MyNotification("Xkf && Zs").dispatch(context);
+                  },
+                  child: Text('点击增加新的字符串'),
+                );
               },
-              child: Text('增加'),
-            )
+            ),
+            Text(message),
           ],
         ),
       ),
