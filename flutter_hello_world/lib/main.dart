@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -20,44 +21,55 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyNotification extends Notification {
-  MyNotification(this.message);
-
-  String message;
-}
-
-class MyWidget extends StatefulWidget {
-  @override
-  _MyWidgetState createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget> {
-  String message = "";
-
+class MyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return NotificationListener<MyNotification>(
-      onNotification: (notification) {
-        setState(() {
-          message += notification.message;
-        });
-      },
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Builder(
-              builder: (context) {
-                return RaisedButton(
-                  onPressed: () {
-                    MyNotification("Xkf && Zs").dispatch(context);
-                  },
-                  child: Text('点击增加新的字符串'),
+    return Container(
+      alignment: Alignment.topCenter,
+      child: InkWell(
+        child: Hero(
+          tag: 'avatar',
+          child: Image.asset(
+            'images/image.png',
+            width: 100,
+            height: 100,
+          ),
+        ),
+        onTap: () {
+          Navigator.push(
+            context,
+            PageRouteBuilder(
+              transitionDuration: Duration(seconds: 2),
+              pageBuilder: (BuildContext context, Animation animation,
+                  Animation secondaryAnimation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: MyPage(),
                 );
               },
             ),
-            Text(message),
-          ],
+          );
+        },
+      ),
+    );
+  }
+}
+
+class MyPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter'),
+      ),
+      body: Center(
+        child: Hero(
+          tag: 'avatar',
+          child: Image.asset(
+            'images/image.png',
+            width: 200,
+            height: 200,
+          ),
         ),
       ),
     );
