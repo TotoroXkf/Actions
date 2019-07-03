@@ -15,63 +15,100 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Flutter'),
         ),
-        body: MyWidget(),
+        body: MyPage(),
       ),
     );
   }
 }
 
-class MyWidget extends StatelessWidget {
+class MyPage extends StatefulWidget {
+  @override
+  _MyPageState createState() => _MyPageState();
+}
+
+class _MyPageState extends State<MyPage> {
+  double turns = 0.0;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.topCenter,
-      child: InkWell(
-        child: Hero(
-          tag: 'avatar',
-          child: Image.asset(
-            'images/image.png',
-            width: 100,
-            height: 100,
+    return Center(
+      child: Column(
+        children: <Widget>[
+          MyWidget(
+            turns: turns,
+            child: Icon(Icons.refresh),
           ),
-        ),
-        onTap: () {
-          Navigator.push(
-            context,
-            PageRouteBuilder(
-              transitionDuration: Duration(seconds: 2),
-              pageBuilder: (BuildContext context, Animation animation,
-                  Animation secondaryAnimation) {
-                return FadeTransition(
-                  opacity: animation,
-                  child: MyPage(),
-                );
-              },
-            ),
-          );
-        },
+          RaisedButton(
+            child: Text('顺时针旋转90°'),
+            onPressed: () {
+              setState(() {
+                turns += 0.2;
+              });
+            },
+          ),
+          RaisedButton(
+            child: Text('逆时针旋转90°'),
+            onPressed: () {
+              setState(() {
+                turns -= 0.2;
+              });
+            },
+          ),
+        ],
       ),
     );
   }
 }
 
-class MyPage extends StatelessWidget {
+class MyWidget extends StatefulWidget {
+  final double turns;
+  final int speed;
+  final Widget child;
+
+  MyWidget({Key key, this.turns = .0, this.speed = 200, this.child});
+
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget>
+    with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = new AnimationController(
+      vsync: this,
+      lowerBound: -double.infinity,
+      upperBound: double.infinity,
+    );
+    animationController.value = widget.turns;
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter'),
-      ),
-      body: Center(
-        child: Hero(
-          tag: 'avatar',
-          child: Image.asset(
-            'images/image.png',
-            width: 200,
-            height: 200,
-          ),
-        ),
-      ),
+    return RotationTransition(
+      turns: animationController,
+      child: widget.child,
     );
+  }
+
+  @override
+  void didUpdateWidget(MyWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.turns != widget.turns) {
+      animationController.animateTo(
+        widget.turns,
+        duration: Duration(milliseconds: widget.speed ?? 200),
+        curve: Curves.easeOut,
+      );
+    }
   }
 }
