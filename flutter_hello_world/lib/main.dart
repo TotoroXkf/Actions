@@ -15,100 +15,34 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Flutter'),
         ),
-        body: MyPage(),
+        body: Center(
+          child: CustomPaint(
+            size: Size(300, 300),
+            painter: MyPainter(),
+          ),
+        ),
       ),
     );
   }
 }
 
-class MyPage extends StatefulWidget {
+class MyPainter extends CustomPainter {
   @override
-  _MyPageState createState() => _MyPageState();
-}
+  void paint(Canvas canvas, Size size) {
+    double eWidth = size.width / 15;
+    double eHeight = size.height / 15; 
+    Paint paint = Paint();
+    paint.isAntiAlias = true;
+    paint.style = PaintingStyle.fill;
+    paint.color = Color(0x77cdb175);
 
-class _MyPageState extends State<MyPage> {
-  double turns = 0.0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: <Widget>[
-          MyWidget(
-            turns: turns,
-            child: Icon(Icons.refresh),
-          ),
-          RaisedButton(
-            child: Text('顺时针旋转90°'),
-            onPressed: () {
-              setState(() {
-                turns += 0.2;
-              });
-            },
-          ),
-          RaisedButton(
-            child: Text('逆时针旋转90°'),
-            onPressed: () {
-              setState(() {
-                turns -= 0.2;
-              });
-            },
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class MyWidget extends StatefulWidget {
-  final double turns;
-  final int speed;
-  final Widget child;
-
-  MyWidget({Key key, this.turns = .0, this.speed = 200, this.child});
-
-  @override
-  _MyWidgetState createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<MyWidget>
-    with SingleTickerProviderStateMixin {
-  AnimationController animationController;
-
-  @override
-  void initState() {
-    super.initState();
-    animationController = new AnimationController(
-      vsync: this,
-      lowerBound: -double.infinity,
-      upperBound: double.infinity,
-    );
-    animationController.value = widget.turns;
+    Rect rect = new Rect.fromLTRB(0, 0, size.width, size.height);
+    canvas.drawRect(rect, paint);
+    //..........
   }
 
   @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return RotationTransition(
-      turns: animationController,
-      child: widget.child,
-    );
-  }
-
-  @override
-  void didUpdateWidget(MyWidget oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.turns != widget.turns) {
-      animationController.animateTo(
-        widget.turns,
-        duration: Duration(milliseconds: widget.speed ?? 200),
-        curve: Curves.easeOut,
-      );
-    }
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return true;
   }
 }
