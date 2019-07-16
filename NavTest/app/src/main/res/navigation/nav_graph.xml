@@ -13,8 +13,8 @@
         <action
             android:id="@+id/action_firstFragment_to_secondFragment"
             app:destination="@id/secondFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim" />
     </fragment>
 
     <fragment
@@ -27,10 +27,6 @@
             app:destination="@id/thirdFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_enter_anim" />
-        <argument
-            android:name="myArg"
-            android:defaultValue="101"
-            app:argType="integer" />
     </fragment>
 
     <fragment

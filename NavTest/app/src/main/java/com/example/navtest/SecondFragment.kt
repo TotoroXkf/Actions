@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.addCallback
 import androidx.navigation.findNavController
 
 class SecondFragment : Fragment() {
@@ -24,6 +25,10 @@ class SecondFragment : Fragment() {
         val button = view.findViewById<Button>(R.id.go_to_third)
         button.setOnClickListener {
             it.findNavController().navigate(R.id.action_secondFragment_to_thirdFragment)
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(this){
+            isEnabled = true
         }
     }
 
