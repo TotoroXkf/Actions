@@ -8,6 +8,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.room.Room
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,29 +18,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val db = Room.databaseBuilder(this, MyDatabase::class.java, "my_database").build()
-        val myDao = db.getBookDao()
-        var liveData: LiveData<List<Book>>
+        val imageUrl = "https://i.loli.net/2019/07/17/5d2ee87bdc35879302.jpg"
+        val client = OkHttpClient()
+        val request = Request.Builder().url(imageUrl).build()
         Thread {
-            //            myDao.insertBook(Book(id = 0, name = "First Book", page = 500, author = "xkf"))
-//            myDao.insertBook(Book(id = 0, name = "Second Book", page = 520, author = "xkf"))
-//            myDao.updateBook(Book(id = 2, name = "ex Book", page = 500, author = "xkf"))
-//            myDao.deleteBook(Book(id = 2, name = "ex Book", page = 500, author = "xkf"))
-//            val dataList = myDao.getAllBooks()
-//            val book = myDao.getBookById(1)
-//            val list = myDao.getBookByColumnName()
+            val db = Room.databaseBuilder(this, MyDatabase::class.java, "my_database").build()
+            val imageDao = db.getImageDao()
 
-            liveData = myDao.getAllBooks()
-            runOnUiThread {
-                liveData.observe(MainActivity@ this, Observer {
-                    Log.e("xkf", "拿到了新的数据")
-                })
-            }
-
-            Thread.sleep(3000)
-
-            myDao.updateBook(Book(id = 1, name = "First Book", page = 500, author = "xkf"))
+//            val response = client.newCall(request).execute()
+//            if (response.isSuccessful) {
+//                val bytes = response.body!!.bytes()
+//                val imageEntity = ImageEntity(id = 1, bytes = bytes)
+//                imageDao.addImage(imageEntity)
+//
+//            }
+            val imageEntity = imageDao.getImage(1)
+            Log.e("xkf", "" + imageEntity.bytes.size)
         }.start()
+
 
     }
 }

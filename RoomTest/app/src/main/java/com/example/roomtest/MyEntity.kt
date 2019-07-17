@@ -10,5 +10,8 @@ data class Book(
     var author: String
 )
 
-data class SubBook(var name:String)
+data class SubBook(var name: String)
+
+@Entity(tableName = "images")
+data class ImageEntity(@PrimaryKey var id: Int, @ColumnInfo(typeAffinity = ColumnInfo.BLOB) var bytes: ByteArray)
 

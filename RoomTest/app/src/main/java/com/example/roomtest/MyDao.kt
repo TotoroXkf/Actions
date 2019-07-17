@@ -23,3 +23,12 @@ interface MyDao {
     @Query("select name from book")
     fun getBookByColumnName(): List<SubBook>
 }
+
+@Dao
+interface ImageDao {
+    @Insert
+    fun addImage(imageEntity: ImageEntity)
+
+    @Query("select * from images where id =:id")
+    fun getImage(id: Int): ImageEntity
+}
