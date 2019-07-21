@@ -4,29 +4,15 @@ import kotlinx.coroutines.channels.SendChannel
 import kotlin.system.measureTimeMillis
 
 fun main() = runBlocking<Unit> {
-    try {
-        method()
-    } catch (e: java.lang.ArithmeticException) {
-        println("Computation failed with ArithmeticException")
-    }
-}
-
-suspend fun method(): Int = coroutineScope {
-    val one = async<Int> {
-        try {
-            delay(Long.MAX_VALUE) // Emulates very long computation
-            42
-        } finally {
-            println("First child was cancelled")
+    val request = launch {
+        repeat(3) { i ->
+            launch {
+                delay((i + 1) * 200L) // variable delay 200ms, 400ms, 600ms
+                println("Coroutine $i is done")
+            }
         }
+        println("request: I'm done and I don't explicitly join my children that are still active")
     }
-
-    val two = async<Int> {
-        println("Second child throws an exception")
-        throw ArithmeticException()
-    }
-
-    one.await() + two.await()
+    request.join()
 }
-
 
