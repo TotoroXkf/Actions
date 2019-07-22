@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0fc5f61e-1633-4c82-8f44-e785eedabde4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Solution.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="216">
+              <caret line="12" column="13" selection-end-line="16" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -96,6 +97,7 @@
       <workItem from="1563629923396" duration="1761000" />
       <workItem from="1563672959862" duration="72000" />
       <workItem from="1563674945331" duration="2776000" />
+      <workItem from="1563697660806" duration="8011000" />
     </task>
     <task id="LOCAL-00001" summary="Coding">
       <created>1563629969245</created>
@@ -118,11 +120,18 @@
       <option name="project" value="LOCAL" />
       <updated>1563687966672</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Coding">
+      <created>1563708796068</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1563708796068</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4609000" />
+    <option name="totallyTimeSpent" value="12620000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="23" width="1393" height="877" extended-state="0" />
@@ -167,10 +176,21 @@
     <option name="LAST_COMMIT_MESSAGE" value="Coding" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-12.0.2.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="677" column="19" selection-start-line="677" selection-start-column="19" selection-end-line="677" selection-end-column="19" />
+          <folding>
+            <element signature="e#25136#25137#0" expanded="true" />
+            <element signature="e#25176#25177#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Solution.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="216">
+          <caret line="12" column="13" selection-end-line="16" selection-end-column="1" />
         </state>
       </provider>
     </entry>
