@@ -1,7 +1,7 @@
 import java.util.*
 
 fun main() {
-    val startTime = "2019年7月21日21时"
+    val startTime = "2019年7月22日23时"
     val endTime = "2019年7月26日9时"
 
     val startDate = getDate(startTime)
