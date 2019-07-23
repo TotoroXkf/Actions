@@ -1,21 +1,13 @@
-import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.SendChannel
-import java.lang.ArithmeticException
-import java.lang.Exception
-import java.lang.IndexOutOfBoundsException
-import kotlin.system.measureTimeMillis
+import kotlinx.coroutines.CoroutineStart
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
-fun main() = runBlocking<Unit> {
-
-    val job = launch {
-        println("1")
-        yield()
-        println("2")
+fun main() = runBlocking {
+    val result = async(start = CoroutineStart.LAZY){
+        kotlinx.coroutines.delay(1000)
+        101
     }
-
-    println("3")
-    println("4")
-    job.join()
-    println("5")
+    result.start()
+    println("result:"+result.await())
 }
