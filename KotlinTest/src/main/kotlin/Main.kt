@@ -1,13 +1,21 @@
-import kotlinx.coroutines.CoroutineStart
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlin.system.measureTimeMillis
 
 fun main() = runBlocking {
-    val result = async(start = CoroutineStart.LAZY){
-        kotlinx.coroutines.delay(1000)
-        101
+    var count = 0;
+    val mutex = Mutex()
+    withContext(Dispatchers.Default) {
+        val n = 100
+        val k = 1000
+        repeat(n) {
+            launch {
+                mutex.withLock {
+                    repeat(k) { count += 1 }
+                }
+            }
+        }
     }
-    result.start()
-    println("result:"+result.await())
+    println(count)
 }

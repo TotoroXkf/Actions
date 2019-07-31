@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         launch {
             textView.text = ""
             progressBar.visibility = View.VISIBLE
@@ -32,5 +31,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         val request = Request.Builder().url("https://api.github.com/users/totoroXkf").build()
         val response = client.newCall(request).execute()
         response.body!!.string()
+    }
+
+    override fun onDestroy() {
+        cancel()
+        super.onDestroy()
     }
 }
