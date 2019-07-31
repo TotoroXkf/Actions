@@ -11,8 +11,11 @@ fun main() = runBlocking {
         val k = 1000
         repeat(n) {
             launch {
-                mutex.withLock {
-                    repeat(k) { count += 1 }
+                repeat(k) {
+                    mutex.withLock {
+                        println(Thread.currentThread().name)
+                        count++
+                    }
                 }
             }
         }

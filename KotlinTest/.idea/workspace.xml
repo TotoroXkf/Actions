@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="619cc512-902e-4f90-a669-e5f820f31db8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Algorithm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Algorithm/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Algorithm/out/production/Algorithm/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Algorithm/out/production/Algorithm/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Algorithm/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Algorithm/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoroutinesTest/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CoroutinesTest/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoroutinesTest/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CoroutinesTest/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../CoroutinesTest/app/src/main/java/com/example/coroutinestest/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../CoroutinesTest/app/src/main/java/com/example/coroutinestest/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1$result$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1$1$invokeSuspend$$inlined$repeat$lambda$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt$main$1$1$invokeSuspend$$inlined$repeat$lambda$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt$main$1$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt$main$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
@@ -96,6 +88,8 @@
       <workItem from="1564411846050" duration="843000" />
       <workItem from="1564479501109" duration="1853000" />
       <workItem from="1564498213919" duration="2188000" />
+      <workItem from="1564544057909" duration="4365000" />
+      <workItem from="1564563459102" duration="3217000" />
     </task>
     <servers />
   </component>
