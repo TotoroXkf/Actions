@@ -27,33 +27,38 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool _switchSelected = false;
-  bool _checkBoxSelected = false;
+  FocusNode focusNode1 = FocusNode();
+  FocusNode focusNode2 = FocusNode();
+  FocusScopeNode focusScopeNode;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Theme(
+      data: Theme.of(context).copyWith(
+        hintColor: Colors.grey[200],
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: TextStyle(color: Colors.grey),
+          hintStyle: TextStyle(color: Colors.grey, fontSize: 14.0),
+        ),
+      ),
       child: Column(
         children: <Widget>[
-          Switch(
-            value: _switchSelected,
-            onChanged: (value) {
-              setState(() {
-                _switchSelected = value;
-              });
-            },
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'username',
+              hintText: 'password',
+              prefixIcon: Icon(Icons.people),
+            ),
           ),
-          Checkbox(
-            value: _checkBoxSelected,
-            onChanged: (value) {
-              setState(() {
-                _checkBoxSelected = value;
-              });
-            },
-          )
+          TextField(
+            decoration: InputDecoration(
+              labelText: 'username',
+              hintText: 'password',
+              prefixIcon: Icon(Icons.lock),
+            ),
+          ),
         ],
       ),
     );
-    ;
   }
 }
