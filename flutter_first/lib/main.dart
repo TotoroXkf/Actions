@@ -21,19 +21,39 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  bool _switchSelected = false;
+  bool _checkBoxSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text.rich(
-        TextSpan(children: [
-          TextSpan(text: "Home: "),
-          TextSpan(
-            text: "https://flutterchina.club",
-            style: TextStyle(color: Colors.blue),
+      child: Column(
+        children: <Widget>[
+          Switch(
+            value: _switchSelected,
+            onChanged: (value) {
+              setState(() {
+                _switchSelected = value;
+              });
+            },
           ),
-        ]),
+          Checkbox(
+            value: _checkBoxSelected,
+            onChanged: (value) {
+              setState(() {
+                _checkBoxSelected = value;
+              });
+            },
+          )
+        ],
       ),
     );
+    ;
   }
 }
