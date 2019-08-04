@@ -31,6 +31,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return null;
+    return Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(
+        gradient:
+            LinearGradient(colors: [Colors.lightGreenAccent, Colors.blue]),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      padding: EdgeInsets.all(24),
+      child: Text('Xkf'),
+      margin: EdgeInsets.all(32),
+      alignment: Alignment.center,
+      transform: Matrix4.rotationZ(.2),
+    );
   }
 }
