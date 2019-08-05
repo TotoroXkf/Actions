@@ -13,60 +13,75 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Material(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverAppBar(
-              pinned: true,
-              expandedHeight: 250.0,
-              flexibleSpace: FlexibleSpaceBar(
-                title: const Text('Demo'),
-                background: Image.asset(
-                  'images/unsplash.jpg',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.all(8.0),
-              sliver: new SliverGrid( //Grid
-                gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, //Grid按两列显示
-                  mainAxisSpacing: 10.0,
-                  crossAxisSpacing: 10.0,
-                  childAspectRatio: 4.0,
-                ),
-                delegate: new SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    //创建子widget
-                    return new Container(
-                      alignment: Alignment.center,
-                      color: Colors.cyan[100 * (index % 9)],
-                      child: new Text('grid item $index'),
-                    );
-                  },
-                  childCount: 20,
-                ),
-              ),
-            ),
-            //List
-            new SliverFixedExtentList(
-              itemExtent: 50.0,
-              delegate: new SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                    //创建列表项
-                    return new Container(
-                      alignment: Alignment.center,
-                      color: Colors.lightBlue[100 * (index % 9)],
-                      child: new Text('list item $index'),
-                    );
-                  },
-                  childCount: 50 //50个列表项
-              ),
-            ),
-          ],
-        ),
-      ),
+      home: MyHomePage(),
     );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  bool _showButton = false;
+  ScrollController _controller = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller.addListener(() {
+      if (_controller.offset >= 1000 && !_showButton) {
+        _setShowState(true);
+      } else if (_controller.offset < 1000 && _showButton) {
+        _setShowState(false);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter'),
+      ),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text('$index'),
+          );
+        },
+        controller: _controller,
+        itemCount: 1000,
+        itemExtent: 50,
+      ),
+      floatingActionButton: _getFloatingActionButton(),
+    );
+  }
+
+  void _setShowState(bool newState) {
+    setState(() {
+      _showButton = newState;
+    });
+  }
+
+  FloatingActionButton _getFloatingActionButton() {
+    if (!_showButton) {
+      return null;
+    }
+    return FloatingActionButton(
+      child: Icon(Icons.arrow_upward),
+      onPressed: () {
+
+        _controller.animateTo(0, duration: Duration(seconds: 1), curve: Curves.ease);
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
