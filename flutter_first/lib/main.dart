@@ -13,7 +13,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter'),
+        ),
+        body: MyHomePage(),
+      ),
     );
   }
 }
@@ -24,64 +29,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool _showButton = false;
-  ScrollController _controller = ScrollController();
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller.addListener(() {
-      if (_controller.offset >= 1000 && !_showButton) {
-        _setShowState(true);
-      } else if (_controller.offset < 1000 && _showButton) {
-        _setShowState(false);
-      }
-    });
-  }
+  String _progress = "0%";
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter'),
+    return NotificationListener<ScrollNotification>(
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          ListView.builder(
+              itemCount: 100,
+              itemExtent: 50.0,
+              itemBuilder: (context, index) {
+                return ListTile(title: Text("$index"));
+              }),
+          CircleAvatar(
+            //显示进度百分比
+            radius: 30.0,
+            child: Text(_progress),
+            backgroundColor: Colors.black54,
+          )
+        ],
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('$index'),
-          );
-        },
-        controller: _controller,
-        itemCount: 1000,
-        itemExtent: 50,
-      ),
-      floatingActionButton: _getFloatingActionButton(),
-    );
-  }
-
-  void _setShowState(bool newState) {
-    setState(() {
-      _showButton = newState;
-    });
-  }
-
-  FloatingActionButton _getFloatingActionButton() {
-    if (!_showButton) {
-      return null;
-    }
-    return FloatingActionButton(
-      child: Icon(Icons.arrow_upward),
-      onPressed: () {
-
-        _controller.animateTo(0, duration: Duration(seconds: 1), curve: Curves.ease);
+      onNotification: (ScrollNotification notification) {
+        double progress =
+            notification.metrics.pixels / notification.metrics.maxScrollExtent;
+        setState(() {
+          _progress = "${(progress * 100).toInt()}%";
+        });
+        return true;
       },
     );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
   }
 }
