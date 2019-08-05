@@ -27,23 +27,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  GlobalKey _globalKey = new GlobalKey<FormState>();
+
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        gradient:
-            LinearGradient(colors: [Colors.lightGreenAccent, Colors.blue]),
-        borderRadius: BorderRadius.circular(4),
-      ),
-      padding: EdgeInsets.all(24),
-      child: Text('Xkf'),
-      margin: EdgeInsets.all(32),
-      alignment: Alignment.center,
-      transform: Matrix4.rotationZ(.2),
+    var devider1 = Divider(color: Colors.blue);
+    var devider2 = Divider(color: Colors.green);
+
+    return Scrollbar(
+      child: ListView.separated(
+          itemBuilder: (context, index) {
+            return ListTile(title: Text('$index'));
+          },
+          separatorBuilder: (context, index) {
+            return index % 2 == 0 ? devider1 : devider2;
+          },
+          itemCount: 100),
     );
   }
 }
