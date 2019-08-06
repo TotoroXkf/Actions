@@ -29,36 +29,67 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _progress = "0%";
+  int count = 0;
 
   @override
   Widget build(BuildContext context) {
-    return NotificationListener<ScrollNotification>(
-      child: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          ListView.builder(
-              itemCount: 100,
-              itemExtent: 50.0,
-              itemBuilder: (context, index) {
-                return ListTile(title: Text("$index"));
-              }),
-          CircleAvatar(
-            //显示进度百分比
-            radius: 30.0,
-            child: Text(_progress),
-            backgroundColor: Colors.black54,
-          )
-        ],
+    return Center(
+      child: MyWidget(
+        data: count,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20.0),
+              child: MyText()
+            ),
+            RaisedButton(
+              child: Text("Increment"),
+              //每点击一次，将count自增，然后重新build,ShareDataWidget的data将被更新
+              onPressed: () => setState(() => ++count),
+            ),
+          ],
+        ),
       ),
-      onNotification: (ScrollNotification notification) {
-        double progress =
-            notification.metrics.pixels / notification.metrics.maxScrollExtent;
-        setState(() {
-          _progress = "${(progress * 100).toInt()}%";
-        });
-        return true;
-      },
     );
+  }
+}
+
+class MyText extends StatefulWidget {
+  @override
+  _MyTextState createState() => _MyTextState();
+}
+
+class _MyTextState extends State<MyText> {
+  @override
+  Widget build(BuildContext context) {
+    return Text(MyWidget.of(context).data.toString());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    //父或祖先widget中的InheritedWidget改变(updateShouldNotify返回true)时会被调用。
+    //如果build中没有依赖InheritedWidget，则此回调不会被调用。
+    print("Dependencies change");
+  }
+}
+
+class MyWidget extends InheritedWidget {
+  final int data;
+
+  const MyWidget({
+    Key key,
+    this.data,
+    @required Widget child,
+  })  : assert(child != null),
+        super(key: key, child: child);
+
+  static MyWidget of(BuildContext context) {
+    return context.inheritFromWidgetOfExactType(MyWidget) as MyWidget;
+  }
+
+  @override
+  bool updateShouldNotify(MyWidget old) {
+    return old.data != data;
   }
 }
