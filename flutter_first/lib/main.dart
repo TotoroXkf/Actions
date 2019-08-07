@@ -30,41 +30,85 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<String> loadData() async {
-    return Future.delayed(
-      Duration(seconds: 2),
-      () {
-        return "Hello World!";
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: RaisedButton(
+        onPressed: () async {
+          var result = await showMyDialog();
+          print(result);
+        },
+      ),
+    );
+  }
+
+  Future<bool> showMyDialog() {
+    return showCustomDialog<bool>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("提示"),
+          content: Text("您确定要删除当前文件吗?"),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("取消"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            FlatButton(
+              child: Text("删除"),
+              onPressed: () {
+                // 执行删除操作
+                Navigator.of(context).pop(true);
+              },
+            ),
+          ],
+        );
       },
     );
   }
 
-  Stream<int> counter() {
-    return Stream.periodic(Duration(seconds: 1), (i) {
-      return i;
-    });
+  Future<T> showCustomDialog<T>({
+    @required BuildContext context,
+    bool barrierDismissible = true,
+    WidgetBuilder builder,
+  }) {
+    final ThemeData theme = Theme.of(context, shadowThemeOnly: true);
+    return showGeneralDialog(
+      context: context,
+      pageBuilder: (BuildContext buildContext, Animation<double> animation,
+          Animation<double> secondaryAnimation) {
+        final Widget pageChild = Builder(builder: builder);
+        return SafeArea(
+          child: Builder(
+            builder: (BuildContext context) {
+              return theme != null
+                  ? Theme(data: theme, child: pageChild)
+                  : pageChild;
+            },
+          ),
+        );
+      },
+      barrierDismissible: barrierDismissible,
+      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+      barrierColor: Colors.black87,
+      // 自定义遮罩颜色
+      transitionDuration: const Duration(milliseconds: 150),
+      transitionBuilder: _buildMaterialDialogTransitions,
+    );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: StreamBuilder(
-        stream: counter(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasError) return Text('Error: ${snapshot.error}');
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-              return Text('没有Stream');
-            case ConnectionState.waiting:
-              return Text('等待数据...');
-            case ConnectionState.active:
-              return Text('active: ${snapshot.data}');
-            case ConnectionState.done:
-              return Text('Stream已关闭');
-          }
-          return null;
-        },
+  Widget _buildMaterialDialogTransitions(
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child) {
+    // 使用缩放动画
+    return ScaleTransition(
+      scale: CurvedAnimation(
+        parent: animation,
+        curve: Curves.easeOut,
       ),
+      child: child,
     );
   }
 }
