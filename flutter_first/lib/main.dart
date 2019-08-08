@@ -27,39 +27,40 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  double _top = 0.0;
-  double _left = 0.0;
-  var _leftB = 100.0;
+  String _msg = "";
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          top: 80.0,
-          left: _leftB,
-          child: Listener(
-            onPointerDown: (details) {
-              print("down");
-            },
-            onPointerUp: (details) {
-              //会触发
-              print("up");
-            },
-            child: GestureDetector(
-              child: CircleAvatar(child: Text("B")),
-              onHorizontalDragUpdate: (DragUpdateDetails details) {
-                setState(() {
-                  _leftB += details.delta.dx;
-                });
-              },
-              onHorizontalDragEnd: (details) {
-                print("onHorizontalDragEnd");
+    return Center(
+      child: NotificationListener<MyNotification>(
+        onNotification: (notification) {
+          setState(() {
+            _msg += notification.msg + "  ";
+          });
+          return true;
+        },
+        child: Column(
+          children: <Widget>[
+            Builder(
+              builder: (context) {
+                return RaisedButton(
+                  onPressed: () {
+                    MyNotification("HHHHH").dispatch(context);
+                  },
+                  child: Text("Send Notification"),
+                );
               },
             ),
-          ),
+            Text(_msg),
+          ],
         ),
-      ],
+      ),
     );
   }
+}
+
+class MyNotification extends Notification {
+  MyNotification(this.msg);
+
+  final String msg;
 }
