@@ -26,41 +26,50 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  String _msg = "";
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  Animation<double> _animation;
+  AnimationController _animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = new AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1),
+    );
+    _animation = Tween(begin: 0.0, end: 300.0).animate(_animationController);
+    _animation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        //动画执行结束时反向执行动画
+        _animationController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        //动画恢复到初始状态时执行动画（正向）
+        _animationController.forward();
+      }
+    });
+    _animationController.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: NotificationListener<MyNotification>(
-        onNotification: (notification) {
-          setState(() {
-            _msg += notification.msg + "  ";
-          });
-          return true;
-        },
-        child: Column(
-          children: <Widget>[
-            Builder(
-              builder: (context) {
-                return RaisedButton(
-                  onPressed: () {
-                    MyNotification("HHHHH").dispatch(context);
-                  },
-                  child: Text("Send Notification"),
-                );
-              },
-            ),
-            Text(_msg),
-          ],
-        ),
-      ),
+    return AnimatedBuilder(
+      animation: _animation,
+      child: Image.asset('images/unsplash.jpg'),
+      builder: (BuildContext context, Widget child) {
+        return Container(
+          alignment: Alignment.center,
+          child: child,
+          width: _animation.value,
+          height: _animation.value,
+        );
+      },
     );
   }
-}
 
-class MyNotification extends Notification {
-  MyNotification(this.msg);
-
-  final String msg;
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 }
