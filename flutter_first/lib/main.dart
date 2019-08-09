@@ -26,50 +26,39 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
-  Animation<double> _animation;
-  AnimationController _animationController;
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController = new AnimationController(
-      vsync: this,
-      duration: Duration(seconds: 1),
-    );
-    _animation = Tween(begin: 0.0, end: 300.0).animate(_animationController);
-    _animation.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        //动画执行结束时反向执行动画
-        _animationController.reverse();
-      } else if (status == AnimationStatus.dismissed) {
-        //动画恢复到初始状态时执行动画（正向）
-        _animationController.forward();
-      }
-    });
-    _animationController.forward();
-  }
-
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _animation,
-      child: Image.asset('images/unsplash.jpg'),
-      builder: (BuildContext context, Widget child) {
-        return Container(
-          alignment: Alignment.center,
-          child: child,
-          width: _animation.value,
-          height: _animation.value,
-        );
-      },
+    return Center(
+      child: RaisedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            PageRouteBuilder(
+                transitionDuration: Duration(milliseconds: 500),
+                pageBuilder: (BuildContext context, Animation animation,
+                    Animation secondaryAnimation) {
+                  return new FadeTransition(
+                    opacity: animation,
+                    child: NewRoute(),
+                  );
+                }),
+          );
+        },
+        child: Text('第一个页面'),
+      ),
     );
   }
+}
 
+class NewRoute extends StatelessWidget {
   @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
+  Widget build(BuildContext context) {
+    return Center(
+      child: RaisedButton(
+        onPressed: () {},
+        child: Text('第二个页面'),
+      ),
+    );
   }
 }
