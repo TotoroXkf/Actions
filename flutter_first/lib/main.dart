@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -26,43 +29,55 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  int _count = 0;
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter =0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _readCounter().then((int value) {
+      setState(() {
+        _counter = value;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Container(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          AnimatedSwitcher(
-            duration: const Duration(milliseconds: 500),
-            transitionBuilder: (Widget child, Animation<double> animation) {
-              var tween = Tween<Offset>(begin: Offset(0, 0), end: Offset(1, 0));
-              return SlideTransition(
-                child: child,
-                position: tween.animate(animation),
-              );
-            },
-            child: Text(
-              '$_count',
-              //显示指定key，不同的key会被认为是不同的Text，这样才能执行动画
-              key: ValueKey<int>(_count),
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ),
+          Text('点击了 $_counter 次'),
           RaisedButton(
-            child: const Text(
-              '+1',
-            ),
             onPressed: () {
-              setState(() {
-                _count += 1;
-              });
+              _incrementCounter();
             },
-          ),
+            child: Text('点击加一'),
+          )
         ],
       ),
     );
+  }
+
+  Future<int> _readCounter() async {
+    try {
+      File file = await _getLocalFile();
+      String contents = await file.readAsString();
+      return int.parse(contents);
+    } on FileSystemException {}
+  }
+
+  Future<Null> _incrementCounter() async {
+    setState(() {
+      _counter++;
+    });
+    // 将点击次数以字符串类型写到文件中
+    await (await _getLocalFile()).writeAsString('$_counter');
+  }
+
+  Future<File> _getLocalFile() async {
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    return new File('$dir/counter.txt');
   }
 }
