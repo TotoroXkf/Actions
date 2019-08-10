@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:web_socket_channel/io.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -7,37 +8,74 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController _controller = new TextEditingController();
+  IOWebSocketChannel channel;
+  String _text = "";
+
+  @override
+  void initState() {
+    super.initState();
+    channel = new IOWebSocketChannel.connect('ws://echo.websocket.org');
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          new Form(
+            child: new TextFormField(
+              controller: _controller,
+              decoration: new InputDecoration(labelText: 'Send a message'),
+            ),
+          ),
+          StreamBuilder(
+            stream: channel.stream,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                print('error');
+              } else if (snapshot.hasData) {
+                _text = "echo: " + snapshot.data;
+              }
+
+              return new Padding(
+                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                child: new Text(_text),
+              );
+            },
+          ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 20),
+          //   child: RaisedButton(
+          //     onPressed: (){
+          //       _sendMessage();
+          //     },
+          //   ),
+          // ),
+          Container(
+            width: double.infinity,
+            child: RaisedButton(
+              onPressed: () {
+                _sendMessage();
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
-}
 
-Future downloadWithChunks(
-  url,
-  savePath, {
-  ProgressCallback onReceiveProgress,
-}) async {
-  const firstChunk = 102;
-  const maxChunk = 3;
-  
-  int total = 0;
-  Dio dio = Dio();
-  var progress =<int>[];
-
-  createCallbakc(int no){
-    return (int received,_){
-      progress[no] = received;
-      if(onReceiveProgress!=null && total >0){
-        onReceiveProgress(progress.reduce((a,b)=>a+b),total);
-      }
-    };
+  void _sendMessage() {
+    if (_controller.text.isNotEmpty) {
+      channel.sink.add(_controller.text);
+    }
   }
 
-  Future<Response> downloadChunk(url,sart,end,no){
-    progress.add(0);
-    --end;
-
-    return dio.download(url, savePath);
+  @override
+  void dispose() {
+    channel.sink.close();
+    super.dispose();
   }
 }
