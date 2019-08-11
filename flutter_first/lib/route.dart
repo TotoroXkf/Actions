@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:convert' as prefix0;
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:web_socket_channel/io.dart';
 
@@ -14,6 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Dio dio = new Dio();
+
     return Center(
       child: FutureBuilder(
         future: dio.get("https://api.github.com/users/TotoroXkf"),
