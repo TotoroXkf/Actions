@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="619cc512-902e-4f90-a669-e5f820f31db8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.3/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1$1$invokeSuspend$$inlined$repeat$lambda$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt$main$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
@@ -25,7 +21,37 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view />
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="xiakaifa" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="xiakaifa" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="xiakaifa" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="xiakaifa" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
       </state>
     </system>
   </component>
@@ -100,6 +126,8 @@
       <workItem from="1565250883216" duration="182000" />
       <workItem from="1565251072313" duration="22000" />
       <workItem from="1565251130089" duration="1850000" />
+      <workItem from="1565575945867" duration="3834000" />
+      <workItem from="1565591794874" duration="5965000" />
     </task>
     <servers />
   </component>
