@@ -1,22 +1,28 @@
-import kotlin.coroutines.*
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.*
+import kotlinx.coroutines.selects.*
 
-fun main() = runBlocking {
-    var count = 0;
-    //使用预置的线程池
-    withContext(Dispatchers.Default) {
-        val n = 10
-        val k = 10
-        repeat(n) {
-            launch {
-                //每一次都会从线程池里取一个线程
-                repeat(k) {
-                    //相当于多线程并发
-                    println(Thread.currentThread().name)
-                    count++
-                }
-            }
+fun CoroutineScope.produceNumbers(side: SendChannel<Int>) = produce<Int> {
+    for (num in 1..10) { // produce 10 numbers from 1 to 10
+        delay(100) // every 100 ms
+        select<Unit> {
+            onSend(num) {} // Send to the primary channel
+            side.onSend(num) {} // or to the side channel
         }
     }
-    println(count)
+}
+
+fun main() = runBlocking<Unit> {
+    //sampleStart
+    val side = Channel<Int>() // allocate side channel
+    launch { // this is a very fast consumer for the side channel
+        side.consumeEach { println("Side channel has $it") }
+    }
+    produceNumbers(side).consumeEach {
+        println("Consuming $it")
+        delay(250) // let us digest the consumed number properly, do not hurry
+    }
+    println("Done consuming")
+    coroutineContext.cancelChildren()
+//sampleEnd
 }
