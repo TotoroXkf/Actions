@@ -47,7 +47,7 @@ public class Utils {
         }
         FileOutputStream outputStream = null;
         try {
-            HSSFWorkbook workbook = new HSSFWorkbook();
+            XSSFWorkbook workbook = new XSSFWorkbook();
             String sheetName = "sheet1";
             Sheet sheet = workbook.createSheet(sheetName);
             for (int i = 0; i < data.size(); i++) {
@@ -57,7 +57,6 @@ public class Utils {
                     Cell cell = row.createCell(j);
                     String value = rowList.get(j);
                     if (value != null) {
-                        //cell.setCellType(CellType.STRING);
                         cell.setCellValue(value);
                     }
                 }
@@ -71,20 +70,40 @@ public class Utils {
     }
 
     public static void handleData(List<List<String>> data) {
-        final int B = 1;
-        final int H = 7;
-        HashMap<String, String> map = new HashMap<>();
-        map.put("ftpd", "ftp");
-        map.put("httpd", "http");
-        map.put("smtpd", "smtp");
-        map.put("talnetd", "talnet");
+        /**
+         * 名称映射服务
+         */
+//        final int B = 1;
+//        final int H = 7;
+//        HashMap<String, String> map = new HashMap<>();
+//        map.put("ftpd", "ftp");
+//        map.put("httpd", "http");
+//        map.put("smtpd", "smtp");
+//        map.put("talnetd", "talnet");
+//
+//        for (List<String> row : data) {
+//            for (String key : map.keySet()) {
+//                if (row.get(B).contains(key)) {
+//                    row.set(H, map.get(key));
+//                }
+//            }
+//        }
 
-        for (List<String> row : data) {
-            for (String key : map.keySet()) {
-                if (row.get(B).contains(key)) {
-                    row.set(H, map.get(key));
-                }
+        /**
+         * 合并两列
+         */
+        boolean has = false;
+        for (List<String> rowList : data) {
+            if (rowList.get(0).equals("C310")) {
+                has = true;
             }
+            String connect = "-";
+            if (has) {
+                connect = "_";
+            }
+            String value = rowList.get(0) + connect + rowList.get(1);
+            rowList.set(0, value);
+            rowList.remove(1);
         }
     }
 }
