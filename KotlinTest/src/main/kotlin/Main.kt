@@ -3,23 +3,35 @@ import kotlinx.coroutines.channels.*
 import kotlinx.coroutines.selects.*
 
 fun main() = runBlocking<Unit> {
-    val side = Channel<Int>() // 分配 side 通道
-    launch { // 对于 side 通道来说，这是一个很快的消费者
-        side.consumeEach { println("Side channel has $it") }
-    }
-    produceNumbers(side).consumeEach {
-        println("Consuming $it")
-        delay(250) // 不要着急，让我们正确消化消耗被发送来的数字
-    }
-    println("Done consuming")
-    coroutineContext.cancelChildren()
+    postItem(Item("Xkf"))
 }
-fun CoroutineScope.produceNumbers(side: SendChannel<Int>) = produce<Int> {
-    for (num in 1..10) { // 生产从 1 到 10 的 10 个数值
-        delay(100) // 延迟 100 毫秒
-        select<Unit> {
-            onSend(num) {} // 发送到主通道
-            side.onSend(num) {} // 或者发送到 side 通道
-        }
-    }
+
+suspend fun postItem(item: Item): PostResult {
+    val token = requestToken()
+    val post = createPost(token, item)
+    val postResult = processPost(post)
+    return postResult
 }
+
+suspend fun processPost(post: String): PostResult {
+    delay(500)
+    println("processPost")
+    return PostResult(post)
+}
+
+suspend fun createPost(token: String, item: Item): String {
+    delay(500)
+    println("createPost")
+    return token + item.name
+}
+
+suspend fun requestToken(): String {
+    delay(500)
+    println("requestToken")
+    return "Xkf";
+}
+
+
+data class Item(val name: String)
+
+data class PostResult(val post: String)
