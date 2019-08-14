@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app/main/main.dart';
-import 'package:flutter_todo_app/splash/splash.dart';
+import 'package:flutter_todo_app/splash.dart';
+
+import 'main.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,9 +17,8 @@ class MyApp extends StatelessWidget {
         "/":(context) =>SplashPage()
       },
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
-      //home: SplashPage(),
     );
   }
 }
