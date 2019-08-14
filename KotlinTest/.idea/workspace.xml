@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="619cc512-902e-4f90-a669-e5f820f31db8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1$a$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1$b$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt$main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$selectAorB$2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt$selectAorB$2$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/MainKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/MainKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -74,7 +68,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunDashboard">
@@ -135,6 +129,7 @@
       <workItem from="1565665453011" duration="2239000" />
       <workItem from="1565685070465" duration="2005000" />
       <workItem from="1565708849198" duration="2657000" />
+      <workItem from="1565749509588" duration="1645000" />
     </task>
     <servers />
   </component>

@@ -1,9 +1,8 @@
-import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.*
-import kotlinx.coroutines.selects.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking<Unit> {
-    postItem(Item("Xkf"))
+    postItem(Item("Hello World"))
 }
 
 suspend fun postItem(item: Item): PostResult {
@@ -15,19 +14,16 @@ suspend fun postItem(item: Item): PostResult {
 
 suspend fun processPost(post: String): PostResult {
     delay(500)
-    println("processPost")
     return PostResult(post)
 }
 
 suspend fun createPost(token: String, item: Item): String {
     delay(500)
-    println("createPost")
     return token + item.name
 }
 
 suspend fun requestToken(): String {
     delay(500)
-    println("requestToken")
     return "Xkf";
 }
 
