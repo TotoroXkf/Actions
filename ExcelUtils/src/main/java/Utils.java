@@ -70,28 +70,44 @@ public class Utils {
     }
 
     public static void handleData(List<List<String>> data) {
-        /**
-         * 名称映射服务
-         */
-//        final int B = 1;
-//        final int H = 7;
-//        HashMap<String, String> map = new HashMap<>();
+        nameMapToService(data);
+    }
+
+    /**
+     * 名称映射服务
+     */
+    private static void nameMapToService(List<List<String>> data) {
+        final int B = 1;
+        final int H = 7;
+        HashMap<String, String> map = new HashMap<>();
 //        map.put("ftpd", "ftp");
 //        map.put("httpd", "http");
 //        map.put("smtpd", "smtp");
 //        map.put("talnetd", "talnet");
-//
-//        for (List<String> row : data) {
-//            for (String key : map.keySet()) {
-//                if (row.get(B).contains(key)) {
-//                    row.set(H, map.get(key));
-//                }
-//            }
-//        }
+        map.put("pop3", "pop3");
+        map.put("pop3d", "pop3");
+        map.put("imapd", "imap");
 
-        /**
-         * 合并两列
-         */
+        for (List<String> row : data) {
+            String id = row.get(0);
+            if (!id.equals("id")) {
+                int num = Integer.parseInt(id);
+                if (num > 23595) {
+                    break;
+                }
+            }
+            for (String key : map.keySet()) {
+                if (row.get(B).contains(key)) {
+                    row.set(H, map.get(key));
+                }
+            }
+        }
+    }
+
+    /**
+     * 合并两列
+     */
+    private static void mergeTwoColumn(List<List<String>> data) {
         boolean has = false;
         for (List<String> rowList : data) {
             if (rowList.get(0).equals("C310")) {
