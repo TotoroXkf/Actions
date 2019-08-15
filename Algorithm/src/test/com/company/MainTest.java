@@ -1,6 +1,6 @@
 package test.com.company;
 
-import com.company.Main;
+import com.company.Solution;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,9 +30,7 @@ public class MainTest {
 
     @Test
     public void testWatch() throws Exception {
-        Main main = new Main();
-        int value = main.watch(param);
-        Assert.assertEquals(result, value);
+
     }
 
 } 

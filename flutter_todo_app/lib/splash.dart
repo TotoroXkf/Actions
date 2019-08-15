@@ -7,12 +7,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
-//    startMainPageByDelay().then((e) {
-//      Navigator.of(context).pushNamedAndRemoveUntil(
-//        "main",
-//        (route) => route == null,
-//      );
-//    });
+    startMainPageByDelay(context);
 
     return Container(
       decoration: BoxDecoration(
@@ -34,22 +29,10 @@ class SplashPage extends StatelessWidget {
             alignment: Alignment.bottomCenter,
             child: Container(
               margin: EdgeInsets.all(28),
-              child: RaisedButton(
-                child: Text('xx'),
-                onPressed: (){
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    "main",
-                        (route) => route == null,
-                  );
-                },
+              child: Text(
+                'Flutter Todo',
+                style: TextStyle(fontSize: 25, color: Colors.white,decoration: TextDecoration.none),
               ),
-//              child: Text(
-//                'Flutter-Todo',
-//                style: TextStyle(
-//                    color: Colors.white,
-//                    fontSize: 20,
-//                    decoration: TextDecoration.none),
-//              ),
             ),
           ),
         ],
@@ -57,7 +40,12 @@ class SplashPage extends StatelessWidget {
     );
   }
 
-  Future<void> startMainPageByDelay() async {
-    return Future.delayed(Duration(seconds: 1));
+  void startMainPageByDelay(BuildContext context) async {
+    Future.delayed(Duration(seconds: 1)).then((e) {
+      Navigator.of(context).pushNamedAndRemoveUntil(
+        "main",
+        (route) => route == null,
+      );
+    });
   }
 }
