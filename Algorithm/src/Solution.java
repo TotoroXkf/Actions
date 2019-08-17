@@ -1,28 +1,21 @@
-import java.util.HashMap;
-
 class Solution {
-    public int romanToInt(String s) {
-        if (s == null || s.isEmpty()) {
-            return 0;
+    public String longestCommonPrefix(String[] strings) {
+        if (strings == null || strings.length == 0) {
+            return "";
         }
-        HashMap<Character, Integer> hashMap = new HashMap<>();
-        hashMap.put('I', 1);
-        hashMap.put('V', 5);
-        hashMap.put('X', 10);
-        hashMap.put('L', 50);
-        hashMap.put('C', 100);
-        hashMap.put('D', 500);
-        hashMap.put('M', 1000);
-        int result = 0;
-        int pre = Integer.MAX_VALUE;
-        for (char aChar : s.toCharArray()) {
-            int value = hashMap.get(aChar);
-            result += value;
-            if (value > pre) {
-                result -= (2 * pre);
+        int count = 0;
+        boolean label = true;
+        while (count < strings[0].length() && label) {
+            char c = strings[0].charAt(count);
+            for (String s : strings) {
+                if (count >= s.length() || s.charAt(count) != c) {
+                    label = false;
+                    count--;
+                    break;
+                }
             }
-            pre = value;
+            count++;
         }
-        return result;
+        return strings[0].substring(0, count);
     }
 }
