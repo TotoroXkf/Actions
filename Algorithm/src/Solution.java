@@ -1,21 +1,26 @@
+import java.util.LinkedList;
+
 class Solution {
-    public String longestCommonPrefix(String[] strings) {
-        if (strings == null || strings.length == 0) {
-            return "";
-        }
-        int count = 0;
-        boolean label = true;
-        while (count < strings[0].length() && label) {
-            char c = strings[0].charAt(count);
-            for (String s : strings) {
-                if (count >= s.length() || s.charAt(count) != c) {
-                    label = false;
-                    count--;
+    public boolean isValid(String s) {
+        LinkedList<Character> stack = new LinkedList<>();
+        for (char c : s.toCharArray()) {
+            switch (c) {
+                case '{':
+                case '[':
+                case '(':
+                    stack.add(c);
                     break;
-                }
+                case '}':
+                    if (stack.isEmpty() || stack.removeLast() != '{') return false;
+                    break;
+                case ']':
+                    if (stack.isEmpty() || stack.removeLast() != '[') return false;
+                    break;
+                case ')':
+                    if (stack.isEmpty() || stack.removeLast() != '(') return false;
+                    break;
             }
-            count++;
         }
-        return strings[0].substring(0, count);
+        return stack.isEmpty();
     }
 }
