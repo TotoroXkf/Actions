@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/splash.dart';
 
-import 'main.dart';
+import 'main/main.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       title: 'Flutter Demo',
       routes: {
-        "main":(context)=>MainPage(),
-        "/":(context) =>SplashPage()
+        "main": (context) => MainPage(),
+        "/": (context) => SplashPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

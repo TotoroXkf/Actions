@@ -14,7 +14,6 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     startMainPageByDelay(context);
-    SystemChrome.setEnabledSystemUIOverlays([]);
   }
 
   @override
