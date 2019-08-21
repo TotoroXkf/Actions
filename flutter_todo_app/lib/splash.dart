@@ -1,14 +1,24 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
+  @override
+  _SplashPageState createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+    startMainPageByDelay(context);
+    SystemChrome.setEnabledSystemUIOverlays([]);
+  }
+
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
-    startMainPageByDelay(context);
-
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -31,7 +41,10 @@ class SplashPage extends StatelessWidget {
               margin: EdgeInsets.all(28),
               child: Text(
                 'Flutter Todo',
-                style: TextStyle(fontSize: 25, color: Colors.white,decoration: TextDecoration.none),
+                style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    decoration: TextDecoration.none),
               ),
             ),
           ),
@@ -42,7 +55,8 @@ class SplashPage extends StatelessWidget {
 
   void startMainPageByDelay(BuildContext context) async {
     Future.delayed(Duration(seconds: 1)).then((e) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
+      Navigator.pushNamedAndRemoveUntil(
+        context,
         "main",
         (route) => route == null,
       );
