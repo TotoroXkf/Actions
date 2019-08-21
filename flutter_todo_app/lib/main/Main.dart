@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app/constants.dart';
-import 'package:flutter_todo_app/main/main_drawer.dart';
-import 'package:flutter_todo_app/notification/menu_item_tap_notification.dart';
+import 'package:flutter_todo_app/Constants.dart';
+import 'package:flutter_todo_app/main/MainDrawer.dart';
+import 'package:flutter_todo_app/notification/MenuItemTapNotification.dart';
 
 class MainPage extends StatefulWidget {
   @override
