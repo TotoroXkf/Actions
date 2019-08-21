@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app/constants.dart';
 import 'package:flutter_todo_app/main/main_drawer.dart';
+import 'package:flutter_todo_app/notification/menu_item_tap_notification.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -20,9 +22,14 @@ class _MainPageState extends State<MainPage> {
         child: Icon(Icons.add),
         onPressed: () {},
       ),
-      drawer: NotificationListener(
+      drawer: NotificationListener<MenuItemTapNotification>(
+        onNotification: (notification) {
+          print(notification.index);
+          return true;
+        },
         child: MainDrawer(
-
+          menuName: DRAWER_MENU_NAMES,
+          icons: DRAWER_MENU_ICONS,
         ),
       ),
     );
