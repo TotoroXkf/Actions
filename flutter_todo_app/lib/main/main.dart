@@ -28,8 +28,8 @@ class _MainPageState extends State<MainPage> {
           return true;
         },
         child: MainDrawer(
-          menuName: DRAWER_MENU_NAMES,
-          icons: DRAWER_MENU_ICONS,
+          menuName: drawerMenuNames,
+          icons: drawerMenuIcons,
         ),
       ),
     );
