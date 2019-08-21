@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/Constants.dart';
 import 'package:flutter_todo_app/main/MainDrawer.dart';
+import 'package:flutter_todo_app/main/MainTaskListPage.dart';
 import 'package:flutter_todo_app/notification/MenuItemTapNotification.dart';
 
 class MainPage extends StatefulWidget {
@@ -16,7 +17,7 @@ class _MainPageState extends State<MainPage> {
         title: Text('Todo'),
       ),
       body: Center(
-        child: Text('Main'),
+        child: MainTaskListPage(),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
