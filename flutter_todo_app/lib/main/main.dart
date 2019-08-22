@@ -22,10 +22,10 @@ class _MainPageState extends State<MainPage> {
               return true;
             },
             child: MainPopMenu(),
-          )
+          ),
         ],
       ),
-      body: MainTaskListPage(),
+      body: MainTaskList(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},

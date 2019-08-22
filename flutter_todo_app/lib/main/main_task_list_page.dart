@@ -4,12 +4,12 @@ import 'package:flutter_todo_app/main/task_item.dart';
 import 'package:flutter_todo_app/model/task.dart';
 import 'package:flutter_todo_app/notification/task_item_check_notification.dart';
 
-class MainTaskListPage extends StatefulWidget {
+class MainTaskList extends StatefulWidget {
   @override
-  _MainTaskListPageState createState() => _MainTaskListPageState();
+  _MainTaskListState createState() => _MainTaskListState();
 }
 
-class _MainTaskListPageState extends State<MainTaskListPage> {
+class _MainTaskListState extends State<MainTaskList> {
   List<Task> _todayTask;
 
   @override
@@ -25,15 +25,26 @@ class _MainTaskListPageState extends State<MainTaskListPage> {
         _todayTask[notification.index].checked = notification.checked;
         return true;
       },
-      child: ListView.builder(
-        itemBuilder: (context, index) {
+      child: ReorderableListView(
+        children: _todayTask.map((item) {
           return TaskItem(
-            task: _todayTask[index],
-            index: index,
+            key: ObjectKey(item),
+            task: item,
+            index: _todayTask.indexOf(item),
           );
-        },
-        itemCount: _todayTask.length,
+        }).toList(),
+        onReorder: _onReorder,
       ),
     );
+  }
+
+  _onReorder(int oldIndex, int newIndex) {
+    setState(() {
+      if (newIndex == _todayTask.length) {
+        newIndex = _todayTask.length - 1;
+      }
+      Task item = _todayTask.removeAt(oldIndex);
+      _todayTask.insert(newIndex, item);
+    });
   }
 }

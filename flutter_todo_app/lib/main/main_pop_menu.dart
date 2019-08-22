@@ -6,13 +6,14 @@ class MainPopMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton(
+
       onSelected: (String value) {
         MainPopMenuItemTapNotification(value).dispatch(context);
       },
       itemBuilder: (BuildContext context) {
         List<PopupMenuItem<String>> result = [];
         for (String value in mainPopMenuNames) {
-          PopupMenuItem item = PopupMenuItem(
+          PopupMenuItem<String> item = PopupMenuItem(
             value: value,
             child: Text(value),
           );
