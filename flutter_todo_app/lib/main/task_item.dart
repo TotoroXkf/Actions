@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_app/model/task.dart';
 
+// ignore: must_be_immutable
 class TaskItem extends StatefulWidget {
-  String taskName;
-  bool checkedValue;
+  Task task;
 
   // ignore: non_constant_identifier_names
-  TaskItem({Key, key, this.taskName = "", this.checkedValue = false})
-      : super(key: key);
+  TaskItem({Key, key, this.task}) : super(key: key);
 
   @override
   _TaskItemState createState() => _TaskItemState();
@@ -16,6 +16,9 @@ class TaskItem extends StatefulWidget {
 class _TaskItemState extends State<TaskItem> {
   @override
   Widget build(BuildContext context) {
+    if (widget.task == null) {
+      return Container();
+    }
     return Row(
       children: <Widget>[
         Expanded(
@@ -29,15 +32,14 @@ class _TaskItemState extends State<TaskItem> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Checkbox(
-                      onChanged: (bool value) {
-                        setState(() {
-                          widget.checkedValue = value;
-                        });
-                      },
-                      value: widget.checkedValue,
+                    getCheckBox(),
+                    Expanded(
+                      child: getNameText(),
                     ),
-                    Text(widget.taskName),
+                    getDateText(),
+                    SizedBox(
+                      width: 6,
+                    )
                   ],
                 ),
               ),
@@ -45,6 +47,41 @@ class _TaskItemState extends State<TaskItem> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget getCheckBox() {
+    return Checkbox(
+      onChanged: (bool value) {
+        setState(() {
+          widget.task.checked = value;
+        });
+      },
+      value: widget.task.checked,
+    );
+  }
+
+  Widget getNameText() {
+    return Text(
+      widget.task.name,
+      style: TextStyle(
+        color: widget.task.checked ? Colors.grey : Colors.black,
+        decoration: widget.task.checked
+            ? TextDecoration.lineThrough
+            : TextDecoration.none,
+      ),
+    );
+  }
+
+  Widget getDateText() {
+    return Text(
+      widget.task.createDate.month.toString() +
+          "/" +
+          widget.task.createDate.day.toString(),
+      style: TextStyle(
+        fontSize: 12,
+        color: Colors.grey[33],
+      ),
     );
   }
 }

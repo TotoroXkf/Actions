@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/data/mock.dart';
 import 'package:flutter_todo_app/main/task_item.dart';
 import 'package:flutter_todo_app/model/task.dart';
+import 'package:flutter_todo_app/notification/task_item_check_notification.dart';
 
 class MainTaskListPage extends StatefulWidget {
   @override
@@ -19,14 +20,19 @@ class _MainTaskListPageState extends State<MainTaskListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        return TaskItem(
-          taskName: _todayTask[index].name,
-          checkedValue: _todayTask[index].checked,
-        );
+    return NotificationListener<TaskItemCheckNotification>(
+      onNotification: (notification) {
+        _todayTask[notification.index].checked = notification.checked;
+        return true;
       },
-      itemCount: _todayTask.length,
+      child: ListView.builder(
+        itemBuilder: (context, index) {
+          return TaskItem(
+            task: _todayTask[index],
+          );
+        },
+        itemCount: _todayTask.length,
+      ),
     );
   }
 }
