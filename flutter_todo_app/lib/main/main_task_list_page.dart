@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app/main/TaskItem.dart';
+import 'package:flutter_todo_app/main/task_item.dart';
 
 class MainTaskListPage extends StatefulWidget {
   @override
