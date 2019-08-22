@@ -4,5 +4,5 @@ class TaskItemCheckNotification extends Notification {
   int index;
   bool checked;
 
-  TaskItemCheckNotification(this.index, this.checked);
+  TaskItemCheckNotification({this.index, this.checked});
 }

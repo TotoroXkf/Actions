@@ -8,10 +8,17 @@ const List<String> drawerMenuNames = [
   "全部",
   "回收站",
 ];
+
 const List<IconData> drawerMenuIcons = [
   Icons.calendar_today,
   Icons.today,
   Icons.calendar_view_day,
   Icons.done_all,
   Icons.restore_from_trash,
+];
+
+const List<String> mainPopMenuNames = [
+  "按照时间排序",
+  "主题",
+  "设置",
 ];

@@ -29,6 +29,7 @@ class _MainTaskListPageState extends State<MainTaskListPage> {
         itemBuilder: (context, index) {
           return TaskItem(
             task: _todayTask[index],
+            index: index,
           );
         },
         itemCount: _todayTask.length,

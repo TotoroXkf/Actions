@@ -75,7 +75,7 @@ class _MainDrawerState extends State<MainDrawer> {
         ],
       ),
       onTap: () {
-        MenuItemTapNotification(index).dispatch(context);
+        DrawerMenuItemTapNotification(index).dispatch(context);
       },
     );
   }

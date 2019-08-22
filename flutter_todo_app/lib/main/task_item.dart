@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/model/task.dart';
+import 'package:flutter_todo_app/notification/task_item_check_notification.dart';
 
 // ignore: must_be_immutable
 class TaskItem extends StatefulWidget {
   Task task;
+  int index;
 
   // ignore: non_constant_identifier_names
-  TaskItem({Key, key, this.task}) : super(key: key);
+  TaskItem({Key, key, this.task, this.index}) : super(key: key);
 
   @override
   _TaskItemState createState() => _TaskItemState();
@@ -55,6 +57,10 @@ class _TaskItemState extends State<TaskItem> {
       onChanged: (bool value) {
         setState(() {
           widget.task.checked = value;
+          TaskItemCheckNotification(
+            checked: widget.task.checked,
+            index: widget.index,
+          ).dispatch(context);
         });
       },
       value: widget.task.checked,

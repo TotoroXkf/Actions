@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MenuItemTapNotification extends Notification {
-  MenuItemTapNotification(this.index);
+class DrawerMenuItemTapNotification extends Notification {
+  int index;
 
-  final int index;
+  DrawerMenuItemTapNotification(this.index);
+}
+
+class MainPopMenuItemTapNotification extends Notification {
+  String value;
+
+  MainPopMenuItemTapNotification(this.value);
 }
