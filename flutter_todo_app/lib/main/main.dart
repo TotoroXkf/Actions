@@ -3,6 +3,7 @@ import 'package:flutter_todo_app/data/constants.dart';
 import 'package:flutter_todo_app/main/main_drawer.dart';
 import 'package:flutter_todo_app/main/main_pop_menu.dart';
 import 'package:flutter_todo_app/main/main_task_list_page.dart';
+import 'package:flutter_todo_app/model/task.dart';
 import 'package:flutter_todo_app/notification/menu_item_tap_notification.dart';
 
 class MainPage extends StatefulWidget {
@@ -11,6 +12,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  String listType = TYPE_TODAY;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +28,14 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
-      body: MainTaskList(),
+      body: MainTaskList(taskList:,),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},
       ),
       drawer: NotificationListener<DrawerMenuItemTapNotification>(
         onNotification: (notification) {
+          changeTaskList(notification.index);
           return true;
         },
         child: MainDrawer(
@@ -40,5 +44,15 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
     );
+  }
+
+  void changeTaskList(int index) {
+    setState(() {
+      listType = drawerMenuNames[index];
+    });
+  }
+
+  void getListByType(){
+
   }
 }

@@ -41,7 +41,7 @@ class _SplashPageState extends State<SplashPage> {
               child: Text(
                 'Flutter Todo',
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 16,
                     color: Colors.white,
                     decoration: TextDecoration.none),
               ),

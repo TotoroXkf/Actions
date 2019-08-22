@@ -5,32 +5,40 @@ import 'package:flutter_todo_app/model/task.dart';
 import 'package:flutter_todo_app/notification/task_item_check_notification.dart';
 
 class MainTaskList extends StatefulWidget {
+  List<Task> taskList;
+
+  MainTaskList({Key key, this.taskList}) : super(key: key) {
+    if (taskList == null) {
+      taskList = [];
+    }
+  }
+
   @override
   _MainTaskListState createState() => _MainTaskListState();
 }
 
 class _MainTaskListState extends State<MainTaskList> {
-  List<Task> _todayTask;
+  List<Task> taskList;
 
   @override
   void initState() {
     super.initState();
-    _todayTask = fillTodayList();
+    this.taskList = widget.taskList;
   }
 
   @override
   Widget build(BuildContext context) {
     return NotificationListener<TaskItemCheckNotification>(
       onNotification: (notification) {
-        _todayTask[notification.index].checked = notification.checked;
+        taskList[notification.index].checked = notification.checked;
         return true;
       },
       child: ReorderableListView(
-        children: _todayTask.map((item) {
+        children: taskList.map((item) {
           return TaskItem(
             key: ObjectKey(item),
             task: item,
-            index: _todayTask.indexOf(item),
+            index: taskList.indexOf(item),
           );
         }).toList(),
         onReorder: _onReorder,
@@ -40,11 +48,11 @@ class _MainTaskListState extends State<MainTaskList> {
 
   _onReorder(int oldIndex, int newIndex) {
     setState(() {
-      if (newIndex == _todayTask.length) {
-        newIndex = _todayTask.length - 1;
+      if (newIndex == taskList.length) {
+        newIndex = taskList.length - 1;
       }
-      Task item = _todayTask.removeAt(oldIndex);
-      _todayTask.insert(newIndex, item);
+      Task item = taskList.removeAt(oldIndex);
+      taskList.insert(newIndex, item);
     });
   }
 }

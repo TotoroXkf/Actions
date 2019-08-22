@@ -3,6 +3,10 @@ import 'package:flutter_todo_app/model/task.dart';
 class DataSource {
   static List<Task> _allTaskList = [];
 
+  static List<Task> getListByType(String type){
+
+  }
+
   static List<Task> getTodayTasks() {
     List<Task> result = [];
     int today = DateTime.now().day;
