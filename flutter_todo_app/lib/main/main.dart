@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/data/constants.dart';
+import 'package:flutter_todo_app/data/data_source.dart';
 import 'package:flutter_todo_app/main/main_drawer.dart';
 import 'package:flutter_todo_app/main/main_pop_menu.dart';
 import 'package:flutter_todo_app/main/main_task_list_page.dart';
-import 'package:flutter_todo_app/model/task.dart';
 import 'package:flutter_todo_app/notification/menu_item_tap_notification.dart';
 
 class MainPage extends StatefulWidget {
@@ -28,7 +28,9 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
-      body: MainTaskList(taskList:,),
+      body: MainTaskList(
+        taskList: DataSource.getListByType(listType),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},
@@ -50,9 +52,5 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       listType = drawerMenuNames[index];
     });
-  }
-
-  void getListByType(){
-
   }
 }
