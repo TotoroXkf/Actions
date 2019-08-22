@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo_app/data/constants.dart';
+import 'package:flutter_todo_app/data/mock.dart';
 import 'package:flutter_todo_app/main/main_drawer.dart';
 import 'package:flutter_todo_app/main/main_task_list_page.dart';
 import 'package:flutter_todo_app/notification/menu_item_tap_notification.dart';
@@ -16,9 +17,7 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: Text('Todo'),
       ),
-      body: Center(
-        child: MainTaskListPage(),
-      ),
+      body: MainTaskListPage(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},
