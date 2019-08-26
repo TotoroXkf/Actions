@@ -22,6 +22,9 @@ class _MainPageState extends State<MainPage> {
         actions: <Widget>[
           NotificationListener<MainPopMenuItemTapNotification>(
             onNotification: (notification) {
+              setState(() {
+
+              });
               return true;
             },
             child: MainPopMenu(),

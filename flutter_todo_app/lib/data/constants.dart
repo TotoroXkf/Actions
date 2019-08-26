@@ -23,8 +23,10 @@ const List<IconData> drawerMenuIcons = [
   Icons.done_all,
 ];
 
+const String ITEM_SORT = "按照时间排序";
+const String ITEM_REFRESH = "刷新";
+
 const List<String> mainPopMenuNames = [
-  "按照时间排序",
-  "主题",
-  "设置",
+  ITEM_SORT,
+  ITEM_REFRESH,
 ];
