@@ -29,7 +29,7 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
       body: MainTaskList(
-        taskList: DataSource.getListByType(listType),
+        taskList: DataSource.mockDataByType(listType),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

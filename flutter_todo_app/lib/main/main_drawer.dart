@@ -9,19 +9,14 @@ class MainDrawer extends StatefulWidget {
   MainDrawer({Key key, this.menuName, this.icons}) : super(key: key);
 
   @override
-  _MainDrawerState createState() =>
-      _MainDrawerState(menuName: menuName, menuIcons: icons);
+  _MainDrawerState createState() => _MainDrawerState();
 }
 
 class _MainDrawerState extends State<MainDrawer> {
-  List<String> menuName = [];
-  List<IconData> menuIcons = [];
-
-  _MainDrawerState({Key key, this.menuName, this.menuIcons}) : super();
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
+
       child: Column(
         children: <Widget>[
           UserAccountsDrawerHeader(
@@ -37,7 +32,7 @@ class _MainDrawerState extends State<MainDrawer> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: menuName.length,
+              itemCount: widget.menuName.length,
               itemBuilder: (context, index) {
                 return Container(
                   margin: EdgeInsets.only(bottom: 20),
@@ -59,14 +54,14 @@ class _MainDrawerState extends State<MainDrawer> {
             width: 10,
           ),
           Icon(
-            menuIcons[index],
+            widget.icons[index],
             color: Colors.blue,
           ),
           SizedBox(
             width: 16,
           ),
           Text(
-            menuName[index],
+            widget.menuName[index],
             style: TextStyle(
               fontSize: 15,
               color: Colors.black,
@@ -76,6 +71,7 @@ class _MainDrawerState extends State<MainDrawer> {
       ),
       onTap: () {
         DrawerMenuItemTapNotification(index).dispatch(context);
+        Navigator.pop(context);
       },
     );
   }
