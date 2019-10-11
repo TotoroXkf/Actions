@@ -2,26 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d89d08d5-5306-4623-803a-8cbe9a035943" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../JavacTest/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavacTest/.idea/description.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavacTest/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavacTest/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavacTest/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavacTest/.idea/project-template.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavacTest/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavacTest/JavacTest.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../JavacTest/src/com/company/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/$PRODUCT_WORKSPACE_FILE$" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KotlinTest.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Test.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KotlinTest/Point.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KotlinTest/TestKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KotlinTest/TestKt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +75,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570715418536</updated>
-      <workItem from="1570715419838" duration="1163000" />
+      <workItem from="1570715419838" duration="1333000" />
+      <workItem from="1570752503665" duration="2794000" />
     </task>
     <servers />
   </component>
@@ -103,7 +88,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

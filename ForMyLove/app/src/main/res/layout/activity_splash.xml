@@ -7,7 +7,7 @@
     tools:context=".splash.SplashActivity">
 
     <ImageView
-        android:id="@+id/iv_splash"
+        android:id="@+id/imageSplash"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -18,7 +18,7 @@
         app:srcCompat="@mipmap/splash" />
 
     <com.example.formylove.splash.DaysTextView
-        android:id="@+id/dtv_days"
+        android:id="@+id/textDays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
