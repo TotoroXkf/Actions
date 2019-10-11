@@ -1,30 +1,29 @@
 package com.example.formylove.splash
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v7.app.AppCompatActivity
-import android.view.WindowManager
 import com.example.formylove.R
-import com.example.formylove.utils.computeDays
-import kotlinx.android.synthetic.main.activity_splash.*
+import com.example.formylove.utils.fullScreen
+import site.gemus.openingstartanimation.OpeningStartAnimation
+import site.gemus.openingstartanimation.RedYellowBlueDrawStrategy
+
 
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        textDays.day = computeDays()
-
-        val animator = ObjectAnimator.ofFloat(textDays, "alpha", 0F, 1F)
-        animator.duration = 1500
-        animator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
-            }
-        })
-        animator.start()
+        fullScreen(window)
+        val openingStartAnimation = OpeningStartAnimation.Builder(this)
+            .setDrawStategy(RedYellowBlueDrawStrategy())
+            .setAppStatement("大喵和小可爱的故事")
+            .setAnimationInterval(1500)
+            .create()
+        openingStartAnimation.show(this)
+        Handler(Looper.getMainLooper()).postDelayed({
+            finish()
+        }, 2000)
     }
 }
