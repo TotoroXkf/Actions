@@ -3,14 +3,11 @@ package com.example.formylove.splash
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
-import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.WindowManager
-
 import com.example.formylove.R
 import com.example.formylove.utils.computeDays
-import com.example.formylove.verify.VerifyActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
