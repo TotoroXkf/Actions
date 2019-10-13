@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d89d08d5-5306-4623-803a-8cbe9a035943" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KotlinTest/TestKt$iterator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KotlinTest/TestKt$iterator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KotlinTest/TestKt$iterator$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/KotlinTest/TestKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KotlinTest/TestKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test.kt" afterDir="false" />
     </list>
@@ -77,8 +77,20 @@
       <updated>1570715418536</updated>
       <workItem from="1570715419838" duration="1333000" />
       <workItem from="1570752503665" duration="2794000" />
-      <workItem from="1570805059047" duration="2703000" />
+      <workItem from="1570805059047" duration="2716000" />
+      <workItem from="1570863458964" duration="592000" />
+      <workItem from="1570874273491" duration="391000" />
+      <workItem from="1570875619348" duration="797000" />
+      <workItem from="1570876809077" duration="1795000" />
     </task>
+    <task id="LOCAL-00001" summary="Coding">
+      <created>1570808626803</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1570808626803</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,5 +108,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Coding" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coding" />
   </component>
 </project>
