@@ -7,13 +7,13 @@ public class TwoStackQueue {
     private void pushToStack(LinkedList<Integer> from, LinkedList<Integer> to) {
         to.clear();
         while (!from.isEmpty()) {
-            int value = from.removeLast();
-            to.addLast(value);
+            int value = from.pop();
+            to.push(value);
         }
     }
 
     public void add(int value) {
-        pushStack.addLast(value);
+        pushStack.push(value);
     }
 
     public Integer poll() {
@@ -21,7 +21,7 @@ public class TwoStackQueue {
         if (popStack.isEmpty()) {
             return null;
         }
-        int result = popStack.removeLast();
+        int result = popStack.pop();
         pushToStack(popStack, pushStack);
         return result;
     }

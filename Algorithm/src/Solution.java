@@ -1,16 +1,25 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 class Solution {
-    public static void main(String[] args) {
-        TwoStackQueue twoStackQueue = new TwoStackQueue();
-        twoStackQueue.add(1);
-        twoStackQueue.add(2);
-        twoStackQueue.add(3);
-        System.out.println(twoStackQueue.poll());
-        twoStackQueue.add(4);
-        System.out.println(twoStackQueue.poll());
-        System.out.println("" + twoStackQueue.peek());
+    public void reserve(LinkedList<Integer> stack) {
+        if (stack.isEmpty()) {
+            return;
+        }
+        int value = removeAndGetBottomValue(stack);
+        reserve(stack);
+        stack.push(value);
+    }
+
+    private int removeAndGetBottomValue(LinkedList<Integer> stack) {
+        if (stack.size() == 1) {
+            return stack.pop();
+        }
+        int value = stack.pop();
+        int result = removeAndGetBottomValue(stack);
+        stack.push(value);
+        return result;
     }
 }

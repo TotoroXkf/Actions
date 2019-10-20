@@ -6,13 +6,13 @@ public class MinStack {
 
     public void push(int value) {
         if (stack.isEmpty()) {
-            stack.addLast(value);
-            minStack.addLast(value);
+            stack.push(value);
+            minStack.push(value);
             return;
         }
-        stack.addLast(value);
+        stack.push(value);
         if (value <= minStack.getLast()) {
-            minStack.addLast(value);
+            minStack.push(value);
         }
     }
 
@@ -20,9 +20,9 @@ public class MinStack {
         if (stack.isEmpty()) {
             return Integer.MAX_VALUE;
         }
-        int popValue = stack.removeLast();
+        int popValue = stack.pop();
         if (popValue == minStack.getLast() && !minStack.isEmpty()) {
-            minStack.removeLast();
+            minStack.pop();
         }
         return popValue;
     }
