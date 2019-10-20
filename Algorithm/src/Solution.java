@@ -4,18 +4,13 @@ import java.util.List;
 
 class Solution {
     public static void main(String[] args) {
-        MinStack stack = new MinStack();
-        stack.push(10);
-        stack.push(20);
-        stack.push(2);
-        stack.pop();
-        stack.push(100);
-        stack.pop();
-        stack.pop();
-        stack.push(-1);
-        stack.push(20);
-        stack.push(9);
-        stack.pop();
-        System.out.println(stack.getMin());
+        TwoStackQueue twoStackQueue = new TwoStackQueue();
+        twoStackQueue.add(1);
+        twoStackQueue.add(2);
+        twoStackQueue.add(3);
+        System.out.println(twoStackQueue.poll());
+        twoStackQueue.add(4);
+        System.out.println(twoStackQueue.poll());
+        System.out.println("" + twoStackQueue.peek());
     }
 }
