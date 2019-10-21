@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.List;
 
 public class Utils {
@@ -13,5 +14,21 @@ public class Utils {
         }
         stringBuilder.append("]");
         System.out.println(stringBuilder.toString());
+    }
+
+    public static LinkedList<Integer> newRandomStack(int length) {
+        return newRandomStack(length, 0, 100);
+    }
+
+    public static LinkedList<Integer> newRandomStack(int length, int minValue, int maxValue) {
+        int i = 0;
+        LinkedList<Integer> stack = new LinkedList<>();
+        while (i < length) {
+            double randomValue = Math.random();
+            int value = (int) (randomValue * (maxValue - minValue) + minValue);
+            stack.push(value);
+            i++;
+        }
+        return stack;
     }
 }

@@ -4,22 +4,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 class Solution {
-    public void reserve(LinkedList<Integer> stack) {
-        if (stack.isEmpty()) {
-            return;
-        }
-        int value = removeAndGetBottomValue(stack);
-        reserve(stack);
-        stack.push(value);
+    public static void main(String[] args) {
+        LinkedList<Integer> stack = Utils.newRandomStack(1);
+        Utils.println(stack);
+        new Solution().sortStack(stack);
+        Utils.println(stack);
     }
 
-    private int removeAndGetBottomValue(LinkedList<Integer> stack) {
-        if (stack.size() == 1) {
-            return stack.pop();
+    public void sortStack(LinkedList<Integer> stack) {
+        LinkedList<Integer> helper = new LinkedList<>();
+        while (!stack.isEmpty()) {
+            int value = stack.pop();
+            while (!helper.isEmpty() && value > helper.peek()) {
+                stack.push(helper.pop());
+            }
+            helper.push(value);
         }
-        int value = stack.pop();
-        int result = removeAndGetBottomValue(stack);
-        stack.push(value);
-        return result;
+        while (!helper.isEmpty()) {
+            stack.push(helper.pop());
+        }
     }
 }
