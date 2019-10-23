@@ -1,27 +1,41 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 
 class Solution {
-    public static void main(String[] args) {
-        LinkedList<Integer> stack = Utils.newRandomStack(1);
-        Utils.println(stack);
-        new Solution().sortStack(stack);
-        Utils.println(stack);
-    }
-
-    public void sortStack(LinkedList<Integer> stack) {
-        LinkedList<Integer> helper = new LinkedList<>();
-        while (!stack.isEmpty()) {
-            int value = stack.pop();
-            while (!helper.isEmpty() && value > helper.peek()) {
-                stack.push(helper.pop());
+    public int hanoiProblem(int leave) {
+        LinkedList<Integer> left = new LinkedList<>();
+        LinkedList<Integer> mid = new LinkedList<>();
+        LinkedList<Integer> right = new LinkedList<>();
+        int count = 0;
+        for (int i = leave; i > 0; i--) {
+            left.push(i);
+        }
+        if (left.isEmpty()) {
+            return count;
+        }
+        while (right.size() != leave) {
+            if ((mid.isEmpty() && !left.isEmpty()) || (!mid.isEmpty() && !left.isEmpty() && mid.peek() > left.peek())) {
+                int value = left.pop();
+                System.out.println("move left " + value + " to mid");
+                count++;
+                mid.push(value);
+            } else {
+                int value = mid.pop();
+                System.out.println("move mid " + value + " to left");
+                count++;
+                left.push(value);
             }
-            helper.push(value);
+            if ((right.isEmpty() && !mid.isEmpty()) || (!right.isEmpty() && !mid.isEmpty() && right.peek() > mid.peek())) {
+                int value = mid.pop();
+                System.out.println("move mid " + value + " to right");
+                count++;
+                right.push(value);
+            } else {
+                int value = right.pop();
+                System.out.println("move right " + value + " to mid");
+                count++;
+                mid.push(value);
+            }
         }
-        while (!helper.isEmpty()) {
-            stack.push(helper.pop());
-        }
+        return count;
     }
 }

@@ -1,8 +1,8 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class Utils {
-    public static <T> void println(List<T> list) {
+class Utils {
+    static <T> void println(List<T> list) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
         for (int i = 0; i < list.size(); i++) {
@@ -16,11 +16,11 @@ public class Utils {
         System.out.println(stringBuilder.toString());
     }
 
-    public static LinkedList<Integer> newRandomStack(int length) {
+    static LinkedList<Integer> newRandomStack(int length) {
         return newRandomStack(length, 0, 100);
     }
 
-    public static LinkedList<Integer> newRandomStack(int length, int minValue, int maxValue) {
+    private static LinkedList<Integer> newRandomStack(int length, int minValue, int maxValue) {
         int i = 0;
         LinkedList<Integer> stack = new LinkedList<>();
         while (i < length) {
