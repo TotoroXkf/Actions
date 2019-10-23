@@ -1,49 +1,72 @@
 package com.example.hooktest;
 
+import android.app.Activity;
+import android.app.Instrumentation;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 public class HookHelper {
-    public static void hook() {
+    public static void hook(Class<Activity> activityClass, Activity activity) {
         try {
-            Class class1 = Class.forName("android.app.ActivityManagerNative");
-            Field field1 = class1.getDeclaredField("gDefault");
-            field1.setAccessible(true);
-            Object gDefault = field1.get(null);
-
-            Class class2 = Class.forName("android.util.Singleton");
-            Field field2 = class2.getDeclaredField("mInstance");
-            field2.setAccessible(true);
-            Object mInstance = field2.get(gDefault);
-
-            Class iActivityManagerInterface = Class.forName("android.app.IActivityManager");
-            Object proxy = Proxy.newProxyInstance(
-                    Thread.currentThread().getContextClassLoader(),
-                    new Class[]{iActivityManagerInterface},
-                    new HookHandler(mInstance)
-            );
-            field2.set(gDefault, proxy);
-        } catch (ClassNotFoundException | NoSuchFieldException | IllegalAccessException e) {
+            Field field = activityClass.getDeclaredField("mInstrumentation");
+            field.setAccessible(true);
+            Object mInstrumentation = field.get(activity);
+            MyInstrumentation myInstrumentation = new MyInstrumentation((Instrumentation) mInstrumentation);
+            field.set(activity, myInstrumentation);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
 }
 
-class HookHandler implements InvocationHandler {
+class MyInstrumentation extends Instrumentation{
+    Instrumentation base;
 
-    private Object mBase;
-
-    HookHandler(Object base) {
-        mBase = base;
+    MyInstrumentation(Instrumentation base) {
+        this.base = base;
     }
 
-    @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        Log.e("xkf", "hook!!!!!");
-        return method.invoke(mBase, args);
+    public Instrumentation.ActivityResult execStartActivity(
+            Context who,
+            IBinder contextThread,
+            IBinder token,
+            Activity target,
+            Intent intent,
+            int requestCode,
+            Bundle options) {
+        Log.e("xkf", "hook startActivity");
+        Class instrumentationClass = Instrumentation.class;
+        Class[] p = {
+                Context.class,
+                IBinder.class,
+                IBinder.class,
+                Activity.class,
+                Intent.class,
+                int.class,
+                Bundle.class
+        };
+        Object[] v = {
+                who,
+                contextThread,
+                token,
+                target,
+                intent,
+                requestCode,
+                options
+        };
+        try {
+            Method method = instrumentationClass.getDeclaredMethod("execStartActivity", p);
+            return (Instrumentation.ActivityResult) method.invoke(base, v);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

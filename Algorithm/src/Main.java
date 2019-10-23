@@ -1,8 +1,23 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
-class Solution {
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int w = sc.nextInt();
+        int[] x = new int[n];
+        for (int i = 0; i < n; i++) {
+            x[i] = sc.nextInt();
+        }
+        List<Integer> list = new Main().getMaxWindow(x, w);
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
+        }
+    }
+
     public List<Integer> getMaxWindow(int[] array, int size) {
         ArrayList<Integer> result = new ArrayList<>();
         if (size < 1) {
