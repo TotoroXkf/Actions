@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21749281-6882-4583-b7dc-6e6809243a0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/TreeNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ViewPagerTest/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ViewPagerTest/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ViewPagerTest/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ViewPagerTest/app/src/main/java/com/example/viewpagertest/BlankFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ViewPagerTest/app/src/main/java/com/example/viewpagertest/MainFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ViewPagerTest/app/src/main/java/com/example/viewpagertest/RecycleViewAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ViewPagerTest/app/src/main/java/com/example/viewpagertest/ViewPagerAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ViewPagerTest/app/src/main/res/layout/fragment_blank.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ViewPagerTest/app/src/main/res/layout/fragment_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,7 +53,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Algorithm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Run" />
+      <module name="Algorithm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Solution" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Solution" />
       <module name="Algorithm" />
@@ -51,6 +77,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Run" />
         <item itemvalue="Application.Solution" />
       </list>
     </recent_temporary>
@@ -80,16 +108,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Solution.java</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

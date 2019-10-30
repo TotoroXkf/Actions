@@ -1,36 +1,24 @@
-class Solution {
-    public boolean validPalindrome(String s) {
-        int i = 0;
-        int j = s.length() - 1;
-        boolean hasChange = false;
-        while (i < j) {
-            if (s.charAt(i) == s.charAt(j)) {
-                i++;
-                j--;
-                continue;
-            }
-            if (hasChange) {
-                return false;
-            }
-            if (j - i == 1) {
-                return true;
-            }
-            if (s.charAt(i) == s.charAt(j - 1)) {
-                j--;
-                hasChange = true;
-            } else if (s.charAt(j) == s.charAt(i + 1)) {
-                i++;
-                hasChange = true;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        String str = "ebcbbececabbacecbbcbe";
-        System.out.println(solution.validPalindrome(str));
+class Solution {
+    public List<Integer[]> findTwoSideMInValuePosition(int[] array){
+        ArrayList<Integer[]> result = new ArrayList<>();
+        for (int i = 0; i < array.length; i++) {
+            result.add(new Integer[]{-1,-1});
+        }
+        LinkedList<Integer> stack = new LinkedList<>();
+        for (int i = 0; i < array.length; i++) {
+            while (!stack.isEmpty() && array[stack.peek()]>array[i]){
+                int index = stack.pop();
+                result.get(index)[1] = i;
+            }
+            if(!stack.isEmpty()){
+                result.get(i)[0]=stack.peek();
+            }
+            stack.push(i);
+        }
+        return result;
     }
 }
