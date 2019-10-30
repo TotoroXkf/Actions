@@ -24,7 +24,6 @@ class SplashBackgroundView :View{
 
     init {
         paint.isAntiAlias = true
-
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -40,7 +39,7 @@ class SplashBackgroundView :View{
     fun startAnimation(){
         post {
             val animation = ObjectAnimator.ofFloat(0f,365f)
-            animation.duration = 1000*60
+            animation.duration = 1000*30
             animation.repeatCount = Animation.INFINITE
             animation.addUpdateListener {valueAnimator ->
                 val value = valueAnimator.animatedValue as Float

@@ -2,6 +2,20 @@ import java.util.LinkedList;
 import java.util.List;
 
 class Utils {
+    static void println(int[] array) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("[");
+        for (int i = 0; i < array.length; i++) {
+            if (i == array.length - 1) {
+                stringBuilder.append(array[i]);
+            } else {
+                stringBuilder.append(array[i]).append(", ");
+            }
+        }
+        stringBuilder.append("]");
+        System.out.println(stringBuilder.toString());
+    }
+
     static <T> void println(List<T> list) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
