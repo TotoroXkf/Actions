@@ -16,14 +16,14 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         fullScreen(window)
-        val openingStartAnimation = OpeningStartAnimation.Builder(this)
-            .setDrawStategy(RedYellowBlueDrawStrategy())
-            .setAppStatement("大喵和小可爱的故事")
-            .setAnimationInterval(1500)
-            .create()
-        openingStartAnimation.show(this)
-        Handler(Looper.getMainLooper()).postDelayed({
-            finish()
-        }, 2000)
+//        val openingStartAnimation = OpeningStartAnimation.Builder(this)
+//            .setDrawStategy(RedYellowBlueDrawStrategy())
+//            .setAppStatement("大喵和小可爱的故事")
+//            .setAnimationInterval(1500)
+//            .create()
+//        openingStartAnimation.show(this)
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            finish()
+//        }, 2000)
     }
 }
