@@ -1,12 +1,14 @@
 package com.example.formylove.splash
 
+import android.animation.AnimatorSet
+import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
-import android.view.Gravity
 import android.widget.FrameLayout
 import com.example.formylove.utils.computeDays
+import kotlinx.android.synthetic.main.activity_splash.view.*
 
-class SplashView:FrameLayout{
+class SplashView : FrameLayout {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
@@ -14,22 +16,34 @@ class SplashView:FrameLayout{
     override fun onFinishInflate() {
         super.onFinishInflate()
 
-        // 渐变背景
-        val splashBackgroundView = SplashBackgroundView(context)
-        val splashBackgroundViewLp = LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
-        splashBackgroundView.layoutParams = splashBackgroundViewLp
-        addView(splashBackgroundView)
-        splashBackgroundView.startAnimation()
+        daysView.day = computeDays()
+        backgroundView.startAnimation()
 
-        // 显示天数
-        val daysTextView = DaysTextView(context)
-        daysTextView.day = computeDays()
-        val daysTextViewLp = LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT)
-        daysTextViewLp.gravity = Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM
-        daysTextViewLp.bottomMargin = 75
-        daysTextView.layoutParams = daysTextViewLp
-        addView(daysTextView)
+        handleAnimation()
+    }
 
-        // 图标
+    private fun handleAnimation() = post {
+        val iconLayoutY = iconLayout.y
+        val daysViewY = daysView.y
+        val distance = 500f
+
+        val commonAnimator = ValueAnimator.ofFloat(0f, 1f)
+        commonAnimator.duration = 1000
+        commonAnimator.addUpdateListener {
+            val value = it.animatedValue as Float
+            val moveValue = distance - distance * value
+
+            daysView.alpha = value
+            daysView.scaleX = value
+            daysView.scaleY = value
+            daysView.y = daysViewY + moveValue
+
+            iconLayout.alpha = value
+            iconLayout.scaleX = value
+            iconLayout.scaleY = value
+            iconLayout.y = iconLayoutY + moveValue
+        }
+
+        commonAnimator.start()
     }
 }

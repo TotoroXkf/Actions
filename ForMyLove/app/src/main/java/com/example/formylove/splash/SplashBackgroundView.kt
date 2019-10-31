@@ -39,7 +39,7 @@ class SplashBackgroundView :View{
     fun startAnimation(){
         post {
             val animation = ObjectAnimator.ofFloat(0f,365f)
-            animation.duration = 1000*30
+            animation.duration = 1000*10
             animation.repeatCount = Animation.INFINITE
             animation.addUpdateListener {valueAnimator ->
                 val value = valueAnimator.animatedValue as Float
