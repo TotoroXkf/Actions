@@ -1,38 +1,26 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 class Solution {
-    public String countAndSay(int n) {
-        if (n == 1) {
-            return "1";
+    public List<String> generateParenthesis(int n) {
+        ArrayList<String> result = new ArrayList<>();
+        if (n == 0) {
+            return result;
         }
-        ArrayList<Integer[]> numberMap = new ArrayList<>();
-        int i = 2;
-        StringBuilder stringBuilder = new StringBuilder("1");
-        while (i <= n) {
-            numberMap.clear();
-            int target = -1;
-            int count = 0;
-            char[] numbers = stringBuilder.toString().toCharArray();
-            for (char number : numbers) {
-                if ((number - '0') != target) {
-                    if (target != -1) {
-                        numberMap.add(new Integer[]{target, count});
-                    }
-                    target = number - '0';
-                    count = 1;
-                } else {
-                    count++;
-                }
-            }
-            numberMap.add(new Integer[]{target, count});
-            stringBuilder.delete(0, stringBuilder.length());
-            for (Integer[] values : numberMap) {
-                stringBuilder.append(values[1]);
-                stringBuilder.append(values[0]);
-            }
-            i++;
+        generate(result, "", n, 0, 0);
+        return result;
+    }
+
+    private void generate(ArrayList<String> result, String current, int n, int leftNum, int rightNum) {
+        if (leftNum == n && rightNum == n) {
+            result.add(current);
+            return;
         }
-        return stringBuilder.toString();
+        if (leftNum > rightNum) {
+            generate(result, current + ")", n, leftNum, rightNum + 1);
+        }
+        if (leftNum < n) {
+            generate(result, current + "(", n, leftNum + 1, rightNum);
+        }
     }
 }
