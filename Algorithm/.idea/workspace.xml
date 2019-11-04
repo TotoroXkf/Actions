@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21749281-6882-4583-b7dc-6e6809243a0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/item_main_list.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/activity_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/activity_splash.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

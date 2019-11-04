@@ -1,5 +1,7 @@
 package com.example.formylove.splash
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.content.Context
@@ -9,9 +11,10 @@ import com.example.formylove.utils.computeDays
 import kotlinx.android.synthetic.main.activity_splash.view.*
 
 class SplashView : FrameLayout {
+    var animationFinishListener: (() -> Unit)? = null
+
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -43,6 +46,11 @@ class SplashView : FrameLayout {
             iconLayout.scaleY = value
             iconLayout.y = iconLayoutY + moveValue
         }
+        commonAnimator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                animationFinishListener?.invoke()
+            }
+        })
 
         commonAnimator.start()
     }
