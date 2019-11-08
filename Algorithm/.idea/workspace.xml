@@ -2,48 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21749281-6882-4583-b7dc-6e6809243a0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/androidTest/java/com/example/androidtest/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/example/androidtest/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/layout/item_remoteviews.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/test/java/com/example/androidtest/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTest/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/res/drawable-v24/ic_launcher_round.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Run.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/Run.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTest/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/example/androidtest/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/example/androidtest/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/example/androidtest/MyAppWidget.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/example/androidtest/MyAppWidget.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,6 +33,7 @@
   <component name="ProjectId" id="1SmJho96ZjOYiYw73GYoOZeutD3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="D:/Git/bin/git.exe" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
@@ -105,8 +74,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Run" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Solution" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>

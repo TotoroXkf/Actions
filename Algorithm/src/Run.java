@@ -1,6 +1,7 @@
 public class Run {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        solution.countAndSay(5);
+        System.out.println(solution.divide(-2147483648, 1));
+//        System.out.println(-10000>-1000);
     }
 }

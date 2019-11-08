@@ -12,7 +12,6 @@ import android.graphics.Matrix
 import android.os.SystemClock
 import android.widget.RemoteViews
 
-const val TAG = "xiakaifa"
 const val CLICK_ACTION = "clickAction"
 
 class MyAppWidget : AppWidgetProvider() {
@@ -22,8 +21,10 @@ class MyAppWidget : AppWidgetProvider() {
         if (intent?.action == CLICK_ACTION) {
             Thread {
                 val appWidgetManager = AppWidgetManager.getInstance(context)
-                val bitmap =
-                    BitmapFactory.decodeResource(context.resources, R.mipmap.ic_launcher_round)
+                val bitmap = BitmapFactory.decodeResource(
+                    context.resources,
+                    R.drawable.ic_launcher_round
+                )
                 for (i in 0 until 37) {
                     // 设置View
                     val degree = (i * 10) % 360
@@ -34,11 +35,12 @@ class MyAppWidget : AppWidgetProvider() {
                     // 设置intent
                     val clickIntent = Intent()
                     clickIntent.action = CLICK_ACTION
+                    clickIntent.setPackage("com.example.androidtest")
                     val pendingIntent = PendingIntent.getBroadcast(
                         context,
                         0,
                         clickIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT
+                        0
                     )
                     remoteViews.setOnClickPendingIntent(R.id.imageView, pendingIntent)
 
@@ -51,6 +53,40 @@ class MyAppWidget : AppWidgetProvider() {
                 }
             }.start()
         }
+    }
+
+    override fun onUpdate(
+        context: Context?,
+        appWidgetManager: AppWidgetManager?,
+        appWidgetIds: IntArray?
+    ) {
+        context ?: return
+        appWidgetManager ?: return
+        appWidgetIds ?: return
+        val counter = appWidgetIds.size
+        for (i in 0 until counter) {
+            val appWidgetId = appWidgetIds[i];
+            onWidgetUpdate(context, appWidgetManager, appWidgetId)
+        }
+    }
+
+    private fun onWidgetUpdate(
+        context: Context,
+        appWidgetManager: AppWidgetManager,
+        appWidgetId: Int
+    ) {
+        val remoteViews = RemoteViews(context.packageName, R.layout.widget)
+        val clickIntent = Intent()
+        clickIntent.action = CLICK_ACTION
+        clickIntent.setPackage("com.example.androidtest")
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            0,
+            clickIntent,
+            0
+        )
+        remoteViews.setOnClickPendingIntent(R.id.imageView, pendingIntent)
+        appWidgetManager.updateAppWidget(appWidgetId, remoteViews)
     }
 
 
