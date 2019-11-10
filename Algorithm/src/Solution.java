@@ -1,33 +1,30 @@
 class Solution {
-	public int search(int[] nums, int target) {
-		return search(nums, target, 0, nums.length - 1);
+	public int[] searchRange(int[] nums, int target) {
+		int[] result = new int[]{-1, -1};
+		searchRange(nums, target, 0, nums.length - 1, result);
+		return result;
 	}
-
-	private int search(int[] nums, int target, int left, int right) {
+	
+	private void searchRange(int[] nums, int target, int left, int right, int[] result) {
 		if (left > right) {
-			return -1;
+			return;
 		}
-		int mid = (left + right) / 2;
-		if (target == nums[mid]) {
-			return mid;
+		int findResult = binarySearch(nums, target, left, right);
+		if (findResult == -1) {
+			return;
 		}
-		if (target > nums[mid] && target <= nums[right] && nums[right] >= nums[mid]) {
-			// 左边有序且落在左边，二分搜索左边
-			return binarySearch(nums, target, mid + 1, right);
-		} else if (nums[right] >= nums[mid]) {
-			// 左边有序但是不落在左边，递归右边
-			return search(nums, target, left, mid - 1);
+		if (findResult == 0 || (findResult > 0 && nums[findResult - 1] != target)) {
+			result[0] = findResult;
+		} else {
+			searchRange(nums, target, left, findResult - 1, result);
 		}
-		if (target < nums[mid] && target >= nums[left] && nums[mid] >= nums[left]) {
-			// 右边有序且落在右边，二分搜索右边
-			return binarySearch(nums, target, left, mid - 1);
-		} else if (nums[mid] >= nums[left]) {
-			// 右边有序但是不落在右边，二分搜索左边
-			return search(nums, target, mid + 1, right);
+		if (findResult == nums.length - 1 || (findResult < nums.length - 1 && nums[findResult + 1] != target)) {
+			result[1] = findResult;
+		} else {
+			searchRange(nums, target, findResult + 1, right, result);
 		}
-		return -1;
 	}
-
+	
 	private int binarySearch(int[] nums, int target, int left, int right) {
 		while (left <= right) {
 			int mid = (left + right) / 2;
