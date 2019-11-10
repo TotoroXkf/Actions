@@ -20,7 +20,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <android.support.design.card.MaterialCardView
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="65dp"
             android:layout_height="65dp"
             app:cardCornerRadius="8dp"
@@ -33,7 +33,7 @@
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
                 android:src="@drawable/app_icon" />
-        </android.support.design.card.MaterialCardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:layout_width="wrap_content"

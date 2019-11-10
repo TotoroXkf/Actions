@@ -2,7 +2,7 @@ package com.example.formylove.splash
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.formylove.R
 import com.example.formylove.main.MainActivity
 import com.example.formylove.utils.fullScreen

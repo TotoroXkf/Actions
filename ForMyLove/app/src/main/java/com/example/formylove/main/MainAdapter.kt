@@ -1,12 +1,12 @@
 package com.example.formylove.main
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.formylove.R
 
-class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
+class MainAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<MainViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): MainViewHolder {
         return MainViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_main_list, parent, false))
     }
@@ -18,6 +18,6 @@ class MainAdapter : RecyclerView.Adapter<MainViewHolder>() {
     }
 }
 
-class MainViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class MainViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
 
 }
