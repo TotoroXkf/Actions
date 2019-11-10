@@ -3,9 +3,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
-        <item name="colorAccent">@color/colorPrimary    </item>
+        <item name="colorPrimary">#FF6060</item>
+        <item name="colorPrimaryDark">#FF4242</item>
+        <item name="colorAccent">#FF603A</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
     <style name="dialog_soft_input" parent="Theme.MaterialComponents.Light.Dialog.Alert">
