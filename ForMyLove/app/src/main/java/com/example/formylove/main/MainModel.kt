@@ -1,5 +1,6 @@
 package com.example.formylove.main
 
-class MainModel {
+import com.example.formylove.utils.toast
 
+class MainModel {
 }
