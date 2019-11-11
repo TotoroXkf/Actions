@@ -1,4 +1,4 @@
-package com.example.formylove.common
+package com.example.formylove.base
 
 import com.example.formylove.main.MainActivity
 import retrofit2.Call

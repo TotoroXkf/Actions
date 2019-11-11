@@ -27,10 +27,4 @@ class MainActivity : AppCompatActivity() {
         
         tvSubTitle.text = viewModel.subTitle
     }
-    
-    class Test(val results: List<SubTest>?) {
-        class SubTest(
-            val test: String
-        )
-    }
 }

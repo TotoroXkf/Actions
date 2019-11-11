@@ -1,6 +1,6 @@
 package com.example.formylove.utils
 
-import com.example.formylove.common.BmobApi
+import com.example.formylove.base.BmobApi
 import com.example.formylove.main.MainActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -11,7 +11,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
-import kotlin.coroutines.experimental.CoroutineContext
 
 
 const val APPLICATION_ID = "50c056c5958ea03ed4f405efb96c4644"
