@@ -1,11 +1,6 @@
 package com.example.formylove.utils
 
 import com.example.formylove.base.BmobApi
-import com.example.formylove.main.MainActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -43,16 +38,12 @@ object RetrofitUtil {
         bmobService = bmobRetrofit.create(BmobApi::class.java)
     }
     
-    suspend fun test(): MainActivity.Test? = withContext(Dispatchers.IO) {
-        GlobalScope.launch(Dispatchers.Main) {
-        
+    fun getBmobService() = bmobService
+    
+    fun <T> parse(response: retrofit2.Response<T>): T? {
+        if(!response.isSuccessful){
+            return null
         }
-        
-        val response = bmobService.test().execute()
-        if (response.isSuccessful) {
-            return@withContext response.body()
-        } else {
-            return@withContext null
-        }
+        return response.body()
     }
 }

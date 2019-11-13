@@ -47,7 +47,9 @@ class SplashView : FrameLayout {
         }
         commonAnimator.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
-                animationFinishListener?.invoke()
+                this@SplashView.setOnClickListener {
+                    animationFinishListener?.invoke()
+                }
             }
         })
 
