@@ -17,7 +17,11 @@ class SplashView : FrameLayout {
 
     override fun onFinishInflate() {
         super.onFinishInflate()
-
+    
+        this@SplashView.setOnClickListener {
+            animationFinishListener?.invoke()
+        }
+        
         daysView.day = computeDays()
         backgroundView.startAnimation()
 
@@ -45,13 +49,6 @@ class SplashView : FrameLayout {
             iconLayout.scaleY = value
             iconLayout.y = iconLayoutY + moveValue
         }
-        commonAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
-                this@SplashView.setOnClickListener {
-                    animationFinishListener?.invoke()
-                }
-            }
-        })
 
         commonAnimator.start()
     }

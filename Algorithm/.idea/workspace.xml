@@ -2,13 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21749281-6882-4583-b7dc-6e6809243a0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/BaseActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/HeadImageEntity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainConfigure.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/anim/fade_in.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/anim/fade_out.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/base/Apis.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/base/Apis.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/utils/RetrofitUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/utils/RetrofitUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/utils/ViewUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/utils/ViewUtil.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/item_main_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/item_main_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +47,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

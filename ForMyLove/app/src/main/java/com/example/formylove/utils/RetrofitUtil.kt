@@ -39,11 +39,4 @@ object RetrofitUtil {
     }
     
     fun getBmobService() = bmobService
-    
-    fun <T> parse(response: retrofit2.Response<T>): T? {
-        if(!response.isSuccessful){
-            return null
-        }
-        return response.body()
-    }
 }
