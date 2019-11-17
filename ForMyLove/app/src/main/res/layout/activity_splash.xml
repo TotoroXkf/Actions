@@ -44,6 +44,17 @@
             android:textSize="15sp" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvGoNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="~~点击进入主页~~"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
     <com.example.formylove.splash.DaysTextView
         android:id="@+id/daysView"
         android:layout_width="wrap_content"

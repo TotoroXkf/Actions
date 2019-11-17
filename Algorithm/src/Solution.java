@@ -1,33 +1,31 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 class Solution {
-	public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-		Arrays.sort(candidates);
+	public List<List<Integer>> permute(int[] nums) {
+		HashMap<Integer, Boolean> hashMap = new HashMap<>();
+		for (int i = 0; i < nums.length; i++) {
+			hashMap.put(i, true);
+		}
 		List<List<Integer>> result = new ArrayList<>();
 		List<Integer> currentList = new ArrayList<>();
-		find(candidates, target, 0, currentList, result);
+		handle(nums, hashMap, currentList, result);
 		return result;
 	}
 	
-	private void find(int[] candidates, int target, int start, List<Integer> currentList, List<List<Integer>> result) {
-		if (target == 0) {
-			List<Integer> list = new ArrayList<>(currentList);
-			result.add(list);
+	private void handle(int[] nums, HashMap<Integer, Boolean> hashMap, List<Integer> currentList, List<List<Integer>> result) {
+		if (currentList.size() == nums.length) {
+			List<Integer> newResult = new ArrayList<>(currentList);
+			result.add(newResult);
 		}
-		while (start < candidates.length && candidates[start] <= target) {
-			int value = target - candidates[start];
-			if (value < 0) {
-				return;
+		
+		for (int i = 0; i < nums.length; i++) {
+			if (hashMap.get(i)) {
+				currentList.add(nums[i]);
+				hashMap.put(i, false);
+				handle(nums, hashMap, currentList, result);
+				hashMap.put(i, true);
+				currentList.remove(currentList.size() - 1);
 			}
-			currentList.add(candidates[start]);
-			find(candidates, value, start + 1, currentList, result);
-			currentList.remove(currentList.size() - 1);
-			while (start < candidates.length-1 && candidates[start] == candidates[start + 1]) {
-				start++;
-			}
-			start++;
 		}
 	}
 }

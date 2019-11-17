@@ -1,17 +1,17 @@
 package com.example.formylove.main
 
-val itemNames = arrayOf(
-    "恋爱语句",
-    "随机事件",
-    "大喵转盘",
-    "绝美照片墙",
-    "我们的故事"
-)
+import com.example.formylove.R
 
-val itemColors = arrayOf(
-    1
-)
-
-val itemIcons = arrayOf(
-    1
-)
+object MainConfigure {
+    val itemNames = arrayOf(
+        "恋爱语句"
+    )
+    
+    val itemIcons = arrayOf(
+        R.drawable.icon_statement
+    )
+    
+    val router = arrayOf(
+        MainActivity::class.java
+    )
+}

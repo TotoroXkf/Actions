@@ -1,7 +1,7 @@
 package com.example.formylove.splash
 
 import android.content.Intent
-import com.example.formylove.BaseActivity
+import com.example.formylove.base.BaseActivity
 import com.example.formylove.R
 import com.example.formylove.main.MainActivity
 import com.example.formylove.utils.fullScreen
@@ -18,5 +18,9 @@ class SplashActivity : BaseActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
+    }
+    
+    override fun needDoubleBackExit(): Boolean {
+        return true
     }
 }

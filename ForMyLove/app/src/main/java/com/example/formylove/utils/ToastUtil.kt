@@ -7,14 +7,20 @@ import android.widget.Toast
 @SuppressLint("StaticFieldLeak")
 object ToastUtil {
     private var context: Context? = null
+    private var toast: Toast? = null
     
+    @SuppressLint("ShowToast")
     fun init(context: Context) {
         this.context = context
+        toast = Toast.makeText(context, "", Toast.LENGTH_SHORT)
     }
     
     fun toast(message: String) {
-        context ?: return
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        if (context == null || toast == null) {
+            return
+        }
+        toast?.setText(message)
+        toast?.show()
     }
 }
 
