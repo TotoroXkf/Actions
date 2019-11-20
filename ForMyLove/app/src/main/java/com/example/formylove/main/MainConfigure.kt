@@ -1,6 +1,7 @@
 package com.example.formylove.main
 
 import com.example.formylove.R
+import com.example.formylove.statement.StatementActivity
 
 object MainConfigure {
     val itemNames = arrayOf(
@@ -12,6 +13,6 @@ object MainConfigure {
     )
     
     val router = arrayOf(
-        MainActivity::class.java
+        StatementActivity::class.java
     )
 }

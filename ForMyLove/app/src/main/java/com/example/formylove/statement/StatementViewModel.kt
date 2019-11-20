@@ -1,20 +1,19 @@
 package com.example.formylove.statement
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class StatementViewModel : ViewModel() {
-    val textList = MutableLiveData<MutableList<String>>()
-    val model = StatementModel()
+    private val model = StatementModel()
+    val statementList = mutableListOf<String>()
     
-    fun getTextList(): MutableList<String> {
-        return textList.value ?: mutableListOf()
-    }
-    
-    suspend fun loadStatements() = GlobalScope.launch(Dispatchers.Main) {
-    
+    suspend fun loadStatements(): MutableList<String> {
+        val statementEntity = model.getStatement()
+        statementList.clear()
+        statementEntity?.results?.let { statements ->
+            statements.forEach { data ->
+                statementList.add(data.statement ?: "")
+            }
+        }
+        return statementList
     }
 }

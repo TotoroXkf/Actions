@@ -22,15 +22,5 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_main)
 		
-		val client = OkHttpClient()
-		client.newCall(Request.Builder().get().url("xxx").build()).enqueue(object :okhttp3.Callback{
-			override fun onFailure(call: okhttp3.Call, e: IOException) {
-			
-			}
-			
-			override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
-			
-			}
-		})
 	}
 }

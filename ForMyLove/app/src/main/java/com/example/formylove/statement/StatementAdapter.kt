@@ -21,10 +21,10 @@ class StatementAdapter(
         )
     }
     
-    override fun getItemCount(): Int = viewModel.getTextList().size
+    override fun getItemCount(): Int = viewModel.statementList.size
     
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val text = viewModel.getTextList()[position]
+        val text = viewModel.statementList[position]
         holder.bind(text)
     }
     

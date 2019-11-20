@@ -2,26 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21749281-6882-4583-b7dc-6e6809243a0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/utils/HandlerHelper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/drawable/icon_right_arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/drawable/icon_statement.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Run.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AndroidTest/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTest/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/example/androidtest/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/example/androidtest/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/base/BaseActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainConfigure.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/main/MainConfigure.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/splash/SplashView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/utils/ToastUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/example/formylove/utils/ToastUtil.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/activity_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/activity_splash.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/item_main_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/item_main_list.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +32,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -62,7 +46,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Run">
+  <component name="RunManager" selected="Application.Solution">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="Algorithm" />
@@ -86,8 +70,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Run" />
         <item itemvalue="Application.Solution" />
+        <item itemvalue="Application.Run" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>

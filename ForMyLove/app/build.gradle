@@ -10,7 +10,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.example.formylove"
-        minSdkVersion 21
+        minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -32,6 +32,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'org.codehaus.groovy:groovy-all:2.4.15'
 
     // ViewModel 和 LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
