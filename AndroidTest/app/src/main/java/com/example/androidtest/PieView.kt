@@ -43,7 +43,6 @@ class PieView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 			(w / 2 + length / 2),
 			(h / 2 + length / 2)
 		)
-		
 	}
 	
 	override fun onDraw(canvas: Canvas) {
