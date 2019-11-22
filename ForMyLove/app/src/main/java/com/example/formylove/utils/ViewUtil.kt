@@ -1,10 +1,13 @@
 package com.example.formylove.utils
 
 import android.content.Context
+import android.content.res.Resources
+import android.util.TypedValue
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.Resource
 
 /**
  * @Author: xiakaifa
@@ -20,15 +23,8 @@ fun fullScreen(window: Window) {
     )
 }
 
-fun dp2px(context: Context, dpValue: Float): Int {
-    val scale = context.resources.displayMetrics.density
-    return (dpValue * scale + 0.5f).toInt()
-}
-
-fun px2Dp(context: Context, pxValue: Float): Int {
-    val scale = context.resources.displayMetrics.density
-    return (pxValue / scale + 0.5f).toInt()
-}
+fun dp2px(dp: Float): Float =
+    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().displayMetrics)
 
 fun ImageView.loadNetWorkImage(url: String) {
     Glide.with(this).load(url).into(this)
