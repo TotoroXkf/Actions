@@ -8,4 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <declare-styleable name="MaterialEditText">
+        <attr name="useLabel" format="boolean" />
+    </declare-styleable>
 </resources>
