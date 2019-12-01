@@ -2,10 +2,74 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21749281-6882-4583-b7dc-6e6809243a0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/androidTest/java/com/example/hencodertest/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/java/com/example/hencodertest/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/app/src/test/java/com/example/hencodertest/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/androidTest/java/com/example/class10/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/java/com/example/class10/CircleView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/java/com/example/class10/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/java/com/example/class10/SquareView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/drawable-v24/image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/class10/src/test/java/com/example/class10/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HenCoderTest/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTest/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTest/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/example/androidtest/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/example/androidtest/MainActivity.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +96,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
