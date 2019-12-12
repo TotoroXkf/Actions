@@ -1,6 +1,7 @@
 package com.example.class11
 
 import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
@@ -9,6 +10,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.GestureDetector
 import android.view.MotionEvent
@@ -34,12 +36,16 @@ class ScaleImageView(context: Context?, attrs: AttributeSet?) : View(context, at
     private var minOffsetX = 0f
     private var maxOffsetY = 0f
     private var minOffsetY = 0f
+    private val offsetXValueHolder = PropertyValuesHolder.ofFloat("offsetX", 0f)
+    private val offsetYValueHolder = PropertyValuesHolder.ofFloat("offsetY", 0f)
     
     private var animationScaleValue = 1f
         set(value) {
             field = value
             invalidate()
         }
+    private val scaleValueHolder = PropertyValuesHolder.ofFloat("animationScaleValue", 0f)
+    
     private val animator = ObjectAnimator()
     
     private val scroller = OverScroller(context)
@@ -59,7 +65,7 @@ class ScaleImageView(context: Context?, attrs: AttributeSet?) : View(context, at
         maxOffsetY = (bitmap.height * scaleValue - height) / 2
         minOffsetY = -maxOffsetY
         
-        animator.setFloatValues(1f, scaleValue)
+        scaleValueHolder.setFloatValues(1f, scaleValue)
         animator.target = this
         animator.setPropertyName("animationScaleValue")
         animator.duration = 300
@@ -67,9 +73,7 @@ class ScaleImageView(context: Context?, attrs: AttributeSet?) : View(context, at
     
     override fun onDraw(canvas: Canvas) {
         canvas.save()
-        if (isBigMode) {
-            canvas.translate(offsetX, offsetY)
-        }
+        canvas.translate(offsetX, offsetY)
         canvas.scale(animationScaleValue, animationScaleValue, width / 2f, height / 2f)
         val left = (width.toFloat() - bitmap.width.toFloat()) / 2f
         val top = (height.toFloat() - bitmap.height.toFloat()) / 2f
@@ -129,19 +133,8 @@ class ScaleImageView(context: Context?, attrs: AttributeSet?) : View(context, at
             return true
         }
         
-        offsetX -= distanceX
-        if (offsetX > maxOffsetX) {
-            offsetX = maxOffsetX
-        } else if (offsetX < minOffsetX) {
-            offsetX = minOffsetX
-        }
-        
-        offsetY -= distanceY
-        if (offsetY > maxOffsetY) {
-            offsetY = maxOffsetY
-        } else if (offsetY < minOffsetY) {
-            offsetY = minOffsetY
-        }
+        rangeOffsetX(offsetX - distanceX)
+        rangeOffsetY(offsetY - distanceY)
         
         invalidate()
         return true
@@ -153,14 +146,46 @@ class ScaleImageView(context: Context?, attrs: AttributeSet?) : View(context, at
     
     override fun onDoubleTap(e: MotionEvent): Boolean {
         isBigMode = !isBigMode
-        offsetX = 0f
-        offsetY = 0f
         if (isBigMode) {
-            animator.start()
+            rangeOffsetX((e.x - width / 2) - ((e.x - width / 2) * scaleValue))
+            rangeOffsetY((e.y - height / 2) - ((e.y - height / 2) * scaleValue))
+        }
+        offsetXValueHolder.setFloatValues(0f, offsetX)
+        offsetYValueHolder.setFloatValues(0f, offsetY)
+        if (isBigMode) {
+            startAnimation()
         } else {
-            animator.reverse()
+            reverseAnimation()
         }
         return true
+    }
+    
+    private fun rangeOffsetX(x: Float) {
+        offsetX = x
+        if (offsetX > maxOffsetX) {
+            offsetX = maxOffsetX
+        } else if (offsetX < minOffsetX) {
+            offsetX = minOffsetX
+        }
+    }
+    
+    private fun rangeOffsetY(y: Float) {
+        offsetY = y
+        if (offsetY > maxOffsetY) {
+            offsetY = maxOffsetY
+        } else if (offsetY < minOffsetY) {
+            offsetY = minOffsetY
+        }
+    }
+    
+    fun setOffsetX(x: Float) {
+        offsetX = x
+        invalidate()
+    }
+    
+    fun setOffsetY(y: Float) {
+        offsetY = y
+        invalidate()
     }
     
     override fun onDoubleTapEvent(e: MotionEvent?): Boolean {
@@ -178,6 +203,16 @@ class ScaleImageView(context: Context?, attrs: AttributeSet?) : View(context, at
             invalidate()
             postOnAnimation(this)
         }
+    }
+    
+    private fun startAnimation() {
+        animator.setValues(scaleValueHolder, offsetXValueHolder, offsetYValueHolder)
+        animator.start()
+    }
+    
+    private fun reverseAnimation() {
+        animator.setValues(scaleValueHolder, offsetXValueHolder, offsetYValueHolder)
+        animator.reverse()
     }
 }
 
