@@ -1,2 +1,2 @@
-include ':app', ':class10', ':class11'
+include ':app', ':class10', ':class11', ':class14'
 rootProject.name='HenCoderTest'
