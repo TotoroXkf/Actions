@@ -6,6 +6,8 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ViewConfiguration
 import android.view.ViewGroup
+import android.widget.OverScroller
+import android.widget.Toast
 import kotlin.math.abs
 
 class TwoPageView(context: Context?, attrs: AttributeSet?) : ViewGroup(context, attrs) {
@@ -16,6 +18,8 @@ class TwoPageView(context: Context?, attrs: AttributeSet?) : ViewGroup(context, 
     
     private val viewConfiguration: ViewConfiguration = ViewConfiguration.get(context!!)
     private val slop = viewConfiguration.scaledTouchSlop
+    
+    private val scroller = OverScroller(context)
     
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         measureChildren(widthMeasureSpec, heightMeasureSpec)
@@ -29,12 +33,20 @@ class TwoPageView(context: Context?, attrs: AttributeSet?) : ViewGroup(context, 
         childView2.layout(width, 0, width + width, height)
     }
     
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        
+        getChildAt(0).setOnClickListener {
+            Toast.makeText(context, "我是第0个子View", Toast.LENGTH_SHORT).show()
+        }
+        getChildAt(1).setOnClickListener {
+            Toast.makeText(context, "我是第1个子View", Toast.LENGTH_SHORT).show()
+        }
+    }
+    
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
         when (event.actionMasked) {
-            MotionEvent.ACTION_DOWN -> {
-                downX = event.x
-                downY = event.y
-            }
+            MotionEvent.ACTION_DOWN -> onDown(event)
             
             MotionEvent.ACTION_MOVE -> {
                 if (abs(event.x - downX) > slop) {
@@ -48,31 +60,56 @@ class TwoPageView(context: Context?, attrs: AttributeSet?) : ViewGroup(context, 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.actionMasked) {
-            MotionEvent.ACTION_DOWN -> {
-                downX = event.x
-                downY = event.y
-            }
+            MotionEvent.ACTION_DOWN -> onDown(event)
             
-            // 滑动分为向左滑动和向右滑动
-            MotionEvent.ACTION_MOVE -> {
-                val moveX = event.x
-                val distance = downX - moveX
-                
-                if (distance > 0) {
-                    // 向左滑动
-                    // 已经在最右边，不处理
-                    if (currentPage == 1) {
-                        return true
-                    }
-                    // 向左逐步滑动
-                    scrollTo(distance.toInt(), 0)
-                }
-            }
+            MotionEvent.ACTION_MOVE -> onDragMove(event)
             
-            MotionEvent.ACTION_UP -> {
-                downX = 0f
-            }
+            MotionEvent.ACTION_UP -> onUp(event)
         }
         return true
+    }
+    
+    private fun onDown(event: MotionEvent) {
+        downX = event.x
+        downY = event.y
+    }
+    
+    private fun onDragMove(event: MotionEvent) {
+        if (currentPage == 0) {
+            val dragValue = (downX - event.x).toInt()
+            if (dragValue > 0) {
+                scrollTo(dragValue, 0)
+            }
+        } else {
+            val dragValue = (event.x - downX).toInt()
+            if (dragValue > 0) {
+                scrollTo(width - dragValue, 0)
+            }
+        }
+    }
+    
+    private fun onUp(event: MotionEvent) {
+        val scrollDistance = getScrollDistance()
+        if (scrollDistance < width / 2) {
+            currentPage = 0
+            scroller.startScroll(scrollX, 0, -scrollX, 0)
+        } else {
+            currentPage = 1
+            scroller.startScroll(scrollX, 0, width - scrollX, 0)
+        }
+        downX = 0f
+        
+        invalidate()
+    }
+    
+    private fun getScrollDistance(): Int {
+        return computeHorizontalScrollOffset()
+    }
+    
+    override fun computeScroll() {
+        if (scroller.computeScrollOffset()) {
+            scrollTo(scroller.currX, scroller.currY)
+            postInvalidate()
+        }
     }
 }
