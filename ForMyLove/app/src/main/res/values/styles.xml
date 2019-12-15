@@ -6,8 +6,6 @@
         <item name="colorPrimary">#FF6060</item>
         <item name="colorPrimaryDark">#FF4242</item>
         <item name="colorAccent">#FF603A</item>
-        <item name="android:windowBackground">@android:color/white</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
 

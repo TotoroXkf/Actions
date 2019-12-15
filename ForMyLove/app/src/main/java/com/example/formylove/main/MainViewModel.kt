@@ -18,7 +18,6 @@ class MainViewModel : ViewModel() {
     fun loadHeadImage() {
         GlobalScope.launch {
             val imageUrl = mainModel.getImageUrlByTime()
-            log(imageUrl)
             headImageLiveData.postValue(imageUrl)
         }
     }
