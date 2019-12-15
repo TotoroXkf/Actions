@@ -25,4 +25,10 @@ class StatementViewModel : ViewModel() {
             .execute()
         return@withContext
     }
+    
+    fun deleteStatement(position: Int) {
+        if (position in statementList.indices) {
+            statementList.removeAt(position)
+        }
+    }
 }

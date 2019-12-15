@@ -1,9 +1,11 @@
 package com.example.formylove.statement
 
 import android.animation.ObjectAnimator
+import android.graphics.Canvas
 import android.graphics.Color
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
@@ -47,12 +49,13 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
         
         recycleView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycleView.adapter = adapter
-        recycleView.addItemDecoration(StatementDivider())
         recycleView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 handleFab(dy)
             }
         })
+        val itemTouchHelper = ItemTouchHelper(DeleteTouchCallback())
+        itemTouchHelper.attachToRecyclerView(recycleView)
         
         refreshLayout.setOnRefreshListener {
             refresh()
@@ -99,6 +102,40 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
                 floatingActionButton.y + 500f
             )
             fabAnimation.start()
+        }
+    }
+    
+    inner class DeleteTouchCallback : ItemTouchHelper.SimpleCallback(
+        ItemTouchHelper.RIGHT,
+        ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT
+    ) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+        
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            if (direction != ItemTouchHelper.LEFT && direction != ItemTouchHelper.RIGHT) {
+                return
+            }
+            val position = viewHolder.adapterPosition
+            viewModel.deleteStatement(position)
+            adapter.notifyItemRemoved(position)
+        }
+    
+        override fun onChildDraw(
+            c: Canvas,
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            dX: Float,
+            dY: Float,
+            actionState: Int,
+            isCurrentlyActive: Boolean
+        ) {
+//            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         }
     }
 }
