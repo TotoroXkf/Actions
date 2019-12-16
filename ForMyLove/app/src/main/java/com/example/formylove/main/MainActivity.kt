@@ -1,13 +1,15 @@
 package com.example.formylove.main
 
 import android.graphics.Color
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.formylove.base.BaseActivity
 import com.example.formylove.R
+import com.example.formylove.base.BaseActivity
 import com.example.formylove.utils.loadNetWorkImage
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class MainActivity : BaseActivity() {
@@ -16,9 +18,6 @@ class MainActivity : BaseActivity() {
     }
     
     override fun initViewModel() {
-        viewModel.headImageLiveData.observe(this, Observer { value ->
-            imageHead.loadNetWorkImage(value)
-        })
     }
     
     override fun initViews() {
@@ -27,13 +26,14 @@ class MainActivity : BaseActivity() {
         recycleView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycleView.adapter = MainAdapter()
         
+        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE)
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
         tvSubTitle.text = viewModel.subTitle
-        viewModel.loadHeadImage()
-    }
-    
-    override fun onResume() {
-        super.onResume()
-        viewModel.loadHeadImage()
+        
+        GlobalScope.launch(Dispatchers.Main) {
+            val url = viewModel.loadHeadImage()
+            imageHead.loadNetWorkImage(url)
+        }
     }
     
     override fun getLayoutId(): Int = R.layout.activity_main

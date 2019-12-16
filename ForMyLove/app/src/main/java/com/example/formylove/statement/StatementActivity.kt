@@ -1,7 +1,6 @@
 package com.example.formylove.statement
 
 import android.animation.ObjectAnimator
-import android.graphics.Canvas
 import android.graphics.Color
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
@@ -92,10 +91,10 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
         if (fabAnimation.isRunning) {
             return
         }
-        if (fabIsHide && dy < -5) {
+        if (fabIsHide && dy <= 0) {
             fabIsHide = false
             fabAnimation.reverse()
-        } else if (!fabIsHide && dy > 5) {
+        } else if (!fabIsHide && dy > 0) {
             fabIsHide = true
             fabAnimation.setFloatValues(
                 floatingActionButton.y,
@@ -124,18 +123,6 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
             val position = viewHolder.adapterPosition
             viewModel.deleteStatement(position)
             adapter.notifyItemRemoved(position)
-        }
-    
-        override fun onChildDraw(
-            c: Canvas,
-            recyclerView: RecyclerView,
-            viewHolder: RecyclerView.ViewHolder,
-            dX: Float,
-            dY: Float,
-            actionState: Int,
-            isCurrentlyActive: Boolean
-        ) {
-//            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         }
     }
 }
