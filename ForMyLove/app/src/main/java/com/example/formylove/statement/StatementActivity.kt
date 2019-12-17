@@ -1,8 +1,6 @@
 package com.example.formylove.statement
 
 import android.animation.ObjectAnimator
-import android.graphics.Color
-import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -37,8 +35,7 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
     override fun initViewModel() {}
     
     override fun initViews() {
-        window.statusBarColor = Color.WHITE
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        setStatusBarWhite()
         
         fabAnimation.setPropertyName("y")
         fabAnimation.target = floatingActionButton

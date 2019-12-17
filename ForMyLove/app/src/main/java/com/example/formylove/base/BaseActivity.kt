@@ -1,6 +1,11 @@
 package com.example.formylove.base
 
+import android.R
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.formylove.utils.HandlerHelper
 import com.example.formylove.utils.toast
@@ -39,5 +44,32 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
     
+    protected fun setStatusBarWhite() {
+        window.statusBarColor = Color.WHITE
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+    }
+    
     protected open fun needDoubleBackExit() = false
+    
+    /**
+     * 获取InputMethodManager，隐藏软键盘
+     */
+    open fun hideKeyboard() {
+        val v = findViewById<View>(R.id.content)
+        val im = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        if (v != null && im != null) {
+            im.hideSoftInputFromWindow(
+                v.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
+        }
+    }
+    
+    /**
+     * 弹起软键盘
+     */
+    open fun showKeyboard() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        imm?.toggleSoftInput(0, InputMethodManager.SHOW_FORCED)
+    }
 }
