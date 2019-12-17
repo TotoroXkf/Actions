@@ -12,23 +12,13 @@ class RandomActivity : BaseActivity() {
         ViewModelProviders.of(this).get(RandomViewModel::class.java)
     }
     private val adapter: RandomListAdapter by lazy {
-        RandomListAdapter(viewModel)
+        RandomListAdapter(viewModel,this)
     }
     
     override fun getLayoutId(): Int = R.layout.activity_random
     
     override fun initViewModel() {
-        viewModel.addLiveData.observe(this, Observer {
-            adapter.notifyItemInserted(adapter.itemCount - 1)
-        })
-        
-        viewModel.deleteLiveData.observe(this, Observer {
-            adapter.notifyItemRemoved(it)
-        })
-        
-        viewModel.resetLiveData.observe(this, Observer {
-            adapter.notifyDataSetChanged()
-        })
+    
     }
     
     override fun initViews() {

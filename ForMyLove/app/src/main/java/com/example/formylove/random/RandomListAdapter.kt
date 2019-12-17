@@ -6,6 +6,8 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.formylove.R
 import com.example.formylove.utils.showSnakeBar
@@ -16,8 +18,24 @@ const val TYPE_THING_ITEM = 0
 const val TYPE_OPERATIONAL_AREA = 1
 
 class RandomListAdapter(
-    private val viewModel: RandomViewModel
+    private val viewModel: RandomViewModel,
+    lifecycleOwner: LifecycleOwner
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    
+    init {
+        viewModel.addLiveData.observe(lifecycleOwner, Observer {
+            notifyItemInserted(itemCount - 1)
+        })
+        
+        viewModel.deleteLiveData.observe(lifecycleOwner, Observer {
+            notifyItemRemoved(it)
+        })
+        
+        viewModel.resetLiveData.observe(lifecycleOwner, Observer {
+            notifyDataSetChanged()
+        })
+    }
+    
     override fun getItemViewType(position: Int): Int {
         return if (position == itemCount - 1) {
             TYPE_OPERATIONAL_AREA
