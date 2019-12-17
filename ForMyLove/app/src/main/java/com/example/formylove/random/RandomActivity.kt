@@ -1,5 +1,6 @@
 package com.example.formylove.random
 
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.formylove.R
@@ -15,6 +16,20 @@ class RandomActivity : BaseActivity() {
     }
     
     override fun getLayoutId(): Int = R.layout.activity_random
+    
+    override fun initViewModel() {
+        viewModel.addLiveData.observe(this, Observer {
+            adapter.notifyItemInserted(adapter.itemCount - 1)
+        })
+        
+        viewModel.deleteLiveData.observe(this, Observer {
+            adapter.notifyItemRemoved(it)
+        })
+        
+        viewModel.resetLiveData.observe(this, Observer {
+            adapter.notifyDataSetChanged()
+        })
+    }
     
     override fun initViews() {
         setStatusBarWhite()
