@@ -1,10 +1,9 @@
 package com.example.formylove.random
 
-import android.os.Handler
-import android.os.Looper
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.reactivex.Observer
+import com.example.formylove.utils.HandlerHelper
+import kotlin.random.Random
 
 class RandomViewModel : ViewModel() {
     val currentThingsList = mutableListOf<String>()
@@ -15,6 +14,7 @@ class RandomViewModel : ViewModel() {
     val addLiveData = MutableLiveData<String>()
     val deleteLiveData = MutableLiveData<Int>()
     val resetLiveData = MutableLiveData<Boolean>()
+    val focusLiveData = MutableLiveData<Boolean>()
     
     fun addNewThing(newThing: String) {
         currentThingsList.add(newThing)
@@ -30,25 +30,30 @@ class RandomViewModel : ViewModel() {
     fun computeRandom(onFinish: () -> Unit) {
         lastThingsList.clear()
         lastThingsList.addAll(currentThingsList)
-        val handler = Handler(Looper.getMainLooper())
         val runnable = object : Runnable {
             override fun run() {
                 if (currentThingsList.size == 1) {
                     onFinish.invoke()
-                } else {
-                    handler.postDelayed({
-                        val index = getNextIndex(currentThingsList.size)
-                        currentThingsList.removeAt(index)
-                        deleteLiveData.value = 0
-                        handler.postDelayed(this, 500)
-                    }, 500)
+                    return
+                }
+                
+                HandlerHelper.postDelay(500) {
+                    val index = getNextIndex(currentThingsList.size)
+                    deleteThing(index)
+                    HandlerHelper.postDelay(500, this)
                 }
             }
         }
-        handler.post(runnable)
+        HandlerHelper.post(runnable)
     }
     
     private fun getNextIndex(length: Int): Int {
-        return 0
+        val random = Random(System.currentTimeMillis())
+        return random.nextInt(1000) % length
+    }
+    
+    fun deleteThing(index: Int) {
+        currentThingsList.removeAt(index)
+        deleteLiveData.value = index
     }
 }
