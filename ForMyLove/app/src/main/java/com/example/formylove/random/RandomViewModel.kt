@@ -14,10 +14,9 @@ class RandomViewModel : ViewModel() {
     val addLiveData = MutableLiveData<String>()
     val deleteLiveData = MutableLiveData<Int>()
     val resetLiveData = MutableLiveData<Boolean>()
-    val focusLiveData = MutableLiveData<Boolean>()
     
     fun addNewThing(newThing: String) {
-        currentThingsList.add(newThing)
+        currentThingsList.add(0, newThing)
         addLiveData.value = newThing
     }
     

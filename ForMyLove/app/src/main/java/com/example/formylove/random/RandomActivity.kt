@@ -3,15 +3,15 @@ package com.example.formylove.random
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.formylove.R
 import com.example.formylove.base.BaseActivity
 import com.example.formylove.base.KeyBoardEvent
 import com.example.formylove.utils.KeyboardHelper
-import com.example.formylove.utils.log
+import jp.wasabeef.recyclerview.animators.LandingAnimator
 import kotlinx.android.synthetic.main.activity_random.*
+import kotlinx.android.synthetic.main.activity_random.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -35,12 +35,13 @@ class RandomActivity : BaseActivity() {
     
     override fun initViewModel() {
         viewModel.addLiveData.observe(this, Observer {
-            adapter.notifyDataSetChanged()
+            adapter.notifyItemInserted(0)
+            recycleView.smoothScrollToPosition(0)
         })
         
         viewModel.deleteLiveData.observe(this, Observer {
             recycleView.smoothScrollToPosition(it)
-            adapter.notifyDataSetChanged()
+            adapter.notifyItemRemoved(it)
         })
         
         viewModel.resetLiveData.observe(this, Observer {
@@ -53,15 +54,20 @@ class RandomActivity : BaseActivity() {
         
         recycleView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recycleView.adapter = adapter
-        recycleView.itemAnimator = DefaultItemAnimator()
+        recycleView.itemAnimator = LandingAnimator()
         val itemTouchHelper = ItemTouchHelper(DeleteTouchCallback(viewModel))
         itemTouchHelper.attachToRecyclerView(recycleView)
         
-        operationalAreaView.bind(viewModel)
+//        operationalAreaView.bind(viewModel)
+        operationalAreaView.textInputLayout.editText?.requestFocus()
+        showKeyboard()
     }
     
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onKeyBoardEvent(event: KeyBoardEvent) {
+        val layoutParams = rootLayout.layoutParams
+        layoutParams.height = event.viewHeight
+        rootLayout.layoutParams = layoutParams
     }
     
     override fun onDestroy() {
