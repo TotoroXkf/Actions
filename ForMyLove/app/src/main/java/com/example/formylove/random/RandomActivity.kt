@@ -10,6 +10,7 @@ import com.example.formylove.base.BaseActivity
 import com.example.formylove.base.KeyBoardEvent
 import com.example.formylove.utils.KeyboardHelper
 import jp.wasabeef.recyclerview.animators.LandingAnimator
+import jp.wasabeef.recyclerview.animators.ScaleInAnimator
 import kotlinx.android.synthetic.main.activity_random.*
 import kotlinx.android.synthetic.main.activity_random.view.*
 import org.greenrobot.eventbus.EventBus
@@ -58,7 +59,6 @@ class RandomActivity : BaseActivity() {
         val itemTouchHelper = ItemTouchHelper(DeleteTouchCallback(viewModel))
         itemTouchHelper.attachToRecyclerView(recycleView)
         
-//        operationalAreaView.bind(viewModel)
         operationalAreaView.textInputLayout.editText?.requestFocus()
         showKeyboard()
     }

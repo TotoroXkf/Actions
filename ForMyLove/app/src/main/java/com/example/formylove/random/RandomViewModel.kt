@@ -2,7 +2,7 @@ package com.example.formylove.random
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.formylove.utils.HandlerHelper
+import kotlinx.coroutines.delay
 import kotlin.random.Random
 
 class RandomViewModel : ViewModel() {
@@ -26,24 +26,14 @@ class RandomViewModel : ViewModel() {
         resetLiveData.value = true
     }
     
-    fun computeRandom(onFinish: () -> Unit) {
+    suspend fun computeRandom() {
         lastThingsList.clear()
         lastThingsList.addAll(currentThingsList)
-        val runnable = object : Runnable {
-            override fun run() {
-                if (currentThingsList.size == 1) {
-                    onFinish.invoke()
-                    return
-                }
-                
-                HandlerHelper.postDelay(500) {
-                    val index = getNextIndex(currentThingsList.size)
-                    deleteThing(index)
-                    HandlerHelper.postDelay(500, this)
-                }
-            }
+        while (currentThingsList.size > 1) {
+            val index = getNextIndex(currentThingsList.size)
+            deleteThing(index)
+            delay(700)
         }
-        HandlerHelper.post(runnable)
     }
     
     private fun getNextIndex(length: Int): Int {

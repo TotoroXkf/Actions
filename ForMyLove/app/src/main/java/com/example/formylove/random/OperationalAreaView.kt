@@ -10,6 +10,9 @@ import android.widget.LinearLayout
 import com.example.formylove.utils.getViewModel
 import com.example.formylove.utils.showSnakeBar
 import kotlinx.android.synthetic.main.item_random_thing_edit.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class OperationalAreaView(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     companion object {
@@ -23,67 +26,6 @@ class OperationalAreaView(context: Context?, attrs: AttributeSet?) : LinearLayou
     }
     
     private var state = 0
-
-//    fun bind(viewModel: RandomViewModel) {
-//        if (viewModel.isFirstLoadList) {
-//            setState(STATE_INIT)
-//        }
-//        textInputLayout.editText!!.addTextChangedListener(object : TextWatcher {
-//            override fun afterTextChanged(s: Editable?) {
-//
-//            }
-//
-//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-//
-//            }
-//
-//            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-//                val str = s.toString()
-//                if (TextUtils.isEmpty(str)) {
-//                    if (viewModel.isFirstLoadList) {
-//                        setState(STATE_INIT)
-//                    } else {
-//                        setState(STATE_INPUT_EMPTY)
-//                    }
-//                } else {
-//                    setState(STATE_INPUT)
-//                }
-//            }
-//        })
-//
-//        // 确认按钮
-//        btnConfirm.setOnClickListener {
-//            if (getInputText().isEmpty()) {
-//                showSnakeBar(it, "当前没有输入~~~", false)
-//                return@setOnClickListener
-//            }
-//            viewModel.isFirstLoadList = false
-//            viewModel.addNewThing(getInputText())
-//            setState(STATE_CONFIRMED)
-//        }
-//
-//        // 计算按钮
-//        btnCompute.setOnClickListener {
-//            if (getInputText().isNotEmpty()) {
-//                showSnakeBar(it, "当前还存在着输入~~~", false)
-//                return@setOnClickListener
-//            }
-//            viewModel.computeRandom {
-//                setState(STATE_AFTER_COMPUTE)
-//            }
-//            setState(STATE_COMPUTING)
-//        }
-//
-//        // 重置按钮
-//        btnReset.setOnClickListener {
-//            if (getInputText().isNotEmpty()) {
-//                showSnakeBar(it, "当前还存在着输入~~~", false)
-//                return@setOnClickListener
-//            }
-//            viewModel.resetThingsList()
-//            setState(STATE_RESET)
-//        }
-//    }
     
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -98,11 +40,11 @@ class OperationalAreaView(context: Context?, attrs: AttributeSet?) : LinearLayou
             override fun afterTextChanged(s: Editable?) {
             
             }
-        
+            
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             
             }
-        
+            
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 val str = s.toString()
                 if (TextUtils.isEmpty(str)) {
@@ -116,7 +58,7 @@ class OperationalAreaView(context: Context?, attrs: AttributeSet?) : LinearLayou
                 }
             }
         })
-    
+        
         // 确认按钮
         btnConfirm.setOnClickListener {
             if (getInputText().isEmpty()) {
@@ -127,19 +69,22 @@ class OperationalAreaView(context: Context?, attrs: AttributeSet?) : LinearLayou
             viewModel.addNewThing(getInputText())
             setState(STATE_CONFIRMED)
         }
-    
+        
         // 计算按钮
         btnCompute.setOnClickListener {
             if (getInputText().isNotEmpty()) {
                 showSnakeBar(it, "当前还存在着输入~~~", false)
                 return@setOnClickListener
             }
-            viewModel.computeRandom {
+            setState(STATE_COMPUTING)
+            
+            // 执行计算
+            GlobalScope.launch(Dispatchers.Main) {
+                viewModel.computeRandom()
                 setState(STATE_AFTER_COMPUTE)
             }
-            setState(STATE_COMPUTING)
         }
-    
+        
         // 重置按钮
         btnReset.setOnClickListener {
             if (getInputText().isNotEmpty()) {
