@@ -9,13 +9,9 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.input.input
 import com.example.formylove.R
 import com.example.formylove.base.BaseActivity
-import com.example.formylove.utils.hideSnakeBar
-import com.example.formylove.utils.showSnakeBar
+import com.xiasuhuei321.loadingdialog.view.LoadingDialog
 import kotlinx.android.synthetic.main.activity_statement.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 
 class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
@@ -27,6 +23,8 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
         StatementAdapter(viewModel)
     }
     
+    private lateinit var loadingDialog: LoadingDialog
+    
     private var fabIsHide = false
     private val fabAnimation = ObjectAnimator()
     
@@ -36,10 +34,20 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
         viewModel.deleteLiveData.observe(this, Observer {
             adapter.notifyItemRemoved(it)
         })
+        
+        viewModel.dialogLiveData.observe(this, Observer { show: Boolean ->
+            if (show) {
+                loadingDialog.show()
+            } else {
+                loadingDialog.close()
+            }
+        })
     }
     
     override fun initViews() {
         setStatusBarWhite()
+        
+        loadingDialog = LoadingDialog(this).setLoadingText("喵喵喵~~")
         
         fabAnimation.setPropertyName("y")
         fabAnimation.target = floatingActionButton
@@ -63,13 +71,11 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
     }
     
     private fun handleInputDialog() {
-        val view = recycleView
         MaterialDialog(this).show {
             input { _, text ->
-                showSnakeBar(view, "正在上传新的语句", true)
-                launch(Dispatchers.Main) {
+                GlobalScope.launch(Dispatchers.Main) {
                     viewModel.uploadNewStatement(text.toString())
-                    hideSnakeBar()
+                    refresh()
                 }
             }
             title(text = "输入新的语句")

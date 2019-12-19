@@ -4,9 +4,7 @@ import com.example.formylove.main.HeadImageEntity
 import com.example.formylove.statement.StatementEntity
 import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface BmobApi {
     /**
@@ -26,4 +24,7 @@ interface BmobApi {
      */
     @POST("/1/classes/Statement")
     fun uploadStatement(@Body data: StatementEntity.StatementData): Call<ResponseBody>
+    
+    @DELETE("/1/classes/Statement/{objectId}")
+    fun deleteStatement(@Path("objectId") objectId: String):Call<ResponseBody>
 }
