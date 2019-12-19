@@ -1,8 +1,8 @@
 package com.example.formylove.statement
 
 import android.animation.ObjectAnimator
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
@@ -32,7 +32,11 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
     
     override fun getLayoutId(): Int = R.layout.activity_statement
     
-    override fun initViewModel() {}
+    override fun initViewModel() {
+        viewModel.deleteLiveData.observe(this, Observer {
+            adapter.notifyItemRemoved(it)
+        })
+    }
     
     override fun initViews() {
         setStatusBarWhite()
@@ -50,8 +54,6 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
                 handleFab(dy)
             }
         })
-        val itemTouchHelper = ItemTouchHelper(DeleteTouchCallback())
-        itemTouchHelper.attachToRecyclerView(recycleView)
         
         refreshLayout.setOnRefreshListener {
             refresh()
@@ -98,28 +100,6 @@ class StatementActivity : BaseActivity(), CoroutineScope by MainScope() {
                 floatingActionButton.y + 500f
             )
             fabAnimation.start()
-        }
-    }
-    
-    inner class DeleteTouchCallback : ItemTouchHelper.SimpleCallback(
-        ItemTouchHelper.RIGHT,
-        ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT
-    ) {
-        override fun onMove(
-            recyclerView: RecyclerView,
-            viewHolder: RecyclerView.ViewHolder,
-            target: RecyclerView.ViewHolder
-        ): Boolean {
-            return false
-        }
-        
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            if (direction != ItemTouchHelper.LEFT && direction != ItemTouchHelper.RIGHT) {
-                return
-            }
-            val position = viewHolder.adapterPosition
-            viewModel.deleteStatement(position)
-            adapter.notifyItemRemoved(position)
         }
     }
 }

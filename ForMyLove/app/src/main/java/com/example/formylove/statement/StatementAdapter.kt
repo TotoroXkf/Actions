@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.formylove.R
+import com.example.formylove.utils.getViewModel
 import kotlinx.android.synthetic.main.item_statement_list.view.*
 
 
 class StatementAdapter(
     private val viewModel: StatementViewModel
 ) : RecyclerView.Adapter<StatementViewHolder>() {
-    
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StatementViewHolder {
         return StatementViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -34,6 +34,13 @@ class StatementViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val textView = view.text
     
     fun bind(text: String) {
+        itemView.scrollX = 0
         textView.text = text
+        
+        val viewModel = itemView.getViewModel(StatementViewModel::class.java)
+        viewModel ?: return
+        itemView.bgDelete.setOnClickListener {
+            viewModel.deleteStatement(adapterPosition)
+        }
     }
 }
