@@ -1,2 +1,2 @@
-include ':app', ':longimagetest', ':linktexttest'
+include ':app', ':longimagetest', ':recyclerview'
 rootProject.name='AndroidTest'

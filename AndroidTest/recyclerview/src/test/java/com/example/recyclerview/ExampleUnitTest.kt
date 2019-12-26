@@ -1,4 +1,4 @@
-package com.example.linktexttest
+package com.example.recyclerview
 
 import org.junit.Test
 

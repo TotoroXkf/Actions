@@ -16,6 +16,12 @@ class Utils {
         System.out.println(stringBuilder.toString());
     }
 
+    static void println(int[][] matrix) {
+        for (int[] array : matrix) {
+            println(array);
+        }
+    }
+
     static <T> void println(List<T> list) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("[");
