@@ -5,7 +5,7 @@ import android.content.Context
 import android.widget.Toast
 
 @SuppressLint("StaticFieldLeak")
-object ToastUtil {
+object ToastHelper {
     private var context: Context? = null
     private var toast: Toast? = null
     
@@ -25,5 +25,5 @@ object ToastUtil {
 }
 
 fun toast(message: String) {
-    ToastUtil.toast(message)
+    ToastHelper.toast(message)
 }

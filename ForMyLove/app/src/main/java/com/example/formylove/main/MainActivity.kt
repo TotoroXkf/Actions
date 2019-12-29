@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.formylove.R
 import com.example.formylove.base.BaseActivity
-import com.example.formylove.utils.loadNetWorkImage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -31,8 +30,7 @@ class MainActivity : BaseActivity() {
         tvSubTitle.text = viewModel.subTitle
         
         GlobalScope.launch(Dispatchers.Main) {
-            val url = viewModel.loadHeadImage()
-            imageHead.loadNetWorkImage(url)
+            viewModel.getImageByTime()
         }
     }
     

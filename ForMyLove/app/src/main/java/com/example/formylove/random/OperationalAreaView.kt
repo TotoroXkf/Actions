@@ -7,8 +7,8 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
+import com.example.formylove.utils.SnakeBarHelper
 import com.example.formylove.utils.getViewModel
-import com.example.formylove.utils.showSnakeBar
 import kotlinx.android.synthetic.main.item_random_thing_edit.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -62,7 +62,7 @@ class OperationalAreaView(context: Context?, attrs: AttributeSet?) : LinearLayou
         // 确认按钮
         btnConfirm.setOnClickListener {
             if (getInputText().isEmpty()) {
-                showSnakeBar(it, "当前没有输入~~~", false)
+                SnakeBarHelper.showSnakeBar(it, "当前没有输入~~~", false)
                 return@setOnClickListener
             }
             viewModel.isFirstLoadList = false
@@ -73,7 +73,7 @@ class OperationalAreaView(context: Context?, attrs: AttributeSet?) : LinearLayou
         // 计算按钮
         btnCompute.setOnClickListener {
             if (getInputText().isNotEmpty()) {
-                showSnakeBar(it, "当前还存在着输入~~~", false)
+                SnakeBarHelper.showSnakeBar(it, "当前还存在着输入~~~", false)
                 return@setOnClickListener
             }
             setState(STATE_COMPUTING)
@@ -88,7 +88,7 @@ class OperationalAreaView(context: Context?, attrs: AttributeSet?) : LinearLayou
         // 重置按钮
         btnReset.setOnClickListener {
             if (getInputText().isNotEmpty()) {
-                showSnakeBar(it, "当前还存在着输入~~~", false)
+                SnakeBarHelper.showSnakeBar(it, "当前还存在着输入~~~", false)
                 return@setOnClickListener
             }
             viewModel.resetThingsList()

@@ -5,12 +5,15 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.formylove.utils.HandlerHelper
 import com.example.formylove.utils.toast
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     private var canExit = false
     
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +53,16 @@ abstract class BaseActivity : AppCompatActivity() {
     }
     
     protected open fun needDoubleBackExit() = false
+    
+    /**
+     * 设置全屏
+     */
+    fun fullScreen() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+    }
     
     /**
      * 获取InputMethodManager，隐藏软键盘

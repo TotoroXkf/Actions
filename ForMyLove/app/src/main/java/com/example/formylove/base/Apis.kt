@@ -1,18 +1,17 @@
 package com.example.formylove.base
 
-import com.example.formylove.main.HeadImageEntity
 import com.example.formylove.statement.StatementEntity
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
+const val APPLICATION_ID = "50c056c5958ea03ed4f405efb96c4644"
+const val REST_API_KEY = "56e57ac0dd850930a4fd25ca23d21ae7"
+const val BMOB_BASE_URL = "https://api2.bmob.cn/"
+
+const val GITHUB_BASE_URL = "https://api.github.com/"
+
 interface BmobApi {
-    /**
-     * 主页head图片
-     */
-    @GET("/1/classes/HeadImage")
-    fun getHeadImages(): Call<HeadImageEntity>
-    
     /**
      * 获取恋爱语句
      */
@@ -26,5 +25,13 @@ interface BmobApi {
     fun uploadStatement(@Body data: StatementEntity.StatementData): Call<ResponseBody>
     
     @DELETE("/1/classes/Statement/{objectId}")
-    fun deleteStatement(@Path("objectId") objectId: String):Call<ResponseBody>
+    fun deleteStatement(@Path("objectId") objectId: String): Call<ResponseBody>
+}
+
+interface GithubApi {
+    @GET("/")
+    fun getFileContent(@Url url: String): Call<GithubContentData>
+    
+    @GET("repos/TotoroXkf/ForMyLoveData/contents/HeadImage/data.json")
+    fun getHeadImages(): Call<GithubContentData>
 }

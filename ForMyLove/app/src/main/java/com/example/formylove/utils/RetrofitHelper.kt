@@ -1,20 +1,19 @@
 package com.example.formylove.utils
 
-import com.example.formylove.base.BmobApi
+import com.example.formylove.base.*
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-
-const val APPLICATION_ID = "50c056c5958ea03ed4f405efb96c4644"
-const val REST_API_KEY = "56e57ac0dd850930a4fd25ca23d21ae7"
-const val BMOB_BASE_URL = "https://api2.bmob.cn/"
 
 object RetrofitHelper {
     private val bmobRetrofit: Retrofit
     private val bmobService: BmobApi
+    
+    private val githubRetrofit: Retrofit
+    private val githubService: GithubApi
     
     init {
         val okHttpClientBuilder = OkHttpClient.Builder()
@@ -36,7 +35,14 @@ object RetrofitHelper {
             .build()
         
         bmobService = bmobRetrofit.create(BmobApi::class.java)
+        
+        githubRetrofit = Retrofit.Builder().baseUrl(GITHUB_BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        githubService = githubRetrofit.create(GithubApi::class.java)
     }
     
     fun getBmobService() = bmobService
+    
+    fun getGithubService() = githubService
 }
