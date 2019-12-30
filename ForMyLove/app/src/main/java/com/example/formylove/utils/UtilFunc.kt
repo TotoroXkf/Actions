@@ -15,6 +15,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.*
 
 const val TAG = "xiakaifa: "
@@ -75,13 +78,6 @@ fun getScreenHeight() = Resources.getSystem().displayMetrics.heightPixels
 fun getScreenWidth() = Resources.getSystem().displayMetrics.widthPixels
 
 /**
- * base64字符串解码
- */
-fun String.decodeBase64(): String {
-    return String(Base64.decode(this, Base64.DEFAULT))
-}
-
-/**
  * log
  */
 fun log(message: String) {
@@ -109,12 +105,32 @@ fun ImageView.loadImage(bitmap: Bitmap) {
     Glide.with(this).load(bitmap).into(this)
 }
 
-fun parseImage(url: String): Bitmap? {
+/**
+ * 解析 Github 文件内容成为 byte 数组
+ */
+suspend fun parseGithubContentToByte(url: String): ByteArray = withContext(Dispatchers.IO) {
     val response = RetrofitHelper.getGithubService().getFileContent(url).execute()
     if (response.isSuccessful) {
         val body = response.body()!!
-        val byteArray = Base64.decode(body.content, Base64.DEFAULT)
-        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+        return@withContext Base64.decode(body.content, Base64.DEFAULT)
     }
-    return null
+    return@withContext byteArrayOf()
 }
+
+/**
+ * 解析 Github 文件内容成为 Bitmap
+ */
+suspend fun parseGithubContentToBitmap(url: String): Bitmap = withContext(Dispatchers.IO) {
+    val byteArray = parseGithubContentToByte(url)
+    return@withContext BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+}
+
+/**
+ * 解析 Github 文件内容成为对象
+ */
+suspend fun <T> parseGithubContentToObject(url: String, clazz: Class<T>): T =
+    withContext(Dispatchers.IO) {
+        val byteArray = parseGithubContentToByte(url)
+        val json = String(byteArray)
+        return@withContext Gson().fromJson(json, clazz)
+    }

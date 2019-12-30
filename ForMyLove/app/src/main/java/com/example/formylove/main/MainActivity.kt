@@ -5,10 +5,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.formylove.R
 import com.example.formylove.base.BaseActivity
+import com.example.formylove.utils.loadImage
+import com.example.formylove.utils.log
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import okhttp3.Request
 
 
 class MainActivity : BaseActivity() {
@@ -28,9 +31,10 @@ class MainActivity : BaseActivity() {
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE)
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
         tvSubTitle.text = viewModel.subTitle
-        
-        GlobalScope.launch(Dispatchers.Main) {
-            viewModel.getImageByTime()
+
+        launch(Dispatchers.Main) {
+            val bitmap = viewModel.getImageByTime()
+            imageHead.loadImage(bitmap)
         }
     }
     

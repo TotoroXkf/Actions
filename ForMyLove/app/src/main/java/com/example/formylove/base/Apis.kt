@@ -10,6 +10,7 @@ const val REST_API_KEY = "56e57ac0dd850930a4fd25ca23d21ae7"
 const val BMOB_BASE_URL = "https://api2.bmob.cn/"
 
 const val GITHUB_BASE_URL = "https://api.github.com/"
+const val GITHUB_CONTENT_URL = "repos/TotoroXkf/ForMyLoveData/contents/"
 
 interface BmobApi {
     /**
@@ -28,10 +29,9 @@ interface BmobApi {
     fun deleteStatement(@Path("objectId") objectId: String): Call<ResponseBody>
 }
 
+const val HEAD_IMAGE_JSON_URL = GITHUB_BASE_URL + GITHUB_CONTENT_URL + "HeadImage/data.json"
+
 interface GithubApi {
-    @GET("/")
+    @GET
     fun getFileContent(@Url url: String): Call<GithubContentData>
-    
-    @GET("repos/TotoroXkf/ForMyLoveData/contents/HeadImage/data.json")
-    fun getHeadImages(): Call<GithubContentData>
 }

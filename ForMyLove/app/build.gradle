@@ -69,4 +69,7 @@ dependencies {
 
     // RecyclerView item 动画
     implementation 'jp.wasabeef:recyclerview-animators:3.0.0'
+
+    // DiskLruCache
+    implementation 'com.jakewharton:disklrucache:2.0.2'
 }
