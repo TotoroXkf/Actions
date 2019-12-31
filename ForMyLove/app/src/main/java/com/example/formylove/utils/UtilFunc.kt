@@ -16,8 +16,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import java.util.*
 
 const val TAG = "xiakaifa: "
@@ -108,29 +106,28 @@ fun ImageView.loadImage(bitmap: Bitmap) {
 /**
  * 解析 Github 文件内容成为 byte 数组
  */
-suspend fun parseGithubContentToByte(url: String): ByteArray = withContext(Dispatchers.IO) {
+fun parseGithubContentToByte(url: String): ByteArray {
     val response = RetrofitHelper.getGithubService().getFileContent(url).execute()
     if (response.isSuccessful) {
         val body = response.body()!!
-        return@withContext Base64.decode(body.content, Base64.DEFAULT)
+        return Base64.decode(body.content, Base64.DEFAULT)
     }
-    return@withContext byteArrayOf()
+    return byteArrayOf()
 }
 
 /**
  * 解析 Github 文件内容成为 Bitmap
  */
-suspend fun parseGithubContentToBitmap(url: String): Bitmap = withContext(Dispatchers.IO) {
+fun parseGithubContentToBitmap(url: String): Bitmap {
     val byteArray = parseGithubContentToByte(url)
-    return@withContext BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+    return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
 }
 
 /**
  * 解析 Github 文件内容成为对象
  */
-suspend fun <T> parseGithubContentToObject(url: String, clazz: Class<T>): T =
-    withContext(Dispatchers.IO) {
-        val byteArray = parseGithubContentToByte(url)
-        val json = String(byteArray)
-        return@withContext Gson().fromJson(json, clazz)
-    }
+fun <T> parseGithubContentToObject(url: String, clazz: Class<T>): T {
+    val byteArray = parseGithubContentToByte(url)
+    val json = String(byteArray)
+    return Gson().fromJson(json, clazz)
+}
