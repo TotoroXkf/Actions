@@ -1,6 +1,5 @@
 package formylove.base
 
-import android.R
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
@@ -8,10 +7,11 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import formylove.utils.HandlerHelper
 import formylove.utils.toast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     private var canExit = false
@@ -42,8 +42,9 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope()
         
         canExit = true
         toast("再次点击退出应用~~~")
-        HandlerHelper.postDelay(1500) {
-            canExit = false
+        launch {
+            delay(1500)
+            canExit = true
         }
     }
     
@@ -68,7 +69,7 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope()
      * 获取InputMethodManager，隐藏软键盘
      */
     open fun hideKeyboard() {
-        val v = findViewById<View>(R.id.content)
+        val v = findViewById<View>(android.R.id.content)
         val im = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         if (v != null && im != null) {
             im.hideSoftInputFromWindow(
