@@ -15,6 +15,7 @@ import kotlin.math.roundToInt
 
 
 object ImageLoader {
+    private val bitmapCacheSet = HashSet<String>()
     private lateinit var lruCache: LruCache<String, Bitmap>
     private lateinit var diskLruCache: DiskLruCache
     
@@ -39,7 +40,11 @@ object ImageLoader {
         val urlMD5 = hashKeyForDisk(url)
         var bitmap = getFromCache(urlMD5)
         if (bitmap != null) {
+            bitmapCacheSet.add(urlMD5)
             return bitmap
+        }
+        if (bitmapCacheSet.contains(urlMD5)) {
+            bitmapCacheSet.remove(urlMD5)
         }
         bitmap = getFromNetWork(url)
         return compressBitmap(bitmap, width, height)
@@ -86,6 +91,9 @@ object ImageLoader {
      */
     fun save(url: String, bitmap: Bitmap) {
         val urlMD5 = hashKeyForDisk(url)
+        if (bitmapCacheSet.contains(urlMD5)) {
+            return
+        }
         saveToMemory(urlMD5, bitmap)
         val byteArray = bitmap2Bytes(bitmap)
         saveToDisk(urlMD5, byteArray)
