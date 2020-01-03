@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".random.RandomActivity">
+    tools:context="formylove.random.RandomActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
@@ -15,7 +15,7 @@
         android:layout_weight="1" />
 
 
-    <com.example.formylove.random.OperationalAreaView
+    <formylove.random.OperationalAreaView
         android:id="@+id/operationalAreaView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,5 +76,5 @@
             app:cornerRadius="20dp"
             android:layout_marginBottom="5dp"
             tools:ignore="HardcodedText" />
-    </com.example.formylove.random.OperationalAreaView>
+    </formylove.random.OperationalAreaView>
 </LinearLayout>
