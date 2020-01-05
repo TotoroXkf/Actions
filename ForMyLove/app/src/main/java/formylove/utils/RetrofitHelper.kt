@@ -36,8 +36,19 @@ object RetrofitHelper {
         
         bmobService = bmobRetrofit.create(BmobApi::class.java)
         
+        val clientBuilder = OkHttpClient.Builder()
+        clientBuilder.addInterceptor(object : Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+                val newRequest = chain.request().newBuilder()
+                    .addHeader("Authorization", APPLICATION_ID)
+                    .build()
+                return chain.proceed(newRequest)
+            }
+            
+        })
         githubRetrofit = Retrofit.Builder().baseUrl(GITHUB_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(clientBuilder.build())
             .build()
         githubService = githubRetrofit.create(GithubApi::class.java)
     }

@@ -102,32 +102,3 @@ fun ImageView.loadNetWorkImage(url: String) {
 fun ImageView.loadImage(bitmap: Bitmap) {
     Glide.with(this).load(bitmap).into(this)
 }
-
-/**
- * 解析 Github 文件内容成为 byte 数组
- */
-fun parseGithubContentToByte(url: String): ByteArray {
-    val response = RetrofitHelper.getGithubService().getFileContent(url).execute()
-    if (response.isSuccessful) {
-        val body = response.body()!!
-        return Base64.decode(body.content, Base64.DEFAULT)
-    }
-    return byteArrayOf()
-}
-
-/**
- * 解析 Github 文件内容成为 Bitmap
- */
-fun parseGithubContentToBitmap(url: String): Bitmap {
-    val byteArray = parseGithubContentToByte(url)
-    return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
-}
-
-/**
- * 解析 Github 文件内容成为对象
- */
-fun <T> parseGithubContentToObject(url: String, clazz: Class<T>): T {
-    val byteArray = parseGithubContentToByte(url)
-    val json = String(byteArray)
-    return Gson().fromJson(json, clazz)
-}

@@ -3,10 +3,10 @@ package formylove.main
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import formylove.base.HEAD_IMAGE_JSON_URL
+import formylove.utils.GithubHelper
 import formylove.utils.ImageLoader
 import formylove.utils.computeDays
 import formylove.utils.getScreenWidth
-import formylove.utils.parseGithubContentToObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,7 +19,7 @@ class MainViewModel : ViewModel() {
     
     suspend fun getImageByTime(): Bitmap {
         val headImages = withContext(Dispatchers.IO) {
-            parseGithubContentToObject(HEAD_IMAGE_JSON_URL, HeadImages::class.java)
+            GithubHelper.parseToObject(HEAD_IMAGE_JSON_URL, HeadImages::class.java)
         }
         
         val calendar = Calendar.getInstance()

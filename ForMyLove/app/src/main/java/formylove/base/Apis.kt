@@ -34,4 +34,7 @@ const val HEAD_IMAGE_JSON_URL = GITHUB_BASE_URL + GITHUB_CONTENT_URL + "HeadImag
 interface GithubApi {
     @GET
     fun getFileContent(@Url url: String): Call<GithubContentData>
+    
+    @PUT
+    fun updateFileContent(@Url url: String, @Body githubUpdateBody: GithubUpdateBody): Call<ResponseBody>
 }

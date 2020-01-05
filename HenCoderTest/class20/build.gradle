@@ -17,18 +17,31 @@ android {
     }
 
     buildTypes {
-        debug{
-            debuggable true
+        debug {
+
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        free{
+        free {
             initWith debug
         }
     }
 
+    flavorDimensions "version"
+
+    productFlavors {
+        dev {
+            dimension "version"
+        }
+        baidu {
+            dimension "version"
+        }
+        xiaomi {
+            dimension "version"
+        }
+    }
 }
 
 dependencies {

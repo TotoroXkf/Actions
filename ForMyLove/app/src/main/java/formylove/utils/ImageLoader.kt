@@ -83,7 +83,7 @@ object ImageLoader {
      * 从网络获取数据
      */
     private fun getFromNetWork(url: String): Bitmap {
-        return parseGithubContentToBitmap(url)
+        return GithubHelper.parseToBitmap(url)
     }
     
     /**
