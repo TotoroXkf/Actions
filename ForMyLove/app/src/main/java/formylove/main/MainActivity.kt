@@ -3,6 +3,7 @@ package formylove.main
 import android.graphics.Color
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.formylove.R
 import formylove.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,8 +30,8 @@ class MainActivity : BaseActivity() {
         tvSubTitle.text = viewModel.subTitle
         
         launch(Dispatchers.Main) {
-            val bitmap = viewModel.getImageByTime()
-            imageHead.setImageBitmap(bitmap)
+            val url = viewModel.getImageUrlByTime()
+            Glide.with(imageHead).load(url).into(imageHead)
         }
     }
     
