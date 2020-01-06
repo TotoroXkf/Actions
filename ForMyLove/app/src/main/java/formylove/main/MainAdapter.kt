@@ -1,10 +1,10 @@
 package formylove.main
 
 import android.content.Intent
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.example.formylove.R
 import kotlinx.android.synthetic.main.item_main_list.view.*
 

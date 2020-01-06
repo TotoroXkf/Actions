@@ -12,6 +12,9 @@ const val BMOB_BASE_URL = "https://api2.bmob.cn/"
 const val GITHUB_BASE_URL = "https://api.github.com/"
 const val GITHUB_CONTENT_URL = "repos/TotoroXkf/ForMyLoveData/contents/"
 
+const val HEAD_IMAGE_JSON_URL = GITHUB_BASE_URL + GITHUB_CONTENT_URL + "HeadImage/data.json"
+const val STATEMENT_JSON_RUL = GITHUB_BASE_URL + GITHUB_CONTENT_URL + "Statement/StatementData.json"
+
 interface BmobApi {
     /**
      * 获取恋爱语句
@@ -27,9 +30,8 @@ interface BmobApi {
     
     @DELETE("/1/classes/Statement/{objectId}")
     fun deleteStatement(@Path("objectId") objectId: String): Call<ResponseBody>
+    
 }
-
-const val HEAD_IMAGE_JSON_URL = GITHUB_BASE_URL + GITHUB_CONTENT_URL + "HeadImage/data.json"
 
 interface GithubApi {
     @GET

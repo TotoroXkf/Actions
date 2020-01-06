@@ -2,45 +2,32 @@ package formylove.statement
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import formylove.utils.RetrofitHelper
+import formylove.base.STATEMENT_JSON_RUL
+import formylove.utils.GithubHelper
 import formylove.utils.toast
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class StatementViewModel : ViewModel() {
-    val statementList = mutableListOf<String>()
+    private var statementData: StatementData? = null
+    val statementList: MutableList<String>
+        get() = statementData?.loveStatements ?: mutableListOf()
+    
     val deleteLiveData = MutableLiveData<Int>()
     val dialogLiveData = MutableLiveData<Boolean>()
     
-    private var statementEntity: StatementEntity? = null
-    
     suspend fun loadStatements() {
-        statementEntity = withContext(Dispatchers.IO) {
-            val response = RetrofitHelper.getBmobService().getStatements().execute()
-            if (response.isSuccessful) {
-                response.body()!!
-            } else {
-                null
-            }
+        statementData = withContext(Dispatchers.IO) {
+            GithubHelper.parseToObject(STATEMENT_JSON_RUL, StatementData::class.java)
         }
-        statementEntity ?: return
-        statementList.clear()
-        statementList.addAll(statementEntity!!.getStatementList())
     }
     
     suspend fun uploadNewStatement(text: String) {
+        statementData ?: return
         dialogLiveData.value = true
+        statementList.add(text)
         val success = withContext(Dispatchers.IO) {
-            val data = StatementEntity.StatementData(
-                statement = text,
-                objectId = null
-            )
-            val response = RetrofitHelper.getBmobService()
-                .uploadStatement(data)
-                .execute()
-            response.isSuccessful
+            GithubHelper.updateContent(STATEMENT_JSON_RUL, statementData)
         }
         dialogLiveData.value = false
         if (success) {
@@ -50,26 +37,22 @@ class StatementViewModel : ViewModel() {
         }
     }
     
-    fun deleteStatement(position: Int) {
-        statementEntity ?: return
+    suspend fun deleteStatement(position: Int) {
+        statementData ?: return
         if (position !in statementList.indices) {
             return
         }
-        GlobalScope.launch(Dispatchers.Main) {
-            val id = statementEntity!!.getObjectId(statementList[position])
-            dialogLiveData.value = true
-            val success = withContext(Dispatchers.IO) {
-                val response = RetrofitHelper.getBmobService().deleteStatement(id).execute()
-                response.isSuccessful
-            }
-            dialogLiveData.value = false
-            if (success) {
-                toast("删除成功~~")
-                statementList.removeAt(position)
-                deleteLiveData.value = position
-            } else {
-                toast("删除失败~~")
-            }
+        dialogLiveData.value = true
+        statementList.removeAt(position)
+        val success = withContext(Dispatchers.IO) {
+            GithubHelper.updateContent(STATEMENT_JSON_RUL, statementData)
+        }
+        dialogLiveData.value = false
+        if (success) {
+            toast("删除成功~~")
+            deleteLiveData.value = position
+        } else {
+            toast("删除失败~~")
         }
     }
 }

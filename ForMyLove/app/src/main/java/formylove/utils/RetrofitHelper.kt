@@ -40,7 +40,7 @@ object RetrofitHelper {
         clientBuilder.addInterceptor(object : Interceptor {
             override fun intercept(chain: Interceptor.Chain): Response {
                 val newRequest = chain.request().newBuilder()
-                    .addHeader("Authorization", APPLICATION_ID)
+                    .addHeader("Authorization", "Basic MTEzMTIyNTEzM0BxcS5jb206OTUwNjI4eGtmKg==")
                     .build()
                 return chain.proceed(newRequest)
             }

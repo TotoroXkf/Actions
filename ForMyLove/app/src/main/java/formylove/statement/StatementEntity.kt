@@ -26,3 +26,7 @@ class StatementEntity(val results: List<StatementData>? = emptyList()) {
         return list
     }
 }
+
+data class StatementData(
+    val loveStatements: MutableList<String>
+)

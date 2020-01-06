@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.formylove.R
 import formylove.utils.getViewModel
 import kotlinx.android.synthetic.main.item_statement_list.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class StatementAdapter(
@@ -40,7 +43,9 @@ class StatementViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val viewModel = itemView.getViewModel(StatementViewModel::class.java)
         viewModel ?: return
         itemView.bgDelete.setOnClickListener {
-            viewModel.deleteStatement(adapterPosition)
+            GlobalScope.launch(Dispatchers.Main) {
+                viewModel.deleteStatement(adapterPosition)
+            }
         }
     }
 }
