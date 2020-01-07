@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.formylove.R
 import formylove.base.BaseActivity
+import formylove.utils.loadNetWorkImage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,7 +32,7 @@ class MainActivity : BaseActivity() {
         
         launch(Dispatchers.Main) {
             val url = viewModel.getImageUrlByTime()
-            Glide.with(imageHead).load(url).into(imageHead)
+            imageHead.loadNetWorkImage(url)
         }
     }
     

@@ -8,7 +8,6 @@ import formylove.base.BaseActivity
 import formylove.base.KeyBoardEvent
 import formylove.utils.KeyboardHelper
 import kotlinx.android.synthetic.main.activity_random.*
-import kotlinx.android.synthetic.main.activity_random.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -29,20 +28,18 @@ class RandomActivity : BaseActivity() {
     
     override fun initViewModel() {
         viewModel.addLiveData.observe(this, Observer {
-        
+            turntableView.setColorList(viewModel.colorList)
         })
         
         viewModel.deleteLiveData.observe(this, Observer {
-        
-        })
-        
-        viewModel.resetLiveData.observe(this, Observer {
-        
         })
     }
     
     override fun initViews() {
         setStatusBarWhite()
+        
+        buttonAdd.setOnClickListener {
+        }
     }
     
     @Subscribe(threadMode = ThreadMode.MAIN)

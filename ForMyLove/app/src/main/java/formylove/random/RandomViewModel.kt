@@ -1,34 +1,39 @@
 package formylove.random
 
+import android.graphics.Color
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import okhttp3.internal.toHexString
 
 class RandomViewModel : ViewModel() {
-    private val currentThingsList = mutableListOf<String>()
-    private val preThingsList = mutableListOf<String>()
-    
+    val thingsList = mutableListOf<String>()
+    val colorList = mutableListOf<Int>()
     val addLiveData = MutableLiveData<String>()
     val deleteLiveData = MutableLiveData<Int>()
-    val resetLiveData = MutableLiveData<Boolean>()
     
     fun addNewThing(newThing: String) {
-        currentThingsList.add(0, newThing)
+        thingsList.add(0, newThing)
+        colorList.add(getRandomColor())
+        
         addLiveData.value = newThing
-    }
-    
-    fun resetThingsList() {
-        currentThingsList.clear()
-        currentThingsList.addAll(preThingsList)
-        resetLiveData.value = true
     }
     
     fun computeRandom(): Int {
         return 0;
     }
     
-    
     fun deleteThing(index: Int) {
-        currentThingsList.removeAt(index)
+        thingsList.removeAt(index)
         deleteLiveData.value = index
+    }
+    
+    fun getRandomColor(): Int {
+        val red = (Math.random() * 255).toFloat()
+        val blue = (Math.random() * 255).toFloat()
+        val green = (Math.random() * 255).toFloat()
+        var colorString = Color.pack(red, green, blue).toHexString()
+        colorString = colorString.substring(0, 8)
+        colorString = "#$colorString"
+        return Color.parseColor(colorString)
     }
 }
