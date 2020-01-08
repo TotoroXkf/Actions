@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="40dp"
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_marginBottom="4dp"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/color"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="10dp"
+        tools:background="@android:color/holo_red_light" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="15dp"
-        app:cardBackgroundColor="@android:color/white"
-        app:cardElevation="4dp">
-
-        <TextView
-            android:id="@+id/textContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            tools:text="1234567" />
-    </com.google.android.material.card.MaterialCardView>
-
+        android:layout_marginStart="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        tools:text="12345" />
 </LinearLayout>

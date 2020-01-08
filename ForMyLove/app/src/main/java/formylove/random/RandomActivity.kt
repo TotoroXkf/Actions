@@ -1,8 +1,11 @@
 package formylove.random
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.formylove.R
 import formylove.base.BaseActivity
 import formylove.base.KeyBoardEvent
@@ -13,6 +16,8 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 class RandomActivity : BaseActivity() {
+    private val adapter = ListAdapter()
+    
     private val viewModel: RandomViewModel by lazy {
         ViewModelProviders.of(this).get(RandomViewModel::class.java)
     }
@@ -28,6 +33,7 @@ class RandomActivity : BaseActivity() {
     
     override fun initViewModel() {
         viewModel.addLiveData.observe(this, Observer {
+            adapter.setData(viewModel.colorList, viewModel.thingsList)
             turntableView.setColorList(viewModel.colorList)
         })
         
@@ -38,8 +44,28 @@ class RandomActivity : BaseActivity() {
     override fun initViews() {
         setStatusBarWhite()
         
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+        
         buttonAdd.setOnClickListener {
+            //            viewModel.addNewThing("1")
+            startActivity(Intent(this, ThingInputActivity::class.java))
         }
+        
+        buttonTurn.setOnClickListener {
+            turntableView.rotate(2000f)
+            enableButton(false)
+        }
+        
+        turntableView.addAnimationEndListener {
+            enableButton(true)
+        }
+    }
+    
+    private fun enableButton(enable: Boolean) {
+        buttonAdd.isEnabled = enable
+        buttonTurn.isEnabled = enable
     }
     
     @Subscribe(threadMode = ThreadMode.MAIN)

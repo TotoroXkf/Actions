@@ -1,5 +1,8 @@
 package formylove.random
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -7,6 +10,7 @@ import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.DecelerateInterpolator
 import java.lang.Integer.min
 
 class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
@@ -15,9 +19,20 @@ class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, att
     private val paint = Paint()
     private val colorList = mutableListOf<Int>()
     
+    private val animator = ObjectAnimator()
+    private var rotateAngle = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
+    
     init {
         paint.isAntiAlias = true
         paint.style = Paint.Style.FILL
+        
+        animator.setPropertyName("rotateAngle")
+        animator.target = this
+        animator.interpolator = DecelerateInterpolator()
     }
     
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -26,11 +41,30 @@ class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, att
         rectF.set(w / 2 - radius, h / 2 - radius, w / 2 + radius, h / 2 + radius)
     }
     
-    fun rotate(num: Int) {
+    fun addAnimationEndListener(callback: () -> Unit) {
+        animator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                super.onAnimationEnd(animation)
+                callback.invoke()
+            }
+        })
+    }
+    
+    fun rotate(angle: Float) {
+        if (angle < 0 || animator.isRunning) {
+            return
+        }
         
+        animator.duration = (((angle / 360) + 1) * 1000).toLong()
+        animator.setFloatValues(0f, angle)
+        animator.start()
     }
     
     fun setColorList(newColorList: List<Int>) {
+        if (animator.isRunning) {
+            return
+        }
+        rotateAngle = 0f
         colorList.clear()
         colorList.addAll(newColorList)
         invalidate()
@@ -39,11 +73,14 @@ class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, att
     override fun onDraw(canvas: Canvas) {
         val angle = 360 / colorList.size.toFloat()
         var currentAngle = -90f
+        canvas.save()
+        canvas.rotate(rotateAngle, width / 2f, height / 2f)
         for (color in colorList) {
             paint.color = color
             canvas.drawArc(rectF, currentAngle, angle, true, paint)
             currentAngle += angle
         }
+        canvas.restore()
         if (colorList.isEmpty()) {
             return
         }

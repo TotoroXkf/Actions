@@ -20,8 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name="formylove.random.RandomActivity" />
-        <activity android:name="formylove.statement.StatementActivity" />
+
         <activity android:name="formylove.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,9 +28,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="formylove.main.MainActivity"
             android:launchMode="singleTask" />
+
+        <activity
+            android:name="formylove.random.ThingInputActivity"
+            android:theme="@style/transparent" />
+        <activity android:name="formylove.random.RandomActivity" />
+        <activity android:name="formylove.statement.StatementActivity" />
+
     </application>
 
 </manifest>

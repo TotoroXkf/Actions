@@ -18,6 +18,7 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope()
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setEnterAnimation()
         setContentView(getLayoutId())
         initViewModel()
         initViews()
@@ -28,6 +29,10 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope()
     protected open fun initViews() {}
     
     protected open fun initViewModel() {}
+    
+    protected open fun setEnterAnimation() {}
+    
+    protected open fun setExitAnimation() {}
     
     override fun onBackPressed() {
         if (!needDoubleBackExit()) {
@@ -85,5 +90,10 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope()
     open fun showKeyboard() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.toggleSoftInput(0, InputMethodManager.SHOW_FORCED)
+    }
+    
+    override fun finish() {
+        super.finish()
+        setExitAnimation()
     }
 }

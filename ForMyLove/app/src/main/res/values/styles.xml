@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -6,11 +6,15 @@
         <item name="colorPrimary">#FF6060</item>
         <item name="colorPrimaryDark">#FF4242</item>
         <item name="colorAccent">#FF603A</item>
-        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="dialog_soft_input" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="android:windowSoftInputMode">stateVisible|adjustPan</item>
     </style>
 
+    <style name="transparent" parent="AppTheme">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 </resources>
