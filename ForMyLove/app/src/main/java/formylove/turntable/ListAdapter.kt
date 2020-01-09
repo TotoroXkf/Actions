@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.formylove.R
-import kotlinx.android.synthetic.main.item_random_thing_list.view.*
+import kotlinx.android.synthetic.main.item_turntable_thing_list.view.*
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     private var thingsList = mutableListOf<String>()
@@ -16,7 +16,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_random_thing_list,
+                R.layout.item_turntable_thing_list,
                 parent,
                 false
             )

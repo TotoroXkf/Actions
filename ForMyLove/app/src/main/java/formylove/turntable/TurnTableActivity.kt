@@ -12,7 +12,7 @@ import com.example.formylove.R
 import formylove.base.AddThingEvent
 import formylove.base.BaseActivity
 import formylove.utils.KeyboardHelper
-import kotlinx.android.synthetic.main.activity_random.*
+import kotlinx.android.synthetic.main.activity_turntable.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
@@ -30,17 +30,17 @@ class TurnTableActivity : BaseActivity() {
         EventBus.getDefault().register(this)
     }
 
-    override fun getLayoutId(): Int = R.layout.activity_random
+    override fun getLayoutId(): Int = R.layout.activity_turntable
 
     override fun initViewModel() {
         viewModel.addLiveData.observe(this, Observer {
             adapter.notifyItemInserted(adapter.itemCount - 1)
-            turntableView.invalidate()
+            turntableView.resetRotate()
         })
 
         viewModel.deleteLiveData.observe(this, Observer {
             adapter.notifyItemRemoved(it)
-            turntableView.invalidate()
+            turntableView.resetRotate()
         })
     }
 
@@ -62,7 +62,7 @@ class TurnTableActivity : BaseActivity() {
         }
 
         buttonTurn.setOnClickListener {
-            turntableView.rotate(2000f)
+            turntableView.rotate(viewModel.compute(viewModel.thingsList.size))
             enableButton(false)
         }
 

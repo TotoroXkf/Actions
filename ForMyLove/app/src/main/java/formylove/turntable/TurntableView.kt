@@ -50,6 +50,11 @@ class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, att
         })
     }
 
+    fun resetRotate() {
+        rotateAngle = 0f
+        invalidate()
+    }
+
     fun rotate(angle: Float) {
         if (angle < 0 || animator.isRunning) {
             return

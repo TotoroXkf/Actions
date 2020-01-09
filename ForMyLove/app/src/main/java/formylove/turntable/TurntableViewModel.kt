@@ -10,25 +10,30 @@ class TurntableViewModel : ViewModel() {
     val colorList = mutableListOf<Int>()
     val addLiveData = MutableLiveData<String>()
     val deleteLiveData = MutableLiveData<Int>()
-    
+
     fun addNewThing(newThing: String) {
         thingsList.add(0, newThing)
         colorList.add(getRandomColor())
-        
+
         addLiveData.value = newThing
     }
-    
-    fun computeRandom(): Int {
-        return 0
+
+    fun compute(thingsNum: Int): Float {
+        var result = 0f
+        for (i in 0 until thingsNum) {
+            val randomValue = Math.random().toFloat() * 500f
+            result += randomValue
+        }
+        return result
     }
-    
+
     fun deleteThing(index: Int) {
         thingsList.removeAt(index)
         colorList.removeAt(index)
 
         deleteLiveData.value = index
     }
-    
+
     private fun getRandomColor(): Int {
         val red = (Math.random() * 255).toFloat()
         val blue = (Math.random() * 255).toFloat()
