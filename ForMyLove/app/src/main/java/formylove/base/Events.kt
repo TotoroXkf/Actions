@@ -5,3 +5,7 @@ class KeyBoardEvent(
     val keyBoardHeight: Int,
     val viewHeight: Int
 )
+
+class AddThingEvent(
+    val thing: String
+)

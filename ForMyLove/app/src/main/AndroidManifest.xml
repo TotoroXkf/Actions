@@ -36,7 +36,11 @@
         <activity
             android:name="formylove.random.ThingInputActivity"
             android:theme="@style/transparent" />
-        <activity android:name="formylove.random.RandomActivity" />
+
+        <activity
+            android:name="formylove.random.RandomActivity"
+            android:windowSoftInputMode="adjustPan" />
+
         <activity android:name="formylove.statement.StatementActivity" />
 
     </application>
