@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="formylove.random.RandomActivity">
+    tools:context="formylove.turntable.TurnTableActivity">
 
-    <formylove.random.TurntableView
+    <formylove.turntable.TurntableView
         android:id="@+id/turntableView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

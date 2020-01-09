@@ -1,7 +1,8 @@
-package formylove.random
+package formylove.turntable
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.KeyEvent
 import com.example.formylove.R
 import formylove.base.AddThingEvent
 import formylove.base.BaseActivity
@@ -34,19 +35,29 @@ class ThingInputActivity : BaseActivity() {
                 btnAdd.isEnabled = true
             }
         })
+        inputText.setOnKeyListener { _, keyCode, _: KeyEvent ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                onAddThingDone()
+            }
+            true
+        }
 
         btnAdd.setOnClickListener {
-            val thing = inputText.editableText.toString()
-            if (thing.isEmpty()) {
-                return@setOnClickListener
-            }
-            EventBus.getDefault().post(AddThingEvent(thing))
-            inputText.setText("")
+            onAddThingDone()
         }
 
         rootLayout.setOnClickListener {
             finish()
         }
+    }
+
+    private fun onAddThingDone() {
+        val thing = inputText.editableText.toString()
+        if (thing.isEmpty()) {
+            return
+        }
+        EventBus.getDefault().post(AddThingEvent(thing))
+        inputText.setText("")
     }
 
     override fun getLayoutId(): Int = R.layout.activity_thing_input

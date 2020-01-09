@@ -1,7 +1,7 @@
 package formylove.main
 
 import com.example.formylove.R
-import formylove.random.RandomActivity
+import formylove.turntable.TurnTableActivity
 import formylove.statement.StatementActivity
 
 object MainConfigure {
@@ -17,6 +17,6 @@ object MainConfigure {
     
     val router = arrayOf(
         StatementActivity::class.java,
-        RandomActivity::class.java
+        TurnTableActivity::class.java
     )
 }

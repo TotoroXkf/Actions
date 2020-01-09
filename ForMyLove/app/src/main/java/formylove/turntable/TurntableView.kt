@@ -1,4 +1,4 @@
-package formylove.random
+package formylove.turntable
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -17,30 +17,30 @@ class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, att
     private var radius: Float = 0f
     private val rectF = RectF()
     private val paint = Paint()
-    private val colorList = mutableListOf<Int>()
-    
+    private var colorList = mutableListOf<Int>()
+
     private val animator = ObjectAnimator()
     private var rotateAngle = 0f
         set(value) {
             field = value
             invalidate()
         }
-    
+
     init {
         paint.isAntiAlias = true
         paint.style = Paint.Style.FILL
-        
+
         animator.setPropertyName("rotateAngle")
         animator.target = this
         animator.interpolator = DecelerateInterpolator()
     }
-    
+
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         val size = min(w, h)
         radius = size / 4f
         rectF.set(w / 2 - radius, h / 2 - radius, w / 2 + radius, h / 2 + radius)
     }
-    
+
     fun addAnimationEndListener(callback: () -> Unit) {
         animator.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
@@ -49,27 +49,26 @@ class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, att
             }
         })
     }
-    
+
     fun rotate(angle: Float) {
         if (angle < 0 || animator.isRunning) {
             return
         }
-        
+
         animator.duration = (((angle / 360) + 1) * 1000).toLong()
         animator.setFloatValues(0f, angle)
         animator.start()
     }
-    
-    fun setColorList(newColorList: List<Int>) {
+
+    fun setColorList(newColorList: MutableList<Int>) {
         if (animator.isRunning) {
             return
         }
         rotateAngle = 0f
-        colorList.clear()
-        colorList.addAll(newColorList)
+        colorList = newColorList
         invalidate()
     }
-    
+
     override fun onDraw(canvas: Canvas) {
         val angle = 360 / colorList.size.toFloat()
         var currentAngle = -90f

@@ -34,11 +34,11 @@
             android:launchMode="singleTask" />
 
         <activity
-            android:name="formylove.random.ThingInputActivity"
+            android:name="formylove.turntable.ThingInputActivity"
             android:theme="@style/transparent" />
 
         <activity
-            android:name="formylove.random.RandomActivity"
+            android:name="formylove.turntable.TurnTableActivity"
             android:windowSoftInputMode="adjustPan" />
 
         <activity android:name="formylove.statement.StatementActivity" />

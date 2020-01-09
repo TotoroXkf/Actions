@@ -1,11 +1,13 @@
-package formylove.random
+package formylove.turntable
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.formylove.R
 import formylove.base.AddThingEvent
 import formylove.base.BaseActivity
@@ -14,11 +16,12 @@ import kotlinx.android.synthetic.main.activity_random.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 
-class RandomActivity : BaseActivity() {
+
+class TurnTableActivity : BaseActivity() {
     private val adapter = ListAdapter()
 
-    private val viewModel: RandomViewModel by lazy {
-        ViewModelProviders.of(this).get(RandomViewModel::class.java)
+    private val viewModel: TurntableViewModel by lazy {
+        ViewModelProviders.of(this).get(TurntableViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,20 +34,28 @@ class RandomActivity : BaseActivity() {
 
     override fun initViewModel() {
         viewModel.addLiveData.observe(this, Observer {
-            adapter.setData(viewModel.colorList, viewModel.thingsList)
-            turntableView.setColorList(viewModel.colorList)
+            adapter.notifyItemInserted(adapter.itemCount - 1)
+            turntableView.invalidate()
         })
 
         viewModel.deleteLiveData.observe(this, Observer {
+            adapter.notifyItemRemoved(it)
+            turntableView.invalidate()
         })
     }
 
     override fun initViews() {
         setStatusBarWhite()
 
+        turntableView.setColorList(viewModel.colorList)
+
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         recyclerView.adapter = adapter
+        adapter.setData(viewModel.colorList, viewModel.thingsList)
         recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))
+        val callback = DeleteItemTouchHelperCallback()
+        val itemTouchHelper = ItemTouchHelper(callback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
 
         buttonAdd.setOnClickListener {
             startActivity(Intent(this, ThingInputActivity::class.java))
@@ -74,5 +85,20 @@ class RandomActivity : BaseActivity() {
         KeyboardHelper.unRegisterKeyBoardListener(window)
         EventBus.getDefault().unregister(this)
         super.onDestroy()
+    }
+
+    inner class DeleteItemTouchHelperCallback :
+        ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ): Boolean {
+            return false
+        }
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+            viewModel.deleteThing(viewHolder.adapterPosition)
+        }
     }
 }

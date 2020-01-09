@@ -5,12 +5,12 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="formylove.random.ThingInputActivity">
+    tools:context="formylove.turntable.ThingInputActivity">
 
     <View
         android:id="@+id/backgroundView"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,8 +43,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputText"
+            android:imeOptions="actionGo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:hint="输入新的事件"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>

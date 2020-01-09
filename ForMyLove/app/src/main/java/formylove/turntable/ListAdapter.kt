@@ -1,4 +1,4 @@
-package formylove.random
+package formylove.turntable
 
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +10,8 @@ import com.example.formylove.R
 import kotlinx.android.synthetic.main.item_random_thing_list.view.*
 
 class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
-    private val thingsList = mutableListOf<String>()
-    private val colorList = mutableListOf<Int>()
+    private var thingsList = mutableListOf<String>()
+    private var colorList = mutableListOf<Int>()
     
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -23,11 +23,9 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         )
     }
     
-    fun setData(newColorList: List<Int>, newThingList: List<String>) {
-        thingsList.clear()
-        thingsList.addAll(newThingList)
-        colorList.clear()
-        colorList.addAll(newColorList)
+    fun setData(newColorList: MutableList<Int>, newThingList: MutableList<String>) {
+        thingsList = newThingList
+        colorList = newColorList
         notifyDataSetChanged()
     }
     
