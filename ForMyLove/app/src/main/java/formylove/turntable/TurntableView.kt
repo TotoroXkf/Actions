@@ -4,13 +4,15 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
+import com.example.formylove.R
+import formylove.utils.getBitmap
 import java.lang.Integer.min
 
 class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
@@ -18,6 +20,7 @@ class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, att
     private val rectF = RectF()
     private val paint = Paint()
     private var colorList = mutableListOf<Int>()
+    private lateinit var bitmap: Bitmap
 
     private val animator = ObjectAnimator()
     private var rotateAngle = 0f
@@ -39,6 +42,12 @@ class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, att
         val size = min(w, h)
         radius = size / 4f
         rectF.set(w / 2 - radius, h / 2 - radius, w / 2 + radius, h / 2 + radius)
+
+        bitmap = getBitmap(resources, R.drawable.img_arrow_up, 100)
+        val ratio = bitmap.width.toFloat() / bitmap.height.toFloat()
+        val dstHeight = radius * 0.8f
+        val dstWidth = ratio * dstHeight
+        bitmap = Bitmap.createScaledBitmap(bitmap, dstWidth.toInt(), dstHeight.toInt(), false)
     }
 
     fun addAnimationEndListener(callback: () -> Unit) {
@@ -88,8 +97,8 @@ class TurntableView(context: Context?, attrs: AttributeSet?) : View(context, att
         if (colorList.isEmpty()) {
             return
         }
-        paint.strokeWidth = 12f
-        paint.color = Color.BLACK
-        canvas.drawLine(width / 2f, height / 2f, width / 2f, height / 2 - radius * 0.8f, paint)
+        val offsetX = width / 2f - bitmap.width / 2f
+        val offsetY = height / 2f - bitmap.height.toFloat()
+        canvas.drawBitmap(bitmap, offsetX, offsetY, paint)
     }
 }

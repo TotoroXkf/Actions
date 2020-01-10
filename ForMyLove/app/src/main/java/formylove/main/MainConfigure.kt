@@ -12,7 +12,7 @@ object MainConfigure {
     
     val itemIcons = arrayOf(
         R.drawable.icon_statement,
-        R.drawable.icon_random
+        R.drawable.icon_turntable
     )
     
     val router = arrayOf(

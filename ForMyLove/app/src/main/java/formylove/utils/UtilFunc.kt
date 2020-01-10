@@ -102,3 +102,16 @@ fun ImageView.loadNetWorkImage(url: String) {
 fun ImageView.loadImage(bitmap: Bitmap) {
     Glide.with(this).load(bitmap).into(this)
 }
+
+/**
+ * 按照宽度获取图片
+ */
+fun getBitmap(resources: Resources, id: Int, width: Int): Bitmap {
+    val options = BitmapFactory.Options()
+    options.inJustDecodeBounds = true
+    BitmapFactory.decodeResource(resources, id, options)
+    options.inJustDecodeBounds = false
+    options.inDensity = options.outWidth
+    options.inTargetDensity = width
+    return BitmapFactory.decodeResource(resources, id, options)
+}
