@@ -1,30 +1,20 @@
 class Solution {
-    public boolean isMatch(String s, String p) {
-        boolean[][] dp = new boolean[p.length()+1][s.length()+1];
-        dp[0][0] = true;
-        for (int i = 1; i < dp.length; i++) {
-            if (dp[i - 1][0] && p.charAt(i-1) == '*') {
-                dp[i][0] = true;
-            }
+    /**
+     * 非常经典的问题，解法有很多种
+     * 这里记录最简单的一种
+     * 遇到一个位置，无外乎就是做两个事情的比较
+     * 要么就是从这个位置重新开始新的计算
+     * 要么就是连带这个位置继续之前的计算
+     * 哪个大，要哪个
+     * 贪心算法
+     */
+    public int maxSubArray(int[] nums) {
+        int currentSum = nums[0];
+        int result = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            currentSum = Math.max(nums[i], nums[i] + currentSum);
+            result = Math.max(currentSum, result);
         }
-        for (int i = 1; i < dp.length; i++) {
-            for (int j = 1; j < dp[0].length; j++) {
-                if (s.charAt(j - 1) == p.charAt(i - 1) && dp[i - 1][j - 1]) {
-                    dp[i][j] = true;
-                }
-                if (p.charAt(i - 1) == '?' && dp[i - 1][j - 1]) {
-                    dp[i][j] = true;
-                }
-                if (p.charAt(i - 1) == '*') {
-                    dp[i][j] = dp[i - 1][j] || dp[i][j - 1];
-                }
-            }
-        }
-        return dp[dp.length - 1][dp[0].length - 1];
-    }
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        solution.isMatch("", "");
+        return result;
     }
 }
