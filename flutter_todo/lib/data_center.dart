@@ -1,12 +1,18 @@
 class DataCenter {
-  DataCenter _instance;
+  static DataCenter _instance;
 
-  DataCenter() {}
-
-  DataCenter getInstance(){
+  static DataCenter getInstance(){
     if(_instance==null){
       _instance = DataCenter();
     }
     return _instance;
+  }
+
+  int getListNum(){
+    return 0;
+  }
+
+  List<String> getListName(){
+
   }
 }

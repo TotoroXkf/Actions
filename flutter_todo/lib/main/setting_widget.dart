@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SettingPage extends StatefulWidget {
+class SettingWidget extends StatefulWidget {
   @override
-  _SettingPageState createState() => _SettingPageState();
+  _SettingWidgetState createState() => _SettingWidgetState();
 }
 
-class _SettingPageState extends State<SettingPage> {
+class _SettingWidgetState extends State<SettingWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
