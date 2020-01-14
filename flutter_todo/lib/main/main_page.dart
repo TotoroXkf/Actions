@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_todo/data_center.dart';
+import 'package:flutter_todo/base/data_center.dart';
 import 'package:flutter_todo/main/calender_widget.dart';
 import 'package:flutter_todo/main/setting_widget.dart';
 
@@ -87,7 +87,11 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     if (!_showTab()) {
       return null;
     }
-    return TabBar(controller: _tabController, tabs: tabs);
+    return TabBar(
+      controller: _tabController,
+      isScrollable: true,
+      tabs: tabs,
+    );
   }
 
   bool _showTab() {

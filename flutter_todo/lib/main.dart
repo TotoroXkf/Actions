@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/constants.dart';
 import 'package:flutter_todo/main/main_page.dart';
-import 'package:flutter_todo/splash.dart';
+import 'package:flutter_todo/splash/splash.dart';
 
 void main() => runApp(MyApp());
 

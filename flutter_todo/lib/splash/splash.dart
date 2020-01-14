@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_todo/constants.dart';
-import 'package:flutter_todo/utils.dart';
+import 'package:flutter_todo/base/data_center.dart';
+import 'package:flutter_todo/base/utils.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -12,6 +13,8 @@ class _SplashPageState extends State<SplashPage>
     with SingleTickerProviderStateMixin {
   Animation<double> _animation;
   AnimationController _controller;
+
+  DataCenter _dataCenter;
 
   @override
   void initState() {
@@ -25,17 +28,31 @@ class _SplashPageState extends State<SplashPage>
     );
     _animation = new Tween(begin: 0.0, end: 1.0).animate(_controller);
     _controller.forward();
-
     _controller.addStatusListener(_onAnimationStatusChange);
+
+    _dataCenter = DataCenter.getInstance();
+    loadData();
   }
 
   void _onAnimationStatusChange(AnimationStatus newStatus) {
-    if (newStatus == AnimationStatus.completed) {
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        MAIN_PAGE_ROUTE,
-        (route) => route == null,
-      );
+    if (newStatus == AnimationStatus.completed && !_dataCenter.isLoading()) {
+      goMainPage();
+    }
+  }
+
+  void goMainPage() {
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      MAIN_PAGE_ROUTE,
+      (route) => route == null,
+    );
+  }
+
+  Future loadData() async{
+    await _dataCenter.loadDetailedList();
+    print('finish');
+    if(_controller.isCompleted && !_dataCenter.isLoading()){
+      goMainPage();
     }
   }
 
