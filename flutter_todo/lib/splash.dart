@@ -60,6 +60,13 @@ class _SplashPageState extends State<SplashPage>
       ),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _controller.dispose();
+  }
 }
 
 class AlphaAnimatedWidget extends AnimatedWidget {
