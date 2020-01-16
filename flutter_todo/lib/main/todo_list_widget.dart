@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/base/list_model.dart';
 
+// 清单页面主体
 class TodoListWidget extends StatefulWidget {
   final ListModel _listModel;
 
@@ -42,6 +43,12 @@ class _TodoListWidgetState extends State<TodoListWidget>
         appBar: AppBar(
           title: Text('Flutter Todo'),
           bottom: _getTabBar(),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.sort),
+              onPressed: _sortList,
+            ),
+          ],
         ),
         body: _getTabContent(),
         floatingActionButton: FloatingActionButton(
@@ -51,8 +58,11 @@ class _TodoListWidgetState extends State<TodoListWidget>
       ),
     );
   }
+
+  void _sortList() {}
 }
 
+// 清单主体
 class TodoList extends StatefulWidget {
   final TaskTable _taskTable;
 
@@ -68,21 +78,42 @@ class TodoList extends StatefulWidget {
 class _TodoListState extends State<TodoList> {
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: widget._taskTable.getTaskNum(),
-      itemBuilder: (BuildContext context, int index) {
-        return TodoListItem(widget._taskTable.tasks[index]);
-      },
-      separatorBuilder: (BuildContext context, int index) {
-        return new Divider(
-          color: Colors.black26,
-          height: 1,
-        );
-      },
+    return RefreshIndicator(
+      onRefresh: _refresh,
+      child: ListView.builder(
+        itemCount: widget._taskTable.getTaskNum(),
+        itemBuilder: (BuildContext context, int index) {
+          Task task = widget._taskTable.tasks[index];
+          return Dismissible(
+            child: Column(
+              children: <Widget>[
+                TodoListItem(task),
+                Divider(
+                  color: Colors.black26,
+                  height: 1,
+                ),
+              ],
+            ),
+            key: Key(task.toString()),
+            onDismissed: (_) {
+              _onDeleteItem(index);
+            },
+          );
+        },
+      ),
     );
+  }
+
+  void _onDeleteItem(int index) {
+    widget._taskTable.tasks.removeAt(index);
+  }
+
+  Future<void> _refresh() async{
+
   }
 }
 
+// Task的Item
 class TodoListItem extends StatefulWidget {
   final Task _task;
 
@@ -97,7 +128,7 @@ class _TodoListItemState extends State<TodoListItem> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: 56,
+      height: 60,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
