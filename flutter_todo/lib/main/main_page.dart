@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_todo/base/data_center.dart';
 import 'package:flutter_todo/main/calender_widget.dart';
 import 'package:flutter_todo/main/setting_widget.dart';
+import 'package:flutter_todo/main/todo_list_widget.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -26,10 +27,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
       title: Text('设置'),
     ),
   ];
-  int _currentIndex = 0;
-
-  List<Tab> tabs = [];
-  TabController _tabController;
+  int _bottomCurrentIndex = 0;
 
   @override
   void initState() {
@@ -37,26 +35,14 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
     // 显示状态栏
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
-
-    _tabController =
-        TabController(length: _dataCenter.getListNum(), vsync: this);
-    List<String> names = _dataCenter.getListName();
-    for (int i = 0; i < _dataCenter.getListNum(); i++) {
-      String name = names[i];
-      tabs.add(Tab(text: name));
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter Todo'),
-        bottom: _getTabBar(),
-      ),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: false,
-        currentIndex: _currentIndex,
+        currentIndex: _bottomCurrentIndex,
         items: _bottomItem,
         onTap: _onSelectBottomItem,
       ),
@@ -65,15 +51,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   }
 
   Widget _getBody() {
-    switch (_currentIndex) {
+    switch (_bottomCurrentIndex) {
       case 0:
-        if (_showTab()) {
-          return TabBarView(
-            controller: _tabController,
-            children: [],
-          );
-        }
-        break;
+        return TodoListWidget(_dataCenter.getListModel());
       case 1:
         return CalenderWidget();
       case 2:
@@ -83,27 +63,9 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
     return null;
   }
 
-  Widget _getTabBar() {
-    if (!_showTab()) {
-      return null;
-    }
-    return TabBar(
-      controller: _tabController,
-      isScrollable: true,
-      tabs: tabs,
-    );
-  }
-
-  bool _showTab() {
-    if (_currentIndex == 0) {
-      return true;
-    }
-    return false;
-  }
-
   void _onSelectBottomItem(int index) {
     setState(() {
-      _currentIndex = index;
+      _bottomCurrentIndex = index;
     });
   }
 }

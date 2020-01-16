@@ -34,15 +34,7 @@ class DataCenter {
     _isLoading = false;
   }
 
-  int getListNum() {
-    return _listModel.listNum;
-  }
-
-  List<String> getListName() {
-    List<String> result = [];
-    for (int i = 0; i < _listModel.lists.length; i++) {
-      result.add(_listModel.lists[i].name);
-    }
-    return result;
+  ListModel getListModel() {
+    return _listModel;
   }
 }
