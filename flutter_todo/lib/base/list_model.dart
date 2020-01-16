@@ -119,6 +119,10 @@ class Task {
     }
     return data;
   }
+
+  bool isFinished(){
+    return isCompleted;
+  }
 }
 
 class Date {
