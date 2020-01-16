@@ -1,19 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
-    /**
-     * 非常经典的问题，解法有很多种
-     * 这里记录最简单的一种
-     * 遇到一个位置，无外乎就是做两个事情的比较
-     * 要么就是从这个位置重新开始新的计算
-     * 要么就是连带这个位置继续之前的计算
-     * 哪个大，要哪个
-     * 贪心算法
-     */
-    public int maxSubArray(int[] nums) {
-        int currentSum = nums[0];
-        int result = nums[0];
-        for (int i = 1; i < nums.length; i++) {
-            currentSum = Math.max(nums[i], nums[i] + currentSum);
-            result = Math.max(currentSum, result);
+    public List<Integer> spiralOrder(int[][] matrix) {
+        if (matrix.length == 0 || matrix[0].length == 0) {
+            return new ArrayList<>();
+        }
+        int left = 0;
+        int top = 0;
+        int right = matrix[0].length - 1;
+        int bottom = matrix.length - 1;
+        List<Integer> result = new ArrayList<>();
+        while (left <= right && top <= bottom) {
+            if (left == right && top == bottom) {
+                result.add(matrix[top][left]);
+                break;
+            } else if (left == right) {
+                for (int i = top; i <= bottom; i++) {
+                    result.add(matrix[i][left]);
+                }
+                break;
+            } else if (top == bottom) {
+                for (int i = left; i <= right; i++) {
+                    result.add(matrix[top][i]);
+                }
+                break;
+            }
+
+            for (int i = left; i < right; i++) {
+                result.add(matrix[top][i]);
+            }
+            for (int i = top; i < bottom; i++) {
+                result.add(matrix[i][right]);
+            }
+            for (int i = right; i > left; i--) {
+                result.add(matrix[bottom][i]);
+            }
+            for (int i = bottom; i > top; i--) {
+                result.add(matrix[i][left]);
+            }
+            left++;
+            right--;
+            top++;
+            bottom--;
         }
         return result;
     }

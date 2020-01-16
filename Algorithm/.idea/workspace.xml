@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="21749281-6882-4583-b7dc-6e6809243a0f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,9 +154,10 @@
     </state>
     <state x="340" y="75" key="SettingsEditor/0.0.1920.1040/-2560.-356.2560.1400@0.0.1920.1040" timestamp="1578878933354" />
     <state x="340" y="75" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1576915438860" />
-    <state x="576" y="300" key="com.intellij.ide.util.TipDialog" timestamp="1578885207297">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="557" y="312" key="com.intellij.ide.util.TipDialog" timestamp="1579135394100">
+      <screen x="0" y="0" width="1858" height="1080" />
     </state>
+    <state x="557" y="312" key="com.intellij.ide.util.TipDialog/0.0.1858.1080/-2560.-356.2498.1440@0.0.1858.1080" timestamp="1579135394100" />
     <state x="576" y="300" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-2560.-356.2560.1400@0.0.1920.1040" timestamp="1578885207297" />
     <state x="570" y="305" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578825713597" />
     <state x="640" y="76" key="refactoring.ChangeSignatureDialog" timestamp="1578880431807">
@@ -167,9 +169,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="532" y="237" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578791460540" />
-    <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup" timestamp="1578754834816">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="522" y="5" width="840" height="1074" key="search.everywhere.popup" timestamp="1579136705524">
+      <screen x="0" y="0" width="1858" height="1080" />
     </state>
+    <state x="522" y="5" width="840" height="1074" key="search.everywhere.popup/0.0.1858.1080/-2560.-356.2498.1440@0.0.1858.1080" timestamp="1579136705524" />
     <state x="539" y="5" width="840" height="1034" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1578754834816" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
