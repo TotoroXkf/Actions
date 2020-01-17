@@ -20,7 +20,7 @@ class ListModel {
     return data;
   }
 
-  int getListNum(){
+  int getListNum() {
     return lists.length;
   }
 
@@ -61,7 +61,7 @@ class TaskTable {
     return data;
   }
 
-  int getTaskNum(){
+  int getTaskNum() {
     return tasks.length;
   }
 }
@@ -76,14 +76,16 @@ class Task {
   bool isCompleted;
   List<SubTask> subTasks;
 
-  Task(
-      {this.name,
-        this.detail,
-        this.createTime,
-        this.date,
-        this.time,
-        this.isCompleted,
-        this.subTasks});
+  Task({
+    this.name,
+    this.detail,
+    this.belong,
+    this.createTime,
+    this.date,
+    this.time,
+    this.isCompleted,
+    this.subTasks,
+  });
 
   Task.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -105,6 +107,7 @@ class Task {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['name'] = this.name;
     data['detail'] = this.detail;
+    data['belong'] = this.belong;
     data['createTime'] = this.createTime;
     if (this.date != null) {
       data['date'] = this.date.toJson();
@@ -119,11 +122,11 @@ class Task {
     return data;
   }
 
-  bool isFinished(){
+  bool isFinished() {
     return isCompleted;
   }
 
-  String getBelongListName(){
+  String getBelongListName() {
     return belong;
   }
 }

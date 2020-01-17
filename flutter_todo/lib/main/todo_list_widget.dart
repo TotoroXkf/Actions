@@ -3,7 +3,7 @@ import 'package:flutter_todo/base/Events.dart';
 import 'package:flutter_todo/base/data_center.dart';
 import 'package:flutter_todo/base/list_model.dart';
 
-// 清单页面主体
+/// 清单页面主体
 class TodoListWidget extends StatefulWidget {
   final ListModel _listModel;
 
@@ -54,7 +54,7 @@ class _TodoListWidgetState extends State<TodoListWidget>
         ),
         body: _getTabContent(),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: _onAdd,
           child: Icon(Icons.add),
         ),
       ),
@@ -62,9 +62,20 @@ class _TodoListWidgetState extends State<TodoListWidget>
   }
 
   void _sortList() {}
+
+  void _onAdd() {
+    Task task = Task(
+      name: "123",
+      detail: "hahah",
+      date: Date(year: 1, month: 2, day: 3),
+      belong: "收集箱",
+      isCompleted: false,
+    );
+    dataCenter.addTask(task);
+  }
 }
 
-// 清单主体
+/// 清单主体
 class TodoList extends StatefulWidget {
   final TaskTable _taskTable;
 
@@ -104,7 +115,7 @@ class _TodoListState extends State<TodoList> {
   }
 }
 
-// Task的Item
+/// Task的Item
 class TodoListItem extends StatefulWidget {
   final Task _task;
 
@@ -174,12 +185,11 @@ class _TodoListItemState extends State<TodoListItem> {
     }
   }
 
-  void _onDelete() async {
-    _showLoadingDialog();
-    await dataCenter.deleteTask(widget._task);
-    Navigator.pop(context);
+  void _onDelete() {
+    dataCenter.deleteTask(widget._task);
   }
 
+  /// 展示loading弹窗
   void _showLoadingDialog() {
     showDialog(
       context: context,
@@ -201,6 +211,7 @@ class _TodoListItemState extends State<TodoListItem> {
     );
   }
 
+  /// 点击item的更多按钮，展示的弹窗
   Future<int> _showMoreMenuDialog() {
     return showDialog<int>(
       context: context,
@@ -227,9 +238,11 @@ class _TodoListItemState extends State<TodoListItem> {
     );
   }
 
+  /// 点击完成
   void _onChecked(bool value) {
     setState(() {
       widget._task.isCompleted = value;
+      dataCenter.putRemoteList();
     });
   }
 }

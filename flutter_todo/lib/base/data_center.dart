@@ -25,6 +25,7 @@ class DataCenter {
     return _isLoading;
   }
 
+  /// 加载远端的数据到本地内存
   Future loadRemoteList() async {
     _isLoading = true;
     try {
@@ -37,6 +38,7 @@ class DataCenter {
     _isLoading = false;
   }
 
+  /// 把内存中的数据push到远端
   Future putRemoteList() async {
     Map<String, dynamic> data = _listModel.toJson();
     String base64String = objectToBase64(data);
@@ -61,16 +63,29 @@ class DataCenter {
     return _listModel;
   }
 
-  Future<void> deleteTask(Task task) async {
+  /// 添加新的Task
+  void addTask(Task task) {
+    for (int i = 0; i < _listModel.getListNum(); i++) {
+      if (_listModel.lists[i].name == task.getBelongListName()) {
+        _listModel.lists[i].tasks.add(task);
+      }
+    }
+    eventBus.fire(UpdateListUIEvent());
+    putRemoteList();
+  }
+
+  /// 删除任务
+  void deleteTask(Task task) async {
     for (int i = 0; i < _listModel.getListNum(); i++) {
       if (_listModel.lists[i].name == task.getBelongListName()) {
         _listModel.lists[i].tasks.remove(task);
       }
     }
-    await putRemoteList();
     eventBus.fire(UpdateListUIEvent());
+    putRemoteList();
   }
 
+  /// 把base64转换为Object
   Map<String, dynamic> base64ToObject(String base64String) {
     base64String = base64String.replaceAll("\n", "");
     String decode = utf8.decode(base64.decode(base64String));
@@ -78,6 +93,7 @@ class DataCenter {
     return data;
   }
 
+  /// 把object转换为base64
   String objectToBase64(Map<String, dynamic> data) {
     List<int> bytes = utf8.encode(json.encode(data));
     String base64String = base64.encode(bytes);
