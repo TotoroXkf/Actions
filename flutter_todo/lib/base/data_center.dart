@@ -10,14 +10,11 @@ class DataCenter {
   Dio _dio = Dio();
   ListModel _listModel;
 
-  static DataCenter _instance;
+  DataCenter._internal();
 
-  static DataCenter getInstance() {
-    if (_instance == null) {
-      _instance = DataCenter();
-    }
-    return _instance;
-  }
+  static DataCenter _instance = new DataCenter._internal();
+
+  factory DataCenter() => _instance;
 
   bool isLoading() {
     return _isLoading;
@@ -37,4 +34,10 @@ class DataCenter {
   ListModel getListModel() {
     return _listModel;
   }
+
+  Future<void> deleteTask(Task task) async {
+    _listModel.lists[0].tasks.remove(task);
+  }
 }
+
+DataCenter dataCenter = DataCenter();

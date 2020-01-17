@@ -1,5 +1,9 @@
+import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/base/Events.dart';
+import 'package:flutter_todo/base/data_center.dart';
 import 'package:flutter_todo/base/list_model.dart';
+import 'package:flutter_todo/constants.dart';
 
 // 清单页面主体
 class TodoListWidget extends StatefulWidget {
@@ -80,37 +84,23 @@ class _TodoListState extends State<TodoList> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: _refresh,
-      child: ListView.builder(
+      child: ListView.separated(
         itemCount: widget._taskTable.getTaskNum(),
         itemBuilder: (BuildContext context, int index) {
           Task task = widget._taskTable.tasks[index];
-          return Dismissible(
-            child: Column(
-              children: <Widget>[
-                TodoListItem(task),
-                Divider(
-                  color: Colors.black26,
-                  height: 1,
-                ),
-              ],
-            ),
-            key: Key(task.toString()),
-            onDismissed: (_) {
-              _onDeleteItem(index);
-            },
+          return TodoListItem(task);
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return Divider(
+            color: Colors.blue,
+            height: 1,
           );
         },
       ),
     );
   }
 
-  void _onDeleteItem(int index) {
-    widget._taskTable.tasks.removeAt(index);
-  }
-
-  Future<void> _refresh() async{
-
-  }
+  Future<void> _refresh() async {}
 }
 
 // Task的Item
@@ -124,12 +114,18 @@ class TodoListItem extends StatefulWidget {
 }
 
 class _TodoListItemState extends State<TodoListItem> {
+  List<String> moreMenuName = [
+    "移动到",
+    "删除",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       height: 60,
-      child: Row(
+      child: Flex(
+        direction: Axis.horizontal,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           SizedBox(
@@ -137,29 +133,78 @@ class _TodoListItemState extends State<TodoListItem> {
           ),
           Checkbox(
             onChanged: (bool value) {
-              onChecked(value);
+              _onChecked(value);
             },
             value: widget._task.isFinished(),
           ),
           SizedBox(
             width: 12,
           ),
-          Text(
-            widget._task.name,
-            style: TextStyle(
-              color: widget._task.isCompleted ? Colors.black26 : Colors.black,
-              fontSize: 16,
-              decoration: widget._task.isFinished()
-                  ? TextDecoration.lineThrough
-                  : TextDecoration.none,
+          Expanded(
+            flex: 1,
+            child: Text(
+              widget._task.name,
+              style: TextStyle(
+                color: widget._task.isCompleted ? Colors.black26 : Colors.black,
+                fontSize: 16,
+                decoration: widget._task.isFinished()
+                    ? TextDecoration.lineThrough
+                    : TextDecoration.none,
+              ),
             ),
           ),
+          IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: _onClickMore,
+          ),
+          SizedBox(
+            width: 12,
+          )
         ],
       ),
     );
   }
 
-  void onChecked(bool value) {
+  void _onClickMore() async {
+    int selectIndex = await _showDialog();
+    switch (selectIndex) {
+      case 1:
+        _onDelete();
+    }
+  }
+
+  void _onDelete() async{
+    await dataCenter.deleteTask(widget._task);
+
+  }
+
+  Future<int> _showDialog() {
+    return showDialog<int>(
+      context: context,
+      builder: (BuildContext context) {
+        List<SimpleDialogOption> dialogItems = [];
+        for (int i = 0; i < moreMenuName.length; i++) {
+          dialogItems.add(
+            SimpleDialogOption(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 6),
+                child: Text(moreMenuName[i]),
+              ),
+              onPressed: () {
+                Navigator.pop(context, i);
+              },
+            ),
+          );
+        }
+        return SimpleDialog(
+          title: Text(widget._task.name),
+          children: dialogItems,
+        );
+      },
+    );
+  }
+
+  void _onChecked(bool value) {
     setState(() {
       widget._task.isCompleted = value;
     });

@@ -11,8 +11,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
-  DataCenter _dataCenter = DataCenter.getInstance();
-
   List<BottomNavigationBarItem> _bottomItem = [
     BottomNavigationBarItem(
       icon: Icon(Icons.list),
@@ -53,7 +51,7 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
   Widget _getBody() {
     switch (_bottomCurrentIndex) {
       case 0:
-        return TodoListWidget(_dataCenter.getListModel());
+        return TodoListWidget(dataCenter.getListModel());
       case 1:
         return CalenderWidget();
       case 2:

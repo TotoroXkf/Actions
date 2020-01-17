@@ -14,8 +14,6 @@ class _SplashPageState extends State<SplashPage>
   Animation<double> _animation;
   AnimationController _controller;
 
-  DataCenter _dataCenter;
-
   @override
   void initState() {
     super.initState();
@@ -30,12 +28,11 @@ class _SplashPageState extends State<SplashPage>
     _controller.forward();
     _controller.addStatusListener(_onAnimationStatusChange);
 
-    _dataCenter = DataCenter.getInstance();
     loadData();
   }
 
   void _onAnimationStatusChange(AnimationStatus newStatus) {
-    if (newStatus == AnimationStatus.completed && !_dataCenter.isLoading()) {
+    if (newStatus == AnimationStatus.completed && !dataCenter.isLoading()) {
       goMainPage();
     }
   }
@@ -49,9 +46,8 @@ class _SplashPageState extends State<SplashPage>
   }
 
   Future loadData() async{
-    await _dataCenter.loadDetailedList();
-    print('finish');
-    if(_controller.isCompleted && !_dataCenter.isLoading()){
+    await dataCenter.loadDetailedList();
+    if(_controller.isCompleted && !dataCenter.isLoading()){
       goMainPage();
     }
   }
