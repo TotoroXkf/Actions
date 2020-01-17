@@ -46,7 +46,7 @@ class _SplashPageState extends State<SplashPage>
   }
 
   Future loadData() async{
-    await dataCenter.loadDetailedList();
+    await dataCenter.loadRemoteList();
     if(_controller.isCompleted && !dataCenter.isLoading()){
       goMainPage();
     }

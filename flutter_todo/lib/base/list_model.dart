@@ -37,9 +37,8 @@ class TaskTable {
   String name;
   bool isDefault;
   List<Task> tasks;
-  int taskNum;
 
-  TaskTable({this.name, this.isDefault, this.tasks, this.taskNum});
+  TaskTable({this.name, this.isDefault, this.tasks});
 
   TaskTable.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -50,7 +49,6 @@ class TaskTable {
         tasks.add(new Task.fromJson(v));
       });
     }
-    taskNum = json['taskNum'];
   }
 
   Map<String, dynamic> toJson() {
@@ -60,7 +58,6 @@ class TaskTable {
     if (this.tasks != null) {
       data['tasks'] = this.tasks.map((v) => v.toJson()).toList();
     }
-    data['taskNum'] = this.taskNum;
     return data;
   }
 
@@ -72,6 +69,7 @@ class TaskTable {
 class Task {
   String name;
   String detail;
+  String belong;
   int createTime;
   Date date;
   Time time;
@@ -90,6 +88,7 @@ class Task {
   Task.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     detail = json['detail'];
+    belong = json['belong'];
     createTime = json['createTime'];
     date = json['date'] != null ? new Date.fromJson(json['date']) : null;
     time = json['time'] != null ? new Time.fromJson(json['time']) : null;
@@ -122,6 +121,10 @@ class Task {
 
   bool isFinished(){
     return isCompleted;
+  }
+
+  String getBelongListName(){
+    return belong;
   }
 }
 

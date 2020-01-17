@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_todo/base/Events.dart';
 import 'package:flutter_todo/base/data_center.dart';
 import 'package:flutter_todo/main/calender_widget.dart';
 import 'package:flutter_todo/main/setting_widget.dart';
@@ -33,6 +34,10 @@ class _MainPageState extends State<MainPage> with TickerProviderStateMixin {
 
     // 显示状态栏
     SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
+
+    eventBus.on<UpdateListUIEvent>().listen((event) {
+      setState(() {});
+    });
   }
 
   @override

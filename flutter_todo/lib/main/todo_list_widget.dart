@@ -1,9 +1,7 @@
-import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/base/Events.dart';
 import 'package:flutter_todo/base/data_center.dart';
 import 'package:flutter_todo/base/list_model.dart';
-import 'package:flutter_todo/constants.dart';
 
 // 清单页面主体
 class TodoListWidget extends StatefulWidget {
@@ -100,7 +98,10 @@ class _TodoListState extends State<TodoList> {
     );
   }
 
-  Future<void> _refresh() async {}
+  Future<void> _refresh() async {
+    await dataCenter.loadRemoteList();
+    eventBus.fire(UpdateListUIEvent());
+  }
 }
 
 // Task的Item
@@ -166,19 +167,41 @@ class _TodoListItemState extends State<TodoListItem> {
   }
 
   void _onClickMore() async {
-    int selectIndex = await _showDialog();
+    int selectIndex = await _showMoreMenuDialog();
     switch (selectIndex) {
       case 1:
         _onDelete();
     }
   }
 
-  void _onDelete() async{
+  void _onDelete() async {
+    _showLoadingDialog();
     await dataCenter.deleteTask(widget._task);
-
+    Navigator.pop(context);
   }
 
-  Future<int> _showDialog() {
+  void _showLoadingDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false, //点击遮罩不关闭对话框
+      builder: (context) {
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              CircularProgressIndicator(),
+              Padding(
+                padding: const EdgeInsets.only(top: 26.0),
+                child: Text("正在删除，请稍后..."),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<int> _showMoreMenuDialog() {
     return showDialog<int>(
       context: context,
       builder: (BuildContext context) {
