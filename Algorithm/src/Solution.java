@@ -1,30 +1,42 @@
 class Solution {
-    public int[][] insert(int[][] intervals, int[] newInterval) {
+    public String getPermutation(int n, int k) {
+        int[] flags = new int[n + 1];
+        return getPermutation(n, k, flags);
+    }
+
+    private String getPermutation(int n, int k, int[] flags) {
+        if (n == 1) {
+            for (int i = 1; i < flags.length; i++) {
+                if (flags[i] != -1) {
+                    return String.valueOf(i);
+                }
+            }
+        }
+        int number = getNumber(n - 1);
+        int groupNumber = k / number + 1;
         int i;
-        for (i = 0; i < intervals.length && newInterval[0] > intervals[i][0]; i++) ;
-        int left = i - 1;
-        int right = i;
-        while (left >= 0 && intervals[left][1] >= newInterval[0]) {
-            newInterval[0] = intervals[left][0];
-            newInterval[1] = Math.max(intervals[left][1], newInterval[1]);
-            left--;
+        for (i = 1; i < flags.length; i++) {
+            if (flags[i] != -1) {
+                groupNumber--;
+            }
+            if (groupNumber == 0) {
+                break;
+            }
         }
-        while (right < intervals.length && (intervals[right][0] == newInterval[0] || intervals[right][0] <= newInterval[1])) {
-            newInterval[1] = Math.max(intervals[right][1], newInterval[1]);
-            right++;
+        flags[i] = -1;
+        k = k % number;
+        return i + getPermutation(n-1, k, flags);
+    }
+
+    private int getNumber(int n) {
+        int count = 1;
+        for (int i = 2; i <= n; i++) {
+            count *= i;
         }
-        int len = left + 1 + 1 + intervals.length - right;
-        int[][] result = new int[len][2];
-        i = 0;
-        int index = 0;
-        while (i <= left) {
-            result[index++] = intervals[i++];
-        }
-        result[index++] = newInterval;
-        i = right;
-        while (i < intervals.length) {
-            result[index++] = intervals[i++];
-        }
-        return result;
+        return count;
+    }
+
+    public static void main(String[] args) {
+        new Solution().getPermutation(3, 3);
     }
 }
