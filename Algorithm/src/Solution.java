@@ -1,42 +1,48 @@
+import java.util.LinkedList;
+
 class Solution {
-    public String getPermutation(int n, int k) {
-        int[] flags = new int[n + 1];
-        return getPermutation(n, k, flags);
+    public String simplifyPath(String path) {
+        LinkedList<String> stack = new LinkedList<>();
+        int i = 0;
+        int startIndex = 0;
+        int endIndex = 0;
+        while (i < path.length()) {
+            while (i < path.length() && path.charAt(i) == '/') {
+                i++;
+            }
+            startIndex = i;
+            while (i < path.length() && path.charAt(i) != '/') {
+                i++;
+            }
+            endIndex = i;
+            String desc = path.substring(startIndex, endIndex);
+            handle(desc, stack);
+        }
+        if (stack.isEmpty()) {
+            return "/";
+        }
+        StringBuilder result = new StringBuilder();
+        while (!stack.isEmpty()) {
+            result.insert(0, stack.pop());
+        }
+        return result.toString();
     }
 
-    private String getPermutation(int n, int k, int[] flags) {
-        if (n == 1) {
-            for (int i = 1; i < flags.length; i++) {
-                if (flags[i] != -1) {
-                    return String.valueOf(i);
-                }
-            }
+    private void handle(String desc, LinkedList<String> stack) {
+        if (desc.equals(".") || desc.equals("")) {
+            return;
         }
-        int number = getNumber(n - 1);
-        int groupNumber = k / number + 1;
-        int i;
-        for (i = 1; i < flags.length; i++) {
-            if (flags[i] != -1) {
-                groupNumber--;
+        if (desc.equals("..")) {
+            if (!stack.isEmpty()) {
+                stack.pop();
             }
-            if (groupNumber == 0) {
-                break;
-            }
+        } else {
+            stack.push("/" + desc);
         }
-        flags[i] = -1;
-        k = k % number;
-        return i + getPermutation(n-1, k, flags);
-    }
-
-    private int getNumber(int n) {
-        int count = 1;
-        for (int i = 2; i <= n; i++) {
-            count *= i;
-        }
-        return count;
     }
 
     public static void main(String[] args) {
-        new Solution().getPermutation(3, 3);
+        String str = "/a//b////c/d//././/..";
+        System.out.println(new Solution().simplifyPath(str));
     }
 }
