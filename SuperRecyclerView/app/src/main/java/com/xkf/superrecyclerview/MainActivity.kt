@@ -9,8 +9,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // recyclerView.setDataType(xxx:class.java)
-        // recyclerView.addData(xxxx)
-        // recyclerView.setItemLayoutId(id)
+        // view.addRelation(Model.class,ViewCreator.getView,ControllerCreator.getController())
+        // view.addModel()
+        // .....
     }
 }

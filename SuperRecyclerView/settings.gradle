@@ -1,2 +1,3 @@
-include ':app', ':component'
+include ':app'
 rootProject.name='SuperRecyclerView'
+include ':base'

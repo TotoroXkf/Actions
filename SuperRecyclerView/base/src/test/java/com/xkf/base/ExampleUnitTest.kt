@@ -1,4 +1,4 @@
-package com.xkf.component
+package com.xkf.base
 
 import org.junit.Test
 

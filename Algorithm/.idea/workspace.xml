@@ -2,10 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/app/src/main/java/com/xkf/superrecyclerview/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/app/src/main/java/com/xkf/superrecyclerview/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/consumer-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/consumer-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/src/androidTest/java/com/xkf/component/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/src/androidTest/java/com/xkf/base/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/src/main/java/com/xkf/component/BaseViewHolder.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/src/main/java/com/xkf/component/single/SingleTypeAdapter.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/src/main/java/com/xkf/component/single/SingleTypeRecyclerView.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/component/src/test/java/com/xkf/component/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/src/test/java/com/xkf/base/ExampleUnitTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +54,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
@@ -82,6 +95,7 @@
       <workItem from="1582429887346" duration="399000" />
       <workItem from="1583030861047" duration="3276000" />
       <workItem from="1583196460949" duration="2876000" />
+      <workItem from="1583283938502" duration="753000" />
     </task>
     <servers />
   </component>
@@ -137,11 +151,12 @@
     <state width="1804" height="350" key="GridCell.Tab.1.right/0.0.1855.1080@0.0.1855.1080" timestamp="1583199447386" />
     <state width="1805" height="350" key="GridCell.Tab.1.right/0.0.1856.1080@0.0.1856.1080" timestamp="1581329442452" />
     <state width="1807" height="350" key="GridCell.Tab.1.right/0.0.1858.1080@0.0.1858.1080" timestamp="1583034513016" />
-    <state x="346" y="98" key="SettingsEditor" timestamp="1583198022303">
-      <screen x="0" y="0" width="1855" height="1080" />
+    <state x="346" y="98" key="SettingsEditor" timestamp="1583284414458">
+      <screen x="0" y="0" width="1857" height="1080" />
     </state>
     <state x="346" y="98" key="SettingsEditor/0.0.1855.1080@0.0.1855.1080" timestamp="1583198022303" />
     <state x="347" y="98" key="SettingsEditor/0.0.1856.1080@0.0.1856.1080" timestamp="1581293515066" />
+    <state x="346" y="98" key="SettingsEditor/0.0.1857.1080@0.0.1857.1080" timestamp="1583284414458" />
     <state x="347" y="98" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1582429899430" />
     <state x="505" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1581821598793">
       <screen x="0" y="0" width="1858" height="1080" />
