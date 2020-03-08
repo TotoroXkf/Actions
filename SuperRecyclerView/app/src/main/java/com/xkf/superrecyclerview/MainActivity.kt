@@ -1,6 +1,7 @@
 package com.xkf.superrecyclerview
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -9,8 +10,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // view.addRelation(Model.class,ViewCreator.getView,ControllerCreator.getController())
-        // view.addModel()
-        // .....
+        Log.e("xkf", "" + (ItemModel1::class == ItemModel2::class.java))
     }
 }

@@ -1,41 +1,24 @@
-import org.springframework.beans.factory.annotation.Lookup;
-import org.springframework.context.Lifecycle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.context.SmartLifecycle;
 
 public class ClassA {
-    private String driverClassName;
-    private String url;
-    private String username;
-    private String password;
+    private String name;
+    private int age;
 
-    public void setDriverClassName(String driverClassName) {
-        this.driverClassName = driverClassName;
+    public String getName() {
+        return name;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public int getAge() {
+        return age;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getDriverClassName() {
-        return driverClassName;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
+    public void setAge(int age) {
+        this.age = age;
     }
 }
