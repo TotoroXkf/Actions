@@ -51,4 +51,14 @@ class Utils {
         }
         return stack;
     }
+
+    public static ListNode createLinkedList(int[] array) {
+        ListNode preHead = new ListNode(0);
+        ListNode preNode = preHead;
+        for (int value : array) {
+            preNode.next = new ListNode(value);
+            preNode = preNode.next;
+        }
+        return preHead.next;
+    }
 }
