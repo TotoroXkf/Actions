@@ -2,31 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/src/main/java/com/xkf/base/BaseAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/src/main/java/com/xkf/base/BaseViewHolder.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/src/main/java/com/xkf/base/ItemMVC.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringStudy/src/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SpringStudy/src/TaskList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringStudy/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringStudy/.idea/libraries/Spring_5_2_3_RELEASE.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SpringStudy/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SpringStudy/SpringStudy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/SpringStudy.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/ClassA.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/ClassA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/ClassC.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/ClassC.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/InstantiationTracingBeanPostProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/InstantiationTracingBeanPostProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/META-INF/SpringStudy.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/ClassA.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/ClassB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/ClassC.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/out/production/SpringStudy/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringStudy/src/ClassA.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/src/ClassA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringStudy/src/ClassC.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/src/ClassC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SpringStudy/src/InstantiationTracingBeanPostProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/src/InstantiationTracingBeanPostProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringStudy/src/ClassA.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringStudy/src/ClassB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SpringStudy/src/ClassC.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../SpringStudy/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SpringStudy/src/config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SpringStudy/src/config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/base/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +101,7 @@
       <workItem from="1583334320020" duration="1277000" />
       <workItem from="1583406345332" duration="2581000" />
       <workItem from="1583553673039" duration="371000" />
+      <workItem from="1583722757124" duration="1235000" />
     </task>
     <servers />
   </component>
@@ -116,9 +109,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="736" y="426" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1583633138366">
-      <screen x="0" y="0" width="1858" height="1080" />
+    <state x="736" y="426" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1583722762774">
+      <screen x="0" y="0" width="1857" height="1080" />
     </state>
+    <state x="736" y="426" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1857.1080@0.0.1857.1080" timestamp="1583722762774" />
     <state x="736" y="426" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1583633138366" />
     <state width="1807" height="283" key="GridCell.Tab.0.bottom" timestamp="1583635117825">
       <screen x="0" y="0" width="1858" height="1080" />
