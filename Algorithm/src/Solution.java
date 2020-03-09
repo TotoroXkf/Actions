@@ -1,21 +1,16 @@
-import java.util.HashSet;
-
 class Solution {
-    public ListNode removeDuplicateNodes(ListNode head) {
+    public int kthToLast(ListNode head, int k) {
         ListNode preHead = new ListNode(0);
         preHead.next = head;
         ListNode pre = preHead;
-        ListNode post = preHead.next;
-        HashSet<Integer> hashSet = new HashSet<>();
-        while (post != null) {
-            int value = post.val;
-            if (hashSet.add(value)) {
-                pre = post;
-            } else {
-                pre.next = post.next;
-            }
+        ListNode post = pre;
+        for (int i = 0; i < k && post != null; i++) {
             post = post.next;
         }
-        return preHead.next;
+        while (post != null) {
+            pre = pre.next;
+            post = post.next;
+        }
+        return pre.val;
     }
 }
