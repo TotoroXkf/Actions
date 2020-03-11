@@ -1,13 +1,10 @@
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TaskList {
-    @Qualifier("spring")
-    @Autowired
     private Task spring;
-
-    @Qualifier("android")
-    @Autowired
     private Task android;
 
     public Task getSpring() {
@@ -16,5 +13,17 @@ public class TaskList {
 
     public Task getAndroid() {
         return android;
+    }
+
+    @Qualifier("android")
+    @Autowired
+    public void setAndroid(Task android) {
+        this.android = android;
+    }
+
+    @Qualifier("spring")
+    @Autowired
+    public void setSpring(Task spring) {
+        this.spring = spring;
     }
 }
