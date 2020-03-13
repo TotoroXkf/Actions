@@ -2,31 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/src/main/java/com/xkf/multitype/ItemAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/src/main/java/com/xkf/multitype/MultiTypeAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/src/main/java/com/xkf/multitype/TypePool.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewPager2Test/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewPager2Test/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewPager2Test/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewPager2Test/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewPager2Test/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewPager2Test/app/src/main/java/com/xkf/viewpager2test/PageFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewPager2Test/app/src/main/res/layout/fragment_page.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/consumer-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/consumer-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/proguard-rules.pro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/src/androidTest/java/com/xkf/base/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/src/androidTest/java/com/xkf/multitype/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/src/main/java/com/xkf/base/BaseAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/src/main/java/com/xkf/base/BaseViewHolder.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/src/main/java/com/xkf/base/ItemMVC.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/base/src/test/java/com/xkf/base/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/multitype/src/test/java/com/xkf/multitype/ExampleUnitTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SuperRecyclerView/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../SuperRecyclerView/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,6 +92,7 @@
       <workItem from="1583844319568" duration="735000" />
       <workItem from="1583891012788" duration="1124000" />
       <workItem from="1583970120363" duration="2064000" />
+      <workItem from="1584058609652" duration="1279000" />
     </task>
     <servers />
   </component>
