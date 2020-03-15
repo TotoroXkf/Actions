@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MainViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MyModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewBindingTest/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewBindingTest/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewBindingTest/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewBindingTest/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewBindingTest/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/java/com/xkf/viewbindingtest/MyView.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/res/layout/view_custom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MyAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MyAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/Task.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/Task.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/res/layout/item_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/res/layout/item_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ViewBindingTest/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ViewBindingTest/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/java/com/xkf/viewbindingtest/MyView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/java/com/xkf/viewbindingtest/MyView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/res/layout/view_custom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/res/layout/view_custom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RunManager">
@@ -103,6 +102,7 @@
       <workItem from="1583970120363" duration="2064000" />
       <workItem from="1584058609652" duration="1316000" />
       <workItem from="1584145473722" duration="3343000" />
+      <workItem from="1584239318382" duration="340000" />
     </task>
     <servers />
   </component>
@@ -179,13 +179,13 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1807" height="350" key="GridCell.Tab.2.right/0.0.1858.1080@0.0.1858.1080" timestamp="1583635117823" />
-    <state x="347" y="98" key="SettingsEditor" timestamp="1583973418652">
+    <state x="347" y="98" key="SettingsEditor" timestamp="1584239369768">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="346" y="98" key="SettingsEditor/0.0.1855.1080@0.0.1855.1080" timestamp="1583198022303" />
     <state x="347" y="98" key="SettingsEditor/0.0.1856.1080@0.0.1856.1080" timestamp="1581293515066" />
     <state x="346" y="98" key="SettingsEditor/0.0.1857.1080@0.0.1857.1080" timestamp="1583284414458" />
-    <state x="347" y="98" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1583973418652" />
+    <state x="347" y="98" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1584239369768" />
     <state x="505" y="328" key="com.intellij.ide.util.TipDialog" timestamp="1583633122924">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>

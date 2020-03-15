@@ -1,41 +1,22 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 class Solution {
-    public boolean findWhetherExistsPath(int n, int[][] graph, int start, int target) {
-        HashMap<Integer, List<Integer>> graphMap = new HashMap<>();
-        HashMap<Integer, Boolean> puts = new HashMap<>();
-        for (int i = 0; i < n; i++) {
-            puts.put(i, false);
-            List<Integer> list = new ArrayList<>();
-            graphMap.put(i, list);
-        }
-        for (int[] ints : graph) {
-            graphMap.get(ints[0]).add(ints[1]);
-        }
-        return search(graphMap, puts, start, target);
+    /**
+     * 二叉树的经典问题了
+     * 一般二叉问题都可以使用递归比较好的解决
+     * 由于数组排序了。所以中间的节点就是根节点。
+     * 然后将左右两边放下去递归即可
+     */
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return sortedArrayToBST(nums, 0, nums.length);
     }
 
-    public boolean search(HashMap<Integer, List<Integer>> graphMap, HashMap<Integer, Boolean> puts, int start, int target) {
-        if (start == target) {
-            return true;
+    public TreeNode sortedArrayToBST(int[] nums, int left, int right) {
+        if (left >= right) {
+            return null;
         }
-        if (puts.get(start)) {
-            return false;
-        }
-        puts.put(start, true);
-        List<Integer> list = graphMap.get(start);
-        for (Integer value : list) {
-            if (puts.get(value)) {
-                continue;
-            }
-            boolean result = search(graphMap, puts, value, target);
-            if (result) {
-                return true;
-            }
-        }
-        puts.put(start, false);
-        return false;
+        int mid = (left + right) / 2;
+        TreeNode treeNode = new TreeNode(nums[mid]);
+        treeNode.left = sortedArrayToBST(nums, left, mid);
+        treeNode.right = sortedArrayToBST(nums, mid + 1, right);
+        return treeNode;
     }
 }
