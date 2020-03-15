@@ -1,42 +1,27 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 class Solution {
-    public ListNode[] listOfDepth(TreeNode root) {
-        ArrayList<ListNode> resultList = new ArrayList<>();
-        LinkedList<TreeNode> queue = new LinkedList<>();
-        queue.add(root);
-        queue.add(null);
-        ListNode head = null;
-        ListNode tail = null;
-        while (!queue.isEmpty()) {
-            TreeNode treeNode = queue.removeFirst();
-            if (treeNode == null) {
-                if (!queue.isEmpty()) {
-                    queue.add(null);
-                    resultList.add(head);
-                    head = null;
-                    tail = null;
-                } else {
-                    resultList.add(head);
-                }
-                continue;
-            }
-            if (head == null) {
-                head = new ListNode(treeNode.val);
-                tail = head;
-            } else {
-                tail.next = new ListNode(treeNode.val);
-                tail = tail.next;
-            }
-            if (treeNode.left != null) {
-                queue.add(treeNode.left);
-            }
-            if (treeNode.right != null) {
-                queue.add(treeNode.right);
-            }
+    /**
+     * 二叉树中面试比较常见的问题
+     * 求节点高度判断当前节点是不是
+     * 然后递归左右判断整个树是不是
+     */
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return true;
         }
-        ListNode[] resultArray = new ListNode[resultList.size()];
-        return resultList.toArray(resultArray);
+        int leftHeight = getHeight(root.left);
+        int rightHeight = getHeight(root.right);
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return false;
+        }
+        return isBalanced(root.left) && isBalanced(root.right);
+    }
+
+    private int getHeight(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftHeight = getHeight(root.left);
+        int rightHeight = getHeight(root.right);
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 }
