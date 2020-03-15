@@ -1,22 +1,42 @@
-class Solution {
-    /**
-     * 二叉树的经典问题了
-     * 一般二叉问题都可以使用递归比较好的解决
-     * 由于数组排序了。所以中间的节点就是根节点。
-     * 然后将左右两边放下去递归即可
-     */
-    public TreeNode sortedArrayToBST(int[] nums) {
-        return sortedArrayToBST(nums, 0, nums.length);
-    }
+import java.util.ArrayList;
+import java.util.LinkedList;
 
-    public TreeNode sortedArrayToBST(int[] nums, int left, int right) {
-        if (left >= right) {
-            return null;
+class Solution {
+    public ListNode[] listOfDepth(TreeNode root) {
+        ArrayList<ListNode> resultList = new ArrayList<>();
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        queue.add(null);
+        ListNode head = null;
+        ListNode tail = null;
+        while (!queue.isEmpty()) {
+            TreeNode treeNode = queue.removeFirst();
+            if (treeNode == null) {
+                if (!queue.isEmpty()) {
+                    queue.add(null);
+                    resultList.add(head);
+                    head = null;
+                    tail = null;
+                } else {
+                    resultList.add(head);
+                }
+                continue;
+            }
+            if (head == null) {
+                head = new ListNode(treeNode.val);
+                tail = head;
+            } else {
+                tail.next = new ListNode(treeNode.val);
+                tail = tail.next;
+            }
+            if (treeNode.left != null) {
+                queue.add(treeNode.left);
+            }
+            if (treeNode.right != null) {
+                queue.add(treeNode.right);
+            }
         }
-        int mid = (left + right) / 2;
-        TreeNode treeNode = new TreeNode(nums[mid]);
-        treeNode.left = sortedArrayToBST(nums, left, mid);
-        treeNode.right = sortedArrayToBST(nums, mid + 1, right);
-        return treeNode;
+        ListNode[] resultArray = new ListNode[resultList.size()];
+        return resultList.toArray(resultArray);
     }
 }
