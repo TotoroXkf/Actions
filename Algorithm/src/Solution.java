@@ -1,38 +1,41 @@
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class SortedStack {
-    LinkedList<Integer> stack = new LinkedList<>();
-    LinkedList<Integer> temp = new LinkedList<>();
-
-    public SortedStack() {
-
+class Solution {
+    public boolean findWhetherExistsPath(int n, int[][] graph, int start, int target) {
+        HashMap<Integer, List<Integer>> graphMap = new HashMap<>();
+        HashMap<Integer, Boolean> puts = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            puts.put(i, false);
+            List<Integer> list = new ArrayList<>();
+            graphMap.put(i, list);
+        }
+        for (int[] ints : graph) {
+            graphMap.get(ints[0]).add(ints[1]);
+        }
+        return search(graphMap, puts, start, target);
     }
 
-    public void push(int val) {
-        while (!stack.isEmpty() && stack.peek() < val) {
-            temp.push(stack.pop());
+    public boolean search(HashMap<Integer, List<Integer>> graphMap, HashMap<Integer, Boolean> puts, int start, int target) {
+        if (start == target) {
+            return true;
         }
-        stack.push(val);
-        while (!temp.isEmpty()) {
-            stack.push(temp.pop());
+        if (puts.get(start)) {
+            return false;
         }
-    }
-
-    public void pop() {
-        if (stack.isEmpty()) {
-            return;
+        puts.put(start, true);
+        List<Integer> list = graphMap.get(start);
+        for (Integer value : list) {
+            if (puts.get(value)) {
+                continue;
+            }
+            boolean result = search(graphMap, puts, value, target);
+            if (result) {
+                return true;
+            }
         }
-        stack.pop();
-    }
-
-    public int peek() {
-        if (stack.isEmpty()) {
-            return -1;
-        }
-        return stack.peek();
-    }
-
-    public boolean isEmpty() {
-        return stack.isEmpty();
+        puts.put(start, false);
+        return false;
     }
 }
