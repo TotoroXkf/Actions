@@ -1,27 +1,19 @@
 class Solution {
     /**
-     * 二叉树中面试比较常见的问题
-     * 求节点高度判断当前节点是不是
-     * 然后递归左右判断整个树是不是
+     * 判断二叉搜索树是面试经常遇到的问题
+     * 其实就是设置左右边界，看当前的节点是不是在这个边界里面即可
      */
-    public boolean isBalanced(TreeNode root) {
+    public boolean isValidBST(TreeNode root) {
+        return isValidBST(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    private boolean isValidBST(TreeNode root, long atLeast, long atMost) {
         if (root == null) {
             return true;
         }
-        int leftHeight = getHeight(root.left);
-        int rightHeight = getHeight(root.right);
-        if (Math.abs(leftHeight - rightHeight) > 1) {
+        if (root.val <= atLeast || root.val >= atMost) {
             return false;
         }
-        return isBalanced(root.left) && isBalanced(root.right);
-    }
-
-    private int getHeight(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        int leftHeight = getHeight(root.left);
-        int rightHeight = getHeight(root.right);
-        return Math.max(leftHeight, rightHeight) + 1;
+        return isValidBST(root.left, atLeast, root.val) && isValidBST(root.right, root.val, atMost);
     }
 }
