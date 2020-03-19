@@ -1,0 +1,2 @@
+rootProject.name='ListPlus'
+include ':app'

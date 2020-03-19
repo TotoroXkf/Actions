@@ -1,2 +1,0 @@
-include ':app', ':longimagetest', ':recyclerview'
-rootProject.name='AndroidTest'
