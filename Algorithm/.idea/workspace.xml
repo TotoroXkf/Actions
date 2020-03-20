@@ -2,28 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../FragmentTest/app/src/main/java/com/xkf/fragmenttest/MyFragmentFactory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DaggerTest/app/src/main/java/com/xkf/daggertest/ApplicationGraph.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DaggerTest/app/src/main/java/com/xkf/daggertest/ApplicationGraph.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DaggerTest/app/src/main/java/com/xkf/daggertest/UserLocalDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DaggerTest/app/src/main/java/com/xkf/daggertest/UserLocalDataSource.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DaggerTest/app/src/main/java/com/xkf/daggertest/UserRemoteDataSource.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DaggerTest/app/src/main/java/com/xkf/daggertest/UserRemoteDataSource.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DaggerTest/app/src/main/java/com/xkf/daggertest/UserRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DaggerTest/app/src/main/java/com/xkf/daggertest/UserRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MainViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MyAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/MyAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/Task.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/java/com/xkf/databindingtest/Task.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataBindingTest/app/src/main/res/layout/item_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataBindingTest/app/src/main/res/layout/item_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../KotlinTest/app/src/main/java/com/xkf/kotlintest/MyViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../KotlinTest/app/src/main/java/com/xkf/kotlintest/MyViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LifecycleTest/app/src/main/java/com/xkf/lifecycletest/MyApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../LifecycleTest/app/src/main/java/com/xkf/lifecycletest/MyApplication.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LifecycleTest/app/src/main/java/com/xkf/lifecycletest/MyObserver.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../LifecycleTest/app/src/main/java/com/xkf/lifecycletest/MyObserver.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ListPlus/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ListPlus/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ListPlus/app/src/main/java/com/xkf/listplus/BaseAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ListPlus/app/src/main/java/com/xkf/listplus/BaseAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ListPlus/app/src/main/java/com/xkf/listplus/BaseViewHolder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ListPlus/app/src/main/java/com/xkf/listplus/BaseViewHolder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ListPlus/app/src/main/java/com/xkf/listplus/ItemModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ListPlus/app/src/main/java/com/xkf/listplus/ItemModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ListPlus/app/src/main/java/com/xkf/listplus/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ListPlus/app/src/main/java/com/xkf/listplus/Test.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ViewBindingTest/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ViewBindingTest/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/java/com/xkf/viewbindingtest/MyView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/java/com/xkf/viewbindingtest/MyView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/res/layout/view_custom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ViewBindingTest/app/src/main/res/layout/view_custom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +98,7 @@
       <workItem from="1584239318382" duration="4446000" />
       <workItem from="1584315854370" duration="3490000" />
       <workItem from="1584401348672" duration="4474000" />
+      <workItem from="1584623820978" duration="837000" />
     </task>
     <servers />
   </component>
