@@ -1,0 +1,2 @@
+rootProject.name='ViewMaskTest'
+include ':app'
