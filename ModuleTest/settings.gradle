@@ -1,5 +1,0 @@
-rootProject.name='ModuleTest'
-include ':app'
-include ':core'
-include ':login'
-include ':main'

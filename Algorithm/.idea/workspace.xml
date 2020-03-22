@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FragmentTest/app/src/main/java/com/xkf/fragmenttest/MyFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../FragmentTest/app/src/main/java/com/xkf/fragmenttest/MyFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FragmentTest/app/src/main/java/com/xkf/fragmenttest/MyFragment2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../FragmentTest/app/src/main/java/com/xkf/fragmenttest/MyFragment2.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FragmentTest/app/src/main/res/layout/fragment_my.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FragmentTest/app/src/main/res/layout/fragment_my.xml" afterDir="false" />
@@ -107,7 +106,7 @@
       <workItem from="1584674585388" duration="476000" />
       <workItem from="1584753003820" duration="436000" />
       <workItem from="1584753460064" duration="3737000" />
-      <workItem from="1584843316241" duration="2751000" />
+      <workItem from="1584843316241" duration="4201000" />
     </task>
     <servers />
   </component>
