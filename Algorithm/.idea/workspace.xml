@@ -8,9 +8,7 @@
       <change beforePath="$PROJECT_DIR$/../FragmentTest/app/src/main/java/com/xkf/fragmenttest/MyFragment2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../FragmentTest/app/src/main/java/com/xkf/fragmenttest/MyFragment2.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FragmentTest/app/src/main/res/layout/fragment_my.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FragmentTest/app/src/main/res/layout/fragment_my.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FragmentTest/app/src/main/res/layout/fragment_my_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FragmentTest/app/src/main/res/layout/fragment_my_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ViewMaskTest/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ViewMaskTest/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ViewMaskTest/app/src/main/java/com/xkf/viewmasktest/EdgeMaskLayout.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ViewMaskTest/app/src/main/java/com/xkf/viewmasktest/EdgeMaskLayout.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ViewMaskTest/app/src/main/res/layout/item_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ViewMaskTest/app/src/main/res/layout/item_layout.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +106,8 @@
       <workItem from="1584669132504" duration="3815000" />
       <workItem from="1584674585388" duration="476000" />
       <workItem from="1584753003820" duration="436000" />
-      <workItem from="1584753460064" duration="3627000" />
+      <workItem from="1584753460064" duration="3737000" />
+      <workItem from="1584843316241" duration="2751000" />
     </task>
     <servers />
   </component>
