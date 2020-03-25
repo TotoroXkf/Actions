@@ -1,30 +1,51 @@
 class Solution {
-    /**
-     * 其实关键点就一个，如何得到每一位上的值是1还是0
-     * 用一个1不断的左移并且&，等于0就说明当前位数是0，反之就是1
-     */
-    public int reverseBits(int num) {
-        int mask = 1;
-        int preSize = 0;
-        int currentSize = 0;
-        int maxLen = 0;
+    public int[] findClosedNumbers(int num) {
+        int[] result = new int[2];
+        result[0] = -1;
+        result[1] = -1;
+        int mask = 2;
+        int firstValue = (num & 1) == 0 ? 0 : 1;
+        int firstIndex = 1;
+        int secondIndex = -1;
+        int thirdIndex = -1;
+        int i = 2;
         while (mask != 0) {
-            // 遇到0，增加之前的长度和当前的长度，再加上翻转的1位
-            if ((num & mask) == 0) {
-                int len = currentSize + preSize + 1;
-                maxLen = Math.max(maxLen, len);
-                // 长度重置
-                preSize = currentSize;
-                currentSize = 0;
-            } else {
-                currentSize++;
+            int value = num & mask;
+            if (((value == 0 && firstValue == 1) || (value != 0 && firstValue == 0)) && secondIndex == -1) {
+                secondIndex = mask;
             }
-            // 继续左移
-            mask = mask << 1;
+            if (((value != 0 && firstValue == 1) || (firstValue == value)) && secondIndex != -1) {
+                thirdIndex = mask;
+                break;
+            }
+            mask <<= 1;
         }
-        if (currentSize > 0) {
-            maxLen = Math.max(maxLen, currentSize + preSize);
+        if (secondIndex != -1) {
+            int value = num ^ secondIndex;
+            value = value ^ firstIndex;
+            setValue(value, num, result);
         }
-        return maxLen;
+        if (thirdIndex != -1) {
+            int value = num ^ secondIndex;
+            value = value ^ thirdIndex;
+            setValue(value, num, result);
+        }
+        return result;
+    }
+
+    private void setValue(int value, int num, int[] result) {
+        if (value > num) {
+            result[0] = value;
+        } else {
+            result[1] = value;
+        }
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        solution.findClosedNumbers(2);
+
+        System.out.println(Integer.toBinaryString(1837591841));
+        System.out.println(Integer.toBinaryString(1837591832));
     }
 }
