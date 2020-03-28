@@ -1,1 +1,4 @@
+rootProject.name='ForMyLove'
 include ':app'
+include ':common'
+include ':splash'
