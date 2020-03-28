@@ -2,36 +2,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public List<List<Integer>> pathWithObstacles(int[][] obstacleGrid) {
-        List<List<Integer>> result = new ArrayList<>();
-        pathWithObstacles(obstacleGrid, result, 0, 0);
-        return result;
+    public int findMagicIndex(int[] nums) {
+        return findMagicIndex(nums, 0, nums.length);
     }
 
-    public boolean pathWithObstacles(int[][] obstacleGrid, List<List<Integer>> answer, int row, int column) {
-        if (column >= obstacleGrid[0].length || row >= obstacleGrid.length) {
-            return false;
+    public int findMagicIndex(int[] nums, int left, int right) {
+        if (left >= right) {
+            return -1;
         }
-        if (obstacleGrid[row][column] == 1) {
-            return false;
+        int mid = (left + right) / 2;
+        if (mid == nums[mid]) {
+            return mid;
         }
-        List<Integer> point = new ArrayList<>();
-        point.add(row);
-        point.add(column);
-        answer.add(point);
-        if (row == obstacleGrid.length - 1 && column == obstacleGrid[0].length - 1) {
-            return true;
+        int leftResult = findMagicIndex(nums, left, mid);
+        if (leftResult != -1) {
+            return leftResult;
         }
-        boolean rightResult = pathWithObstacles(obstacleGrid, answer, row, column + 1);
-        if (rightResult) {
-            return true;
-        }
-        boolean bottomResult = pathWithObstacles(obstacleGrid, answer, row + 1, column);
-        if (bottomResult) {
-            return true;
-        }
-        obstacleGrid[row][column] = 1;
-        answer.remove(answer.size() - 1);
-        return false;
+        return findMagicIndex(nums, mid + 1, right);
     }
 }
