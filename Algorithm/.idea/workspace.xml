@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Web/table/blank-template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Web/table/minimal-table.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Web/table/planets-data.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForMyLove/splash/src/main/java/com/we/splash/SplashFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/splash/src/main/java/com/we/splash/SplashFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Web/table/blank-template.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Web/table/blank-template.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +125,7 @@
       <workItem from="1585184714088" duration="1651000" />
       <workItem from="1585279817110" duration="3568000" />
       <workItem from="1585357289093" duration="2844000" />
-      <workItem from="1585474356466" duration="1132000" />
+      <workItem from="1585474356466" duration="2199000" />
     </task>
     <servers />
   </component>
