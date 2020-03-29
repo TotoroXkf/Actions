@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.we.common.CommonHandler
 import com.we.splash.databinding.FragmentSplashBinding
 
 class SplashFragment : Fragment() {
@@ -18,6 +19,8 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as? CommonHandler)?.fullScreen()
+
         viewBinding = FragmentSplashBinding.inflate(layoutInflater)
         viewBinding.viewModel = viewModel
         return viewBinding.root
@@ -25,5 +28,11 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewBinding.sbvBackgroundView.startAnimation()
+
+        viewBinding.root.setOnClickListener {
+            (activity as? SplashHandler)?.startMain()
+        }
     }
 }
