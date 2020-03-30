@@ -31,4 +31,5 @@ android {
 dependencies {
     api project(':common')
     implementation project(':splash')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

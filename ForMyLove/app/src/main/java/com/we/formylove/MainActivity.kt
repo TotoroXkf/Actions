@@ -6,18 +6,20 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import com.we.common.CommonHandler
+import androidx.navigation.fragment.NavHostFragment
+import com.we.common.component.CommonHandler
 import com.we.splash.SplashFragment
 import com.we.splash.SplashHandler
 
-class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
+class MainActivity : AppCompatActivity(), SplashHandler,
+    CommonHandler {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         supportFragmentManager.beginTransaction()
-            .setCustomAnimations(R.anim.anim_splash_alpha_enter, R.anim.anim_splash_alpha_exit)
+            .setCustomAnimations(R.anim.anim_common_enter, R.anim.anim_common_exit)
             .replace(R.id.container, SplashFragment())
             .commit()
     }
@@ -30,6 +32,10 @@ class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
+    }
+
+    override fun cancelFullScreen() {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
     }
 
     /**
@@ -55,6 +61,11 @@ class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
     }
 
     override fun startMain() {
-
+        val finalHost = NavHostFragment.create(R.navigation.nav_graph)
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(R.anim.anim_common_enter, R.anim.anim_common_exit)
+            .replace(R.id.container, finalHost)
+            .setPrimaryNavigationFragment(finalHost)
+            .commit()
     }
 }

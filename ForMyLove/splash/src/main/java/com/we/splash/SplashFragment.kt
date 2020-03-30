@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.we.common.CommonHandler
+import com.we.common.component.CommonHandler
 import com.we.splash.databinding.FragmentSplashBinding
 
 class SplashFragment : Fragment() {

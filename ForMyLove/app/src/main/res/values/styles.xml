@@ -6,4 +6,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ToolbarTheme" parent="AppTheme">
+        <item name="actionMenuTextColor">#ffffff</item> <!--颜色-->
+    </style>
+
 </resources>
