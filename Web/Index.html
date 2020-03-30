@@ -4,63 +4,102 @@
     <meta charset="utf-8">
     <title>My spending record</title>
     <link href="MyCss.css" rel="stylesheet" type="text/css">
-    <style>
-    </style>
 </head>
 <body>
-<h1>My spending record</h1>
 
-<table>
-    <caption>How I chose to spend my money</caption>
+<main>
+    <form action="http://www.baidu.com" method="get">
+        <h1>Payment form</h1>
+        <p>Required fields are followed by <strong><abbr title="required">*</abbr></strong>.</p>
 
-    <thead>
-    <tr>
-        <th>Purchase</th>
-        <th>Location</th>
-        <th>Date</th>
-        <th>Evaluation</th>
-        <th>Cost (€)</th>
-    </tr>
-    </thead>
+        <h2>Contact information</h2>
+        <section>
 
-    <tfoot>
-    <tr>
-        <td colspan="4">SUM</td>
-        <td>118</td>
-    </tr>
-    </tfoot>
+            <fieldset title="title">
+                <legend>title</legend>
+                <ul>
+                    <li>
+                        <label for="title_1">
+                            <input type="radio" id="title_1" name="title" value="M.">
+                            Mister
+                        </label>
+                    </li>
+                    <li>
+                        <label for="title_2">
+                            <input type="radio" id="title_2" name="title" value="Ms.">
+                            Miss
+                        </label>
+                    </li>
+                </ul>
+            </fieldset>
 
-    <tbody>
-    <tr>
-        <td>Haircut</td>
-        <td>Hairdresser</td>
-        <td>12/09</td>
-        <td>Great idea</td>
-        <td>30</td>
-    </tr>
-    <tr>
-        <td>Lasagna</td>
-        <td>Restaurant</td>
-        <td>12/09</td>
-        <td>Regrets</td>
-        <td>18</td>
-    </tr>
-    <tr>
-        <td>Shoes</td>
-        <td>Shoeshop</td>
-        <td>13/09</td>
-        <td>Big regrets</td>
-        <td>65</td>
-    </tr>
-    <tr>
-        <td>Toothpaste</td>
-        <td>Supermarket</td>
-        <td>13/09</td>
-        <td>Good</td>
-        <td>5</td>
-    </tr>
-    </tbody>
-</table>
+            <p>
+                <label for="name">
+                    <span>Name: </span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+
+                <input type="text" id="name" name="username">
+            </p>
+
+            <p>
+                <label for="mail">
+                    <span>E-mail: </span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <input type="email" id="mail" name="usermail">
+            </p>
+
+            <p>
+                <label for="pwd">
+                    <span>Password: </span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <input type="password" id="pwd" name="password">
+            </p>
+        </section>
+
+        <section>
+            <h2>Payment information</h2>
+
+            <p>
+                <label for="select">
+                    <span>Card number:</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <select name="select" id="select">
+                    <option value="visa">Visa</option>
+                    <option value="mc">Mastercard</option>
+                    <option value="amex">American Express</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="number">
+                    <span>Card number:</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                </label>
+                <input type="number" id="number" name="cardnumber">
+            </p>
+
+            <p>
+                <label for="date">
+                    <span>Expiration date:</span>
+                    <strong><abbr title="required">*</abbr></strong>
+                    <em>formatted as mm/yy</em>
+                </label>
+
+                <input type="date" id="date">
+            </p>
+        </section>
+
+        <p>
+            <button type="submit">Validate the payment</button>
+        </p>
+
+    </form>
+
+</main>
 
 </body>
 </html>
