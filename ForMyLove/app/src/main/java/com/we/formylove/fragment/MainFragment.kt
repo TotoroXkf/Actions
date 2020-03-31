@@ -8,11 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.we.common.component.CommonHandler
-import com.we.formylove.ScaleInTransformer
 import com.we.formylove.databinding.FragmentMainBinding
 import com.we.formylove.viewmodel.MainViewModel
 
@@ -41,20 +37,22 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewBinding.viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount(): Int = viewModel.tabNameList.size
+        //        viewBinding.viewPager.adapter = object : FragmentStateAdapter(this) {
+        //            override fun getItemCount(): Int = viewModel.tabNameList.size
+        //
+        //            override fun createFragment(position: Int): Fragment {
+        //                return MainPageFragment(viewModel, position)
+        //            }
+        //        }
+        //        viewBinding.viewPager.setPageTransformer(ScaleInTransformer())
+        //
+        //        TabLayoutMediator(
+        //            viewBinding.tabs,
+        //            viewBinding.viewPager
+        //        ) { tab: TabLayout.Tab, position: Int ->
+        //            tab.text = viewModel.tabNameList[position]
+        //        }.attach()
 
-            override fun createFragment(position: Int): Fragment {
-                return MainPageFragment(viewModel, position)
-            }
-        }
-        viewBinding.viewPager.setPageTransformer(ScaleInTransformer())
-
-        TabLayoutMediator(
-            viewBinding.tabs,
-            viewBinding.viewPager
-        ) { tab: TabLayout.Tab, position: Int ->
-            tab.text = viewModel.tabNameList[position]
-        }.attach()
+        viewModel.loadMainPageData()
     }
 }
