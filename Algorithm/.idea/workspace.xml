@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/we/formylove/fragment/MainFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/we/formylove/fragment/MainPageFragment.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/fragment_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/layout/fragment_main_page.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/java/com/we/formylove/MyViewModel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ForMyLove/common/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/common/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Web/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Web/Index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Web/MyCss.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Web/MyCss.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Web/table/blank-template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Web/table/minimal-table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Web/table/planets-data.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +125,7 @@
       <workItem from="1585357289093" duration="2844000" />
       <workItem from="1585474356466" duration="3888000" />
       <workItem from="1585532391816" duration="2059000" />
+      <workItem from="1585618392800" duration="1269000" />
     </task>
     <servers />
   </component>
