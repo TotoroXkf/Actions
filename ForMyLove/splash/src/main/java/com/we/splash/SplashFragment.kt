@@ -32,6 +32,7 @@ class SplashFragment : Fragment() {
         viewBinding.sbvBackgroundView.startAnimation()
 
         viewBinding.root.setOnClickListener {
+            viewBinding.sbvBackgroundView.cancelAnimation()
             (activity as? SplashHandler)?.startMain()
         }
     }

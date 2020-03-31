@@ -1,34 +1,37 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class Solution {
     /**
-     * 这个题一看就应该知道是dfs的问题
-     * 举例来说。比如 [a,b,c,d,e]
-     * 他的最后结果应该是 [a,x,x,x,x]的所有解加上b,c,d,e等站在开头的所有解
-     * 往下一位上又可以逐步的递归下去
-     * 所以这个题的关键就是，当遍历到一个位置，从这个位置向前循环，遇到一位，就把遇到的字符和当前的字符交换位置，模拟这个字符站在首位的情况
-     * 然后递归下一位的子集
-     * 等到子集全部递归完毕回来，再把这两个字符换回来即可
+     * 在原有基础上面的进阶，增加了重复的字符。按照过往的经验来看，还是先排序
+     * 还是交换首位的逻辑。这里增加一些过滤的条件
+     * 如果说当前这个字符和它前面的字符是一样的，就不把它换到首位去。比如 [a,b,b] ,首位a就不应该和最后一个b交换
+     * 另外就是，如果当前字符和要交换的字符是一样的，也不应该换 比如 [v,a,j,a] 第一个a和第2个a就不应该交换
+     * 其他的和不带重复元素的就一样了
      */
     public String[] permutation(String s) {
+        char[] c = s.toCharArray();
+        // 先排序
+        Arrays.sort(c);
         List<String> list = new ArrayList<>();
-        permutation(s.toCharArray(), list, 0);
+        permutation(c, 0, list);
         String[] result = new String[list.size()];
         list.toArray(result);
         return result;
     }
 
-    private void permutation(char[] c, List<String> result, int index) {
+    private void permutation(char[] c, int index, List<String> result) {
         if (index == c.length) {
             result.add(new String(c));
         }
         for (int i = index; i < c.length; i++) {
-            // 交换字符的位置，模拟这个字符在首位
+            // 两个过滤的条件
+            if (i > index && (c[i] == c[i - 1])) {
+                continue;
+            }
             swap(c, index, i);
-            // 递归求解子集
-            permutation(c, result, index + 1);
-            // 把两个字符换回来
+            permutation(c, index + 1, result);
             swap(c, index, i);
         }
     }

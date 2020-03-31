@@ -57,6 +57,9 @@ class SplashBackgroundView : View {
         animation.start()
     }
 
+    fun cancelAnimation() {
+        animation.cancel()
+    }
 
     override fun onDetachedFromWindow() {
         animation.cancel()
