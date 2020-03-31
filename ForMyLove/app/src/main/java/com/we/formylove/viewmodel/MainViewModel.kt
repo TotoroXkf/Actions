@@ -1,5 +1,6 @@
 package com.we.formylove.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.we.common.component.CommonUtils
@@ -10,9 +11,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel : ViewModel() {
+    var isLoading = MutableLiveData(true)
     val actionBarTitle = "我们的APP"
     val dayText = "我们在一起的 " + CommonUtils.getStayDays().toString() + " 天"
-    var mainPageList = listOf<MainPage>()
+    var mainPageList = MutableLiveData(listOf<MainPage>())
+
+    val color = "#39c5bb"
 
     fun loadMainPageData() = viewModelScope.launch(Dispatchers.Main) {
         val response = withContext(Dispatchers.IO) {
@@ -23,8 +27,9 @@ class MainViewModel : ViewModel() {
                 return@withContext null
             }
         }
+        isLoading.value = false
         response?.let {
-            mainPageList = it.results
+            mainPageList.value = it.results
         }
     }
 }

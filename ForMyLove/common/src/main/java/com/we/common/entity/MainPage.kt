@@ -8,5 +8,6 @@ data class MainPageResponse(
 data class MainPage(
     val title: String,
     val desc: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val buttonText: String
 )
