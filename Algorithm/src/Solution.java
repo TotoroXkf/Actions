@@ -1,22 +1,18 @@
-class Solution {
-    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
-        boolean[][] marked = new boolean[image.length][image[0].length];
-        fill(image, marked, sr, sc, image[sr][sc], newColor);
-        return image;
-    }
+import java.util.Arrays;
 
-    private void fill(int[][] image, boolean[][] marked, int row, int column, int oldColor, int newColor) {
-        if (row >= image.length || row < 0 || column >= image[0].length || column < 0 || marked[row][column]) {
-            return;
+class Solution {
+    public int waysToChange(int n) {
+        int[] coins = new int[]{1, 5, 10, 25};
+        int[] dp = new int[n + 1];
+        Arrays.fill(dp, 1);
+        for (int i = 1; i < coins.length; i++) {
+            for (int j = 1; j < dp.length; j++) {
+                // 动态转移方程
+                if (j >= coins[i]) {
+                    dp[j] = (dp[j] + dp[j - coins[i]]) % 1000000007;
+                }
+            }
         }
-        marked[row][column] = true;
-        if (image[row][column] != oldColor) {
-            return;
-        }
-        image[row][column] = newColor;
-        fill(image, marked, row + 1, column, oldColor, newColor);
-        fill(image, marked, row - 1, column, oldColor, newColor);
-        fill(image, marked, row, column + 1, oldColor, newColor);
-        fill(image, marked, row, column - 1, oldColor, newColor);
+        return dp[n];
     }
 }
