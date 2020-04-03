@@ -1,14 +1,6 @@
-#outer div ul .nav a {
-    background-color: blue;
-    padding: 5px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-div div li a {
-    color: yellow;
-}
-
-#outer #inner ul .nav a {
-    background-color: red;
+h1 ~ p {
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    padding: 3px;
 }
