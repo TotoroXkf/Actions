@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.we.formylove.fragment.MainFragment"
-        android:label="MainFragment" />
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_mainFragment_to_loveStatementFragment"
+            app:destination="@id/loveStatementFragment"
+            app:enterAnim="@anim/anim_common_enter"
+            app:exitAnim="@anim/anim_common_exit"
+            app:popEnterAnim="@anim/anim_common_exit"
+            app:popExitAnim="@anim/anim_common_enter" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loveStatementFragment"
+        android:name="com.we.lovestatement.LoveStatementFragment"
+        android:label="LoveStatementFragment" />
 </navigation>

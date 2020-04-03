@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.we.common.component.CommonHandler
+import com.we.common.component.CommonUtils
 import com.we.common.entity.MainPage
 import com.we.formylove.ScaleInTransformer
 import com.we.formylove.databinding.FragmentMainBinding
@@ -50,6 +54,28 @@ class MainFragment : Fragment() {
     }
 
     private fun setUpViews(dataList: List<MainPage>) {
+        setUpViewPager(dataList)
+
+        TabLayoutMediator(
+            viewBinding.tabs,
+            viewBinding.viewPager
+        ) { tab: TabLayout.Tab, position: Int ->
+            tab.text = dataList[position].title
+        }.attach()
+    }
+
+    private fun setUpViewPager(dataList: List<MainPage>) {
+        // 设置一屏多页
+        viewBinding.viewPager.apply {
+            offscreenPageLimit = 1
+            val recyclerView = getChildAt(0) as RecyclerView
+            recyclerView.apply {
+                val padding = CommonUtils.dpToPx(40f)
+                setPadding(padding.toInt(), 0, padding.toInt(), 0)
+                clipToPadding = false
+            }
+        }
+        // 设置adapter
         viewBinding.viewPager.adapter = object : FragmentStateAdapter(this) {
             override fun getItemCount(): Int = dataList.size
 
@@ -57,13 +83,14 @@ class MainFragment : Fragment() {
                 return MainPageFragment(viewModel, position)
             }
         }
-        viewBinding.viewPager.setPageTransformer(ScaleInTransformer())
-        View.VISIBLE
-        TabLayoutMediator(
-            viewBinding.tabs,
-            viewBinding.viewPager
-        ) { tab: TabLayout.Tab, position: Int ->
-            tab.text = dataList[position].title
-        }.attach()
+        // 设置翻页效果
+        val compositePageTransformer = CompositePageTransformer()
+        compositePageTransformer.addTransformer(ScaleInTransformer())
+        compositePageTransformer.addTransformer(
+            MarginPageTransformer(
+                CommonUtils.dpToPx(20f).toInt()
+            )
+        )
+        viewBinding.viewPager.setPageTransformer(compositePageTransformer)
     }
 }

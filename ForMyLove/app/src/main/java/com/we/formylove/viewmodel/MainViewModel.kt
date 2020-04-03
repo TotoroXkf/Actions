@@ -16,8 +16,6 @@ class MainViewModel : ViewModel() {
     val dayText = "我们在一起的 " + CommonUtils.getStayDays().toString() + " 天"
     var mainPageList = MutableLiveData(listOf<MainPage>())
 
-    val color = "#123456"
-
     fun loadMainPageData() = viewModelScope.launch(Dispatchers.Main) {
         val response = withContext(Dispatchers.IO) {
             val response = RetrofitManager.bmobService.getMainPageData().execute()

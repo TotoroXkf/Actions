@@ -6,6 +6,7 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.we.common.component.CommonHandler
 import com.we.splash.SplashFragment
@@ -67,5 +68,11 @@ class MainActivity : AppCompatActivity(), SplashHandler,
             .replace(R.id.container, finalHost)
             .setPrimaryNavigationFragment(finalHost)
             .commit()
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+
+        findNavController(R.id.container).popBackStack()
     }
 }
