@@ -16,8 +16,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.we.common.component.CommonHandler
 import com.we.common.component.CommonUtils
-import com.we.common.entity.MainPage
-import com.we.formylove.ScaleInTransformer
+import com.we.common.component.ScaleInTransformer
 import com.we.formylove.databinding.FragmentMainBinding
 import com.we.formylove.viewmodel.MainViewModel
 
@@ -29,6 +28,10 @@ class MainFragment : Fragment() {
         super.onAttach(context)
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel.mainPageList.observe(this, Observer {
+            setUpViews()
+        })
+        viewModel.loadMainPageData()
     }
 
     override fun onCreateView(
@@ -36,35 +39,30 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         (activity as? CommonHandler)?.cancelFullScreen()
-
         viewBinding = FragmentMainBinding.inflate(layoutInflater)
         viewBinding.viewModel = viewModel
-        viewBinding.lifecycleOwner = viewLifecycleOwner
+        viewBinding.lifecycleOwner = this
         return viewBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.mainPageList.observe(viewLifecycleOwner, Observer {
-            setUpViews(it)
-        })
-
-        viewModel.loadMainPageData()
+        setUpViews()
     }
 
-    private fun setUpViews(dataList: List<MainPage>) {
-        setUpViewPager(dataList)
+    private fun setUpViews() {
+        setUpViewPager()
 
         TabLayoutMediator(
             viewBinding.tabs,
             viewBinding.viewPager
         ) { tab: TabLayout.Tab, position: Int ->
-            tab.text = dataList[position].title
+            tab.text = viewModel.getMainPageList()[position].title
         }.attach()
     }
 
-    private fun setUpViewPager(dataList: List<MainPage>) {
+    private fun setUpViewPager() {
         // 设置一屏多页
         viewBinding.viewPager.apply {
             offscreenPageLimit = 1
@@ -77,7 +75,7 @@ class MainFragment : Fragment() {
         }
         // 设置adapter
         viewBinding.viewPager.adapter = object : FragmentStateAdapter(this) {
-            override fun getItemCount(): Int = dataList.size
+            override fun getItemCount(): Int = viewModel.getMainPageList().size
 
             override fun createFragment(position: Int): Fragment {
                 return MainPageFragment(viewModel, position)

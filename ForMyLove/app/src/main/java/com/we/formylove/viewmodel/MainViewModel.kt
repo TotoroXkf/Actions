@@ -30,4 +30,8 @@ class MainViewModel : ViewModel() {
             mainPageList.value = it.results
         }
     }
+
+    fun getMainPageList(): List<MainPage> {
+        return mainPageList.value!!
+    }
 }

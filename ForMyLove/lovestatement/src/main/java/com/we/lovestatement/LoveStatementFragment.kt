@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
 class LoveStatementFragment : Fragment() {
+    companion object {
+        const val NAME = "loveStatementFragment"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -11,10 +11,10 @@
         <action
             android:id="@+id/action_mainFragment_to_loveStatementFragment"
             app:destination="@id/loveStatementFragment"
-            app:enterAnim="@anim/anim_common_enter"
-            app:exitAnim="@anim/anim_common_exit"
-            app:popEnterAnim="@anim/anim_common_exit"
-            app:popExitAnim="@anim/anim_common_enter" />
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
     </fragment>
 
     <fragment

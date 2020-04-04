@@ -10,5 +10,6 @@ data class MainPage(
     val desc: String,
     val imageUrl: String,
     val buttonText: String,
-    val buttonColor: String
+    val buttonColor: String,
+    val jumpUrl: String
 )

@@ -1,11 +1,12 @@
-package com.we.formylove
+package com.we.common.component
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
 class ScaleInTransformer : ViewPager2.PageTransformer {
-    private val mMinScale = DEFAULT_MIN_SCALE
+    private val mMinScale =
+        DEFAULT_MIN_SCALE
     override fun transformPage(view: View, position: Float) {
         view.elevation = -abs(position)
         val pageWidth = view.width

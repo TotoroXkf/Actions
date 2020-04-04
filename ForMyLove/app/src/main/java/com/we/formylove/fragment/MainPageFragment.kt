@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.we.formylove.R
+import com.we.common.component.CommonHandler
 import com.we.formylove.databinding.FragmentMainPageBinding
 import com.we.formylove.viewmodel.MainViewModel
 
@@ -33,7 +32,7 @@ class MainPageFragment(val viewModel: MainViewModel, private val index: Int) : F
             .into(viewBinding.imageView)
 
         viewBinding.buttonView.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_loveStatementFragment)
+            (activity as? CommonHandler)?.open(viewModel.mainPageList.value!!.get(index).jumpUrl)
         }
     }
 }

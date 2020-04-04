@@ -9,4 +9,6 @@ interface CommonHandler {
     fun showKeyboard()
 
     fun hideKeyboard()
+
+    fun open(route: String)
 }
