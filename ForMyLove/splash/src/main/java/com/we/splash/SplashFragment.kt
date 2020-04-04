@@ -1,39 +1,37 @@
 package com.we.splash
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.we.common.component.CommonHandler
+import com.we.common.view.BaseFragment
 import com.we.splash.databinding.FragmentSplashBinding
 
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment() {
     private lateinit var viewBinding: FragmentSplashBinding
-    private val viewModel by lazy {
-        ViewModelProvider(this).get(SplashViewModel::class.java)
+    private lateinit var viewModel: SplashViewModel
+
+    override fun initViewModel() {
+        viewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        (activity as? CommonHandler)?.fullScreen()
-
+    override fun createView(): View {
         viewBinding = FragmentSplashBinding.inflate(layoutInflater)
         viewBinding.viewModel = viewModel
         return viewBinding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun setupViews() {
+        (activity as? CommonHandler)?.fullScreen()
         viewBinding.sbvBackgroundView.startAnimation()
-
         viewBinding.root.setOnClickListener {
             viewBinding.sbvBackgroundView.cancelAnimation()
             (activity as? SplashHandler)?.openMain()
         }
+    }
+
+    override fun onDestroyView() {
+        viewBinding.sbvBackgroundView.cancelAnimation()
+        super.onDestroyView()
     }
 }

@@ -1,10 +1,6 @@
 package com.we.formylove.fragment
 
-import android.content.Context
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,42 +12,32 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.we.common.component.CommonHandler
 import com.we.common.component.CommonUtils
-import com.we.common.component.ScaleInTransformer
+import com.we.common.view.BaseFragment
+import com.we.common.view.ScaleInTransformer
 import com.we.formylove.databinding.FragmentMainBinding
 import com.we.formylove.viewmodel.MainViewModel
 
-class MainFragment : Fragment() {
+class MainFragment : BaseFragment() {
     private lateinit var viewBinding: FragmentMainBinding
     private lateinit var viewModel: MainViewModel
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
+    override fun initViewModel() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.mainPageList.observe(this, Observer {
-            setUpViews()
+            refreshView()
         })
         viewModel.loadMainPageData()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        (activity as? CommonHandler)?.cancelFullScreen()
+    override fun createView(): View {
         viewBinding = FragmentMainBinding.inflate(layoutInflater)
         viewBinding.viewModel = viewModel
         viewBinding.lifecycleOwner = this
         return viewBinding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setUpViews()
-    }
-
-    private fun setUpViews() {
+    override fun setupViews() {
+        (activity as? CommonHandler)?.cancelFullScreen()
         setUpViewPager()
 
         TabLayoutMediator(

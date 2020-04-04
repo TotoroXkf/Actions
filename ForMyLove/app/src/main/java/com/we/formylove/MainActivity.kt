@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
 
     private fun openSplash() {
         supportFragmentManager.beginTransaction()
-            .setCustomAnimations(R.anim.anim_common_enter, R.anim.anim_common_exit)
+            .setCustomAnimations(R.anim.fragment_open_enter, R.anim.fragment_open_exit)
             .replace(R.id.container, SplashFragment())
             .commit()
     }
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
     override fun openMain() {
         val finalHost = NavHostFragment.create(R.navigation.nav_graph)
         supportFragmentManager.beginTransaction()
-            .setCustomAnimations(R.anim.anim_common_enter, R.anim.anim_common_exit)
+            .setCustomAnimations(R.anim.fragment_open_enter, R.anim.fragment_open_exit)
             .replace(R.id.container, finalHost)
             .setPrimaryNavigationFragment(finalHost)
             .commit()

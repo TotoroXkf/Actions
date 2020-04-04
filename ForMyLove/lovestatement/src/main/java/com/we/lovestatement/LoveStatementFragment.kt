@@ -1,20 +1,26 @@
 package com.we.lovestatement
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.we.common.view.BaseFragment
+import com.we.lovestatement.databinding.FragmentLoveStatementBinding
 
-class LoveStatementFragment : Fragment() {
+class LoveStatementFragment : BaseFragment() {
     companion object {
         const val NAME = "loveStatementFragment"
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_live_statement, container, false)
+    private lateinit var viewBinding: FragmentLoveStatementBinding
+
+    override fun initViewModel() {
+
+    }
+
+    override fun createView(): View {
+        val viewBinding = FragmentLoveStatementBinding.inflate(layoutInflater)
+        return viewBinding.root
+    }
+
+    override fun setupViews() {
+
     }
 }
