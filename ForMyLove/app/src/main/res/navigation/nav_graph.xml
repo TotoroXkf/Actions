@@ -19,6 +19,6 @@
 
     <fragment
         android:id="@+id/loveStatementFragment"
-        android:name="com.we.lovestatement.LoveStatementFragment"
+        android:name="com.we.lovestatement.viewmodel.LoveStatementFragment"
         android:label="LoveStatementFragment" />
 </navigation>

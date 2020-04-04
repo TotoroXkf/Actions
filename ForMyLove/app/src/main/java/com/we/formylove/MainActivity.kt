@@ -11,7 +11,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import com.we.common.component.CommonHandler
 import com.we.formylove.fragment.MainFragmentDirections
-import com.we.lovestatement.LoveStatementFragment
+import com.we.lovestatement.viewmodel.LoveStatementFragment
 import com.we.splash.SplashFragment
 import com.we.splash.SplashHandler
 
