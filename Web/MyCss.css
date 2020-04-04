@@ -1,6 +1,15 @@
-h1 ~ p {
-    font-weight: bold;
-    background-color: black;
-    color: white;
-    padding: 3px;
+#special {
+    background-color: yellow;
+}
+
+.alert {
+    border: 1px solid gray;
+}
+
+.alert.stop {
+    background-color: red;
+}
+
+.alert.go {
+    background-color: green;
 }
