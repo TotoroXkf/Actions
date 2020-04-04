@@ -1,15 +1,18 @@
-#special {
-    background-color: yellow;
+p, ul {
+    border: 2px solid rebeccapurple;
+    padding: .5em;
 }
 
-.alert {
-    border: 1px solid gray;
+.block, li {
+    border: 2px solid blue;
+    padding: .5em;
 }
 
-.alert.stop {
-    background-color: red;
+ul {
+    display: inline-flex;
+    list-style: none;
 }
 
-.alert.go {
-    background-color: green;
+.block {
+    display: block;
 }
