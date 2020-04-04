@@ -1,18 +1,10 @@
-p, ul {
-    border: 2px solid rebeccapurple;
-    padding: .5em;
+.box {
+    border: 5px solid black;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .5);
 }
 
-.block, li {
-    border: 2px solid blue;
-    padding: .5em;
-}
-
-ul {
-    display: inline-flex;
-    list-style: none;
-}
-
-.block {
-    display: block;
+h2 {
+    margin-left: 20px;
+    color: white;
 }
