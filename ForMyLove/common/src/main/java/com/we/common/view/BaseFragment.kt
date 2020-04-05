@@ -32,7 +32,7 @@ abstract class BaseFragment : Fragment() {
         setupViews()
     }
 
-    fun refreshView() {
+    open fun refreshView() {
         setupViews()
     }
 
