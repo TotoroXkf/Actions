@@ -4,12 +4,15 @@ import android.graphics.Rect
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.afollestad.materialdialogs.MaterialDialog
 import com.we.common.component.CommonUtils
 import com.we.common.view.BaseFragment
+import com.we.lovestatement.R
 import com.we.lovestatement.databinding.FragmentLoveStatementBinding
 import com.we.lovestatement.databinding.ItemStatementBinding
 import com.we.lovestatement.viewmodel.LoveStatementViewModel
@@ -106,6 +109,45 @@ class LoveStatementFragment : BaseFragment() {
         fun bind() {
             val text = viewModel.getLoveStatementList()[bindingAdapterPosition].statement
             itemViewBinding.textView.text = text
+            itemViewBinding.root.setOnLongClickListener {
+                showPopMenu()
+                return@setOnLongClickListener true;
+            }
+        }
+
+        private fun showPopMenu() {
+            val popMenu = PopupMenu(activity, itemViewBinding.root)
+            popMenu.menuInflater.inflate(R.menu.long_click_pop_menu, popMenu.menu)
+            popMenu.show()
+            popMenu.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.update -> {
+
+                    }
+                    R.id.delete -> {
+                        onClickDelete()
+                    }
+                }
+                true
+            }
+        }
+
+        private fun onClickDelete() {
+            MaterialDialog(activity!!).show {
+                title(text = "删除这条语句？")
+                message(text = "确认要删除这条语句吗？")
+                positiveButton(text = "不要啦") {
+                    viewBinding.refreshLayoutView.isRefreshing = true
+                    viewModel.deleteStatement(bindingAdapterPosition)
+                }
+                negativeButton(text = "喵喵，在考虑一下") {
+
+                }
+            }
+        }
+
+        private fun onClickUpdate() {
+
         }
     }
 }

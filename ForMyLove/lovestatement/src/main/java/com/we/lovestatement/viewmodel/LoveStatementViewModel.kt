@@ -26,6 +26,14 @@ class LoveStatementViewModel : ViewModel() {
         }
     }
 
+    fun deleteStatement(index: Int) {
+
+    }
+
+    fun updateStatement(index: Int, text: String) {
+
+    }
+
     fun getLoveStatementList(): MutableList<LoveStatement> {
         return loveStatementList.value!!
     }
