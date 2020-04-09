@@ -1,72 +1,51 @@
-class Solution {
-    public int countEval(String s, int result) {
+import java.util.Arrays;
+
+public class Solution {
+    public int countEval(String s, int target) {
+        int[][][] dp = new int[s.length()][s.length() + 1][2];
+        for (int[][] matrix : dp) {
+            for (int[] ints : matrix) {
+                Arrays.fill(ints, -1);
+            }
+        }
         char[] chars = s.toCharArray();
-        return countEval(chars, 0, chars.length, result);
+        return countEval(chars, 0, s.length(), dp, target);
     }
 
-    private int countEval(char[] chars, int start, int end, int value) {
-        if (start >= end) {
-            return 0;
-        }
-        if (end - start == 1) {
-            if (chars[start] - '0' == value) {
-                return 1;
-            } else {
-                return 0;
-            }
+    public int countEval(char[] chars, int start, int end, int[][][] dp, int target) {
+        // 单个数字的dp值是可以直接得到的，就是比较和target是不是相同
+        dp[start][start + 1][target] = ((chars[start] - '0') == target) ? 1 : 0;
+        // 存在dp值，直接复用
+        if (dp[start][end][target] != -1) {
+            return dp[start][end][target];
         }
         int result = 0;
-        for (int i = start + 1; i < end; i++) {
-            char symbol = chars[i];
-            switch (symbol) {
-                case '&':
-                    result += getLeftAndRightSameResult(chars, start, end, i, value);
-                    break;
-                case '|':
-                    if (value == 0) {
-                        result += getLeftAndRightSameResult(chars, start, end, i, value);
-                    } else {
-                        result += getLeftAndRightDiffResult(chars, start, end, i);
+        for (int i = start + 2; i < end; i += 2) {
+            // 从开始之后的第二个数字开始
+            char symbol = chars[i - 1];
+            for (int j = 0; j < 2; j++) {
+                for (int k = 0; k < 2; k++) {
+                    // 遍历0和1的4个组合，用符号计算，得到值合适的时候递归左右两边
+                    if (compute(j, k, symbol) == target) {
+                        result += (countEval(chars, start, i - 1, dp, j) * countEval(chars, i, end, dp, k));
                     }
-                    break;
-                case '^':
-                    if (value == 0) {
-                        result += getLeftAndRightSameResult(chars, start, end, i, 0);
-                        result += getLeftAndRightSameResult(chars, start, end, i, 1);
-                    } else {
-                        result += getLeftAndRightDiffResult(chars, start, end, i);
-                    }
-                    break;
+                }
             }
         }
+        // 将结果值记录下来
+        dp[start][end][target] = result;
         return result;
     }
 
-    private int getLeftAndRightDiffResult(char[] chars, int start, int end, int i) {
-        int leftResult;
-        int rightResult;
-        int result = 0;
-        leftResult = countEval(chars, start, i, 0);
-        rightResult = countEval(chars, i + 1, end, 1);
-        result += (leftResult * rightResult);
-        leftResult = countEval(chars, start, i, 1);
-        rightResult = countEval(chars, i + 1, end, 0);
-        result += (leftResult * rightResult);
-        return result;
-    }
-
-    private int getLeftAndRightSameResult(char[] chars, int start, int end, int i, int value) {
-        int leftResult;
-        int rightResult;
-        leftResult = countEval(chars, start, i, value);
-        rightResult = countEval(chars, i + 1, end, value);
-        return leftResult * rightResult;
-    }
-
-    public static void main(String[] args) {
-        String s = "0&0&0&1^1|0";
-        int result = 1;
-        Solution solution = new Solution();
-        System.out.println(solution.countEval(s, result));
+    private int compute(int a, int b, char symbol) {
+        switch (symbol) {
+            case '|':
+                return a | b;
+            case '&':
+                return a & b;
+            case '^':
+                return a ^ b;
+        }
+        return -1;
     }
 }
