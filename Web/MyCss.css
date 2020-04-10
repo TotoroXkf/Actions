@@ -1,21 +1,36 @@
 html {
-    font-family: sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
 }
 
-p {
-    width: 200px;
-    height: 60px;
-    text-align: center;
-    font-size: 18px;
-    color: white;
-    line-height: 60px;
-    border-radius: 10px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7),
-    inset 2px 3px 5px rgba(0, 0, 0, 0.3),
-    inset -2px -3px 5px rgba(255, 255, 255, 0.5);
-    background: #39c5bb linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 0.3) 100%);
+h2 {
+    font-size: 2rem;
 }
 
+ul, ol, dl, p {
+    font-size: 1.5rem;
+}
+
+li, p {
+    line-height: 1.5;
+}
+
+dd, dt {
+    line-height: 1.5;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-bottom: 1.5rem;
+}
+
+ol {
+    list-style-type: upper-roman;
+}
+
+li {
+    list-style-type: none;
+}
