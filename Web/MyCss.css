@@ -1,11 +1,41 @@
+body,html {
+    margin: 0;
+    font-family: sans-serif;
+}
+
 ul {
-    list-style-type: square;
+    padding: 0;
+    width: 100%;
 }
 
-ul ol {
-    line-height: 1.5em;
+li {
+    display: inline;
 }
 
-ol {
-    list-style-type: decimal;
+a {
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 19.5%;
+    margin-right: 0.625%;
+    text-align: center;
+    line-height: 3;
+    color: black;
+}
+
+li:last-child a {
+    margin-right: 0;
+}
+
+a:link, a:visited, a:focus {
+    background: yellow;
+}
+
+a:hover {
+    background: orange;
+}
+
+a:active {
+    background: red;
+    color: white;
 }
