@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.input.getInputField
+import com.afollestad.materialdialogs.input.input
 import com.we.common.component.CommonUtils
 import com.we.common.view.BaseFragment
 import com.we.lovestatement.R
@@ -41,20 +43,30 @@ class LoveStatementFragment : BaseFragment() {
     }
 
     override fun refreshView() {
-        setupViews()
+        viewBinding.recyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun setupViews() {
         viewBinding.recyclerView.adapter = Adapter()
         val size: Int = viewBinding.recyclerView.itemDecorationCount
         if (size > 0) {
-            viewBinding.recyclerView.removeItemDecorationAt(0);
+            viewBinding.recyclerView.removeItemDecorationAt(0)
         }
         viewBinding.recyclerView.addItemDecoration(SpaceDecoration())
 
         viewBinding.refreshLayoutView.setOnRefreshListener {
-
             viewModel.loadStatementList()
+        }
+
+        viewBinding.floatingActionButton.setOnClickListener {
+            MaterialDialog(requireActivity()).show {
+                title(text = "喵喵喵")
+                input(hint = "输入新的恋爱语句")
+                positiveButton(text = "确定") {
+                    viewBinding.refreshLayoutView.isRefreshing = true
+                    viewModel.addStatement(it.getInputField().editableText.toString())
+                }
+            }
         }
     }
 
@@ -111,7 +123,7 @@ class LoveStatementFragment : BaseFragment() {
             itemViewBinding.textView.text = text
             itemViewBinding.root.setOnLongClickListener {
                 showPopMenu()
-                return@setOnLongClickListener true;
+                true
             }
         }
 
@@ -122,7 +134,7 @@ class LoveStatementFragment : BaseFragment() {
             popMenu.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.update -> {
-
+                        onClickUpdate()
                     }
                     R.id.delete -> {
                         onClickDelete()
@@ -136,7 +148,7 @@ class LoveStatementFragment : BaseFragment() {
             MaterialDialog(activity!!).show {
                 title(text = "删除这条语句？")
                 message(text = "确认要删除这条语句吗？")
-                positiveButton(text = "不要啦") {
+                positiveButton(text = "删掉吧，不要啦") {
                     viewBinding.refreshLayoutView.isRefreshing = true
                     viewModel.deleteStatement(bindingAdapterPosition)
                 }
@@ -147,7 +159,14 @@ class LoveStatementFragment : BaseFragment() {
         }
 
         private fun onClickUpdate() {
-
+            val text = viewModel.getLoveStatementList()[bindingAdapterPosition].statement
+            MaterialDialog(activity!!).show {
+                input(prefill = text)
+                positiveButton(text = "确定") {
+                    val newText = it.getInputField().editableText.toString()
+                    viewModel.updateStatement(bindingAdapterPosition, newText)
+                }
+            }
         }
     }
 }

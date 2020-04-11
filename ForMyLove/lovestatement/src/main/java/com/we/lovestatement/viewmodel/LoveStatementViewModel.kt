@@ -14,24 +14,51 @@ class LoveStatementViewModel : ViewModel() {
 
     fun loadStatementList() = viewModelScope.launch {
         val response = withContext(Dispatchers.IO) {
-            val result = RetrofitManager.bmobService.getLoveStatementData().execute()
-            if (result.isSuccessful) {
-                return@withContext result.body()
-            } else {
-                return@withContext null
+            RetrofitManager.bmobService.getLoveStatementData().execute()
+        }
+        if (response.isSuccessful) {
+            loveStatementList.value = response.body()?.results ?: mutableListOf()
+        }
+    }
+
+    fun deleteStatement(index: Int) = viewModelScope.launch {
+        val objectId = getLoveStatementList()[index].objectId
+        objectId?.let {
+            val response = withContext(Dispatchers.IO) {
+                RetrofitManager.bmobService.deleteStatement(objectId).execute()
+            }
+            if (response.isSuccessful) {
+                val list = getLoveStatementList()
+                list.removeAt(index)
+                loveStatementList.value = list
             }
         }
-        response?.let {
-            loveStatementList.value = it.results
+    }
+
+    fun updateStatement(index: Int, text: String) = viewModelScope.launch {
+        val list = getLoveStatementList()
+        val statement = list[index]
+        val objectId = statement.objectId
+        objectId?.let {
+            val updateStatement = LoveStatement(objectId = null, statement = text)
+            val response = withContext(Dispatchers.IO) {
+                RetrofitManager.bmobService.updateStatement(objectId, updateStatement).execute()
+            }
+            if (response.isSuccessful) {
+                list.set(index, updateStatement)
+                loveStatementList.value = list
+            }
         }
     }
 
-    fun deleteStatement(index: Int) {
-
-    }
-
-    fun updateStatement(index: Int, text: String) {
-
+    fun addStatement(text: String) = viewModelScope.launch {
+        val statement = LoveStatement(objectId = null, statement = text)
+        val response = withContext(Dispatchers.IO) {
+            RetrofitManager.bmobService.addNewStatement(statement).execute()
+        }
+        if (response.isSuccessful) {
+            loadStatementList()
+        }
     }
 
     fun getLoveStatementList(): MutableList<LoveStatement> {
