@@ -83,6 +83,15 @@ class LoveStatementFragment : BaseFragment() {
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             (holder as? StatementViewHolder)?.bind()
+            holder.itemView.scaleX = 0.5f
+            holder.itemView.scaleY = 0.5f
+            holder.itemView.animate().scaleX(1f).scaleY(1f)
+        }
+
+        override fun onViewDetachedFromWindow(holder: RecyclerView.ViewHolder) {
+            super.onViewDetachedFromWindow(holder)
+
+            holder.itemView.clearAnimation()
         }
     }
 
