@@ -1,50 +1,44 @@
-import java.util.Arrays;
-
-public class Solution {
-    public int countEval(String s, int target) {
-        int[][][] dp = new int[s.length()][s.length() + 1][2];
-        for (int[][] matrix : dp) {
-            for (int[] ints : matrix) {
-                Arrays.fill(ints, -1);
-            }
-        }
-        char[] chars = s.toCharArray();
-        return countEval(chars, 0, s.length(), dp, target);
+class Solution {
+    public int search(int[] nums, int target) {
+        return search(nums, target, 0, nums.length);
     }
 
-    public int countEval(char[] chars, int start, int end, int[][][] dp, int target) {
-        // 单个数字的dp值是可以直接得到的，就是比较和target是不是相同
-        dp[start][start + 1][target] = ((chars[start] - '0') == target) ? 1 : 0;
-        // 存在dp值，直接复用
-        if (dp[start][end][target] != -1) {
-            return dp[start][end][target];
+    private int search(int[] nums, int target, int left, int right) {
+        if (left >= right) {
+            return -1;
         }
-        int result = 0;
-        for (int i = start + 2; i < end; i += 2) {
-            // 从开始之后的第二个数字开始
-            char symbol = chars[i - 1];
-            for (int j = 0; j < 2; j++) {
-                for (int k = 0; k < 2; k++) {
-                    // 遍历0和1的4个组合，用符号计算，得到值合适的时候递归左右两边
-                    if (compute(j, k, symbol) == target) {
-                        result += (countEval(chars, start, i - 1, dp, j) * countEval(chars, i, end, dp, k));
-                    }
-                }
+        int mid = (left + right) / 2;
+        if (target == nums[mid]) {
+            int leftResult = search(nums, target, left, mid);
+            if (leftResult != -1) {
+                return leftResult;
             }
+            return mid;
         }
-        // 将结果值记录下来
-        dp[start][end][target] = result;
-        return result;
+        if (target > nums[mid] && nums[right - 1] > nums[mid] && target < nums[right - 1]) {
+            return search(nums, target, mid + 1, right);
+        }
+        if (target < nums[mid] && nums[mid] > nums[left] && target > nums[left]) {
+            return search(nums, target, left, mid);
+        }
+        int leftResult = search(nums, target, left, mid);
+        if (leftResult != -1) {
+            return leftResult;
+        }
+        return search(nums, target, mid + 1, right);
     }
 
-    private int compute(int a, int b, char symbol) {
-        switch (symbol) {
-            case '|':
-                return a | b;
-            case '&':
-                return a & b;
-            case '^':
-                return a ^ b;
+    private int binarySearch(int[] nums, int target, int left, int right) {
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            }
+            if (nums[mid] > target) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
         }
         return -1;
     }
