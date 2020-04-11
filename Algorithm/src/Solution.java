@@ -1,45 +1,47 @@
 class Solution {
-    public int search(int[] nums, int target) {
-        return search(nums, target, 0, nums.length);
+    public int findString(String[] words, String s) {
+        return search(words, 0, words.length, s);
     }
 
-    private int search(int[] nums, int target, int left, int right) {
+    private int search(String[] words, int left, int right, String target) {
         if (left >= right) {
             return -1;
         }
         int mid = (left + right) / 2;
-        if (target == nums[mid]) {
-            int leftResult = search(nums, target, left, mid);
+        if (words[mid].equals(target)) {
+            return mid;
+        }
+        if (words[mid].isEmpty()) {
+            int leftResult = search(words, left, mid, target);
             if (leftResult != -1) {
                 return leftResult;
             }
-            return mid;
+            return search(words, mid + 1, right, target);
         }
-        if (target > nums[mid] && nums[right - 1] > nums[mid] && target < nums[right - 1]) {
-            return search(nums, target, mid + 1, right);
+        int compareResult = compare(target, words[mid]);
+        if (compareResult > 0) {
+            return search(words, mid + 1, right, target);
+        } else {
+            return search(words, left, mid, target);
         }
-        if (target < nums[mid] && nums[mid] > nums[left] && target > nums[left]) {
-            return search(nums, target, left, mid);
-        }
-        int leftResult = search(nums, target, left, mid);
-        if (leftResult != -1) {
-            return leftResult;
-        }
-        return search(nums, target, mid + 1, right);
     }
 
-    private int binarySearch(int[] nums, int target, int left, int right) {
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] == target) {
-                return mid;
+    private int compare(String s1, String s2) {
+        int i = 0;
+        while (i < s1.length() && i < s2.length()) {
+            char a = s1.charAt(i);
+            char b = s2.charAt(i);
+            if (a != b) {
+                return a - b;
             }
-            if (nums[mid] > target) {
-                right = mid - 1;
-            } else {
-                left = mid + 1;
-            }
+            i++;
         }
-        return -1;
+        if (i == s1.length() && i != s2.length()) {
+            return -1;
+        }
+        if (i != s1.length() && i == s2.length()) {
+            return 1;
+        }
+        return 0;
     }
 }

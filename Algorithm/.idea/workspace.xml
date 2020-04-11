@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForMyLove/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ForMyLove/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../ForMyLove/app/build.gradle" afterDir="false" />
@@ -153,7 +154,7 @@
       <workItem from="1586397063747" duration="3135000" />
       <workItem from="1586443949805" duration="3212000" />
       <workItem from="1586512852857" duration="800000" />
-      <workItem from="1586594939971" duration="526000" />
+      <workItem from="1586594939971" duration="1737000" />
     </task>
     <servers />
   </component>
@@ -321,11 +322,11 @@
       <screen x="0" y="0" width="1856" height="1080" />
     </state>
     <state x="500" y="247" key="run.anything.popup/0.0.1856.1080@0.0.1856.1080" timestamp="1581423213764" />
-    <state x="508" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1583554043854">
+    <state x="508" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1586596644133">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="507" y="45" key="search.everywhere.popup/0.0.1856.1080@0.0.1856.1080" timestamp="1581325086689" />
-    <state x="508" y="45" width="840" height="1034" key="search.everywhere.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1583554043854" />
+    <state x="508" y="45" width="840" height="1034" key="search.everywhere.popup/0.0.1858.1080@0.0.1858.1080" timestamp="1586596644133" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
