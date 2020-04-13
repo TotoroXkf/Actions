@@ -1,17 +1,19 @@
-class Solution {
-    public boolean searchMatrix(int[][] matrix, int target) {
-        int row = matrix.length - 1;
-        int column = 0;
-        while (row > -1 && column < matrix[0].length) {
-            if (matrix[row][column] == target) {
-                return true;
-            }
-            if (matrix[row][column] < target) {
-                column++;
-            } else {
-                row--;
-            }
+class StreamRank {
+    int[] arrays = new int[5001];
+
+    public StreamRank() {
+
+    }
+
+    public void track(int x) {
+        arrays[x] += 1;
+    }
+
+    public int getRankOfNumber(int x) {
+        int result = 0;
+        for (int i = 0; i <= x; i++) {
+            result += arrays[i];
         }
-        return false;
+        return result;
     }
 }
