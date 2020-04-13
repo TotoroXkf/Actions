@@ -1,41 +1,23 @@
-body,html {
-    margin: 0;
-    font-family: sans-serif;
+body {
+    width: 500px;
+    margin: 0 auto;
 }
 
-ul {
-    padding: 0;
-    width: 100%;
+p {
+    background: aqua;
+    border: 3px solid blue;
+    padding: 10px;
+    margin: 10px;
 }
 
-li {
-    display: inline;
-}
-
-a {
-    outline: none;
-    text-decoration: none;
-    display: inline-block;
-    width: 19.5%;
-    margin-right: 0.625%;
-    text-align: center;
-    line-height: 3;
-    color: black;
-}
-
-li:last-child a {
-    margin-right: 0;
-}
-
-a:link, a:visited, a:focus {
-    background: yellow;
-}
-
-a:hover {
-    background: orange;
-}
-
-a:active {
+span {
     background: red;
-    color: white;
+    border: 1px solid black;
+}
+
+.positioned {
+    position: absolute;
+    background: yellow;
+    top: 30px;
+    left: 30px;
 }
