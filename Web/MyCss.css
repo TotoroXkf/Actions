@@ -1,80 +1,75 @@
-* {
-    box-sizing: border-box;
-}
 
 body {
-    width: 90%;
-    margin: 2em auto;
-    font: 1em/1.3 Arial, Helvetica, sans-serif;
-}
-
-a:link, a:visited {
+    background-color: #fff;
     color: #333;
+    margin: 0;
+    font: 1.2em / 1.2 Arial, Helvetica, sans-serif;
 }
 
-nav ul, aside ul {
-    list-style-type: none;
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.logo {
+    font-size: 200%;
+    padding: 50px 20px;
+    margin: 0 auto;
+    max-width: 980px;
+}
+
+.grid {
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 980px;
+}
+
+nav {
+    background-color: #000;
+    padding: .5em;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: .5em 1em;
+}
+
+.photos {
+    list-style: none;
+    margin: 0;
     padding: 0;
 }
 
-nav a:link, nav a:visited {
-    background-color: rgba(207, 232, 220, 0.2);
-    border: 2px solid rgb(79, 185, 227);
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    color: #333;
-    font-weight: bold;
+.feature {
+    width: 200px;
 }
 
-nav a:hover {
-    background-color: rgba(207, 232, 220, 0.7);
+nav ul {
+    display: flex;
 }
 
-.related {
-    background-color: rgba(79, 185, 227, 0.3);
-    border: 1px solid rgb(79, 185, 227);
-    padding: 10px;
+nav li {
+    flex: 1;
 }
 
-.sidebar {
-    background-color: rgba(207, 232, 220, 0.5);
-    padding: 10px;
+.grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
 
-article {
-    margin-bottom: 1em;
+.photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-@media screen and (min-width: 40em) {
-    article {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        column-gap: 20px;
-    }
-
-    nav ul {
-        display: flex;
-    }
-
-    nav li {
-        flex: 1;
-    }
-}
-
-@media screen and (min-width: 70em) {
-    main {
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        column-gap: 20px;
-    }
-
-    article {
-        margin-bottom: 0;
-    }
-
-    footer {
-        border-top: 1px solid #ccc;
-        margin-top: 2em;
-    }
+.feature {
+    float: left;
+    margin-right: 40px;
 }
