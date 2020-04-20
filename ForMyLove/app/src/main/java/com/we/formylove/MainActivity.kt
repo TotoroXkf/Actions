@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import com.we.answerbook.AnswerBookFragment
 import com.we.common.component.CommonHandler
 import com.we.formylove.fragment.MainFragmentDirections
 import com.we.lovestatement.fragment.LoveStatementFragment
@@ -79,7 +80,11 @@ class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
     }
 
     private fun registerRoute() {
+        // 恋爱语句
         routeMap[LoveStatementFragment.NAME] =
             MainFragmentDirections.actionMainFragmentToLoveStatementFragment()
+        // 解答之书
+        routeMap[AnswerBookFragment.NAME] =
+            MainFragmentDirections.actionMainFragmentToAnswerBookFragment()
     }
 }
