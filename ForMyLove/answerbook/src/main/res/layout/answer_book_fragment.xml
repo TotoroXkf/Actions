@@ -51,6 +51,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <FrameLayout
+            android:id="@+id/cardContainerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:clipChildren="false"
@@ -64,22 +65,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="40dp"
-                app:cardBackgroundColor="@android:color/holo_red_dark"
+                app:cardBackgroundColor="#FF6F4F"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp"
                 app:strokeColor="#111111"
-                app:strokeWidth="2dp" />
+                app:strokeWidth="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{viewModel.answerText}"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    tools:ignore="HardcodedText" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/frontCardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="40dp"
-                app:cardBackgroundColor="@android:color/holo_blue_light"
+                app:cardBackgroundColor="#4697FF"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp"
                 app:strokeColor="#111111"
-                app:strokeWidth="2dp" />
+                app:strokeWidth="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="翻开爽宝的解答"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+            </com.google.android.material.card.MaterialCardView>
         </FrameLayout>
 
 

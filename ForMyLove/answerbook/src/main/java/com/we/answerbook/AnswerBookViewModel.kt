@@ -9,5 +9,8 @@ class AnswerBookViewModel : ViewModel() {
     var hintText = "有什么问题要问喵喵喵宝呀？"
     val buttonText = MutableLiveData("确认")
 
+    var cardIsShowing = false
     var cardIsShowBack = false
+
+    var answerText = MutableLiveData("")
 }
