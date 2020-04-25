@@ -1,13 +1,18 @@
 package com.we.splash
 
-import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.we.common.component.CommonHandler
 import com.we.common.view.BaseFragment
 import com.we.splash.databinding.FragmentSplashBinding
 
 class SplashFragment : BaseFragment() {
+    companion object {
+        const val NAME = "splashFragment"
+    }
+
     private lateinit var viewBinding: FragmentSplashBinding
     private lateinit var viewModel: SplashViewModel
 
@@ -22,12 +27,17 @@ class SplashFragment : BaseFragment() {
     }
 
     override fun setupViews() {
-        (activity as? CommonHandler)?.fullScreen()
+        (requireActivity() as? CommonHandler)?.fullScreen()
         viewBinding.sbvBackgroundView.startAnimation()
         viewBinding.root.setOnClickListener {
             viewBinding.sbvBackgroundView.cancelAnimation()
-            (activity as? SplashHandler)?.openMain()
+            findNavController().popBackStack()
         }
+        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                viewBinding.sbvBackgroundView.cancelAnimation()
+            }
+        })
     }
 
     override fun onDestroyView() {

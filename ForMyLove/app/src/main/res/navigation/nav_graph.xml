@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.we.formylove.fragment.MainFragment"
-        android:label="MainFragment">
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_loveStatementFragment"
             app:destination="@id/loveStatementFragment"
@@ -22,14 +24,28 @@
             app:exitAnim="@anim/fragment_open_exit"
             app:popEnterAnim="@anim/fragment_close_enter"
             app:popExitAnim="@anim/fragment_close_exit" />
+        <action
+            android:id="@+id/action_mainFragment_to_splashFragment"
+            app:destination="@id/splashFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
     </fragment>
 
     <fragment
         android:id="@+id/loveStatementFragment"
         android:name="com.we.lovestatement.fragment.LoveStatementFragment"
-        android:label="LoveStatementFragment" />
+        android:label="LoveStatementFragment"
+        tools:layout="@layout/fragment_love_statement" />
     <fragment
         android:id="@+id/answerBookFragment"
         android:name="com.we.answerbook.AnswerBookFragment"
-        android:label="AnswerBookFragment" />
+        android:label="AnswerBookFragment"
+        tools:layout="@layout/answer_book_fragment" />
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.we.splash.SplashFragment"
+        android:label="SplashFragment"
+        tools:layout="@layout/fragment_splash" />
 </navigation>

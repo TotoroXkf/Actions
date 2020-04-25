@@ -8,15 +8,13 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import com.we.answerbook.AnswerBookFragment
 import com.we.common.component.CommonHandler
 import com.we.formylove.fragment.MainFragmentDirections
 import com.we.lovestatement.fragment.LoveStatementFragment
 import com.we.splash.SplashFragment
-import com.we.splash.SplashHandler
 
-class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
+class MainActivity : AppCompatActivity(), CommonHandler {
     private val routeMap = HashMap<String, NavDirections>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +22,7 @@ class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
         setContentView(R.layout.activity_main)
 
         registerRoute()
-        openSplash()
+        open(SplashFragment.NAME)
     }
 
     override fun fullScreen() {
@@ -53,7 +51,7 @@ class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
         if (routeMap.containsKey(route)) {
             val action = routeMap[route]
             action?.let {
-                findNavController(R.id.container).navigate(action)
+                findNavController(R.id.nav_host_fragment).navigate(action)
             }
         }
     }
@@ -63,23 +61,9 @@ class MainActivity : AppCompatActivity(), SplashHandler, CommonHandler {
         imm?.toggleSoftInput(0, InputMethodManager.SHOW_FORCED)
     }
 
-    private fun openSplash() {
-        supportFragmentManager.beginTransaction()
-            .setCustomAnimations(R.anim.fragment_open_enter, R.anim.fragment_open_exit)
-            .replace(R.id.container, SplashFragment())
-            .commit()
-    }
-
-    override fun openMain() {
-        val finalHost = NavHostFragment.create(R.navigation.nav_graph)
-        supportFragmentManager.beginTransaction()
-            .setCustomAnimations(R.anim.fragment_open_enter, R.anim.fragment_open_exit)
-            .replace(R.id.container, finalHost)
-            .setPrimaryNavigationFragment(finalHost)
-            .commit()
-    }
-
     private fun registerRoute() {
+        // splash
+        routeMap[SplashFragment.NAME] = MainFragmentDirections.actionMainFragmentToSplashFragment()
         // 恋爱语句
         routeMap[LoveStatementFragment.NAME] =
             MainFragmentDirections.actionMainFragmentToLoveStatementFragment()
