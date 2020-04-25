@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/LeetCodeFileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/file/file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file/newFile.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/ListNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Algorithm/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/SolutionTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/TreeNode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Algorithm/Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ListNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/struct/ListNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SolutionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/struct/TreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Utils.java" afterDir="false" />
-    </list>
+    <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -210,6 +195,7 @@
       <workItem from="1587653298234" duration="1552000" />
       <workItem from="1587697367445" duration="307000" />
       <workItem from="1587699280467" duration="2138000" />
+      <workItem from="1587778130613" duration="36000" />
     </task>
     <servers />
   </component>
@@ -390,11 +376,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/utils/LeetCodeFileHandler.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jrt://D:/JetBrains/apps/IDEA-U/ch-0/193.6015.39/jbr!/java.base/java/lang/String.class</url>
           <line>412</line>
