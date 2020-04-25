@@ -1,6 +1,10 @@
+package utils;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import struct.ListNode;
 
 class Utils {
     static void println(int[] array) {
