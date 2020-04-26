@@ -1,19 +1,68 @@
-class Solution {
-    public int maximum(int a, int b) {
-        // 假设a>b k=1 ,反之，k=0 则最后返回a * k + b * (k ^ 1)即可
-        // 假设没有溢出时的情况，计算 b - a 的最高位。
-        // k = 1 时 a > b，即 b - a 为负
-        // 溢出的情况会在下面处理掉，这里不用管
-        int k = b - a >>> 31;
-        // 取出两个数字的符号
-        int aSign = a >>> 31, bSign = b >>> 31;
-        // diff = 0 时同号，diff = 1 时异号
-        int diff = aSign ^ bSign;
-        // 当diff为0时，也就是同号的时候，这个表达式为k。同号是不会溢出的，所以k直接就是有效的，按照上面的推论返回即可
-        // 当diff为1时，也就是异号的时候，这个表达式为bSign。如果为1，说明b是负数。两个数字异号，那么a一定大于b。所以k=bSign，就是k=1。按照上面的返回表达式，a就被返回了
-        // bSign如果为0结论反过来
-        k = k & (diff ^ 1) | bSign & diff;
-        // 结果表达式
-        return a * k + b * (k ^ 1);
+public class Solution {
+    public String numberToWords(int num) {
+        String numString = "" + num;
+        String[] array = new String[]{"", "Thousand", "Million", "Billion"};
+        int i = 0;
+        int right = numString.length();
+        int left = right - 3;
+        StringBuilder result = new StringBuilder();
+        while (left > -1) {
+            String str = getThreeCharString(numString.substring(left, right));
+            if (!str.equals("Zero")) {
+                str += (" " + array[i]);
+                result.insert(0, str + " ");
+            }
+            left -= 3;
+            right -= 3;
+            i++;
+        }
+        if (right > 0) {
+            if (right == 1) {
+                result.insert(0, getOneCharString(numString.charAt(0)) + " " + array[i] + " ");
+            } else if (right == 2) {
+                result.insert(0, getTwoCharString(numString.substring(0, right)) + " " + array[i] + " ");
+            }
+        }
+        int j;
+        for (j = result.length() - 1; j > -1 && result.charAt(j) == ' '; j--) {
+            result.delete(j, j + 1);
+        }
+        return result.toString().trim();
+    }
+
+    public String getThreeCharString(String threeChar) {
+        String hundred = "Hundred";
+        String subResult = getTwoCharString(threeChar.substring(1, 3));
+        if ((threeChar.charAt(0) - '0') == 0) {
+            return subResult;
+        }
+        String result = "";
+        result += getOneCharString(threeChar.charAt(0));
+        result += " " + hundred;
+        if (!subResult.equals("Zero")) {
+            result += (" " + subResult);
+        }
+        return result;
+    }
+
+    public String getTwoCharString(String twoChar) {
+        String[] array1 = new String[]{"", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+        String[] array2 = new String[]{"", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+        int value = (twoChar.charAt(0) - '0') * 10 + twoChar.charAt(1) - '0';
+        if (value < 10) {
+            return getOneCharString((char) (value + '0'));
+        }
+        if (value % 10 == 0) {
+            return array2[value / 10];
+        }
+        if (value < 20) {
+            return array1[value - 10];
+        }
+        return array2[value / 10] + " " + getOneCharString(twoChar.charAt(1));
+    }
+
+    public String getOneCharString(char c) {
+        String[] array = new String[]{"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+        return array[c - '0'];
     }
 }
