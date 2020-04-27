@@ -6,35 +6,34 @@ public class SolutionTest {
 
     @Test
     public void test() {
-        String result = solution.getTwoCharString("22");
+        String result = solution.numberToWords(22);
         assert result.equals("Twenty Two");
 
-        result = solution.getTwoCharString("10");
+        result = solution.numberToWords(10);
         assert result.equals("Ten");
 
-        result = solution.getTwoCharString("15");
+        result = solution.numberToWords(15);
         assert result.equals("Fifteen");
 
-        result = solution.getTwoCharString("99");
+        result = solution.numberToWords(99);
         assert result.equals("Ninety Nine");
 
-        result = solution.getTwoCharString("02");
+        result = solution.numberToWords(2);
         assert result.equals("Two");
 
-        result = solution.getThreeCharString("100");
+        result = solution.numberToWords(100);
         assert result.equals("One Hundred");
 
-        result = solution.getThreeCharString("101");
+        result = solution.numberToWords(101);
         assert result.equals("One Hundred One");
 
-        result = solution.getThreeCharString("202");
+        result = solution.numberToWords(202);
         assert result.equals("Two Hundred Two");
 
-        result = solution.getThreeCharString("222");
+        result = solution.numberToWords(222);
         assert result.equals("Two Hundred Twenty Two");
 
         result = solution.numberToWords(1001);
-        System.out.println(result);
         assert result.equals("One Thousand One");
 
         result = solution.numberToWords(400);
@@ -53,7 +52,6 @@ public class SolutionTest {
         assert result.equals("One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One");
 
         result = solution.numberToWords(100030000);
-        System.out.println(result);
         assert result.equals("One Hundred Million Thirty Thousand");
     }
 } 
