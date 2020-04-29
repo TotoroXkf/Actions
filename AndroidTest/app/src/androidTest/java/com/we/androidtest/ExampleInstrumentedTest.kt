@@ -1,15 +1,14 @@
 package com.we.androidtest
 
-import androidx.test.espresso.Espresso
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.intent.Intents
-import androidx.test.espresso.intent.matcher.ComponentNameMatchers.hasShortClassName
-import androidx.test.espresso.intent.matcher.IntentMatchers.*
-import androidx.test.espresso.intent.rule.IntentsTestRule
+import androidx.recyclerview.widget.RecyclerView
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import org.hamcrest.Matchers.allOf
+import androidx.test.rule.ActivityTestRule
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,20 +18,15 @@ import org.junit.runner.RunWith
 class ExampleInstrumentedTest {
     @Rule
     @JvmField
-    var activityRule: IntentsTestRule<MainActivity> = IntentsTestRule(MainActivity::class.java)
+    var activityRule: ActivityTestRule<MainActivity> = ActivityTestRule(MainActivity::class.java)
 
     @Test
     fun useAppContext() {
-        Espresso.onView(ViewMatchers.withId(R.id.editText))
-            .perform(ViewActions.typeText("This is a test"), ViewActions.closeSoftKeyboard())
-        Espresso.onView(ViewMatchers.withId(R.id.button)).perform(ViewActions.click())
-
-        Intents.intended(
-            allOf(
-                hasComponent(hasShortClassName(".Main2Activity")),
-                toPackage("com.we.androidtest"),
-                hasExtra(MainActivity.EXTRA_MESSAGE, "This is a test")
+        onView(ViewMatchers.withId(R.id.recyclerView)).perform(
+            RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(
+                40
             )
         )
+        onView(ViewMatchers.withText("400")).check(matches(isDisplayed()))
     }
 }
