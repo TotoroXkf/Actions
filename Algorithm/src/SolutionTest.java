@@ -29,7 +29,5 @@ public class SolutionTest {
         assert result[1] == 12.00000;
         assert result[2] == 0.57143;
         assert result[3] == -1.00000;
-
-
     }
 } 
