@@ -1,107 +1,50 @@
-public class Solution {
-    public String numberToWords(int num) {
-        if (num < 20) {
-            return getAnswerBelow20(num);
+class Solution {
+    public double[] cutSquares(int[] square1, int[] square2) {
+        double mid1X = square1[0] + square1[2] / 2d;
+        double mid1Y = square1[1] + square1[2] / 2d;
+        double mid2X = square2[0] + square2[2] / 2d;
+        double mid2Y = square2[1] + square2[2] / 2d;
+        if (mid1X == mid2X) {
+            return new double[]{mid1X, Math.min(square1[1], square2[1]), mid1X, Math.max(square1[1] + square1[2], square2[1] + square2[2])};
         }
-        if (num < 100) {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append(getAnswerTens(num / 10));
-            if (num % 10 > 0) {
-                stringBuilder.append(" ").append(numberToWords(num % 10));
-            }
-            return stringBuilder.toString();
+        if (mid1Y == mid2Y) {
+            return new double[]{Math.min(square1[0], square2[0]), mid1Y, Math.max(square1[0] + square1[2], square2[0] + square2[2]), mid2Y};
         }
-        if (num < 1000) {
-            return build(num, 100, "Hundred");
-        }
-        if (num < 1000 * 1000) {
-            return build(num, 1000, "Thousand");
-        }
-        if (num < 1000 * 1000 * 1000) {
-            return build(num, 1000 * 1000, "Million");
-        }
-        return build(num, 1000 * 1000 * 1000, "Billion");
+        double k = (mid1Y - mid2Y) / (mid1X - mid2X);
+        double b = (mid1Y + mid2Y - k * (mid1X + mid2X)) / 2d;
+        double[] points1 = new double[4];
+        getPoint(square1, k, b, points1);
+        double[] points2 = new double[4];
+        getPoint(square2, k, b, points2);
+        double[] result = new double[4];
+        double minX = Math.min(Math.min(points1[0], points1[2]), Math.min(points2[0], points2[2]));
+        double y = k * minX + b;
+        result[0] = minX;
+        result[1] = y;
+        double maxX = Math.max(Math.max(points1[0], points1[2]), Math.max(points2[0], points2[2]));
+        y = k * maxX + b;
+        result[2] = maxX;
+        result[3] = y;
+        return result;
     }
 
-    private String build(int num, int subNum, String unit) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(numberToWords(num / subNum));
-        stringBuilder.append(" ");
-        stringBuilder.append(unit);
-        if (num % subNum > 0) {
-            stringBuilder.append(" ");
-            stringBuilder.append(numberToWords(num % subNum));
+    private void getPoint(int[] square, double k, double b, double[] result) {
+        double y = k * square[0] + b;
+        double x1, x2, y1, y2;
+        if (y <= square[1] + square[2] && y >= square[1]) {
+            x1 = square[0];
+            y1 = k * x1 + b;
+            x2 = square[0] + square[2];
+            y2 = k * x2 + b;
+        } else {
+            y1 = square[1] + square[2];
+            x1 = (y1 - b) / k;
+            y2 = square[1];
+            x2 = (y2 - b) / k;
         }
-        return stringBuilder.toString();
-    }
-
-    private String getAnswerBelow20(int num) {
-        switch (num) {
-            case 0:
-                return "Zero";
-            case 1:
-                return "One";
-            case 2:
-                return "Two";
-            case 3:
-                return "Three";
-            case 4:
-                return "Four";
-            case 5:
-                return "Five";
-            case 6:
-                return "Six";
-            case 7:
-                return "Seven";
-            case 8:
-                return "Eight";
-            case 9:
-                return "Nine";
-            case 10:
-                return "Ten";
-            case 11:
-                return "Eleven";
-            case 12:
-                return "Twelve";
-            case 13:
-                return "Thirteen";
-            case 14:
-                return "Fourteen";
-            case 15:
-                return "Fifteen";
-            case 16:
-                return "Sixteen";
-            case 17:
-                return "Seventeen";
-            case 18:
-                return "Eighteen";
-            case 19:
-                return "Nineteen";
-            default:
-                return "";
-        }
-    }
-
-    private String getAnswerTens(int num) {
-        switch (num) {
-            case 2:
-                return "Twenty";
-            case 3:
-                return "Thirty";
-            case 4:
-                return "Forty";
-            case 5:
-                return "Fifty";
-            case 6:
-                return "Sixty";
-            case 7:
-                return "Seventy";
-            case 8:
-                return "Eighty";
-            case 9:
-                return "Ninety";
-            default:
-                return null;
-        }
+        result[0] = x1;
+        result[1] = y1;
+        result[2] = x2;
+        result[3] = y2;
     }
 }

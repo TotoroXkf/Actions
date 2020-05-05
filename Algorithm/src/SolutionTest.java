@@ -6,52 +6,30 @@ public class SolutionTest {
 
     @Test
     public void test() {
-        String result = solution.numberToWords(22);
-        assert result.equals("Twenty Two");
+        int[] square1 = new int[]{-1, -1, 2};
+        int[] square2 = new int[]{-1, 10, 2};
+        double[] result = solution.cutSquares(square1, square2);
+        assert result[0] == 0;
+        assert result[1] == -1;
+        assert result[2] == 0;
+        assert result[3] == 12;
 
-        result = solution.numberToWords(10);
-        assert result.equals("Ten");
+        square1 = new int[]{-1, -1, 2};
+        square2 = new int[]{0, -1, 2};
+        result = solution.cutSquares(square1, square2);
+        assert result[0] == -1;
+        assert result[1] == 0;
+        assert result[2] == 2;
+        assert result[3] == 0;
 
-        result = solution.numberToWords(15);
-        assert result.equals("Fifteen");
+        square1 = new int[]{-1, -1, 3};
+        square2 = new int[]{-1, 10, 2};
+        result = solution.cutSquares(square1, square2);
+        assert result[0] == -0.04762;
+        assert result[1] == 12.00000;
+        assert result[2] == 0.57143;
+        assert result[3] == -1.00000;
 
-        result = solution.numberToWords(99);
-        assert result.equals("Ninety Nine");
 
-        result = solution.numberToWords(2);
-        assert result.equals("Two");
-
-        result = solution.numberToWords(100);
-        assert result.equals("One Hundred");
-
-        result = solution.numberToWords(101);
-        assert result.equals("One Hundred One");
-
-        result = solution.numberToWords(202);
-        assert result.equals("Two Hundred Two");
-
-        result = solution.numberToWords(222);
-        assert result.equals("Two Hundred Twenty Two");
-
-        result = solution.numberToWords(1001);
-        assert result.equals("One Thousand One");
-
-        result = solution.numberToWords(400);
-        assert result.equals("Four Hundred");
-
-        result = solution.numberToWords(12345);
-        assert result.equals("Twelve Thousand Three Hundred Forty Five");
-
-        result = solution.numberToWords(400);
-        assert result.equals("Four Hundred");
-
-        result = solution.numberToWords(1234567);
-        assert result.equals("One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven");
-
-        result = solution.numberToWords(1234567891);
-        assert result.equals("One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One");
-
-        result = solution.numberToWords(100030000);
-        assert result.equals("One Hundred Million Thirty Thousand");
     }
 } 
