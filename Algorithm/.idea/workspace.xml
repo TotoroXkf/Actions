@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SolutionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SolutionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AndroidTest/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTest/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -208,7 +206,7 @@
       <workItem from="1588206903522" duration="2707000" />
       <workItem from="1588560933973" duration="3908000" />
       <workItem from="1588646268086" duration="4861000" />
-      <workItem from="1588724455245" duration="1525000" />
+      <workItem from="1588724455245" duration="2434000" />
     </task>
     <servers />
   </component>
