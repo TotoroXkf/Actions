@@ -1,25 +1,17 @@
 import org.junit.Test;
 
+import struct.TreeNode;
 
 public class SolutionTest {
     private Solution solution = new Solution();
+    private Case testCase = new Case();
 
     @Test
     public void test() {
-        int[] array = new int[]{1, 2, 5, 9, 5, 9, 5, 5, 5};
-        int result = solution.majorityElement(array);
-        assert result == 5;
-
-        array = new int[]{3, 2};
-        result = solution.majorityElement(array);
-        assert result == -1;
-
-        array = new int[]{2, 2, 1, 1, 1, 2, 2};
-        result = solution.majorityElement(array);
-        assert result == 2;
-
-        array = new int[]{3, 2, 3};
-        result = solution.majorityElement(array);
-        assert result == 3;
+        String text = "[4,2,5,1,3,null,6,0]";
+        TreeNode treeNode1 = testCase.createTree(text);
+        TreeNode treeNode2 = solution.convertBiNode(treeNode1);
+        treeNode1 = testCase.createTree("[0,null,1,null,2,null,3,null,4,null,5,null,6]");
+        testCase.matchTree(treeNode1, treeNode2);
     }
 } 
