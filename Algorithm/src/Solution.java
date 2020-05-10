@@ -1,26 +1,18 @@
-import struct.TreeNode;
-
 class Solution {
-    public TreeNode convertBiNode(TreeNode node) {
-        if (node == null) {
-            return null;
+    public int massage(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
         }
-        return convert(node)[0];
-    }
-
-    private TreeNode[] convert(TreeNode node) {
-        TreeNode[] result = new TreeNode[]{node, node};
-        if (node.right != null) {
-            TreeNode[] nodes = convert(node.right);
-            node.right = nodes[0];
-            result[1] = nodes[1];
+        if (nums.length == 1) {
+            return nums[0];
         }
-        if (node.left != null) {
-            TreeNode[] nodes = convert(node.left);
-            node.left = null;
-            nodes[1].right = node;
-            result[0] = nodes[0];
+        int preA = nums[0];
+        int preB = Math.max(nums[0], nums[1]);
+        for (int i = 2; i < nums.length; i++) {
+            int value = Math.max(nums[i] + preA, preB);
+            preA = preB;
+            preB = value;
         }
-        return result;
+        return preB;
     }
 }

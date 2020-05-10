@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98452646-923c-40ef-8ed4-17ab323ddb9c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/java/com/xkf/workmanagertest/UploadWorker.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SolutionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SolutionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/xkf/androidtest/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTest/app/src/main/java/com/xkf/androidtest/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/java/com/xkf/workmanagertest/UploadWorker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/java/com/xkf/workmanagertest/UploadWorker.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +210,7 @@
       <workItem from="1588724455245" duration="3030000" />
       <workItem from="1588897109571" duration="3298000" />
       <workItem from="1588940150825" duration="1929000" />
-      <workItem from="1589070651455" duration="1341000" />
+      <workItem from="1589070651455" duration="1605000" />
     </task>
     <servers />
   </component>
