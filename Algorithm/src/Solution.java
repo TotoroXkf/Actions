@@ -2,6 +2,9 @@ import struct.TreeNode;
 
 class Solution {
     public TreeNode convertBiNode(TreeNode node) {
+        if (node == null) {
+            return null;
+        }
         return convert(node)[0];
     }
 
@@ -14,6 +17,7 @@ class Solution {
         }
         if (node.left != null) {
             TreeNode[] nodes = convert(node.left);
+            node.left = null;
             nodes[1].right = node;
             result[0] = nodes[0];
         }
