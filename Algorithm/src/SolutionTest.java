@@ -8,7 +8,9 @@ public class SolutionTest {
 
     @Test
     public void test() {
-        String text = "[4,2,5,1,3,null,6,0]";
-
+        int a = -2;
+        int b = 2;
+        System.out.println(Integer.toBinaryString(a));
+        System.out.println(a ^ b);
     }
 } 
