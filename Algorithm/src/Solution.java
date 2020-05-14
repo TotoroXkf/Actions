@@ -1,47 +1,53 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
 class Solution {
-    public int[] bestLine(int[][] points) {
-        HashMap<Double, ArrayList<Integer>> hashMap = new HashMap<>();
-        int maxLen = 0;
-        int[] result = new int[2];
-        for (int i = 0; i < points.length; i++) {
-            int x1 = points[i][0];
-            int y1 = points[i][1];
-            for (int j = i + 1; j < points.length; j++) {
-                int x2 = points[j][0];
-                int y2 = points[j][1];
-                // 确定通过起始点的直线，斜率相同则一定在同一条直线上面
-                double k = getK(x1, y1, x2, y2);
-                ArrayList<Integer> arrayList = hashMap.getOrDefault(k, new ArrayList<>());
-                // 记录在同一条直线上面的点
-                if (arrayList.isEmpty()) {
-                    arrayList.add(i);
-                    hashMap.put(k, arrayList);
-                }
-                arrayList.add(j);
-                // 比较最大值
-                if (arrayList.size() > maxLen) {
-                    maxLen = arrayList.size();
-                    result[0] = arrayList.get(0);
-                    result[1] = arrayList.get(1);
-                }
+    public int[] subSort(int[] array) {
+        int[] result = new int[]{-1, -1};
+        int left = 0;
+        int right = array.length - 1;
+        int i = 1;
+        // 确立左区域和右区域
+        while (i < array.length && array[i] >= array[left]) {
+            left++;
+            i++;
+        }
+        i = array.length - 2;
+        while (i > -1 && array[i] <= array[right]) {
+            right--;
+            i--;
+        }
+        if (left >= right) {
+            return result;
+        }
+        i = left + 1;
+        // 求出中间区域的最大值
+        int max = array[i];
+        int min = array[i];
+        while (i < right) {
+            max = Math.max(max, array[i]);
+            min = Math.min(min, array[i]);
+            i++;
+        }
+        // 扩展中间区域
+        while (left > -1 || right < array.length) {
+            // 边界退出情况处理
+            // 左边区域完全没了，右边区域的最小值大于中间区域的最大值
+            // 右边区域完全没了，左边区域的最大值小于中间区域的最小值
+            // 两边区域存在，右边区域的最小值大于中间区域的最大值，左边区域的最大值小于中间区域的最小值
+            if ((left < 0 && array[right] >= max) || (right >= array.length && array[left] <= min) || (array[right] >= max && array[left] <= min)) {
+                break;
             }
-            hashMap.clear();
+            // 扩展左边界
+            if (left > -1 && array[left] > min) {
+                max = Math.max(max, array[left]);
+                left--;
+            }
+            // 扩展右边界
+            if (array[right] < max) {
+                min = Math.min(min, array[right]);
+                right++;
+            }
         }
+        result[0] = left + 1;
+        result[1] = right - 1;
         return result;
-    }
-
-    private double getK(int x1, int y1, int x2, int y2) {
-        // 在java中 0d和-0d在 hashmap 中的 比较会不一样，所以统一返回0d
-        if (y1 - y2 == 0) {
-            return 0d;
-        }
-        // 在java中 无穷分为正无穷和负无穷， hashmap 中的 比较会不一样，所以统一返回正无穷
-        if (x1 == x2) {
-            return Double.POSITIVE_INFINITY;
-        }
-        return (double) (y1 - y2) / (double) (x1 - x2);
     }
 }
