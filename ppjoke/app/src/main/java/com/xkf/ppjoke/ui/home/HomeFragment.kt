@@ -8,12 +8,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.xkf.libannotation.FragmentDestination
 import com.xkf.ppjoke.R
 
+@FragmentDestination(pageUrl = "11", needLogin = true, asStarter = false)
 class HomeFragment : Fragment() {
-
+    
     private lateinit var homeViewModel: HomeViewModel
-
+    
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

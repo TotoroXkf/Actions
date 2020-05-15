@@ -7,7 +7,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.68'
     implementation project(':libannotation')
-    api group: 'com.google.auto.service', name: 'auto-service', version: '1.0-rc2'
+    kapt 'com.google.auto.service:auto-service:1.0-rc6'
+    implementation 'com.google.auto.service:auto-service:1.0-rc6'
 }
 
 sourceCompatibility = "8"

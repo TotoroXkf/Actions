@@ -1,20 +1,26 @@
 package com.xkf.libcompiler
 
+import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONObject
 import com.google.auto.service.AutoService
 import com.xkf.libannotation.ActivityDestination
 import com.xkf.libannotation.FragmentDestination
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStreamWriter
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.Element
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
+import javax.tools.StandardLocation
 import kotlin.math.abs
 
 @AutoService(Processor::class)
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @SupportedAnnotationTypes(value = ["com.xkf.libannotation.FragmentDestination", "com.xkf.libannotation.ActivityDestination"])
 class NavProcessor : AbstractProcessor() {
+    private val outputFileName = "destination.json"
     private lateinit var messager: Messager
     private lateinit var filer: Filer
     
@@ -37,9 +43,31 @@ class NavProcessor : AbstractProcessor() {
             val hashMap = hashMapOf<String, JSONObject>()
             handleProcessor(fragmentElements, FragmentDestination::class.java, hashMap)
             handleProcessor(activityElements, ActivityDestination::class.java, hashMap)
-            filer.createClassFile()
+            createFile(hashMap)
         }
         return true
+    }
+    
+    private fun createFile(hashMap: HashMap<String, JSONObject>) {
+        val resource = filer.createResource(StandardLocation.CLASS_OUTPUT, "", outputFileName)
+        val resourcePath = resource.toUri().path
+        val appPath = resourcePath.substring(0, resourcePath.indexOf("app") + 4)
+        val assetsPath = appPath + "src/main/assets/"
+        val dir = File(assetsPath)
+        if (!dir.exists()) {
+            dir.mkdirs()
+        }
+        val outputFile = File(assetsPath + outputFileName)
+        if (outputFile.exists()) {
+            outputFile.delete()
+        }
+        outputFile.createNewFile()
+        val jsonString = JSON.toJSONString(hashMap)
+        val fileOutputStream = FileOutputStream(outputFile)
+        val fileOutputStWriter = OutputStreamWriter(fileOutputStream);
+        fileOutputStWriter.write(jsonString)
+        fileOutputStWriter.flush()
+        fileOutputStWriter.close()
     }
     
     private fun <T : Annotation> handleProcessor(
