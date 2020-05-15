@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.xkf.libannotation.FragmentDestination
 import com.xkf.ppjoke.R
 
-@FragmentDestination(pageUrl = "11", needLogin = true, asStarter = false)
+@FragmentDestination(pageUrl = "main/tabs/home", asStarter = true)
 class HomeFragment : Fragment() {
     
     private lateinit var homeViewModel: HomeViewModel

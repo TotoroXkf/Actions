@@ -1,9 +1,23 @@
 {
-  "11": {
+  "main/tabs/dashboard": {
     "isFragment": true,
     "asStarter": false,
-    "needLogin": true,
-    "pageUrl": "11",
+    "needLogin": false,
+    "pageUrl": "main/tabs/dashboard",
+    "id": 480565737
+  },
+  "main/tabs/home": {
+    "isFragment": true,
+    "asStarter": true,
+    "needLogin": false,
+    "pageUrl": "main/tabs/home",
     "id": 1784000661
+  },
+  "main/tabs/notifications": {
+    "isFragment": true,
+    "asStarter": false,
+    "needLogin": false,
+    "pageUrl": "main/tabs/notifications",
+    "id": 795058241
   }
 }

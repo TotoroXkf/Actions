@@ -8,16 +8,24 @@ public class SolutionTest {
 
     @Test
     public void test() {
-        int[] array = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
-        int[] result = solution.subSort(array);
-        testCase.matchArray(result, new int[]{-1, -1});
+        String pattern = "abba";
+        String value = "dogcatcatdog";
+        boolean result = solution.patternMatching(pattern, value);
+        assert result;
 
-        array = new int[]{1, 2, 4, 7, 10, 11, 7, 12, 6, 7, 16, 18, 19};
-        result = solution.subSort(array);
-        testCase.matchArray(result, new int[]{3, 9});
+        pattern = "abba";
+        value = "dogcatcatfish";
+        result = solution.patternMatching(pattern, value);
+        assert !result;
 
-        array = new int[]{9, 8, 7, 5, 3, 1};
-        result = solution.subSort(array);
-        testCase.matchArray(result, new int[]{0, array.length - 1});
+        pattern = "aaaa";
+        value = "dogcatcatdog";
+        result = solution.patternMatching(pattern, value);
+        assert !result;
+
+        pattern = "abba";
+        value = "dogdogdogdog";
+        result = solution.patternMatching(pattern, value);
+        assert result;
     }
 } 
