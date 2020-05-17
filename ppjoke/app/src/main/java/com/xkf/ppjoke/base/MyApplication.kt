@@ -11,5 +11,6 @@ class MyApplication : Application() {
         super.onCreate()
         
         AppGlobal.setApplication(this)
+        AppConfig.init()
     }
 }

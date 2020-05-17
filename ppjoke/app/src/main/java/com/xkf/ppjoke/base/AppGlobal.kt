@@ -10,6 +10,6 @@ object AppGlobal {
     }
     
     fun setApplication(application: Application) {
-        this.application = application
+        AppGlobal.application = application
     }
 }

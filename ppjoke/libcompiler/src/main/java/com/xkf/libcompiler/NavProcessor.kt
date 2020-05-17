@@ -109,6 +109,7 @@ class NavProcessor : AbstractProcessor() {
             }
             val jsonObject = JSONObject()
             jsonObject["id"] = id
+            jsonObject["className"] = className
             jsonObject["pageUrl"] = pageUrl
             jsonObject["needLogin"] = needLogin
             jsonObject["asStarter"] = asStarter

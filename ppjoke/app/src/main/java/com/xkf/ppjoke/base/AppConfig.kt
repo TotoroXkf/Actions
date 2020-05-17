@@ -2,25 +2,31 @@ package com.xkf.ppjoke.base
 
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.TypeReference
-import com.xkf.ppjoke.mode.Destination
+import com.xkf.ppjoke.base.model.BottomBar
+import com.xkf.ppjoke.base.model.Destination
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
 object AppConfig {
-    private val destinationMap = hashMapOf<String, Destination>()
-    
-    fun getDestConfig(): HashMap<String, Destination> {
-        if (destinationMap.isEmpty()) {
-            val content = parseFile("destination.json")
-            destinationMap.putAll(
-                JSON.parseObject(
-                    content,
-                    object : TypeReference<HashMap<String, Destination>>() {}.type
-                )
+    fun init() {
+        destinationMap = hashMapOf()
+        var content =
+            parseFile("destination.json")
+        destinationMap.putAll(
+            JSON.parseObject(
+                content,
+                object : TypeReference<HashMap<String, Destination>>() {}.type
             )
-        }
-        return destinationMap
+        )
+        
+        content =
+            parseFile("main_tabs_config.json")
+        bottomBar = JSON.parseObject(content, BottomBar::class.java)
     }
+    
+    lateinit var destinationMap: HashMap<String, Destination>
+    
+    lateinit var bottomBar: BottomBar
     
     private fun parseFile(fileName: String): String {
         val assets = AppGlobal.getApplication().assets
