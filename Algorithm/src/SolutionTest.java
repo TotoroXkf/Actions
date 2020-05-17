@@ -27,5 +27,15 @@ public class SolutionTest {
         value = "dogdogdogdog";
         result = solution.patternMatching(pattern, value);
         assert result;
+
+        pattern = "a";
+        value = "";
+        result = solution.patternMatching(pattern, value);
+        assert result;
+
+        pattern = "ab";
+        value = "";
+        result = solution.patternMatching(pattern, value);
+        assert !result;
     }
 } 
