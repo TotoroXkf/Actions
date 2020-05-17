@@ -1,16 +1,26 @@
 package com.xkf.ppjoke.base
 
 import android.content.ComponentName
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.ActivityNavigator
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavGraphNavigator
-import androidx.navigation.fragment.FragmentNavigator
 
 object NavGraphBuilder {
-    fun build(navController: NavController) {
+    fun build(
+        context: FragmentActivity,
+        navController: NavController,
+        containerId: Int
+    ) {
         val provider = navController.navigatorProvider
-        val fragmentNavigator = provider.getNavigator(FragmentNavigator::class.java)
+        val fragmentNavigator = FixFragmentNavigator(
+            context,
+            context.supportFragmentManager,
+            containerId
+        )
+        provider.addNavigator(fragmentNavigator)
+        
         val activityNavigator = provider.getNavigator(ActivityNavigator::class.java)
         val navGraph = NavGraph(NavGraphNavigator(provider))
         val destConfig = AppConfig.destinationMap

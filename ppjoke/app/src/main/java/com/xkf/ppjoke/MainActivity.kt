@@ -17,8 +17,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         
+        val fragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
         navController = findNavController(R.id.nav_host_fragment)
-        NavGraphBuilder.build(navController)
+        NavGraphBuilder.build(this, navController, fragment?.id ?: 0)
         
         val navView: AppBottomBarView = findViewById(R.id.nav_view)
         navView.setOnNavigationItemSelectedListener(this)
