@@ -1,103 +1,46 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 class Solution {
-    public boolean patternMatching(String pattern, String value) {
-        if (pattern.isEmpty() && value.isEmpty()) {
-            return true;
-        }
-        if (pattern.isEmpty()) {
-            return false;
-        }
-        int numA = 0;
-        int numB = 0;
-        for (int i = 0; i < pattern.length(); i++) {
-            if (pattern.charAt(i) == 'a') {
-                numA++;
-            } else {
-                numB++;
+    public int[] pondSizes(int[][] land) {
+        boolean[][] marked = new boolean[land.length][land[0].length];
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < land.length; i++) {
+            for (int j = 0; j < land[0].length; j++) {
+                if (land[i][j] == 0 && !marked[i][j]) {
+                    list.add(pondSizes(i, j, land, marked));
+                }
             }
         }
-        ArrayList<Integer[]> list = getList(numA, numB, value);
-        return patternMatching(pattern, value, list);
-    }
-
-    private ArrayList<Integer[]> getList(int numA, int numB, String value) {
-        int lenA;
-        int lenB = 0;
-        ArrayList<Integer[]> result = new ArrayList<>();
-        if (numB == 0) {
-            if (value.length() % numA == 0) {
-                lenA = value.length() / numA;
-                result.add(new Integer[]{lenA, lenB});
-            }
-            return result;
+        int[] result = new int[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            result[i] = list.get(i);
         }
-        lenB = value.length() / numB;
-        while (lenB > -1) {
-            int remaining = value.length() - numB * lenB;
-            if ((numA != 0 && remaining != 0 && remaining % numA == 0)) {
-                lenA = remaining / numA;
-                Integer[] integers = new Integer[]{lenA, lenB};
-                result.add(integers);
-            } else if (remaining == 0) {
-                lenA = 0;
-                Integer[] integers = new Integer[]{lenA, lenB};
-                result.add(integers);
-            }
-            lenB--;
-        }
+        Arrays.sort(result);
         return result;
     }
 
-    private boolean patternMatching(String pattern, String value, ArrayList<Integer[]> list) {
-        if (list.isEmpty()) {
-            return false;
+    public int pondSizes(int row, int column, int[][] land, boolean[][] marked) {
+        if (row < 0 || row == land.length) {
+            return 0;
         }
-        for (Integer[] lens : list) {
-            int lenA = lens[0];
-            int lenB = lens[1];
-            int currentIndex = 0;
-            String stringA = null;
-            String stringB = null;
-            for (int i = 0; i < pattern.length(); i++) {
-                if (pattern.charAt(i) == 'a') {
-                    if (currentIndex + lenA > value.length()) {
-                        break;
-                    }
-                    String subString = value.substring(currentIndex, currentIndex + lenA);
-                    if (stringA == null) {
-                        stringA = subString;
-                    }
-                    if (!stringA.equals(subString)) {
-                        break;
-                    }
-                    currentIndex += lenA;
-                } else {
-                    if (currentIndex + lenB > value.length()) {
-                        break;
-                    }
-                    String subString = value.substring(currentIndex, currentIndex + lenB);
-                    if (stringB == null) {
-                        stringB = subString;
-                    }
-                    if (!stringB.equals(subString)) {
-                        break;
-                    }
-                    currentIndex += lenB;
-                }
-            }
-            if (currentIndex == value.length()) {
-                if (stringA != null && stringB != null && !stringA.equals(stringB)) {
-                    return true;
-                }
-                if (stringA != null && stringB == null) {
-                    return true;
-                }
-                if (stringA == null && stringB != null) {
-                    return true;
-                }
-            }
+        if (column < 0 || column == land[0].length) {
+            return 0;
         }
-        return false;
+        if (marked[row][column] || land[row][column] != 0) {
+            return 0;
+        }
+        marked[row][column] = true;
+        int sum = 1;
+        sum += pondSizes(row - 1, column - 1, land, marked);
+        sum += pondSizes(row - 1, column, land, marked);
+        sum += pondSizes(row - 1, column + 1, land, marked);
+        sum += pondSizes(row, column - 1, land, marked);
+        sum += pondSizes(row, column + 1, land, marked);
+        sum += pondSizes(row + 1, column + 1, land, marked);
+        sum += pondSizes(row + 1, column, land, marked);
+        sum += pondSizes(row + 1, column - 1, land, marked);
+        return sum;
     }
 }
