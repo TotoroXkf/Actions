@@ -13,6 +13,13 @@ import javax.net.ssl.X509TrustManager
 
 object ApiService {
     val httpClient: OkHttpClient
+    lateinit var baseUrl: String
+    lateinit var convert: Convert
+    
+    fun init(baseUrl: String, convert: Convert) {
+        this.baseUrl = baseUrl
+        this.convert = convert
+    }
     
     init {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -42,6 +49,5 @@ object ApiService {
         sslContext.init(null, trustManager, SecureRandom())
         HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.socketFactory)
         HttpsURLConnection.setDefaultHostnameVerifier { _, _ -> true }
-        
     }
 }

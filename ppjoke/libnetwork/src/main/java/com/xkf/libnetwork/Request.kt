@@ -1,9 +1,15 @@
 package com.xkf.libnetwork
 
 import androidx.annotation.IntDef
-import okhttp3.Request
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.Response
+import java.io.IOException
+import java.lang.reflect.ParameterizedType
+import java.lang.reflect.Type
 
-abstract class Request<T, R : Request>(var url: String) {
+@Suppress("UNCHECKED_CAST")
+abstract class Request<T, R : Request<T, R>>(var url: String) {
     companion object {
         const val CACHE_ONLY = 1
         const val CACHE_FIRST = 2
@@ -11,8 +17,10 @@ abstract class Request<T, R : Request>(var url: String) {
         const val NET_CACHE = 4
     }
     
-    private val headers = hashMapOf<String, String>()
-    private val params = hashMapOf<String, Any>()
+    val headers = hashMapOf<String, String>()
+    val params = hashMapOf<String, Any>()
+    var type: Type? = null
+    var clazz: Class<Any>? = null
     var cacheKey: String = ""
     
     fun addHeader(key: String, value: String): R {
@@ -29,21 +37,73 @@ abstract class Request<T, R : Request>(var url: String) {
         return this as R
     }
     
-    fun excute() {
-    
+    fun execute(): ApiResponse<T> {
+        val response = getCall().execute()
+        return parseResponse(response, null)
     }
     
-    fun excute(callback: JsonCallback<T>) {
-    
+    fun execute(callback: JsonCallback<T>?) {
+        getCall().enqueue(object : Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val apiResponse = parseResponse(response, callback)
+                if (apiResponse.success) {
+                    callback?.onSuccess(apiResponse)
+                } else {
+                    callback?.onError(apiResponse)
+                }
+            }
+            
+            override fun onFailure(call: Call, e: IOException) {
+                val apiResponse = ApiResponse<T>()
+                apiResponse.message = e.message ?: ""
+                callback?.onError(apiResponse)
+            }
+        })
     }
     
-    private fun getCall() {
-        val builder = Request.Builder()
+    private fun parseResponse(
+        response: Response,
+        callback: JsonCallback<T>?
+    ): ApiResponse<T> {
+        val apiResponse = ApiResponse<T>()
+        apiResponse.status = response.code
+        apiResponse.success = response.isSuccessful
+        if (response.isSuccessful) {
+            val content = response.body!!.string()
+            val convert = ApiService.convert
+            when {
+                type != null -> {
+                    apiResponse.body = convert.convert(content, type!!) as T
+                }
+                clazz != null -> {
+                    apiResponse.body = convert.convert(content, clazz!!) as T
+                }
+                callback != null -> {
+                    apiResponse.body = convert.convert(content, getTypeFromCallback(callback)) as T
+                }
+            }
+        } else {
+            apiResponse.message = response.message
+        }
+        return apiResponse
+    }
+    
+    private fun getTypeFromCallback(callback: JsonCallback<T>): Type {
+        val parameterizedType: ParameterizedType =
+            callback::class.java.genericSuperclass as ParameterizedType
+        return parameterizedType.actualTypeArguments[0]
+    }
+    
+    private fun getCall(): Call {
+        val builder = okhttp3.Request.Builder()
         for ((key, value) in headers) {
             builder.addHeader(key, value)
         }
-        builder.build()
+        val request = generateRequest(builder)
+        return ApiService.httpClient.newCall(request)
     }
+    
+    abstract fun generateRequest(builder: okhttp3.Request.Builder): okhttp3.Request
     
     @IntDef(value = [CACHE_ONLY, CACHE_FIRST, NET_ONLY, NET_CACHE])
     annotation class CacheStrategy

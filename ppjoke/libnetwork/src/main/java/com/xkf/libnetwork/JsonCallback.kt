@@ -6,7 +6,7 @@ abstract class JsonCallback<T> {
     
     }
     
-    fun onErrpr(response: ApiResponse<T>) {
+    fun onError(response: ApiResponse<T>) {
     
     }
     

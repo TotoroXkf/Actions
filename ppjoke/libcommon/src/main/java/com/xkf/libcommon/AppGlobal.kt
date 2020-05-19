@@ -1,4 +1,4 @@
-package com.xkf.ppjoke.base
+package com.xkf.libcommon
 
 import android.app.Application
 

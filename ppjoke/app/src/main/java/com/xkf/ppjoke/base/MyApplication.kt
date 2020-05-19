@@ -1,6 +1,7 @@
 package com.xkf.ppjoke.base
 
 import android.app.Application
+import com.xkf.libcommon.AppGlobal
 
 /**
  * author : xiakaifa

@@ -1,8 +1,8 @@
 package com.xkf.libnetwork
 
 class ApiResponse<T>(
-    success: Boolean,
-    status: Int,
-    message: String,
-    body: T
+    var success: Boolean = false,
+    var status: Int = 0,
+    var message: String = "",
+    var body: T? = null
 )
