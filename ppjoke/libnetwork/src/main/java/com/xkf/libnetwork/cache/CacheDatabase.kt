@@ -7,13 +7,13 @@ import com.xkf.libcommon.AppGlobal
 
 @Database(entities = [Cache::class], version = 1)
 abstract class CacheDatabase : RoomDatabase() {
-    val database: RoomDatabase
-    
-    init {
-        database = Room.databaseBuilder(
+    companion object {
+        val database = Room.databaseBuilder(
             AppGlobal.getApplication().applicationContext,
             CacheDatabase::class.java,
             "cacheDatabase"
         ).allowMainThreadQueries().build()
     }
+    
+    public abstract fun cacheDao(): CacheDao
 }

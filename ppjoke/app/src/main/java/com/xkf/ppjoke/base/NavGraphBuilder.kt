@@ -6,6 +6,7 @@ import androidx.navigation.ActivityNavigator
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavGraphNavigator
+import com.xkf.libcommon.AppGlobal
 
 object NavGraphBuilder {
     fun build(
