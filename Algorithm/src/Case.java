@@ -6,14 +6,14 @@ import struct.ListNode;
 import struct.TreeNode;
 
 public class Case {
-    public void matchArray(int[] array1, int[] array2) {
+    public void matchArray(Object[] array1, Object[] array2) {
         if (array1 == null && array2 == null) {
             return;
         }
         assert array1 != null && array2 != null;
         assert array1.length == array2.length;
         for (int i = 0; i < array1.length; i++) {
-            assert array1[i] == array2[i];
+            assert array1[i].equals(array2[i]);
         }
     }
 
