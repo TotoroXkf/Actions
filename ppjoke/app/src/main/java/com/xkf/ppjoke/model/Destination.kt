@@ -1,4 +1,4 @@
-package com.xkf.ppjoke.base.model
+package com.xkf.ppjoke.model
 
 /**
  * author : xiakaifa

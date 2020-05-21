@@ -2,6 +2,8 @@ package com.xkf.ppjoke.base
 
 import android.app.Application
 import com.xkf.libcommon.AppGlobal
+import com.xkf.libnetwork.ApiService
+import com.xkf.libnetwork.JsonConvert
 
 /**
  * author : xiakaifa
@@ -13,5 +15,6 @@ class MyApplication : Application() {
         
         AppGlobal.setApplication(this)
         AppConfig.init()
+        ApiService.init("", JsonConvert())
     }
 }

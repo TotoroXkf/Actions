@@ -3,8 +3,8 @@ package com.xkf.ppjoke.base
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.TypeReference
 import com.xkf.libcommon.AppGlobal
-import com.xkf.ppjoke.base.model.BottomBar
-import com.xkf.ppjoke.base.model.Destination
+import com.xkf.ppjoke.model.BottomBar
+import com.xkf.ppjoke.model.Destination
 import java.io.BufferedReader
 import java.io.InputStreamReader
 

@@ -60,7 +60,7 @@ abstract class Request<T, R : Request<T, R>>(var url: String) {
             ArchTaskExecutor.getIOThreadExecutor().execute {
                 val cache = readCache()
                 if (cache != null) {
-                    callback?.onSuccess(cache)
+                    callback?.onCacheSuccess(cache)
                 }
             }
         }
@@ -129,8 +129,8 @@ abstract class Request<T, R : Request<T, R>>(var url: String) {
         if (cacheStrategy != NET_ONLY && response.isSuccessful && apiResponse.body != null && apiResponse.body is Serializable) {
             if (cacheKey.isEmpty()) {
                 cacheKey = UrlCreator.createUrlFromParam(url, params)
-                CacheManager.saveCache(cacheKey, apiResponse.body)
             }
+            CacheManager.saveCache(cacheKey, apiResponse.body)
         }
         return apiResponse
     }
