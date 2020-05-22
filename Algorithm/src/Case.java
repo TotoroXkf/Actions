@@ -71,48 +71,51 @@ public class Case {
             return;
         }
         assert root1 != null && root2 != null;
-        assert root1.val == root2.val;
-        matchLinkedList(root1.next, root2.next);
-    }
-
-    public TreeNode createTree(String text) {
-        StringBuilder stringBuilder = new StringBuilder(text);
-        stringBuilder.deleteCharAt(0);
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        String[] textArray = stringBuilder.toString().split(",");
-        LinkedList<Integer> indexQueue = new LinkedList<>();
-        LinkedList<TreeNode> nodeQueue = new LinkedList<>();
-        TreeNode root = new TreeNode(Integer.parseInt(textArray[0]));
-        indexQueue.addLast(0);
-        nodeQueue.addLast(root);
-        while (!nodeQueue.isEmpty()) {
-            TreeNode node = nodeQueue.removeFirst();
-            int index = indexQueue.removeFirst();
-
-            int leftIndex = (index + 1) * 2 - 1;
-            if (leftIndex < textArray.length) {
-                String value = textArray[leftIndex];
-                if (!value.equals("null")) {
-                    TreeNode leftNode = new TreeNode(Integer.parseInt(value));
-                    node.left = leftNode;
-                    nodeQueue.addFirst(leftNode);
-                    indexQueue.addFirst(leftIndex);
-                }
-            }
-
-            int rightIndex = (index + 1) * 2;
-            if (rightIndex < textArray.length) {
-                String value = textArray[rightIndex];
-                if (!value.equals("null")) {
-                    TreeNode rightNode = new TreeNode(Integer.parseInt(value));
-                    node.right = rightNode;
-                    nodeQueue.addFirst(rightNode);
-                    indexQueue.addFirst(rightIndex);
-                }
-            }
+        while (root1 != null && root2 != null) {
+            assert root1.val == root2.val;
+            root1 = root1.next;
+            root2 = root2.next;
         }
-        return root;
     }
+
+//    public TreeNode createTree(String text) {
+//        StringBuilder stringBuilder = new StringBuilder(text);
+//        stringBuilder.deleteCharAt(0);
+//        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+//        String[] textArray = stringBuilder.toString().split(",");
+//        LinkedList<Integer> indexQueue = new LinkedList<>();
+//        LinkedList<TreeNode> nodeQueue = new LinkedList<>();
+//        TreeNode root = new TreeNode(Integer.parseInt(textArray[0]));
+//        indexQueue.addLast(0);
+//        nodeQueue.addLast(root);
+//        while (!nodeQueue.isEmpty()) {
+//            TreeNode node = nodeQueue.removeFirst();
+//            int index = indexQueue.removeFirst();
+//
+//            int leftIndex = (index + 1) * 2 - 1;
+//            if (leftIndex < textArray.length) {
+//                String value = textArray[leftIndex];
+//                if (!value.equals("null")) {
+//                    TreeNode leftNode = new TreeNode(Integer.parseInt(value));
+//                    node.left = leftNode;
+//                    nodeQueue.addFirst(leftNode);
+//                    indexQueue.addFirst(leftIndex);
+//                }
+//            }
+//
+//            int rightIndex = (index + 1) * 2;
+//            if (rightIndex < textArray.length) {
+//                String value = textArray[rightIndex];
+//                if (!value.equals("null")) {
+//                    TreeNode rightNode = new TreeNode(Integer.parseInt(value));
+//                    node.right = rightNode;
+//                    nodeQueue.addFirst(rightNode);
+//                    indexQueue.addFirst(rightIndex);
+//                }
+//            }
+//        }
+//        return root;
+//    }
 
     public void matchTree(TreeNode root1, TreeNode root2) {
         if (root1 == null && root2 == null) {
