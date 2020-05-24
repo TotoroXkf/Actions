@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.xkf.ppjoke.base.NavGraphBuilder
+import com.xkf.ppjoke.utils.NavGraphBuilder
 import com.xkf.ppjoke.view.AppBottomBarView
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {

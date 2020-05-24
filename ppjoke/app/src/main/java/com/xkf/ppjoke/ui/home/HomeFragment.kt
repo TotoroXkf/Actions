@@ -1,4 +1,4 @@
-package com.xkf.ppjoke.pages.home
+package com.xkf.ppjoke.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

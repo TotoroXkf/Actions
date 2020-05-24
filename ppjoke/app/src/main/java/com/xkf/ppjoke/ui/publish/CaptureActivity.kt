@@ -1,4 +1,4 @@
-package com.xkf.ppjoke.pages.publish
+package com.xkf.ppjoke.ui.publish
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

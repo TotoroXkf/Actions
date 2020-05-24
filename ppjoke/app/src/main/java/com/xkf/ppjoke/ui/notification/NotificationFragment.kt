@@ -1,4 +1,4 @@
-package com.xkf.ppjoke.pages.notification
+package com.xkf.ppjoke.ui.notification
 
 import android.os.Bundle
 import android.view.LayoutInflater

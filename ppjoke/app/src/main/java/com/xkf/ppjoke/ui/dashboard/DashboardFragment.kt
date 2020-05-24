@@ -1,4 +1,4 @@
-package com.xkf.ppjoke.pages.dashboard
+package com.xkf.ppjoke.ui.dashboard
 
 import android.os.Bundle
 import android.view.LayoutInflater
