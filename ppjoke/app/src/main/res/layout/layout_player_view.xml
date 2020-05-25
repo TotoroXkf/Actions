@@ -11,16 +11,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.mooc.ppjoke.view.PPImageView
+        <com.xkf.ppjoke.view.PPImageView
             android:id="@+id/blurBackgroundView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:transitionName="blur_image"
-            tools:background="@color/color_theme_10">
+            tools:background="@color/color_theme_10" />
 
-        </com.mooc.ppjoke.view.PPImageView>
-
-        <com.mooc.ppjoke.view.PPImageView
+        <com.xkf.ppjoke.view.PPImageView
             android:id="@+id/coverView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

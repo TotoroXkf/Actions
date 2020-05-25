@@ -11,6 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.xkf.ppjoke.utils.Utils
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 
 class PPImageView : androidx.appcompat.widget.AppCompatImageView {
@@ -74,5 +75,24 @@ class PPImageView : androidx.appcompat.widget.AppCompatImageView {
         val layoutParams = ViewGroup.MarginLayoutParams(finalWidth, finalHeight)
         layoutParams.leftMargin = Utils.dpToPx(marginLeft)
         setLayoutParams(layoutParams)
+    }
+    
+    fun setBlurImageView(coverUrl: String) {
+        Glide.with(this)
+            .load(coverUrl)
+            .override(50)
+            .transform(BlurTransformation(10))
+            .dontAnimate()
+            .into(object : CustomTarget<Drawable>() {
+                override fun onLoadCleared(placeholder: Drawable?) {
+                }
+                
+                override fun onResourceReady(
+                    resource: Drawable,
+                    transition: Transition<in Drawable>?
+                ) {
+                    background = resource
+                }
+            })
     }
 }
