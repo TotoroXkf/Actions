@@ -10,8 +10,44 @@ public class SolutionTest {
 
     @Test
     public void test() {
-        ListNode head = testCase.createLinkedList(new int[]{1, 4, 3, 2, 5, 2});
-        solution.partition(head, 3);
-        testCase.matchLinkedList(head, testCase.createLinkedList(new int[]{1, 2, 2, 4, 3, 5}));
+        String str1 = "A";
+        String str2 = "A";
+        assert solution.isScramble(str1, str2);
+
+        str1 = "A";
+        str2 = "B";
+        assert !solution.isScramble(str1, str2);
+
+        str1 = "AB";
+        str2 = "BA";
+        assert solution.isScramble(str1, str2);
+
+        str1 = "AB";
+        str2 = "AC";
+        assert !solution.isScramble(str1, str2);
+
+        str1 = "ABCD";
+        str2 = "ABDC";
+        assert solution.isScramble(str1, str2);
+
+        str1 = "ABCD";
+        str2 = "ABDC";
+        assert solution.isScramble(str1, str2);
+
+        str1 = "great";
+        str2 = "rgeat";
+        assert solution.isScramble(str1, str2);
+
+        str1 = "great";
+        str2 = "rgtae";
+        assert solution.isScramble(str1, str2);
+
+        str1 = "abcde";
+        str2 = "caebd";
+        assert !solution.isScramble(str1, str2);
+
+        str1 = "abc";
+        str2 = "bca";
+        assert solution.isScramble(str1, str2);
     }
 } 
