@@ -26,7 +26,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/like"
+            android:id="@+id/likeView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -45,7 +45,7 @@
             tools:textColor="@color/color_3d3" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/diss"
+            android:id="@+id/disLikeView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -65,7 +65,7 @@
             tools:textColor="@color/color_3d3" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/comment"
+            android:id="@+id/commentView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -85,7 +85,7 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/share"
+            android:id="@+id/shareView"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

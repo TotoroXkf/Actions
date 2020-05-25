@@ -2,10 +2,15 @@ package com.xkf.ppjoke.view
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
+import com.xkf.ppjoke.utils.Utils
 
 
 class PPImageView : androidx.appcompat.widget.AppCompatImageView {
@@ -26,5 +31,48 @@ class PPImageView : androidx.appcompat.widget.AppCompatImageView {
             }
             builder.into(view)
         }
+    }
+    
+    fun bindData(
+        widthPx: Int,
+        heightPx: Int,
+        marginLeft: Int,
+        maxWidth: Int = Utils.getScreenWidthSize(),
+        maxHeight: Int = Utils.getScreenHeightSize(),
+        imageUrl: String
+    ) {
+        if (widthPx <= 0 || heightPx <= 0) {
+            Glide.with(this).load(imageUrl).into(object : CustomTarget<Drawable>() {
+                override fun onLoadCleared(placeholder: Drawable?) {}
+                override fun onResourceReady(
+                    resource: Drawable,
+                    transition: Transition<in Drawable>?
+                ) {
+                    val height = resource.intrinsicHeight
+                    val width = resource.intrinsicWidth
+                    setSize(width, height, marginLeft, maxWidth, maxHeight)
+                    setImageDrawable(resource)
+                }
+            })
+            return
+        }
+        setSize(widthPx, heightPx, marginLeft, maxWidth, maxHeight)
+        setImageData(this, imageUrl, false)
+    }
+    
+    private fun setSize(width: Int, height: Int, marginLeft: Int, maxWidth: Int, maxHeight: Int) {
+        val finalWidth: Int
+        val finalHeight: Int
+        // width/height = finalWidth/finalHeight
+        if (width > height) {
+            finalWidth = maxWidth
+            finalHeight = (finalWidth.toFloat() * (height.toFloat() / width.toFloat())).toInt()
+        } else {
+            finalHeight = maxHeight
+            finalWidth = (finalHeight.toFloat() * (width.toFloat() / height.toFloat())).toInt()
+        }
+        val layoutParams = ViewGroup.MarginLayoutParams(finalWidth, finalHeight)
+        layoutParams.leftMargin = Utils.dpToPx(marginLeft)
+        setLayoutParams(layoutParams)
     }
 }

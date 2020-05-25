@@ -51,7 +51,7 @@
 
 
                 <com.xkf.ppjoke.view.PPImageView
-                    android:id="@+id/avatar"
+                    android:id="@+id/avatarView"
                     android:layout_width="@dimen/dp_20"
                     android:layout_height="@dimen/dp_20"
                     app:imageUrl="@{comment.author.avatar}"
@@ -59,7 +59,7 @@
                     tools:src="@mipmap/ic_launcher_round" />
 
                 <TextView
-                    android:id="@+id/user_name"
+                    android:id="@+id/UserNameView"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dp_20"
                     android:layout_gravity="center_vertical"
