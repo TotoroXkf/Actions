@@ -1,6 +1,0 @@
-rootProject.name='ppjoke'
-include ':app'
-include ':libannotation'
-include ':libcompiler'
-include ':libnetwork'
-include ':libcommon'
