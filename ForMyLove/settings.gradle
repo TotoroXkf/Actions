@@ -1,6 +1,0 @@
-rootProject.name='ForMyLove'
-include ':app'
-include ':common'
-include ':splash'
-include ':lovestatement'
-include ':answerbook'
