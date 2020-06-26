@@ -1,5 +1,6 @@
 package com.xkf.pagingtest
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -8,16 +9,22 @@ import androidx.paging.ItemKeyedDataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 
+@SuppressLint("RestrictedApi")
 class MainViewModel : ViewModel() {
     val pageLiveData: LiveData<PagedList<String>>
-    
+
+    //    val cacheLiveData: MutableLiveData<PagedList<String>>
+    lateinit var dataSource: DataSource<Int, String>
+
     // Factory 用于创建DataSource
-    class MainDataSourceFactory : DataSource.Factory<Int, String>() {
+    inner class MainDataSourceFactory : DataSource.Factory<Int, String>() {
         override fun create(): DataSource<Int, String> {
-            return MainDataSource()
+            // 这里每次移都生成新的DataSource
+            dataSource = MainDataSource()
+            return dataSource
         }
     }
-    
+
     // DataSource 用于真正的加载数据
     class MainDataSource : ItemKeyedDataSource<Int, String>() {
         override fun loadInitial(
@@ -31,10 +38,10 @@ class MainViewModel : ViewModel() {
             }
             callback.onResult(list)
         }
-        
+
         override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<String>) {
             Thread.sleep(1000)
-            if (params.key < 100) {
+            if (params.key < 29) {
                 val list = arrayListOf<String>()
                 for (i in params.key + 1 until params.key + 11) {
                     list.add(i.toString())
@@ -44,24 +51,53 @@ class MainViewModel : ViewModel() {
                 callback.onResult(emptyList())
             }
         }
-        
+
         override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<String>) {
             callback.onResult(emptyList())
         }
-        
+
         // key代表了加载数据的一个参考
         override fun getKey(item: String): Int {
             return item.toInt()
         }
     }
-    
+
+    private val boundaryCallback = object : PagedList.BoundaryCallback<String>() {
+        override fun onZeroItemsLoaded() {
+            super.onZeroItemsLoaded()
+
+            Log.e("xkf", "第一页加载为空时回调")
+        }
+
+        override fun onItemAtEndLoaded(itemAtEnd: String) {
+            super.onItemAtEndLoaded(itemAtEnd)
+
+            Log.e("xkf", "分页完全结束时回调，传入的参数是最后一个item $itemAtEnd")
+        }
+
+        override fun onItemAtFrontLoaded(itemAtFront: String) {
+            super.onItemAtFrontLoaded(itemAtFront)
+
+            Log.e("xkf", "第一页加载完成时回调，传入的参数是第一个item $itemAtFront")
+        }
+    }
+
     init {
         // 生成Paging的LiveData
         val config = PagedList.Config.Builder()
             .setPageSize(10)
             .setPrefetchDistance(10)
-            .setEnablePlaceholders(false)
+            .setEnablePlaceholders(false).build()
+        pageLiveData = LivePagedListBuilder(MainDataSourceFactory(), config)
+            .setBoundaryCallback(boundaryCallback)
             .build()
-        pageLiveData = LivePagedListBuilder(MainDataSourceFactory(), config).build()
+
+        // 缓存使用
+//        val pageList = PagedList.Builder<Int, String>(CacheDataSource(), config)
+//            .setFetchExecutor(ArchTaskExecutor.getIOThreadExecutor())
+//            .setNotifyExecutor(ArchTaskExecutor.getMainThreadExecutor())
+//            .build()
+//        cacheLiveData = MutableLiveData()
+//        cacheLiveData.postValue(pageList)
     }
 }
