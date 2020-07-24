@@ -30,4 +30,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation group: 'com.facebook.yoga.android', name: 'yoga-layout', version: '1.11.0'
+    implementation 'com.facebook.soloader:soloader:0.9.0'
+    implementation 'com.facebook.fbjni:fbjni:0.0.2'
 }

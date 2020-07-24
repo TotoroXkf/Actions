@@ -41,15 +41,13 @@ class MainActivity : AppCompatActivity(), OnRefreshListener {
 
         smartRefreshLayout.setOnRefreshListener(this)
 
-//        viewModel.cacheLiveData.observe(this, Observer { pageList: PagedList<String> ->
-//            adapter.submitList(pageList)
-//        })
+        viewModel.cacheLiveData.observe(this, Observer { pageList: PagedList<String> ->
+            adapter.submitList(pageList)
+        })
     }
 
     // 继承PageListAdapter 和一般的一样操作
-    class MyAdapter(diffCallback: DiffUtil.ItemCallback<String>) :
-        PagedListAdapter<String, RecyclerView.ViewHolder>(diffCallback) {
-
+    class MyAdapter(diffCallback: DiffUtil.ItemCallback<String>) : PagedListAdapter<String, RecyclerView.ViewHolder>(diffCallback) {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             val textView = TextView(parent.context)
             textView.gravity = Gravity.CENTER

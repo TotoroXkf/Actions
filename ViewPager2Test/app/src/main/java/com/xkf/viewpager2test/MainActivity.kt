@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.viewPager)
         viewPager.adapter = ViewPagerAdapter(this)
 
+        // 一屏多页的实现
         viewPager.apply {
             offscreenPageLimit = 1
             val recyclerView = getChildAt(0) as RecyclerView
