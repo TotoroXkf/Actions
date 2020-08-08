@@ -1,7 +1,8 @@
-package com.xkf.trainingplatform
+package com.xkf.trainingplatform.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.xkf.trainingplatform.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
