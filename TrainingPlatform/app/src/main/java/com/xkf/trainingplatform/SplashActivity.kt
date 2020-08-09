@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.xkf.trainingplatform.base.UserManager
+import com.xkf.trainingplatform.base.Global
 import com.xkf.trainingplatform.databinding.ActivitySplashBinding
 import com.xkf.trainingplatform.main.MainActivity
 import com.xkf.trainingplatform.register.RegisterActivity
@@ -23,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
         viewBinding = DataBindingUtil.setContentView(this, R.layout.activity_splash)
 
         viewBinding.root.postDelayed({
-            if (UserManager.isLogin()) {
+            if (Global.isLogin()) {
                 startActivity(Intent(this, MainActivity::class.java))
             } else {
                 startActivity(Intent(this, RegisterActivity::class.java))

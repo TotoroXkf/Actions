@@ -3,17 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xkf.trainingplatform">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".base.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="视觉功能检查及康复训练平台"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,WearStandaloneAppFlag">
-        <activity android:name=".register.RegisterDetailActivity"></activity>
+
+        <activity android:name=".authenticate.AuthenticateActivity" />
+
+        <activity android:name=".register.RegisterDetailActivity" />
+
         <activity android:name=".register.RegisterActivity" />
+
         <activity
             android:name=".SplashActivity"
             android:label="@string/title_activity_splash">

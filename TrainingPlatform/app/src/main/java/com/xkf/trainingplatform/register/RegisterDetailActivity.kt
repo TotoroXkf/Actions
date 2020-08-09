@@ -1,5 +1,6 @@
 package com.xkf.trainingplatform.register
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -9,8 +10,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.xkf.trainingplatform.authenticate.AuthenticateActivity
 import com.xkf.trainingplatform.R
-import com.xkf.trainingplatform.base.UserManager
+import com.xkf.trainingplatform.base.Global
+import com.xkf.trainingplatform.base.KEY_USER_TYPE
+import com.xkf.trainingplatform.base.TYPE_DOCTOR
+import com.xkf.trainingplatform.base.TYPE_USER
 import com.xkf.trainingplatform.databinding.ActivityRegisterDetailBinding
 import com.xkf.trainingplatform.main.MainActivity
 
@@ -18,6 +23,17 @@ class RegisterDetailActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var viewBinding: ActivityRegisterDetailBinding
     private val viewModel by lazy {
         ViewModelProvider(this).get(RegisterDetailViewModel::class.java)
+    }
+
+    private val type
+        get() = intent.getStringExtra(KEY_USER_TYPE) ?: TYPE_USER
+
+    companion object {
+        fun startActivity(context: Context, type: String) {
+            val intent = Intent(context, RegisterDetailActivity::class.java)
+            intent.putExtra(KEY_USER_TYPE, type)
+            context.startActivity(intent)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -124,8 +140,14 @@ class RegisterDetailActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
 
-        UserManager.register(userName, password)
-        Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, MainActivity::class.java))
+        if (type == TYPE_USER) {
+            Global.registerUser(userName, password, id)
+            Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, MainActivity::class.java))
+        } else if (type == TYPE_DOCTOR) {
+            Global.registerDoctor(userName, password, id)
+            Toast.makeText(this, "注册成功", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, AuthenticateActivity::class.java))
+        }
     }
 }

@@ -1,12 +1,13 @@
 package com.xkf.trainingplatform.register
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.xkf.trainingplatform.R
+import com.xkf.trainingplatform.base.TYPE_DOCTOR
+import com.xkf.trainingplatform.base.TYPE_USER
 import com.xkf.trainingplatform.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
@@ -27,6 +28,13 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        startActivity(Intent(this, RegisterDetailActivity::class.java))
+        when (v.id) {
+            viewBinding.buttonDoctor.id -> {
+                RegisterDetailActivity.startActivity(this, TYPE_DOCTOR)
+            }
+            viewBinding.btnUser.id -> {
+                RegisterDetailActivity.startActivity(this, TYPE_USER)
+            }
+        }
     }
 }

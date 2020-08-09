@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.xkf.trainingplatform.authenticate.AuthenticateViewModel" />
+
+        <import type="android.graphics.Color"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".authenticate.AuthenticateActivity">
+
+        <View
+            android:id="@+id/topBackgroundView"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="医生认证"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="@id/topBackgroundView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/topBackgroundView"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="暂不认证"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/topBackgroundView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/topBackgroundView"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:id="@+id/divideView"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="60dp"
+            android:background="#cccccc"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/stepTextView1"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:background="@drawable/drawable_step_background"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@{viewModel.step1Selected?@color/white:@color/textColor}"
+            app:isSelected="@{viewModel.step1Selected}"
+            app:layout_constraintBottom_toBottomOf="@+id/divideView"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/stepTextView2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/divideView"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/stepTextView2"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:background="@drawable/drawable_step_background"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="2"
+            android:textColor="@{viewModel.step2Selected?@color/white:@color/textColor}"
+            app:isSelected="@{viewModel.step2Selected}"
+            app:layout_constraintBottom_toBottomOf="@+id/stepTextView1"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/stepTextView3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/stepTextView1"
+            app:layout_constraintTop_toTopOf="@+id/stepTextView1"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/stepTextView3"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:background="@drawable/drawable_step_background"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="3"
+            android:textColor="@{viewModel.step3Selected?@color/white:@color/textColor}"
+            app:isSelected="@{viewModel.step3Selected}"
+            app:layout_constraintBottom_toBottomOf="@+id/divideView"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/stepTextView2"
+            app:layout_constraintTop_toTopOf="@+id/divideView"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/stepDescTextView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="基本信息"
+            android:textColor="@{viewModel.step1Selected?@color/colorPrimary:@color/textColor}"
+            app:layout_constraintEnd_toEndOf="@+id/stepTextView1"
+            app:layout_constraintStart_toStartOf="@+id/stepTextView1"
+            app:layout_constraintTop_toBottomOf="@+id/stepTextView1"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/stepDescTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上传证件"
+            android:textColor="@{viewModel.step2Selected?@color/colorPrimary:@color/textColor}"
+            app:layout_constraintEnd_toEndOf="@+id/stepTextView2"
+            app:layout_constraintStart_toStartOf="@+id/stepTextView2"
+            app:layout_constraintTop_toTopOf="@+id/stepDescTextView1"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/stepDescTextView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="审核"
+            android:textColor="@{viewModel.step3Selected?@color/colorPrimary:@color/textColor}"
+            app:layout_constraintEnd_toEndOf="@+id/stepTextView3"
+            app:layout_constraintStart_toStartOf="@+id/stepTextView3"
+            app:layout_constraintTop_toTopOf="@+id/stepDescTextView1"
+            tools:ignore="HardcodedText" />
+
+        <View
+            android:id="@+id/divideView2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="#cccccc"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/stepDescTextView1" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/containerLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divideView2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
