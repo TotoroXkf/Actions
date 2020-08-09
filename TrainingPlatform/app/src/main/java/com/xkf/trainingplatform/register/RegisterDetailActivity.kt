@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.xkf.trainingplatform.authenticate.AuthenticateActivity
 import com.xkf.trainingplatform.R
+import com.xkf.trainingplatform.authenticate.AuthenticateActivity
 import com.xkf.trainingplatform.base.Global
 import com.xkf.trainingplatform.base.KEY_USER_TYPE
 import com.xkf.trainingplatform.base.TYPE_DOCTOR
@@ -124,6 +124,10 @@ class RegisterDetailActivity : AppCompatActivity(), View.OnClickListener {
         val id = viewBinding.IdInputLayout.editText?.text?.toString() ?: ""
         if (id.isEmpty()) {
             Toast.makeText(this, "身份证号不能为空", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (id.length != 18) {
+            Toast.makeText(this, "身份证号长度不正确", Toast.LENGTH_SHORT).show()
             return
         }
 
