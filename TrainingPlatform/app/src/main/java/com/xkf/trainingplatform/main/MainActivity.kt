@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewBind: ActivityMainBinding
     private val fragmentList = arrayListOf<Fragment>(
         WorkFragment(),
-        CommunicationFragment(),
+        TrainFragment(),
         KnowledgeFragment(),
         MineFragment()
     )
@@ -36,10 +36,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.menu_work -> {
                     viewBind.viewPager.setCurrentItem(0, true)
                 }
-                R.id.menu_communication -> {
+                R.id.menu_knowledge -> {
                     viewBind.viewPager.setCurrentItem(1, true)
                 }
-                R.id.menu_knowledge -> {
+                R.id.menu_train -> {
                     viewBind.viewPager.setCurrentItem(2, true)
                 }
                 R.id.menu_mine -> {

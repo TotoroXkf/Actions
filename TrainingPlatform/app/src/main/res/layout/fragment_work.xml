@@ -1,14 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".main.WorkFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.xkf.trainingplatform.main.WorkViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".main.WorkFragment">
 
-</FrameLayout>
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolBar"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:background="@color/colorPrimary"
+            android:elevation="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{viewModel.title}"
+            app:titleTextColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/headImageView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="150dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolBar"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:id="@+id/boardLayout1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/boardLayout2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headImageView"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/iconImageView1"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/titleView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{viewModel.boardTitleList.get(0)}"
+                android:textColor="@color/textColor" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/boardLayout2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/boardLayout3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/boardLayout1"
+            app:layout_constraintTop_toBottomOf="@+id/headImageView"
+            tools:ignore="UseCompoundDrawables">
+
+
+            <ImageView
+                android:id="@+id/iconImageView2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/titleView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{viewModel.boardTitleList.get(1)}"
+                android:textColor="@color/textColor" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/boardLayout3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/boardLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/headImageView"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/iconImageView3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/titleView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{viewModel.boardTitleList.get(2)}"
+                android:textColor="@color/textColor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/boardLayout4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/boardLayout5"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/boardLayout1"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/iconImageView4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/titleView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{viewModel.boardTitleList.get(3)}"
+                android:textColor="@color/textColor" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/boardLayout5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toStartOf="@+id/boardLayout6"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/boardLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/boardLayout1"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/iconImageView5"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/titleView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{viewModel.boardTitleList.get(4)}"
+                android:textColor="@color/textColor" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/boardLayout6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintDimensionRatio="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/boardLayout5"
+            app:layout_constraintTop_toBottomOf="@+id/boardLayout1"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/iconImageView6"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/titleView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{viewModel.boardTitleList.get(5)}"
+                android:textColor="@color/textColor" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

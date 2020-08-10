@@ -5,19 +5,19 @@
     <item
         android:id="@+id/menu_work"
         android:icon="@drawable/icon_work"
-        android:title="工作台"
-        tools:ignore="HardcodedText" />
-
-    <item
-        android:id="@+id/menu_communication"
-        android:icon="@drawable/icon_communication"
-        android:title="沟通"
+        android:title="首页"
         tools:ignore="HardcodedText" />
 
     <item
         android:id="@+id/menu_knowledge"
         android:icon="@drawable/icon_knowledge"
         android:title="科普"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/menu_train"
+        android:icon="@drawable/icon_train"
+        android:title="训练"
         tools:ignore="HardcodedText" />
 
     <item
