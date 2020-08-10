@@ -16,13 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,WearStandaloneAppFlag">
-
+        <activity android:name=".AskActivity"></activity>
         <activity android:name=".authenticate.AuthenticateActivity" />
-
         <activity android:name=".register.RegisterDetailActivity" />
-
         <activity android:name=".register.RegisterActivity" />
-
         <activity
             android:name=".SplashActivity"
             android:label="@string/title_activity_splash">

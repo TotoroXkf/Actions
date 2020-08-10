@@ -54,8 +54,9 @@
 
             <ImageView
                 android:id="@+id/iconImageView1"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:imagePath="@{viewModel.boardIconList.get(0)}"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -85,8 +86,9 @@
 
             <ImageView
                 android:id="@+id/iconImageView2"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:imagePath="@{viewModel.boardIconList.get(1)}"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -115,8 +117,9 @@
 
             <ImageView
                 android:id="@+id/iconImageView3"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:imagePath="@{viewModel.boardIconList.get(2)}"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -144,8 +147,9 @@
 
             <ImageView
                 android:id="@+id/iconImageView4"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:imagePath="@{viewModel.boardIconList.get(3)}"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -173,8 +177,9 @@
 
             <ImageView
                 android:id="@+id/iconImageView5"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:imagePath="@{viewModel.boardIconList.get(4)}"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -203,8 +208,9 @@
 
             <ImageView
                 android:id="@+id/iconImageView6"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:imagePath="@{viewModel.boardIconList.get(5)}"
                 tools:ignore="ContentDescription" />
 
             <TextView

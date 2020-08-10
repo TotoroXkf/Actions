@@ -1,6 +1,7 @@
 package com.xkf.trainingplatform.main
 
 import androidx.lifecycle.ViewModel
+import com.xkf.trainingplatform.R
 import com.xkf.trainingplatform.base.Global
 
 class WorkViewModel : ViewModel() {
@@ -24,11 +25,18 @@ class WorkViewModel : ViewModel() {
             boardTitleList.add("随访·效果")
             boardTitleList.add("")
         } else if (Global.isUser()) {
+            boardIconList.add(R.drawable.icon_user_1)
+            boardIconList.add(R.drawable.icon_user_2)
+            boardIconList.add(R.drawable.icon_user_3)
+            boardIconList.add(R.drawable.icon_user_4)
+            boardIconList.add(R.drawable.icon_user_5)
+            boardIconList.add(0)
+
+            boardTitleList.add("问诊")
             boardTitleList.add("治疗安排")
-            boardTitleList.add("模拟功能训练")
+            boardTitleList.add("随访效果")
             boardTitleList.add("医生建议")
-            boardTitleList.add("随访·效果")
-            boardTitleList.add("")
+            boardTitleList.add("选择医生")
             boardTitleList.add("")
         }
     }
