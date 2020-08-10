@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.xkf.trainingplatform.AskActivity
+import com.xkf.trainingplatform.feature.AskActivity
+import com.xkf.trainingplatform.feature.select.SelectDoctorActivity
 import com.xkf.trainingplatform.base.Global
 import com.xkf.trainingplatform.databinding.FragmentWorkBinding
 
@@ -46,6 +47,11 @@ class WorkFragment : Fragment(), View.OnClickListener {
 
                 } else if (Global.isUser()) {
                     startActivity(Intent(requireActivity(), AskActivity::class.java))
+                }
+            }
+            viewBinding.boardLayout5.id -> {
+                if (Global.isUser()) {
+                    startActivity(Intent(requireActivity(), SelectDoctorActivity::class.java))
                 }
             }
         }
