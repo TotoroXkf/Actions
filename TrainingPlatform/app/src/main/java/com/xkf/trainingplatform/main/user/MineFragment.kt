@@ -1,4 +1,4 @@
-package com.xkf.trainingplatform.main
+package com.xkf.trainingplatform.main.user
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import com.xkf.trainingplatform.R
 
 
-class KnowledgeFragment : Fragment() {
+class MineFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_knowledge, container, false)
+        return inflater.inflate(R.layout.fragment_mine, container, false)
     }
 }

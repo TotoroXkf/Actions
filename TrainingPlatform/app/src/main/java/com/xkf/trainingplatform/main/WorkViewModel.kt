@@ -18,11 +18,18 @@ class WorkViewModel : ViewModel() {
 
     init {
         if (Global.isDoctor()) {
+            boardIconList.add(R.drawable.icon_input)
+            boardIconList.add(R.drawable.icon_user_2)
+            boardIconList.add(R.drawable.icon_user_3)
+            boardIconList.add(R.drawable.icon_user_4)
+            boardIconList.add(0)
+            boardIconList.add(0)
+
             boardTitleList.add("录入患者")
             boardTitleList.add("治疗安排")
             boardTitleList.add("治疗统计")
-            boardTitleList.add("医生建议")
-            boardTitleList.add("随访·效果")
+            boardTitleList.add("随访")
+            boardTitleList.add("")
             boardTitleList.add("")
         } else if (Global.isUser()) {
             boardIconList.add(R.drawable.icon_user_1)

@@ -23,8 +23,7 @@
             android:id="@+id/bottomBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_bar_menu" />
+            app:labelVisibilityMode="labeled" />
 
     </LinearLayout>
 </layout>

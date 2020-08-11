@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.xkf.trainingplatform.feature.AskActivity
-import com.xkf.trainingplatform.feature.select.SelectDoctorActivity
+import com.xkf.trainingplatform.RandomAskActivity
 import com.xkf.trainingplatform.base.Global
 import com.xkf.trainingplatform.databinding.FragmentWorkBinding
+import com.xkf.trainingplatform.feature.AskActivity
+import com.xkf.trainingplatform.feature.select.SelectDoctorActivity
 
 
 class WorkFragment : Fragment(), View.OnClickListener {
@@ -47,6 +48,13 @@ class WorkFragment : Fragment(), View.OnClickListener {
 
                 } else if (Global.isUser()) {
                     startActivity(Intent(requireActivity(), AskActivity::class.java))
+                }
+            }
+            viewBinding.boardLayout4.id -> {
+                if (Global.isDoctor()) {
+                    startActivity(Intent(requireActivity(), RandomAskActivity::class.java))
+                } else if (Global.isUser()) {
+
                 }
             }
             viewBinding.boardLayout5.id -> {

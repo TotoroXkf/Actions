@@ -8,21 +8,25 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.xkf.trainingplatform.R
+import com.xkf.trainingplatform.base.Global
 import com.xkf.trainingplatform.databinding.ActivityMainBinding
+import com.xkf.trainingplatform.main.doctor.DoctorKnowledgeFragment
+import com.xkf.trainingplatform.main.doctor.DoctorMessageFragment
+import com.xkf.trainingplatform.main.doctor.DoctorMineFragment
+import com.xkf.trainingplatform.main.user.KnowledgeFragment
+import com.xkf.trainingplatform.main.user.MineFragment
+import com.xkf.trainingplatform.main.user.TrainFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBind: ActivityMainBinding
-    private val fragmentList = arrayListOf<Fragment>(
-        WorkFragment(),
-        TrainFragment(),
-        KnowledgeFragment(),
-        MineFragment()
-    )
+    private val fragmentList = arrayListOf<Fragment>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         viewBind = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        initFragments()
 
         viewBind.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -31,6 +35,11 @@ class MainActivity : AppCompatActivity() {
         })
         viewBind.viewPager.adapter = ViewPageAdapter(this)
 
+        if (Global.isDoctor()) {
+            viewBind.bottomBar.inflateMenu(R.menu.bottom_bar_menu_2)
+        } else {
+            viewBind.bottomBar.inflateMenu(R.menu.bottom_bar_menu)
+        }
         viewBind.bottomBar.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.menu_work -> {
@@ -39,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.menu_knowledge -> {
                     viewBind.viewPager.setCurrentItem(1, true)
                 }
-                R.id.menu_train -> {
+                R.id.menu_train, R.id.menu_message -> {
                     viewBind.viewPager.setCurrentItem(2, true)
                 }
                 R.id.menu_mine -> {
@@ -47,6 +56,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             true
+        }
+    }
+
+    private fun initFragments() {
+        fragmentList.clear()
+        if (Global.isDoctor()) {
+            fragmentList.add(WorkFragment())
+            fragmentList.add(DoctorKnowledgeFragment())
+            fragmentList.add(DoctorMessageFragment())
+            fragmentList.add(DoctorMineFragment())
+        } else if (Global.isUser()) {
+            fragmentList.add(WorkFragment())
+            fragmentList.add(KnowledgeFragment())
+            fragmentList.add(TrainFragment())
+            fragmentList.add(MineFragment())
         }
     }
 
