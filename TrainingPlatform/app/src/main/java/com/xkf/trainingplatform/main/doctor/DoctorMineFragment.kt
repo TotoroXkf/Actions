@@ -9,8 +9,6 @@ import com.xkf.trainingplatform.R
 
 
 class DoctorMineFragment : Fragment() {
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
