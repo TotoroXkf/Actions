@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:cardBackgroundColor="#99E1FF"
+            app:cardBackgroundColor="#5ba5f6"
             app:cardElevation="0dp"
             app:cardForegroundColor="@android:color/transparent"
             app:layout_constraintStart_toStartOf="@+id/textView44"

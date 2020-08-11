@@ -21,6 +21,18 @@ class DoctorMessageViewModel : ViewModel() {
                     type = 1
                 )
             )
+            add(
+                ChatMessage(
+                    message = "谢谢医生，没什么问题了",
+                    type = 0
+                )
+            )
+            add(
+                ChatMessage(
+                    message = "没事哒，有什么问题及时问",
+                    type = 1
+                )
+            )
         }
     }
 }
