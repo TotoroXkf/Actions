@@ -1,19 +1,11 @@
-package com.xkf.hilttest
+package com.xkf.bottomsheetdialog
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import android.os.Bundle
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    @Inject
-    lateinit var analytics: AnalyticsAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        analytics.testMethod()
     }
 }
