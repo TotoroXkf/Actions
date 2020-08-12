@@ -97,10 +97,12 @@ class Doctor {
         get() = (Global.sharedPreferences.getString(KEY_USER_TYPE, "") ?: "") == TYPE_DOCTOR
         set(value) {
             field = value
+            val edit = Global.sharedPreferences.edit()
             if (value) {
-                val edit = Global.sharedPreferences.edit()
                 edit.putString(KEY_USER_TYPE, TYPE_DOCTOR)
-                edit.apply()
+            } else {
+                edit.putString(KEY_USER_TYPE, "")
             }
+            edit.apply()
         }
 }

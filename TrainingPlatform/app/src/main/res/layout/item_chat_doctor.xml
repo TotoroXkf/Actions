@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="陈伟医生"
+            android:text="钱伟医生"
             android:textColor="@color/textColor"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/imageView13"
