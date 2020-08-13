@@ -7,7 +7,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.xkf.bottomsheetdialog"
+        applicationId "com.xkf.recyclerviewtest"
         minSdkVersion 28
         targetSdkVersion 29
         versionCode 1
@@ -34,5 +34,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    implementation group: 'com.google.android.material', name: 'material', version: '1.2.0'
 }
