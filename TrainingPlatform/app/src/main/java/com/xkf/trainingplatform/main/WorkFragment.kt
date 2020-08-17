@@ -11,6 +11,7 @@ import com.xkf.trainingplatform.RandomAskActivity
 import com.xkf.trainingplatform.base.Global
 import com.xkf.trainingplatform.databinding.FragmentWorkBinding
 import com.xkf.trainingplatform.feature.AskActivity
+import com.xkf.trainingplatform.feature.InputUserActivity
 import com.xkf.trainingplatform.feature.select.SelectDoctorActivity
 
 
@@ -45,7 +46,7 @@ class WorkFragment : Fragment(), View.OnClickListener {
         when (v.id) {
             viewBinding.boardLayout1.id -> {
                 if (Global.isDoctor()) {
-
+                    startActivity(Intent(requireActivity(), InputUserActivity::class.java))
                 } else if (Global.isUser()) {
                     startActivity(Intent(requireActivity(), AskActivity::class.java))
                 }

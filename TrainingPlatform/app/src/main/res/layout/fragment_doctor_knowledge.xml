@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".main.doctor.DoctorKnowledgeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".main.doctor.DoctorKnowledgeFragment">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/cardView1"
+                layout="@layout/layout_knowlage_card_1" />
+
+            <include
+                android:id="@+id/cardView2"
+                layout="@layout/layout_knowlage_card_2" />
+
+            <include
+                android:id="@+id/cardView3"
+                layout="@layout/layout_knowlage_card_3" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp" />
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

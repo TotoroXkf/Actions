@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,WearStandaloneAppFlag">
-        <activity android:name=".feature.Video1Activity"></activity>
+        <activity android:name=".feature.InputUserActivity"></activity>
+        <activity android:name=".feature.Video1Activity" />
         <activity android:name=".RandomAskActivity" />
         <activity android:name=".feature.select.SelectDoctorActivity" />
         <activity android:name=".feature.AskActivity" />
