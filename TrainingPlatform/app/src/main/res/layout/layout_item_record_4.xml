@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="16dp"
+    app:cardBackgroundColor="#F7F9FA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="随诊记录：\n1、患儿自2019年7月4日进行首诊，开始训练\n2、2019年8月14日，一个月后，患儿可以开始配合遮盖训练，掌握训练过程，并每日打卡， 坚持良好\n3、2019年10月14日，训练3个月，在线矫正视力测试，右眼0.5，左眼0.4，嘱继续训练，配合精细操作\n4、2020年1月6日，患儿于医大一院眼科视觉中心复诊"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
