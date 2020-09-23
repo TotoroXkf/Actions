@@ -16,7 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,WearStandaloneAppFlag">
-        <activity android:name=".feature.InputUserActivity"></activity>
+        <activity android:name=".feature.TreatmentCountActivity"></activity>
+        <activity android:name=".feature.TrainRecordActivity" />
+        <activity android:name=".feature.PriceActivity" />
+        <activity android:name=".feature.TextDetailActivity" />
+        <activity android:name=".feature.CourseRecordActivity" />
+        <activity android:name=".feature.InputUserActivity" />
         <activity android:name=".feature.Video1Activity" />
         <activity android:name=".RandomAskActivity" />
         <activity android:name=".feature.select.SelectDoctorActivity" />

@@ -2,6 +2,7 @@ package com.xkf.trainingplatform.feature
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.xkf.trainingplatform.R
 
 class CourseRecordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

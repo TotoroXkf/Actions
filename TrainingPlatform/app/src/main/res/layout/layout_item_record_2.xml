@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16dp"
+    app:cardForegroundColor="@android:color/transparent"
     android:layout_marginTop="16dp"
     app:cardBackgroundColor="#F7F9FA">
 
@@ -17,7 +18,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2019年7月4日14:21"
+            android:text="随访对话"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="2019年7月4日15:37"
             android:textColor="@color/colorPrimary"
             android:textSize="15sp"
             tools:ignore="HardcodedText" />
@@ -26,7 +36,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="诊断：双眼高度远视、散光，右眼中度弱视，双眼调节性内斜视\n治疗：\n1、佩戴眼镜\n2、遮盖法，遮盖左眼，遮5天，放1天\n3、左眼弱视训练（视觉刺激训练，视觉精细训练，每日一次）\n4、双眼视功能训练\n5、线上每日训练，二周与医生沟通训练过程及结果，3个月进行线上视力检测\n6、半年到医院全面复诊"
+            android:text="患者：医生，孩子遮盖后觉得看不清，不喜欢遮盖怎么办？"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="2019年8月16日16:00"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="医生：是正常现象，需要家长监督和鼓励，可以鼓励孩子遮盖后做一些精细的游戏，如串珠子、画图、挑豆子、拼拼图、拼乐高玩具，看绘本等，如果遮盖好，可以适当看一些动画片在手机上玩一些益智小游戏，对患者均有好处，没有坏处。"
             android:textColor="@color/textColor"
             android:textSize="15sp"
             tools:ignore="HardcodedText" />

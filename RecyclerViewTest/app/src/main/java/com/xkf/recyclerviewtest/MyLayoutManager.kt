@@ -1,9 +1,13 @@
 package com.xkf.recyclerviewtest
 
-/**
- * @author xiakaifa
- * 功能描述:
- * 时 间： 2020/8/13 17:08
- */
-class MyLayoutManager {
+import androidx.recyclerview.widget.RecyclerView
+
+
+class MyLayoutManager : RecyclerView.LayoutManager() {
+    override fun generateDefaultLayoutParams(): RecyclerView.LayoutParams {
+        return RecyclerView.LayoutParams(
+            RecyclerView.LayoutParams.WRAP_CONTENT,
+            RecyclerView.LayoutParams.WRAP_CONTENT
+        )
+    }
 }

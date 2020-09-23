@@ -13,18 +13,62 @@
         tools:context=".main.user.MineFragment">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/exitButton"
+            android:id="@+id/materialButton8"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:text="退出登录"
+            android:text="我的问诊"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialButton11" />
+            app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/trainRecordBtn"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="训练记录"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/materialButton8" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCourseRecord"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="病程记录"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trainRecordBtn" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/priceBtn"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:text="费用"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCourseRecord" />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButton11"
@@ -38,35 +82,21 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialButton10" />
+            app:layout_constraintTop_toBottomOf="@+id/priceBtn" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton10"
+            android:id="@+id/exitButton"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
-            android:text="病程记录"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialButton9" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton9"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:text="训练记录"
+            android:text="退出登录"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialButton8" />
+            app:layout_constraintTop_toBottomOf="@+id/materialButton11" />
 
         <TextView
             android:id="@+id/textView14"
@@ -180,20 +210,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButton8"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:text="我的问诊"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.xkf.trainingplatform.databinding.FragmentKnowledgeBinding
+import com.xkf.trainingplatform.feature.TextDetailActivity
 
 
 class KnowledgeFragment : Fragment() {
@@ -23,15 +24,15 @@ class KnowledgeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewBinding.cardView1.setOnClickListener {
-
+            TextDetailActivity.startActivity(requireActivity(), 0)
         }
 
         viewBinding.cardView2.setOnClickListener {
-
+            TextDetailActivity.startActivity(requireActivity(), 1)
         }
 
         viewBinding.cardView3.setOnClickListener {
-
+            TextDetailActivity.startActivity(requireActivity(), 2)
         }
     }
 }

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.xkf.trainingplatform.base.Global
 import com.xkf.trainingplatform.databinding.FragmentDoctorMineBinding
-import kotlin.system.exitProcess
 
 
 class DoctorMineFragment : Fragment() {
@@ -31,7 +30,7 @@ class DoctorMineFragment : Fragment() {
                 id = ""
                 isValidated = false
             }
-            exitProcess(0)
+            requireActivity().finish()
         }
     }
 }

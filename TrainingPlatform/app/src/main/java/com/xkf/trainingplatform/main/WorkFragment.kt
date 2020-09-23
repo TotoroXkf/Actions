@@ -12,6 +12,7 @@ import com.xkf.trainingplatform.base.Global
 import com.xkf.trainingplatform.databinding.FragmentWorkBinding
 import com.xkf.trainingplatform.feature.AskActivity
 import com.xkf.trainingplatform.feature.InputUserActivity
+import com.xkf.trainingplatform.feature.TreatmentCountActivity
 import com.xkf.trainingplatform.feature.select.SelectDoctorActivity
 
 
@@ -51,11 +52,16 @@ class WorkFragment : Fragment(), View.OnClickListener {
                     startActivity(Intent(requireActivity(), AskActivity::class.java))
                 }
             }
+            viewBinding.boardLayout3.id -> {
+                if (Global.isDoctor()) {
+                    startActivity(Intent(requireActivity(), TreatmentCountActivity::class.java))
+                }
+            }
             viewBinding.boardLayout4.id -> {
                 if (Global.isDoctor()) {
                     startActivity(Intent(requireActivity(), RandomAskActivity::class.java))
                 } else if (Global.isUser()) {
-
+                    startActivity(Intent(requireActivity(), TreatmentCountActivity::class.java))
                 }
             }
             viewBinding.boardLayout5.id -> {

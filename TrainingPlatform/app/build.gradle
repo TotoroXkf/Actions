@@ -52,4 +52,6 @@ dependencies {
     implementation group: 'androidx.fragment', name: 'fragment', version: '1.2.5'
 
     implementation group: 'androidx.viewpager2', name: 'viewpager2', version: '1.0.0'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
