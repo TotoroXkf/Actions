@@ -8,5 +8,7 @@ import androidx.lifecycle.ViewModel
  * 时 间： 2020/10/10 9:53
  */
 class MainViewModel : ViewModel() {
+    fun test(){
 
+    }
 }
